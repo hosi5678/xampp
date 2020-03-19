@@ -1,0 +1,28 @@
+0.phpmyadminのユーザアカウントでrootのパスワードを変更する。
+0-1.C:\xampp\phpMyAdmin\config.inc.phpで
+$cfg['Servers'][$i]['password'] = 'password';
+を設定
+
+1. mysql -u root -pでログイン
+2. create user 'dbuser01'@'192.168.1.3' identified by 'password';
+としてユーザを作成
+
+3.権限設定
+grant all on mydb01.* to dbuser01@192.168.1.3 identified by 'hosi3162';
+
+4.一般ユーザでip address ログイン
+mysql -h 192.168.1.3 -u dbuser01 -p mydb01
+(行末に;は不要)
+
+4-2 user,db指定ログイン
+mysql -h 192.168.1.3 -u myapp_user -p myapp
+
+rootのパスワード設定
+1. mysql -u root
+1. MariaDB [(none)]> use mysql;
+1. MariaDB [(none)]> alter user 'root'@'localhost' identified BY 'password';
+
+sourceコマンドの実行
+source c:/mysql/create_myapp.sql;
+(￥はだめ)
+

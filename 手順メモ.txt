@@ -1,0 +1,125 @@
+手順
+1.ケーブルを接続
+2.xamppをインストール,mysqlをpathに追加(C:\xampp\mysql\bin\)
+3.apache ip allow 編集
+4.apache port listen 8080 追加
+5.phpmyadmin root password変更
+6.phpmyadmin root password ファイル追加
+7.phpmyadmin アクセス制限
+8.各bookmark編集
+
+0-1.skypeとxamppはポートがかぶる可能性がある。
+skype:80,443/tcp
+https://web-generalist.com/skype-port-off/
+※skypeの80,443ポート使用を外す。
+
+firewall設定にて受信を許可
+https://support.borndigital.co.jp/hc/ja/articles/360002711593-Windows10%E3%81%A7%E7%89%B9%E5%AE%9A%E3%81%AE%E3%83%9D%E3%83%BC%E3%83%88%E3%82%92%E9%96%8B%E6%94%BE%E3%81%99%E3%82%8B
+
+ブラウザ画面にてproxyは使用しないに設定
+
+0-2.PCをlanケーブルにて接続
+
+1.xampをインストール
+path:
+https://www.apachefriends.org/jp/download_success.html
+
+versionは
+xampp-windows-x64-7.4.3-0-VC15-installer.exe
+で7.4.3
+
+2.xamppのインストール
+warningの通り、C\Programfilesにデータを展開しない。
+インストール先は、デフォルトのままC:\xamppがよい。
+
+/*
+https://qiita.com/hitotch/items/fe70fc2992746fafab54
+
+コンポーネントは、以下を選びます。
+    Apache (Webサーバー)
+    MySQL (DBサーバー、実は中身はMariaDB ←重要)
+    PHP (言語)
+    Fake Sendmail (メール送信ソフト、なくてもよい)
+*/
+
+3.公開docの場所
+C:\xampp\htdocs
+アクセス
+http://localhost:80/
+
+ポート番号:8080の追加
+C:\xampp\apache\conf\httpd.conf
+にて(60行目付近)
+Listen 192.168.1.3:8080
+と追記する。
+
+公開の仕方は
+cmd,ipconfig
+Ethernet adapter
+IPv4 Address
+192.168.1.3
+と調べて、
+C:\xampp\apache\conf\extra\httpd-xampp.conf
+で
+#
+# New XAMPP security concept
+#
+<LocationMatch "^/(?i:(?:xampp|security|licenses|phpmyadmin|webalizer|server-status|server-info))">
+        #Require local
+	ErrorDocument 403 /error/XAMPP_FORBIDDEN.html.var
+	Order deny,allow
+	Deny from all
+	Allow from 127.0.0.1
+	Allow from 192.168.1.3
+	Allow from 192.168.1.4
+	Allow from 192.168.1.7
+</LocationMatch>
+を追記する。
+
+phpmyadminの方は
+
+    Alias /phpmyadmin "C:/xampp/phpMyAdmin/"
+    <Directory "C:/xampp/phpMyAdmin">
+        AllowOverride AuthConfig
+			Require ip 192.168.1.3
+        ErrorDocument 403 /error/XAMPP_FORBIDDEN.html.var
+    </Directory>
+
+とする。
+
+→このときphpは192.168.1.3:8080のようにアクセスする。
+→このとき、phpmyadminは192.168.1.3:8080/phpmyadmin
+のようにアクセスする。
+→phpmyadminをbookmarkに追加
+
+->apache再起動
+->mysql再起動
+
+localhostを127.0.0.1にする。
+C:\Windows\System32\drivers\etc\hosts
+で、
+127.0.0.1          localhost
+とする。
+
+xampp control panelのMySQLのadminからphpmyadminに接続、
+ユーザアカウントにてrootのpasswordを変更
+
+その次に
+C:\xampp\phpMyAdmin\config.inc.php
+で
+$cfg['Servers'][$i]['password'] = 'password';
+を設定
+
+cmdからも、mysql -u root -p
+でないと入れなくなる。
+
+phpのdocument rootの変更
+C:\xampp\apache\conf\httpd.conf
+の252行付近を
+DocumentRoot "C:/xampp_opendoc/dotinstall/"
+<Directory "C:/xampp_opendoc/dotinstall/">
+のように変更
+http://192.168.1.3:8080/
+のようにアクセスする。
+->bookmarkに追加
+
