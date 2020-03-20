@@ -123,3 +123,11 @@ http://192.168.1.3:8080/
 のようにアクセスする。
 ->bookmarkに追加
 
+xamppの文字化け対応
+https://qiita.com/guzuri/items/643c1311224e8d482278
+
+cmdのutf8対応
+chcp 65001
+
+Ricty Diminished 導入
+https://nelog.jp/how-to-use-ricty-diminished-font

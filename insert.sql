@@ -1,5 +1,6 @@
 -- mysql -h 192.168.1.3 -u myapp_user -p myapp
--- source c:/mysql/insert.sql;
+-- source c:/mysql/insert.sql
+-- mysqldump -h 192.168.1.3 -u myapp_user -p myapp >20200320.backup.sql
 
 drop table if exists users;
 create table users (
