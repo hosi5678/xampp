@@ -1,0 +1,3 @@
+cmdにて
+php -i|find "PHP Version"
+php -i|find "Architecture"
