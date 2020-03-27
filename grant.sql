@@ -1,1 +1,1 @@
-grant all privileges on dotinstall_db.* to 'dbuser'@'192.168.1.3' identified by 'hosi3162';
+grant all privileges on dotinstall_db.* to 'dbuser'@'192.168.1.3' identified by 'password';

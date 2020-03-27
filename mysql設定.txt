@@ -24,5 +24,6 @@ rootのパスワード設定
 
 sourceコマンドの実行
 source c:/mysql/create_myapp.sql;
+\. c:/mysql/create_myapp.sql;
 (￥はだめ)
 
