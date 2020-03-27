@@ -55,7 +55,7 @@ xampp control panelのMySQLのadminからphpmyadminに接続、
 https://deep-blog.jp/engineer/mariadb-password-is-not-updatable/
 MariaDBではpassword columnが使えない
 
-MySQLをControl Panelから起動
+MySQLをxampp Control Panelから起動
 
 mysql -u root
 use mysql;
@@ -213,7 +213,7 @@ date.timezone="Asia/Tokyo"
 
 ※my.iniに
 # init-connect=\'SET NAMES utf8\'
-は記述しない。
+はコメントアウトすること。
 接続エラーになる。
 確認
 SHOW GLOBAL VARIABLES LIKE "init%";
