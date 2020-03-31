@@ -4,9 +4,6 @@ define('db_name','dotinstall_db');
 define('db_username','dbuser');
 define('db_password','hosi3162');
 define('pdo_dsn','mysql:dbhost=localhost;dbname='.db_name);
-
-//echo(pdo_dsn);
-
 try {
  	$db= new PDO(pdo_dsn,db_username,db_password,
 		  [
@@ -14,6 +11,9 @@ try {
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         ]
 	);
+//echo(pdo_dsn);
+
+
 
 //	$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 

@@ -49,6 +49,9 @@
 	cmdのutf8対応
 	chcp 65001
 
+6.mysqlエンジンの確認
+	show global variables like 'default%storage%engine';
+
 ■apacheの設定
 
 1.port番号8080の追加
@@ -97,4 +100,9 @@
 	mbstring.func_overload = 0
 	を追記
 
+3.ユーザが設定したセッションIDは受け付けない
+	C:\xampp\php\php.iniの1365行目付近
+	session.use_strict_mode = 1
+
 ■xampp control panelでapache,mysqlを再起動
+

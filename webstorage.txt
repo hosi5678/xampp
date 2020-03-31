@@ -1,0 +1,12 @@
+/*
+	window.addEventListener("load",function(){
+		var str=localStorage;
+			 document.getElementById("user").value=str.getItem("password");
+	})
+
+	function setItem(){
+		alert(document.getElementById("user").value);
+		var str=localStorage;
+			str.setItem("password",document.getElementById("user").value);
+	}
+*/

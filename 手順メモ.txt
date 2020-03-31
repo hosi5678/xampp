@@ -217,3 +217,6 @@ date.timezone="Asia/Tokyo"
 接続エラーになる。
 確認
 SHOW GLOBAL VARIABLES LIKE "init%";
+エンジンの確認
+show global variables like 'default%storage%engine';
+show engines;

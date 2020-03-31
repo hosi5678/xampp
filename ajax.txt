@@ -1,0 +1,20 @@
+<script type="text/javascript">
+	let password;
+		$(function(){
+		    $('.radio').on("click",function(){
+ 		       password = $(this).val(); //選択したメニューの値
+ 			       $.post({
+		            url: './libs/ajax_getPassword.php',
+		            data:{
+ 		               'password':password
+ 		           },
+            dataType:'text', // in case of data type is array,dataType:'json'
+        }).done(function(data){
+  				// alert(data);
+				document.form1.password.value =data;
+        }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+            alert(errorThrown);
+        })
+    })
+})
+</script>

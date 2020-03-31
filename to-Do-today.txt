@@ -3,3 +3,10 @@
 ・ルーター外部アドレスのアクセス制限禁止確認
 ・マシンのip アドレスの調査
 ・ルータ、マシンの接続状況
+
+2020/03/01(水)
+・Everythingの導入
+・phpmyadminの移動
+・もう一台のPCのip addressを確認、httpd.confに追加、ip_tableに追加、表示を確認
+・terapadのphp用設定(見ずらい)
+・jqueryの設置
