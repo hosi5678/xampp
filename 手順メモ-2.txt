@@ -2,7 +2,7 @@
 
 ■前準備
 1.ケーブルを接続
-2.xampp(version:7.4.3)をインストール(mysqladminとtomcatは不要)
+2.xampp(version:7.4.3)をインストール(mysqladminとtomcatとfilezillaは不要)
 	→展開したものは別途backupをとっておく
 3.mysqlをpathに追加(C:\xampp\mysql\bin\)
 4.firewall設定にて受信を許可
@@ -18,10 +18,10 @@
 2.cmdにてrootのpasswordを設定
 	mysql -u root
 	use mysql;
-	alter user 'root'@'localhost' identified BY 'new admin password';
+	alter user root@localhost identified BY 'new password';
 
 3.一般ユーザの追加
-	create user user@localhost identified by 'new general password';
+	create user user@localhost identified by 'new password';
 
 4.ローカルホストと127.0.0.1の関連付け
 	→C:\Windows\System32\drivers\etc\hosts
@@ -29,6 +29,7 @@
 	とする。
 
 5.文字コード(utf8)の設定
+	->面倒なのでmy.iniをコピー
 	[5-1]
 	C:\xampp\mysql\bin\my.ini
 	の151行目でUTF 8 Settingsの下のコメントアウト
@@ -51,6 +52,10 @@
 
 6.mysqlエンジンの確認
 	show global variables like 'default%storage%engine';
+
+7.文字コードの確認
+	show variables like '%char%';
+
 
 ■apacheの設定
 
@@ -75,13 +80,14 @@
 4.ip addressの制限
 	<Directory "C:/xampp_opendoc/orinasu/"> で(259行目付近)
 	   Require all denied
+		Require ip 192.168.1.2
 		Require ip 192.168.1.3
 		Require ip 192.168.1.4
-	#	Require ip 192.168.1.7
 	</Directory>
 	と許可するip addressを追記する。
 
 ■phpの設定
+
 1.timezoneの設定
 	C:\xampp\php\php.ini の1976行付近で
 	#date.timezone=Europe/Berlin
@@ -105,4 +111,6 @@
 	session.use_strict_mode = 1
 
 ■xampp control panelでapache,mysqlを再起動
+
+1.->xamppをbackupしておく。
 
