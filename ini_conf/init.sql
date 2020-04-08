@@ -11,8 +11,6 @@ create table members (
 
 desc members;
 
-insert into members(member_surname,member_name) values('田中','太郎');
-
 select * from members;
 
 drop table if exists staffs cascade;
@@ -20,11 +18,8 @@ drop table if exists staffs cascade;
 create table staffs (
 	id int unsigned primary key auto_increment,
 	name varchar(255) unique not null,
-	ip_address_id int unsigned not null
+	ip_address_id int unsigned
 );
-
-insert into staffs(name,ip_address_id) values('***み',1);
-insert into staffs(name,ip_address_id) values('***い',4);
 
 select * from staffs;
 
@@ -72,9 +67,9 @@ select * from password;
 
 select * from ip_address;
 
-drop table if exists index_access_log cascade;
+drop table if exists access_log cascade;
 
-create table index_access_log(
+create table access_log(
 	id int unsigned primary key auto_increment,
 	date datetime not null,
 	ip_address varchar(255) not null,
