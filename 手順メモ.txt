@@ -87,6 +87,12 @@
 	</Directory>
 	と許可するip addressを追記する。
 
+5.favicon not foundの回避
+	C:\xampp\apache\conf\httpd.confの末尾に(どこか)
+	Redirect 404 /favicon.ico
+	ErrorDocument 404 "Not Found favicon"
+	を追記
+
 ■phpの設定
 
 1.timezoneの設定
@@ -128,3 +134,8 @@ httpd.confの内容を変えなければならない。
 ->サブネットマスクを設定/255:255:255:0
 ->デフォルトゲートウェイ/192.168.1.1
 を設定
+
+※memo
+windows フォルダ共有について
+https://navi.dropbox.jp/windows10-file-sharing
+
