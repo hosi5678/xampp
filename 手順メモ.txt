@@ -139,3 +139,4 @@ httpd.confの内容を変えなければならない。
 windows フォルダ共有について
 https://navi.dropbox.jp/windows10-file-sharing
 
+jexcel
