@@ -4,6 +4,7 @@ mysql -u root -p orinasu_db
 
 -- Enter password
 -- input password
+(orinasu_admin)
 
 -- orinasu_db user ログイン
 -- no semicolon ;
@@ -11,3 +12,4 @@ mysql -u user -p orinasu_db
 
 -- Enter password
 -- input password
+(orinasu_user)

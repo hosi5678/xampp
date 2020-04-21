@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>practice</title>
+
+ </head>
+
+ <body>
+
+    <script
+            src="https://code.jquery.com/jquery-3.5.0.min.js"
+            integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+            crossorigin="anonymous">
+    </script>
+
+<script 
+      src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" 
+      crossorigin="anonymous">
+</script>
+
+<script src="./dateToIso8601Week.js"></script>
+<script src="./getWeekNum.js"></script>
+
+<script>
+ 
+// jsでは0,1,2,...11 (1,2,3,...12) となることに注意
+
+    var dayObj=new Date();
+    var weekObj=dayObj.getDay();
+
+    console.log(weekObj);
+
+    $("#result").text(weekObj);
+
+// 先月の末尾を取得する
+    day=new Date();
+
+    var day=new Date(day.getFullYear(),day.getMonth(),0);
+
+    console.log(day);
+
+// 今月の末尾を取得する
+day=new Date();
+
+var day=new Date(day.getFullYear(),day.getMonth()+1,0);
+
+console.log(day);
+
+// 曜日番号を取得する
+console.log(day.getDay());
+
+// 今日の週番号を取得する
+console.log(getWeekNum(new Date()));
+
+// 今月が何週あるか調べる
+var day=new Date();
+var day=new Date(day.getFullYear(),day.getMonth()+1,0);
+console.log(getWeekNum(day));
+
+</script>
+
+ </body> 
+
+</html>
