@@ -1,4 +1,4 @@
-@installed ‚É‚Â‚¢‚Ä
+@installed ã«ã¤ã„ã¦
 Auto Close Tag
 Auto Complete Tag
 Auto Rename Tag
@@ -16,5 +16,6 @@ open in browser
 Panda Theme
 PHP Debug
 PHP IntelliSense
-
+MySQL Client(cweijan)
+MySQL Syntax
 
