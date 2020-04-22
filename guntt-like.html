@@ -14,7 +14,7 @@
  <tbody>
  <tr>
  <td style="width:100px;">ID</td>
- <td>氏名</td>
+ <td>工程</td>
  </tr>
  </tbody>
  </table>
@@ -24,15 +24,15 @@
  <tbody>
  <tr>
  <td style="width:100px;">001</td>
- <td class="lt">工程1</td>
+ <td class="lt">工程1(接着紙の設定)</td>
  </tr>
  <tr>
  <td>002</td>
- <td class="lt">工程2</td>
+ <td class="lt">工程2(布のカット)</td>
  </tr>
  <tr>
  <td>003</td>
- <td class="lt">工程3</td>
+ <td class="lt">工程3(ロックミシン掛け)</td>
  </tr>
  </tbody>
  </table>
@@ -80,7 +80,7 @@
  <div id="detail" style="height: 122px;" class="table_right_bottom">
  
 <div id="panel-pack">
-        <div id="panel1" class="panel panel1"><span class="label">&nbsp;</span></div>
+        <div id="panel1" class="panel panel1"><span class="label">&nbsp;</span>書き込み</div>
         <div id="panel2" class="panel panel2"><span class="label">&nbsp;</span></div>
         <div id="panel3" class="panel panel3"><span class="label">&nbsp;</span></div>
 </div>
@@ -199,9 +199,12 @@
  </div>
  
  </body>
+ 
  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
  <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
- 
+ <script src="./js/getDaysInfo.js"></script>
+ <script src="./js/draggable_sortable.js"></script>
+
  <script>
  
          // 幅、高さの定義
@@ -209,67 +212,70 @@
          var CELL_W = 37;
          var CELL_H = 25;
  
-         $(document).ready( function () {
+//         $(document).ready( function () {
                  // リサイズ設定
 
-                 $('#panel-pack').draggable();
+                draggable_sortable("panel1");
+                draggable_sortable("panel2");
+                draggable_sortable("panel3");
+               //  $('#panel-pack').draggable();
 
-                 $('#panel1, #panel2,#panel3').resizable({
-                         handles: "w,e"
-                         , grid: [CELL_W, CELL_H]
-                         , resize: function( event, ui ) {
-                                 var info = getDaysInfo(event, ui);
-                                 $("#date").text(info.text)
-                         }
-                         , stop: function( event, ui ) {
-                                 var info = getDaysInfo(event, ui);
-                                 alert(info.text);
-                         }
-                 });
+        //          $('#panel1, #panel2,#panel3').resizable({
+        //                  handles: "w,e"
+        //                  , grid: [CELL_W, CELL_H]
+        //                  , resize: function( event, ui ) {
+        //                          var info = getDaysInfo(event, ui);
+        //                          $("#date").text(info.text)
+        //                  }
+        //                  , stop: function( event, ui ) {
+        //                          var info = getDaysInfo(event, ui);
+        //                          alert(info.text);
+        //                  }
+        //          });
                  
-                 // ドラッグ設定
-                 $('#panel1, #panel2,#panel3').draggable({
+        //          // ドラッグ設定
+        //          $('#panel1, #panel2,#panel3').draggable({
                          
-                         containment: "#detailTable"
-                         , grid: [CELL_W, CELL_H+7]
-                         , opacity: 0.7
-                         , scroll: true
-                         , drag: function( event, ui ) {
-                                 var info = getDaysInfo(event, ui);
-                                 $("#date").text(info.text)
-                         }
-                         , stop: function( event, ui ) {
-                                 var info = getDaysInfo(event, ui);
-                                 alert(info.text);
-                         }
-                 });
-         } );
+        //                  containment: "#detailTable"
+        //                  , grid: [CELL_W, CELL_H+7]
+        //                  , opacity: 0.7
+        //                  , scroll: true
+        //                  , drag: function( event, ui ) {
+        //                          var info = getDaysInfo(event, ui);
+        //                          $("#date").text(info.text)
+        //                  }
+        //                  , stop: function( event, ui ) {
+        //                          var info = getDaysInfo(event, ui);
+        //                          alert(info.text);
+        //                  }
+        //          });
+        //  } );
          
-                $('#sortdata').sortable();
+        //         $('#sortdata').sortable();
 
  
          /**
           * 渡されたデータから日付の情報を作成して返します.
           *
           */
-         function getDaysInfo(event, ui) {
-                 var info = new Object();
-                 info.start = ui.position.left == 0 ? 1 : 1 + ui.position.left / CELL_W;
-                 if (ui.size) {
-                         info.end = info.start + (ui.size.width - DIV_W) / CELL_W;
-                 } else {
-                         info.end = info.start + (event.target.offsetWidth - DIV_W) / CELL_W;
-                 }
-                 info.days = info.end - info.start;
-                 info.allDay = (info.end == info.start)
-                 if (info.allDay) {
-                         info.text = info.start + "日";
-                 } else {
-                         info.text = info.start + "日 ～ " + info.end + "日";
-                 }
+        //  function getDaysInfo(event, ui) {
+        //          var info = new Object();
+        //          info.start = ui.position.left == 0 ? 1 : 1 + ui.position.left / CELL_W;
+        //          if (ui.size) {
+        //                  info.end = info.start + (ui.size.width - DIV_W) / CELL_W;
+        //          } else {
+        //                  info.end = info.start + (event.target.offsetWidth - DIV_W) / CELL_W;
+        //          }
+        //          info.days = info.end - info.start;
+        //          info.allDay = (info.end == info.start)
+        //          if (info.allDay) {
+        //                  info.text = info.start + "日";
+        //          } else {
+        //                  info.text = info.start + "日 ～ " + info.end + "日";
+        //          }
                  
-                 return info
-         }
+        //          return info;
+        //  }
          
  </script>
  
