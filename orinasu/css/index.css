@@ -1,0 +1,45 @@
+* {
+	margin:0px;
+	padding:0px;
+}	
+
+body {
+	font-family:Arial,sans-serif;
+}
+
+#wrapper {
+	margin:20px;
+}
+
+#title {
+	width:600px;
+	border-bottom:2px solid purple;
+	margin-bottom:20px;
+}
+
+h1 {
+	color:royalblue;
+}
+
+a {
+	font-size:30px;
+	text-decoration:none;
+	color:steelblue;
+}
+
+a:hover {
+	background:pink;
+}
+
+form {
+	margin-bottom:30px;
+}
+
+#message {
+	font-size:20px;
+}
+
+/* for high chart test */
+#container {
+
+}

@@ -1,0 +1,10 @@
+body {
+	background:#222;
+
+}
+
+canvas {
+	width:600px;
+	height:240px;
+	background:#fff;
+}

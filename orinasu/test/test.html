@@ -1,0 +1,61 @@
+<!doctype html>
+
+<html lang='ja'>
+
+<head>
+<meta charset='UTF-8'>
+<!--
+<link rel="stylesheet" type="text/css" href="./test.css">
+-->
+
+<script>
+
+window.addEventListener("load",function(){
+
+	var test_area=document.getElementById("test_area");
+
+	var input=document.createElement('input');
+	input.id='test';
+	input.name='id';
+	input.value='test';
+	
+	test_area.appendChild(input);
+	
+	var button=document.createElement('button');
+	button.id="mybutton";
+	
+	button.value='書き換え';
+	
+	button.addEventListener("click",function(){
+			var result=document.getElementById("result");
+			var text=document.getElementById("test").value;
+			result.innerHTML=text;
+	
+	});
+	
+	test_area.appendChild(button);
+
+});
+
+</script>
+
+</head>
+
+<body>
+
+<div id="test_area">
+
+</div>
+
+<div id="result">
+
+</div>
+
+<table>
+	<tr><td>1</td><td>2</td></tr>
+	<tr><td>3</td><td>4</td></tr>
+</table>
+
+</body>
+
+</html>
