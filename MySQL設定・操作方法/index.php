@@ -6,7 +6,7 @@
 
 <!doctype html>
 
-<html lang="ja">
+< lang="ja">
 
 <head>
 <meta charset="utf-8">
@@ -26,8 +26,6 @@
 <hr>
 
 <h3>一般ユーザログイン</h3>
-<input type="text" placeholder="一般ユーザパスワードを入力">
-
+<input tye="text" placeholder="一般ユーザパスワードを入力">
 </body>
 
-</html>

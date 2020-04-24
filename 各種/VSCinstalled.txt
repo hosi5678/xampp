@@ -2,10 +2,12 @@
 Auto Close Tag
 Auto Complete Tag
 Auto Rename Tag
+Beautify
 Bracket Pair Colorizer
 Bracket Pair Colorizer 2 (Beta)
 Color Highlight
 Color Info
+Debugger for Chrome
 ESLint
 Highlight Matching Tag
 HTML Snippets
@@ -18,4 +20,9 @@ PHP Debug
 PHP IntelliSense
 MySQL Client(cweijan)
 MySQL Syntax
+Path Autocomplete
+Path Intellisense
+VS Sequential Number
+vscode-input-sequence
+Visual Studio IntelliCode
 
