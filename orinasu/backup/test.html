@@ -1,0 +1,80 @@
+<!doctype html>
+
+<html lang="ja">
+
+<head>
+<meta charset="utf-8">
+<title>vscode</title>
+
+<style>
+    button {
+        width: 100px;
+        height: 50px;
+    }
+
+</style>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="http://cdn.date-fns.org/v1.9.0/date_fns.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://cdn.rawgit.com/osamutake/japanese-holidays-js/v1.0.9/lib/japanese-holidays.min.js"></script>
+<script>
+
+$(function(){
+
+console.log("test");
+
+y=2020;
+m=4;
+d=30;
+
+day=new Date();
+
+console.log(day);
+console.log(day.getFullYear())
+console.log(day.getMonth())
+console.log(day.getDate())
+
+day=new Date(day.getFullYear(),day.getMonth(),0);
+
+console.log(day);
+
+holiday=new Date(2020,4,29);
+
+var today = new Date();
+var holidays = JapaneseHolidays.getHolidaysOf( today.getFullYear() );
+holidays.forEach(function(holiday) {
+    console.log(
+        today.getFullYear()+':'+
+        holiday.month+':'+
+        holiday.date+':'+
+        holiday.name
+    );
+});
+
+var today=new Date(2020,4,3);
+var holiday = JapaneseHolidays.isHoliday(today);
+console.log(holiday);
+
+});
+
+</script>
+
+<script src="./js/test.js"></script>
+
+</head>
+
+<body>
+
+<button id="test" onclick="test()">
+
+</button>
+
+</body>
+
+</html>

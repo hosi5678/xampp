@@ -1,18 +1,25 @@
 //function put_option_tabs(){
-function put_option_tabs(data){
+function put_option_tabs(result,tag_name){
 
-  var select = document.getElementById('select');
+  var tag_name = document.getElementById(tag_name);
   console.log('in option tabs');
-  console.log(data);
-  console.log(data.length);
+ 
+  var select=document.createElement('select');
 
-  for(var i=0;i<data.length;i++){
-    console.log(data[i].id);
-    console.log(data[i].youbi);
+  var option=document.createElement('option');
+  option.innerHTML='選択してください';
+
+  select.appendChild(option);
+
+  for(var i=0;i<result.length;i++){
+    if(result[i].content==='日') continue;
+
+    var option=document.createElement('option');
+    option.value=i;
+    option.innerHTML=result[i].content;
+    select.appendChild(option);
   }
-//  data.forEach(([key,value]) => {
-//    console.log(key);
-//    console.log(value);
-//  });
+
+  tag_name.appendChild(select);
 
 }
