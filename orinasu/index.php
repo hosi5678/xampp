@@ -48,7 +48,12 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
 	<script src="./js/call_hightchart.js"></script>
 	<script src="./js/ajax_select_from_table.js"></script>
-	<script src="./js/put_option_tabs.js"></script>
+	<script src="./js/ajax_create_Member_Form.js"></script>
+	<script src="./js/ajax_insert_into_members.js"></script>
+	<script src="./js/create_Member_Form.js"></script>
+	<script src="./js/removeChild.js"></script>
+	<script src="./js/ajax_create_Members_Table.js"></script>
+	<script src="./js/ajax_select_from_members.js"></script>
 
 </head>
 
@@ -81,19 +86,19 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
 	</div>
 
 	<div>
-			<div id="riyou"></div>
+			<div id="create"></div>
 	</div>
-  
+
   <script>
     call_hightchart();
 	</script>
 	
 	<script>
-		ajax_select_from_table("youbi","select");
+		ajax_create_Member_Form("create");
 	</script>
 
 	<script>
-		ajax_select_from_table("riyou_keitai","riyou")
+		ajax_create_Members_Table("select");
 	</script>
 
 </div>

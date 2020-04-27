@@ -17,13 +17,18 @@ header("Content-Type:text/html;charset=UTF-8");
 		$json_array=array();
 
 		foreach($results as $elem){
-			$json_array[]=array(
-										"id"=>$elem["id"],
-										"surname"=>$elem["surname"],
-										"name"=>$elem["name"],
-										"start_date"=>$elem["start_date"]
-										
-										);
+			$json_array[]=array("id"=>$elem["id"],
+													"myouji"=>$elem["myouji"],
+													'namae'=>$elem['namae'],
+													'sun'=>$elem['sun'],
+													'mon'=>$elem['mon'],
+													'tue'=>$elem['tue'],
+													'wed'=>$elem['wed'],
+													'thu'=>$elem['thu'],
+													'fri'=>$elem['fri'],
+													'sat'=>$elem['sat']
+
+			);
 		}
 
 		header('Content-type: application/json');

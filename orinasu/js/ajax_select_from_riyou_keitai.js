@@ -1,6 +1,6 @@
 function ajax_select_from_youbi(){
 
-//    console.log("ajax load");
+        var defer = new $.Deferred;
 
         $.post({
           url: '../php_libs/ajax_select_from_riyou_keitai.php',
@@ -11,6 +11,8 @@ function ajax_select_from_youbi(){
         }).done(function(result){
         
           put_option_tabs(result);
+
+          defer.resolve(result);
 
         }).fail(function(XMLHttpRequest, textStatus, errorThrown){
               console.log(XMLHttpRequest);

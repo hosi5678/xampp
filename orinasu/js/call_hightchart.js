@@ -1,6 +1,6 @@
 function call_hightchart(){
  
-    console.log(window.location.href.split('/').pop());
+    // console.log(window.location.href.split('/').pop());
 
     var xaxis=['1', '2', '3', '4', '5', '6',
     '7', '8', '9', '10', '11', '12'];

@@ -1,24 +1,26 @@
-function ajax_select_from_table(table_name,tag_name){
+function ajax_select_from_table(table_name,column){
 
-    console.log("ajax_select_from_table : "+ table_name);
+  var defer = new $.Deferred;
 
         $.post({
           url: '../php_libs/ajax_select_from_table.php',
             data:{
              // 'table_name':table_name,
-              'stmt':'select * from '+table_name+';',
+              'stmt':'select '+column+' from '+table_name+';',
             },
 
             dataType:'json', 
 
         }).done(function(result){
         
-          put_option_tabs(result,tag_name);
+          defer.resolve(result);
 
         }).fail(function(XMLHttpRequest, textStatus, errorThrown){
               console.log(XMLHttpRequest);
               console.log(textStatus);
               console.log(errorThrown);
         })
+
+        return defer.promise();
 
 }

@@ -1,0 +1,13 @@
+{
+  "sqltools.connections": [
+    {
+      "database": "orinasu_db",
+      "dialect": "MySQL",
+      "name": "test",
+      "password": "orinasu_admin",
+      "port": 3306,
+      "server": "localhost",
+      "username": "root"
+    }
+  ]
+}

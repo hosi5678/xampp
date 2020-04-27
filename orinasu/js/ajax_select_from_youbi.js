@@ -1,6 +1,8 @@
 function ajax_select_from_youbi(){
 
-    console.log("ajax load");
+    console.log("in ajax_select_from_youbi");
+
+    var defer = new $.Deferred;
 
         $.post({
           url: '../php_libs/ajax_select_from_youbi.php',
@@ -12,10 +14,14 @@ function ajax_select_from_youbi(){
         
           put_option_tabs(result);
 
+          defer.resolve(result);
+
         }).fail(function(XMLHttpRequest, textStatus, errorThrown){
               console.log(XMLHttpRequest);
               console.log(textStatus);
               console.log(errorThrown);
         })
+
+        return defer.promise();
 
 }

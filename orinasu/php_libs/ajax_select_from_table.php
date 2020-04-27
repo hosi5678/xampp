@@ -30,8 +30,8 @@ header("Content-Type:text/html;charset=UTF-8");
 		 foreach($results as $elem){
 		 	$json_array[]=array(
          // parameterはsql consoleで確認して記述
-										"id"=>$elem["id"],
-										"content"=>$elem["content"],									
+									//	"id"=>$elem["id"],
+										"content"=>$elem["content"]			
 										);
 		 }
 
