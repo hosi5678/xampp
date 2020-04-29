@@ -2,6 +2,8 @@ function ajax_insert_into_members(){
 
   //var elem =document.getElementById('day01');
 
+  var defer = new $.Deferred;
+
   var riyou_keitai=new Array();
 
   var myouji=document.getElementById('myouji').value;
@@ -10,18 +12,18 @@ function ajax_insert_into_members(){
   // 日曜日の値をここで代入する(辻褄をあわせている。)
   riyou_keitai.push("0");
 
-  for(var i=1;i<7;i++){
+  for(var i=0;i<7;i++){
+
+      if(i==0) continue;
+
       var str='day0'+i;
       riyou_keitai.push(document.getElementById(str).value);
 
   }
 
-  console.log("---in insert into members---");
+  // console.log("---in insert into members---");
   
-  console.log(riyou_keitai);
-  
-  var defer = new $.Deferred;
-  //var column='content';
+  // console.log(riyou_keitai);
 
    // console.log("ajax_select_from_table : "+ table_name);
 
@@ -37,7 +39,7 @@ function ajax_insert_into_members(){
               'wed':riyou_keitai[3],
               'thu':riyou_keitai[4],
               'fri':riyou_keitai[5],
-              'sat':riyou_keitai[6],
+              'sat':riyou_keitai[6]
 
             },
 
@@ -46,7 +48,7 @@ function ajax_insert_into_members(){
         }).done(function(result){
         
           console.log('insert into members result:');
-          console.log(result.length);
+          ajax_create_Members_Table("select");
 
        //   ajax_create_Member_Form("select");
   

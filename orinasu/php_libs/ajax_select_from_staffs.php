@@ -1,7 +1,7 @@
 <?php
 
-require_once("../libs/db_define.php");
-require_once("../libs/escape_string.php");
+require_once("./db_define.php");
+require_once("./escape_string.php");
 
 header("Content-Type:text/html;charset=UTF-8");
 

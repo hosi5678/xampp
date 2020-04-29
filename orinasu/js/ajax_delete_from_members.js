@@ -1,15 +1,21 @@
-function ajax_select_from_members(){
+function ajax_delete_from_members(){
 
   var defer = new $.Deferred;
 
+  id=$(this).closest('tr')[0].id
+
   $.post({
-    url: '../php_libs/ajax_select_from_members.php',
+    url: '../php_libs/ajax_delete_from_members.php',
       data:{
-         'stmt':'select * from members;',
+       'id':id,
+
       },
-      dataType:'json', // in case of data type is array,dataType:'json'
+
+      dataType:'json', 
+
   }).done(function(result){
   
+    ajax_create_Members_Table("select");
 
     defer.resolve(result);
 

@@ -1,8 +1,8 @@
 function create_Member_Form(tag_name_str,youbi,riyou_keitai){
 
-console.log('in create member form');
-console.log(youbi);
-console.log(riyou_keitai);
+// console.log('in create member form');
+// console.log(youbi);
+// console.log(riyou_keitai);
 
   var tag_name=document.getElementById(tag_name_str);
 
@@ -46,7 +46,7 @@ console.log(riyou_keitai);
     
        var td=document.createElement('td');
 
-        td.innerHTML=youbi[i].content;
+        td.innerText=youbi[i].content;
 
         tr.appendChild(td);
 
@@ -59,7 +59,7 @@ console.log(riyou_keitai);
             var option=document.createElement('option');
             option.value=j;
           //  console.log(riyou_keitai[j].content);
-            option.innerHTML=riyou_keitai[j].content;
+            option.innerText=riyou_keitai[j].content;
 
             select.appendChild(option);
 
@@ -69,7 +69,12 @@ console.log(riyou_keitai);
         }
 
       }
-      
+
+      table.appendChild(tr);
+      form.appendChild(table);
+
+    // var td=document.createElement('td');
+
     var input=document.createElement('input');
     input.type='button';
     input.value='登録する';
@@ -77,15 +82,11 @@ console.log(riyou_keitai);
    // input.style.display='inline-block';
     input.addEventListener('click',ajax_insert_into_members);
 
-    var td=document.createElement('td');
-    td.appendChild(input);
-    tr.appendChild(td);
+    // td.appendChild(input);
+    // tr.appendChild(td);
 
-    table.appendChild(tr);
-
-    form.appendChild(table);
+    form.appendChild(input);
 
     tag_name.appendChild(form);
   
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-require_once("./libs/db_define.php");
+require_once("./db_define.php");
 
 function ip_address_check($ip_address_ext){
 
