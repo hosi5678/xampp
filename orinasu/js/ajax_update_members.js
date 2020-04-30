@@ -55,8 +55,8 @@ function ajax_update_members(){
 
   }).done(function(result){
   
-    console.log('update from members result:');
-    console.log(result.length);
+    // console.log('update from members result:');
+    // console.log(result);
 
     ajax_create_Members_Table("select");
 

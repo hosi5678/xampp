@@ -32,20 +32,18 @@ function create_Members_Table(tag_name_str,youbi,riyou,members){
                 (i+1),
                 members[i].myouji,
                 members[i].namae,
-                num_to_riyou(members[i].mon,riyou),
-                num_to_riyou(members[i].tue,riyou),
-                num_to_riyou(members[i].wed,riyou),
-                num_to_riyou(members[i].thu,riyou),
-                num_to_riyou(members[i].fri,riyou),
-                num_to_riyou(members[i].sat,riyou)
+                members[i].mon,
+                members[i].tue,
+                members[i].wed,
+                members[i].thu,
+                members[i].fri,
+                members[i].sat
            
                 );
 
     // var tr=document.createElement('tr');
 
     tr.id=members[i].id;
-
-
 
     var td=document.createElement('td');
     
