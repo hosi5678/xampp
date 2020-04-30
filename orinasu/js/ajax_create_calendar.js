@@ -5,7 +5,11 @@ function ajax_create_calendar(tag_name_str){
 
       ).done(function(youbi){
     
+            console.log('in ajax create calendar');
+            console.log(tag_name_str);
             console.log(youbi);
+
+            var tag_name=document.createElement(tag_name_str);
                     
           // 今月の初日の曜日番号を取得する
           var day=new Date();
@@ -31,19 +35,29 @@ function ajax_create_calendar(tag_name_str){
           var day=new Date(day.getFullYear(),day.getMonth()+1,0);
           console.log('今月は何週あるのか？:'+getWeekNum(day));
           
-          // holiday
-              var today = new Date();
-              var holidays = JapaneseHolidays.getHolidaysOf(today.getFullYear());
-          
-              holidays.forEach(function(holiday) {
-                  console.log(
-                      today.getFullYear()+':'+
-                      holiday.month+':'+
-                      holiday.date+':'+
-                      holiday.name
-                  );
-              });
+                    // holiday
+                //           var today = new Date();
+                //           var holidays = JapaneseHolidays.getHolidaysOf(today.getFullYear());
+                    
+                //           holidays.forEach(function(holiday) {
+                //               console.log(
+                //                   today.getFullYear()+':'+
+                //                   holiday.month+':'+
+                //                   holiday.date+':'+
+                //                   holiday.name
+                //               );
+                //           });
+
+                var today=new Date();
+                
+                var thisMonth=new Date(today.getFullYear(),today.getMonth(),0);
+                
+                console.log('先月の末日の曜日番号:'+thisMonth.getDay());
+                console.log('先月の末日の日にち:'+thisMonth.getDate());
+                console.log('先月のカレンダーの開始日:'+(thisMonth.getDate()-thisMonth.getDay()));
 
       });
+
+
 
 }

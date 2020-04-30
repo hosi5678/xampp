@@ -11,6 +11,8 @@ header("Content-Type:text/html;charset=UTF-8");
          		PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC)
 		);
 
+		$db->beginTransaction();
+
 		$myouji=escape_string(filter_input(INPUT_POST,'myouji'));
 		$namae=escape_string(filter_input(INPUT_POST,'namae'));
 
@@ -78,10 +80,12 @@ header("Content-Type:text/html;charset=UTF-8");
 		 //echo json_encode([$myouji,$namae,$sun,$mon,$tue,$wed,$thu,$fri,$sat], JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
 		 echo json_encode($json_array, JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
 
-		//  exit();
+		 $db->commit();
 
 	}catch(PDOException $e) {
+		$db->rollBack();
 		exit('データベースに接続できませんでした。'.$e->getMessage());
 	}finally{
 		$db=null;
+		exit();
 	}

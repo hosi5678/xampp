@@ -1,8 +1,8 @@
 <?php
 ini_set('display_errors', "On");
 require_once("./php_libs/db_define.php");
-require_once("./php_libs/ip_address.php");
 require_once("./php_libs/session.php");
+require_once("./php_libs/ip_address.php");
 require_once("./php_libs/escape_string.php");
 require_once("./php_libs/ip_address.php");
 require_once("./php_libs/ip_address_check.php");
@@ -59,7 +59,7 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
 	<script src="./js/removeChild.js"></script>
 	<script src="./js/ajax_create_Members_Table.js"></script>
 	<script src="./js/ajax_select_from_members.js"></script>
-	<script src="./js/num_to_riyou.js"></script>
+	<!-- <script src="./js/num_to_riyou.js"></script> -->
 	<script src="./js/ajax_update_members.js"></script>
 	<script src="./js/update_Member_Form.js"></script>
 	<script src="./js/create_td.js"></script>
@@ -103,7 +103,7 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
   // call_hightchart();
 		 ajax_create_Member_Form("create");
 		 ajax_create_Members_Table("select");
-		//ajax_create_calendar("calendar");
+		// ajax_create_calendar("calendar");
 	</script>
 
 </div>
