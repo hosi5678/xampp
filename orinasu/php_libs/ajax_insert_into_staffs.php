@@ -32,7 +32,7 @@ header("Content-Type:text/html;charset=UTF-8");
 
 		echo json_encode($json_array, JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
 
-		exit();
+		// exit();
 
 	}catch(PDOException $e) {
 		exit('データベースに接続できませんでした。'.$e->getMessage());

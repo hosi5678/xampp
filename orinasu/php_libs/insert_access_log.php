@@ -1,7 +1,5 @@
 <?php 
 
-require_once("./libs/db_define.php");
-
 function insert_access_log($ip_address,$flag){
 	try{
 			$db= new PDO(pdo_dsn,db_username,db_password,[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,]);
@@ -15,16 +13,20 @@ function insert_access_log($ip_address,$flag){
 
 			if($flag==0){
 				$status="ng";
-				$stmt->execute();
-				$db=null;
-				exit('許可されていないアクセスです。(this ip address is not allowed.)');
 			}else{
 				$status="ok";
-				$stmt->execute();
-				$db=null;
 			}
-	
+
+			$stmt->execute();
+
+			if($flag==0){
+				exit('許可されていないアクセスです。(this ip address is not allowed.)');
+			}
+
 	} catch (PDOException $e) {
 			exit('データベースに接続できませんでした。'.$e->getMessage());
+	}finally{
+		$db=null;
+		// exit();
 	}
 }

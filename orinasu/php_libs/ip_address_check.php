@@ -1,7 +1,5 @@
 <?php
 
-require_once("./db_define.php");
-
 function ip_address_check($ip_address_ext){
 
 	try{
@@ -23,11 +21,14 @@ function ip_address_check($ip_address_ext){
 			exit('許可されていないアクセスです。(this ip address is not allowed.)');
 		}
 
-		$db=null;
+		// echo __DIR__;
 
 		return $flag;
 
 	}catch(PDOException $e) {
 		exit('データベースに接続できませんでした。'.$e->getMessage());
+	}finally{
+		// ここにexitをいれると消える。
+		$db=null;
 	}
 }

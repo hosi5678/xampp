@@ -42,6 +42,6 @@ header("Content-Type:text/html;charset=UTF-8");
 		exit('データベースに接続できませんでした。'.$e->getMessage());
   }finally{
     $db=null;
-    exit();
+    // exit();
   }
   
