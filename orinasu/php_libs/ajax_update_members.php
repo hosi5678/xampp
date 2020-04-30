@@ -1,6 +1,7 @@
 <?php
 
 require_once("./db_define.php");
+
 require_once("./escape_string.php");
 
 header("Content-Type:text/html;charset=UTF-8");
@@ -21,71 +22,25 @@ header("Content-Type:text/html;charset=UTF-8");
 		 $fri=escape_string(filter_input(INPUT_POST,'fri'));
 		 $sat=escape_string(filter_input(INPUT_POST,'sat'));
 
-		$stmt=$db->prepare("update members set myouji=? where id=?;");
+		$stmt=$db->prepare("update members set myouji=?,namae=?,sun=?,mon=?,tue=?,wed=?,thu=?,fri=?,sat=? where id=?;");
 
 		$stmt->bindParam(1,$myouji,PDO::PARAM_STR);
-		$stmt->bindParam(2,$id,PDO::PARAM_INT);
+		$stmt->bindParam(2,$namae,PDO::PARAM_STR);
+		$stmt->bindParam(3,$sun,PDO::PARAM_INT);
+		$stmt->bindParam(4,$mon,PDO::PARAM_INT);
+		$stmt->bindParam(5,$tue,PDO::PARAM_INT);
+		$stmt->bindParam(6,$wed,PDO::PARAM_INT);
+		$stmt->bindParam(7,$thu,PDO::PARAM_INT);
+		$stmt->bindParam(8,$fri,PDO::PARAM_INT);
+		$stmt->bindParam(9,$sat,PDO::PARAM_INT);
+
+		$stmt->bindParam(10,$id,PDO::PARAM_INT);
 
 		$stmt->execute();
 
-		$stmt=$db->prepare("update members set namae=? where id=?;");
-
-		$stmt->bindParam(1,$namae,PDO::PARAM_STR);
-		$stmt->bindParam(2,$id,PDO::PARAM_INT);
-
-		$stmt->execute();
-
-		$stmt=$db->prepare("update members set sun=? where id=?;");
-
-		$stmt->bindParam(1,$sun,PDO::PARAM_STR);
-		$stmt->bindParam(2,$id,PDO::PARAM_INT);
-
-		$stmt->execute();
-
-		$stmt=$db->prepare("update members set mon=? where id=?;");
-
-		$stmt->bindParam(1,$mon,PDO::PARAM_STR);
-		$stmt->bindParam(2,$id,PDO::PARAM_INT);
-
-		$stmt->execute();
-
-		$stmt=$db->prepare("update members set tue=? where id=?;");
-
-		$stmt->bindParam(1,$tue,PDO::PARAM_STR);
-		$stmt->bindParam(2,$id,PDO::PARAM_INT);
-
-		$stmt->execute();
-
-		$stmt=$db->prepare("update members set wed=? where id=?;");
-
-		$stmt->bindParam(1,$wed,PDO::PARAM_STR);
-		$stmt->bindParam(2,$id,PDO::PARAM_INT);
-
-		$stmt->execute();
-
-		$stmt=$db->prepare("update members set thu=? where id=?;");
-
-		$stmt->bindParam(1,$thu,PDO::PARAM_STR);
-		$stmt->bindParam(2,$id,PDO::PARAM_INT);
-
-		$stmt->execute();
-
-		$stmt=$db->prepare("update members set fri=? where id=?;");
-
-		$stmt->bindParam(1,$fri,PDO::PARAM_STR);
-		$stmt->bindParam(2,$id,PDO::PARAM_INT);
-
-		$stmt->execute();
-
-		$stmt=$db->prepare("update members set sat=? where id=?;");
-
-		$stmt->bindParam(1,$sat,PDO::PARAM_STR);
-		$stmt->bindParam(2,$id,PDO::PARAM_INT);
-
-		$stmt->execute();
+		// UPDATE 直後では $row = $str->fetch(); Fetch できない。
 
 		$stmt=$db->prepare("select * from members order by id asc;");
-
 		$stmt->execute();
 
 		$results=$stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -110,7 +65,7 @@ header("Content-Type:text/html;charset=UTF-8");
 
 		header('Content-type: application/json');
 		echo json_encode($json_array,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
-		
+				
 	}catch(PDOException $e) {
 		exit('データベースに接続できませんでした。'.$e->getMessage());
 	}finally{
