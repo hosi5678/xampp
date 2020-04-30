@@ -1,18 +1,21 @@
 <?php
-require("./libs/session.php");
-require("./libs/escape_string.php");
-require("./libs/ip_address.php");
-require("./libs/ip_address_check.php");
-require("./libs/insert_access_log.php");
+ini_set('display_errors', "On");
+require_once("./php_libs/db_define.php");
+require_once("./php_libs/ip_address.php");
+require_once("./php_libs/session.php");
+require_once("./php_libs/escape_string.php");
+require_once("./php_libs/ip_address.php");
+require_once("./php_libs/ip_address_check.php");
+require_once("./php_libs/insert_access_log.php");
 
 // 外部からの命令を無効化
 $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 
 // ipアドレスをチェック
-$flag=ip_address_check($ip_address_ext);
+ $flag=ip_address_check($ip_address_ext);
 
 // アクセスログ(簡易版)テーブルに書き込み
-insert_access_log($ip_address_ext,$flag);
+ insert_access_log($ip_address_ext,$flag);
 
 // ログアウトの処理
 if(isset($_POST["logout"])|!empty($_POST["logout"])){
@@ -36,7 +39,7 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
 
 <head>
 <meta charset="utf-8">
-<title>おりなすデータベースホームページ</title>
+<title>おりなすデータベース</title>
 	<link rel="stylesheet" type="text/css" href="./css/index.css">
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.19/themes/redmond/jquery-ui.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -45,7 +48,8 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="https://code.highcharts.com/highcharts.js"></script>
-  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://cdn.rawgit.com/osamutake/japanese-holidays-js/v1.0.9/lib/japanese-holidays.min.js"></script>
 	<script src="./js/call_hightchart.js"></script>
 	<script src="./js/ajax_select_from_table.js"></script>
 	<script src="./js/ajax_create_Member_Form.js"></script>
@@ -60,6 +64,8 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
 	<script src="./js/update_Member_Form.js"></script>
 	<script src="./js/create_td.js"></script>
 	<script src="./js/ajax_delete_from_members.js"></script>
+	<script src="./js/ajax_create_calendar.js"></script>
+	<script src="./js/getWeekNum.js"></script>
 
 </head>
 
@@ -87,14 +93,17 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
 		<p id="message"><?php echo $msg;?></p>
   </div>
 
-	
+<!--  need for members registration	 -->
 	<div id="create"></div>
 	<div id="select"></div>
 
+	<div id="calendar"></div>
+
 	<script>
-	//call_hightchart();
-		ajax_create_Member_Form("create");
-		ajax_create_Members_Table("select");
+  // call_hightchart();
+		 ajax_create_Member_Form("create");
+		 ajax_create_Members_Table("select");
+		//ajax_create_calendar("calendar");
 	</script>
 
 </div>
