@@ -12,6 +12,14 @@ function create_table(parent_tag_str,col,row,table_name){
   for(var i=0;i<col.length;i++){
     var th=document.createElement('th');
     th.innerText=col[i];
+    
+    if(col[i]=='id') th.classList.add('td-hide');
+
+    if(col[i]=='土') th.classList.add('td-sat');
+
+    // 日曜日は非表示
+    if(col[i]=='日') th.classList.add('td-hide');
+    
     thead.appendChild(th);
 
   }
@@ -26,12 +34,17 @@ function create_table(parent_tag_str,col,row,table_name){
 
         for(var i=0;i<col.length;i++){
           var td=document.createElement('td');
+
+          if(col[i]=='id') td.classList.add('td-hide');
+          if(col[i]=='日') td.classList.add('td-hide');
+
           td.innerText=row[j][col[i]];
           tr.appendChild(td);
         }
 
         var td=document.createElement('td');
         td.innerText='修正する';
+        td.classList.add('td-mod');
 
         td.addEventListener('click',create_members_update_form);
         td.id=row[j][col[0]];
@@ -42,6 +55,8 @@ function create_table(parent_tag_str,col,row,table_name){
 
         var td=document.createElement('td');
         td.innerText='x';
+
+        td.classList.add('td-delete');
 
         td.addEventListener('click',delete_table);
         td.id=row[j][col[0]];
