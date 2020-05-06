@@ -4,13 +4,18 @@ function reject_str(str){
 
     if((str.indexOf('insert') != -1)||
        (str.indexOf('create') != -1)||
+       (str.indexOf('begin') != -1)||
+       (str.indexOf('start') != -1)||
         (str.indexOf('delete') != -1)||
         (str.indexOf('update') != -1)||
         (str.indexOf('database') != -1)||
         (str.indexOf('table') != -1)||
         (str.indexOf('view') != -1)||
+        (str.indexOf('transaction') != -1)||
         (str.indexOf('from') != -1)||
         (str.indexOf('drop') != -1)||
+        (str.indexOf('show') != -1)||
+        (str.indexOf(';') != -1)||
         (str.indexOf('into') != -1) )
     {
       throw new Error('cannot use sql statement.');
