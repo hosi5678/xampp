@@ -6,13 +6,14 @@ function select_from_table(parent_tag_str,table_name){
 
   $.when(
 
+    // ajaxは単体で使わない。whenと使う
     ajax_stmt_exec(table_name_tmp,"select * from "+table_name_tmp+" limit 0;",'column'),
     ajax_stmt_exec(table_name_tmp,'select * from '+table_name_tmp+';','assoc')
 
     ).done(function(col,row){
 
     var parent_tag=document.getElementById(parent_tag_str);
-
+    
     while(parent_tag.firstChild){
       parent_tag.removeChild(parent_tag.firstChild);
     }
