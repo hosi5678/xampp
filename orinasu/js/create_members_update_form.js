@@ -22,7 +22,7 @@ function create_members_update_form(event){
     tds_val.push(tds[i].innerText);
   }
 
-  console.log(tds_val);
+  // console.log(tds_val);
 
    $.when(
 
@@ -32,10 +32,16 @@ function create_members_update_form(event){
     ajax_stmt_exec('riyou_keitai','select * from riyou_keitai;','assoc')
 
     ).done(function(label,member_col,riyou_col,riyou_row){
-      
+    
+    // 画面の更新
     while(parent_tag.firstChild){
       parent_tag.removeChild(parent_tag.firstChild);
     }
+
+    var h3=document.createElement('h3');
+    h3.innerText='修正';
+  
+    parent_tag.appendChild(h3);
 
     var form=document.createElement('form');
 
@@ -58,7 +64,6 @@ function create_members_update_form(event){
         input.placeholder=label[i];
         input.id=table_name+i;
 
-  
         input.value=tds_val[i];
 
         ids.push(i);
@@ -93,6 +98,12 @@ function create_members_update_form(event){
     for(var j=3;j<label.length;j++){
       // if(j==3) continue; // 日曜日はスキップ
       var th=document.createElement('th');
+      var td=document.createElement('td');
+
+      if(label[j]=='日'){
+        th.classList.add('td-hide');
+        td.classList.add('td-hide');
+      }
 
       th.innerText=label[j];
       thead.appendChild(th);
@@ -104,7 +115,6 @@ function create_members_update_form(event){
           if((j==label.length-1)&&((i==1)||i==3)) continue; // 土曜日の終日と午後はスキップ
 
           var option=document.createElement('option');
-          var td=document.createElement('td');
 
           if(riyou[i]==tds_val[j]){
             option.selected=true;
@@ -115,9 +125,9 @@ function create_members_update_form(event){
 
             select.appendChild(option);
 
-            td.appendChild(select);      
-        }
-
+          }
+          
+        td.appendChild(select);      
         tr.appendChild(td);
 
         tbody.appendChild(tr);
