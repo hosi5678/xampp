@@ -4,13 +4,14 @@ console.log(window.location.href.split('/').pop());
 
 // jsonについて
 javascriptのデータオブジェクト表現の一つ(連想配列と同様)
-ただし、配列,連想配列とは区別される。(arrayのメソッドは不可)
+ただし、配列,連想配列とは区別される。(arrayのメソッドの使用は不可)
 連想配列は
-boxes={key:"value"}(アクセスはconsole.log(boxes["key0"]);)
+boxes={key:"value"}
+(アクセスはconsole.log(boxes["key"]);)
 jsonは
 boxes{"key":"value"}
 で値を格納する。
-(アクセスはconsole.log(boxes.key0);)
+(アクセスはconsole.log(boxes.key);)
 連想配列からjsonの変換は
 (すなわちkey->"key"にするには)
 var json=JSON.stringify(boxes);
@@ -40,11 +41,11 @@ series.push(JSON.parse(json_arry));
      
     console.log("json:"+obj.apple);
 
-    /** データをJSON文字列に変換 */
+    /** データをJSON文字列に変換 **/
     var json = JSON.stringify(dict);
     console.log("json stringify:"+json);
 
-    // jsonからdictionaryへ変換
+    // jsonから連想配列へ変換
     var dict=JSON.parse(json);
     console.log("dict:"+dict);
 

@@ -16,7 +16,7 @@
      
     console.log("json:"+obj.apple);
 
-    /** データをJSON文字列に変換 */
+    /** (dict,連想配列)データをJSON文字列に変換 */
     var json = JSON.stringify(dict);
     console.log("json stringify:"+json);
 
@@ -24,7 +24,7 @@
     var dict=JSON.parse(json);
     console.log("dict:"+dict);
 
-    // object objectはdictionary,その要素を調べるには
+    // object objectはdictionary(連想配列),その要素を調べるには
     for(key in dict){
       console.log(key+":"+dict[key]);
     }
