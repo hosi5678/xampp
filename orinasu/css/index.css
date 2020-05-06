@@ -40,6 +40,49 @@ form {
 }
 
 /* for high chart test */
-#container {
+/* #container {
 
+} */
+
+table {
+	border-collapse: collapse;
+	text-align:center;
+	margin-bottom: 30px;
+}
+
+th {
+	/* border-spacing: 0px; */
+	width: 100px;
+	border: 1px solid black;
+	color:rgb(70, 70, 70);
+}
+
+td {
+	border: 1px solid black;
+	padding: 3px;
+	color:rgb(0, 0, 0);
+
+}
+
+.td-delete{
+	width:50px;
+	cursor:pointer;
+	/* background-color: pink; */
+}
+
+.td-mod:hover{
+	background-color: aqua;
+}
+
+.td-delete:hover{
+	background-color: pink;
+}
+
+.td-sat{
+	color:blue;
+}
+
+.td-hide{
+	/* visibility:collapse; */
+	display:none;
 }
