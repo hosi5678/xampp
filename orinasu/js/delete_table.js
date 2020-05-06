@@ -7,7 +7,10 @@ function delete_table(event){
 
   // console.log(query);
 
-  ajax_stmt_exec(table_name,query,'assoc');
-  select_from_table("select",table_name);
+  $.when(
+      ajax_stmt_exec(table_name,query,'assoc'),
+    ).done(function(){
+      select_from_table("select",table_name);
+  });
 
 }
