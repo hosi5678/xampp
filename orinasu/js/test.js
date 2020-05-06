@@ -1,10 +1,24 @@
-function test(){
+function test(event){
 
-    var a=3;
-    var b=2;
+  // console.log(event.target.prev);
 
-    var c=a+b;
+  var input=document.createElement('input');
 
-    console.log(c);
+  var div=document.getElementById("select");
+
+  var a=document.createElement('button');
+
+  a.innerText='クリックする';
+
+  // a.href='#';
+
+  a.addEventListener('click',function (event) {
+      input.value='test';
+
+    });
+
+   div.appendChild(input);
+   div.appendChild(a); 
+
 
 }
