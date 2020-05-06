@@ -64,6 +64,7 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
 	<script src="./js/delete_table.js"></script>
 	<script src="./js/insert_table.js"></script>
 	<script src="./js/reject_str.js"></script>
+	<script src="./js/test.js"></script>
 
 </head>
 
@@ -102,12 +103,13 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
 
 	<script>
   // call_hightchart();
-		//  ajax_create_Member_Form("create");
-		//  ajax_create_Members_Table("select");
 		// ajax_create_calendar("calendar");
-		//ajax_get_table_columns("members");
 		create_members_input_form("regist","members");
 		select_from_table("select","members");
+
+		// window.addEventListener('load',test(event));
+		// event.prev='index';
+
 	</script>
 
 </div>
