@@ -11,9 +11,15 @@ function create_members_input_form(parent_tag_str,table_name){
 
     ).done(function(label,member_col,riyou_col,riyou_row){
       
+    // 画面の更新
     while(parent_tag.firstChild){
       parent_tag.removeChild(parent_tag.firstChild);
     }
+
+    var h3=document.createElement('h3');
+    h3.innerText='新規登録';
+  
+    parent_tag.appendChild(h3);
 
     var form=document.createElement('form');
 
@@ -64,6 +70,12 @@ function create_members_input_form(parent_tag_str,table_name){
     for(var j=3;j<label.length;j++){
       // if(j==3) continue; // 日曜日はスキップ
       var th=document.createElement('th');
+      var td=document.createElement('td');
+
+      if(label[j]=='日'){
+        th.classList.add('td-hide');
+        td.classList.add('td-hide');
+      } 
 
       th.innerText=label[j];
       thead.appendChild(th);
@@ -75,16 +87,15 @@ function create_members_input_form(parent_tag_str,table_name){
           if((j==label.length-1)&&((i==1)||i==3)) continue; // 土曜日の終日と午後はスキップ
 
           var option=document.createElement('option');
-          var td=document.createElement('td');
 
             option.innerText=riyou[i];
             option.value=i;
 
             select.appendChild(option);
+           
+          }
 
-            td.appendChild(select);
-            
-        }
+          td.appendChild(select);
 
         tr.appendChild(td);
 
