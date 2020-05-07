@@ -5,15 +5,15 @@ drop view if exists members_work cascade;
 create view members_work as
   select 
         members.id as id,
-        members.myouji as myouji,
-        members.namae as namae,
-        sun.content as sun,
-        mon.content as mon,
-        tue.content as tue,
-        wed.content as wed,
-        thu.content as thu,
-        fri.content as fri,
-        sat.content as sat
+        members.myouji as '姓',
+        members.namae as '名',
+        sun.content as '日',
+        mon.content as '月',
+        tue.content as '火',
+        wed.content as '水',
+        thu.content as '木',
+        fri.content as '金',
+        sat.content as '土'
 
         from members
           inner join riyou_keitai as sun on (members.sun+1)=sun.id
