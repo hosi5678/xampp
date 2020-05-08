@@ -1,6 +1,6 @@
 function create_members_input_form(parent_tag_str,table_name){
 
-  var parent_tag=document.getElementById(parent_tag_str);
+  var parent_tag=document.getElementById(parent_tag_str+'_params');
 
    $.when(
 
@@ -16,11 +16,9 @@ function create_members_input_form(parent_tag_str,table_name){
       parent_tag.removeChild(parent_tag.firstChild);
     }
 
-    var h3=document.createElement('h3');
-    h3.innerText='新規登録';
+    var p=document.getElementById(parent_tag_str+'_title');
+    p.innerText='新規登録';
   
-    parent_tag.appendChild(h3);
-
     var form=document.createElement('form');
 
     var table=document.createElement('table');
@@ -69,6 +67,7 @@ function create_members_input_form(parent_tag_str,table_name){
 
     for(var j=3;j<label.length;j++){
       // if(j==3) continue; // 日曜日はスキップ
+
       var th=document.createElement('th');
       var td=document.createElement('td');
 
@@ -76,6 +75,8 @@ function create_members_input_form(parent_tag_str,table_name){
         th.classList.add('td-hide');
         td.classList.add('td-hide');
       } 
+
+      if(label[j]=='土') th.classList.add('td-sat');
 
       th.innerText=label[j];
       thead.appendChild(th);
@@ -105,11 +106,13 @@ function create_members_input_form(parent_tag_str,table_name){
 
     var button=document.createElement("button");
 
-      button.innerText='登録する';
-      button.addEventListener('click',insert_table);
+    button.innerText='新規登録する';
+    button.addEventListener('click',insert_table);
     
     button.col=member_col;
     button.table_name=table_name;
+    button.prev='create_members_input_form';
+    button.parent_tag_str=parent_tag_str;
 
     table.appendChild(thead);
     table.appendChild(tbody);
