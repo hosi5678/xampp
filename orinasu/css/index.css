@@ -1,6 +1,7 @@
 * {
 	margin:0px;
 	padding:0px;
+
 }	
 
 body {
@@ -22,7 +23,7 @@ h1 {
 }
 
 a {
-	font-size:30px;
+	font-size:20px;
 	text-decoration:none;
 	color:steelblue;
 }
@@ -43,6 +44,14 @@ form {
 /* #container {
 
 } */
+input {
+	font-size: 15px;
+	border:none;
+}
+
+select {
+	border:none;
+}
 
 table {
 	border-collapse: collapse;
@@ -72,10 +81,12 @@ td {
 
 .td-mod:hover{
 	background-color: aqua;
+	cursor: pointer;
 }
 
 .td-delete:hover{
 	background-color: pink;
+	cursor: pointer;
 }
 
 .td-sat{
@@ -83,6 +94,21 @@ td {
 }
 
 .td-hide{
-	/* visibility:collapse; */
 	display:none;
 }
+
+.show {
+	opacity: 1;
+	transform: translateY(20px);
+	transition: 500ms;
+}
+
+.hide {
+	opacity: 0;
+	transition: 500ms;
+}
+
+.onload-hidden {
+	visibility:visible;
+}
+
