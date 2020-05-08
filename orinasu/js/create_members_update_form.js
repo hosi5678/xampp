@@ -5,14 +5,19 @@ function create_members_update_form(event){
   parent_tag_str=event.target.parent_tag_str;
   table_name=event.target.table_name;
   id=event.target.id;
+  prev=event.target.prev;
 
-  console.log(parent_tag_str);
+  console.log('parent tag str:'+parent_tag_str);
+  console.log('table_name:'+table_name);
+  console.log('id:'+id);
+  console.log('prev:'+prev);
 
-  var parent_tag=document.getElementById(parent_tag_str);
+  // var parent_tag=document.getElementById(parent_tag_str+'_params');
 
-  while(parent_tag.firstChild){
-    parent_tag.removeChild(parent_tag.firstChild);
-  }
+
+  // while(parent_tag.firstChild){
+  //   parent_tag.removeChild(parent_tag.firstChild);
+  // }
 
   var tds=$(this).closest('tr').children();
 
@@ -26,22 +31,22 @@ function create_members_update_form(event){
 
    $.when(
 
-    ajax_stmt_exec('members_work',"select * from "+table_name+" limit 0;",'column'),
+    ajax_stmt_exec(table_name+'_work',"select * from "+table_name+" limit 0;",'column'),
     ajax_stmt_exec(table_name,"select * from "+table_name+" limit 0;",'column'),
     ajax_stmt_exec('riyou_keitai',"select * from "+table_name+" limit 0;",'column'),
     ajax_stmt_exec('riyou_keitai','select * from riyou_keitai;','assoc')
 
     ).done(function(label,member_col,riyou_col,riyou_row){
-    
+
+      var p=document.getElementById(parent_tag_str+'_title');
+      p.innerText='修正';
+ 
+      var parent_tag=document.getElementById(parent_tag_str+'_params');
+
     // 画面の更新
     while(parent_tag.firstChild){
       parent_tag.removeChild(parent_tag.firstChild);
     }
-
-    var h3=document.createElement('h3');
-    h3.innerText='修正';
-  
-    parent_tag.appendChild(h3);
 
     var form=document.createElement('form');
 
@@ -141,6 +146,7 @@ function create_members_update_form(event){
 
     button.col=member_col;
     button.table_name=table_name;
+    button.parent_tag_str=parent_tag_str;
     button.id=id;
 
     table.appendChild(thead);
