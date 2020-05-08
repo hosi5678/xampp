@@ -2,7 +2,8 @@ function ajax_stmt_exec(table_name,query,fetch_mode){
 
   var defer = new $.Deferred;
 
-  $.post({
+  $.ajax({
+    type:'POST',
     url: '../php_libs/ajax_stmt_exec.php',
       data:{
        'table_name':table_name,
@@ -11,6 +12,7 @@ function ajax_stmt_exec(table_name,query,fetch_mode){
       },
 
       dataType:'json', 
+      chache:false,
 
   }).done(function(res){
 
