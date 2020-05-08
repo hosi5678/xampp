@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors', "On");
+ini_set('display_errors',1);
 require_once("./php_libs/db_define.php");
 require_once("./php_libs/session.php");
 require_once("./php_libs/ip_address.php");
@@ -64,6 +64,7 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
 	<script src="./js/delete_table.js"></script>
 	<script src="./js/insert_table.js"></script>
 	<script src="./js/reject_str.js"></script>
+	<script src="./js/members_func.js"></script>
 	<script src="./js/test.js"></script>
 
 </head>
@@ -76,14 +77,14 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
 	</div>
 
 	<div id="menu">
-		<form action="./other_pages/menu.php" method="post" name="form1">	
+		<form action="./menu.php" method="post" name="send1">	
 			<input type="hidden" name="id" value="1">
-			<a href="javascript:form1.submit()">管理用ログイン(アクセスログ等)</a>
+			<a href="javascript:send1.submit()">管理用ログイン(アクセスログ等)</a>
 		</form>
 
-		<form action="./other_pages/menu.php" method="post" name="form2">	
+		<form action="./menu.php" method="post" name="send2">	
 			<input type="hidden" name="id" value="2">
-			<a href="javascript:form2.submit()">一般用途ログイン(在庫閲覧等)</a>
+			<a href="javascript:send2.submit()">一般用途ログイン(在庫閲覧等)</a>
 		</form>
 	</div>
 
@@ -93,19 +94,22 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
   </div>
 
 <!--  need for members registration	 -->
-	<div id='regist'></div>
-	<div id="create"></div>
-	<div id="select"></div>
-
+	
 	<div id="calendar"></div>
 
-	<div id="members"></div>
+	<a id='members_mark' href='#' onclick='members_func()'>利用者の登録・削除▼</a>
+	<div id="members" class='onload-hidden'>
+		<p id='members_title'></p>
+		<div id="members_params"></div>
+		<div id="members_results"></div>
+	</div>
 
 	<script>
   // call_hightchart();
 		// ajax_create_calendar("calendar");
-		create_members_input_form("regist","members");
-		select_from_table("select","members");
+		document.getElementById('members').style.visibility='visible';
+		members_func();
+
 
 		// window.addEventListener('load',test(event));
 		// event.prev='index';
