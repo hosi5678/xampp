@@ -1,6 +1,10 @@
 function create_table(parent_tag_str,col,row,table_name){
 
-  var parent_tag=document.getElementById(parent_tag_str);
+  var parent_tag=document.getElementById(parent_tag_str+'_results');
+
+  while(parent_tag.firstChild){
+    parent_tag.removeChild(parent_tag.firstChild);
+  }
 
   var form=document.createElement('form');
   form.name='form1';
@@ -30,7 +34,7 @@ function create_table(parent_tag_str,col,row,table_name){
 
   for(var j=0;j<row.length;j++){
       var tr=document.createElement('tr');
-      tr.id='members_id_'+row[j][col[0]];
+      tr.id=table_name+'_id_'+row[j][col[0]];
 
         for(var i=0;i<col.length;i++){
           var td=document.createElement('td');
@@ -48,8 +52,9 @@ function create_table(parent_tag_str,col,row,table_name){
 
         td.addEventListener('click',create_members_update_form);
         td.id=row[j][col[0]];
-        td.parent_tag_str="regist";
+        td.parent_tag_str=parent_tag_str;
         td.table_name=table_name;
+        td.prev='create_table';
 
         tr.appendChild(td);
 
@@ -61,6 +66,8 @@ function create_table(parent_tag_str,col,row,table_name){
         td.addEventListener('click',delete_table);
         td.id=row[j][col[0]];
         td.table_name=table_name;
+        td.parent_tag_str=parent_tag_str;
+        td.prev='create_table';
 
         tr.appendChild(td);
 
