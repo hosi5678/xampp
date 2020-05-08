@@ -1,8 +1,11 @@
 function select_from_table(parent_tag_str,table_name){
 
   // var parent_tag=document.getElementById(parent_tag_str);
+  console.log('in select from table');
 
-  var table_name_tmp=table_name+'_jpn';
+  console.log(parent_tag_str);
+
+  var table_name_tmp=table_name+'_work';
 
   $.when(
 
@@ -12,11 +15,13 @@ function select_from_table(parent_tag_str,table_name){
 
     ).done(function(col,row){
 
-    var parent_tag=document.getElementById(parent_tag_str);
+    // var parent_tag=document.getElementById(parent_tag_str+'_results');
     
-    while(parent_tag.firstChild){
-      parent_tag.removeChild(parent_tag.firstChild);
-    }
+    // while(parent_tag.firstChild){
+    //   parent_tag.removeChild(parent_tag.firstChild);
+    // }
+
+    // console.log('*** '+parent_tag_str);
 
     create_table(parent_tag_str,col,row,table_name);
 
