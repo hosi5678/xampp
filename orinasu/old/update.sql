@@ -1,0 +1,1 @@
+update users set name='星健一' where id=40;
