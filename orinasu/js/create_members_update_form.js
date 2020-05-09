@@ -31,7 +31,7 @@ function create_members_update_form(event){
 
    $.when(
 
-    ajax_stmt_exec(table_name+'_work',"select * from "+table_name+" limit 0;",'column'),
+    ajax_stmt_exec(table_name+'_join',"select * from "+table_name+" limit 0;",'column'),
     ajax_stmt_exec(table_name,"select * from "+table_name+" limit 0;",'column'),
     ajax_stmt_exec('riyou_keitai',"select * from "+table_name+" limit 0;",'column'),
     ajax_stmt_exec('riyou_keitai','select * from riyou_keitai;','assoc')
