@@ -1,8 +1,14 @@
 function update_table(event){
 
+  console.log('----- in update_table -----');
+
   var id=event.target.id;
   var parent_tag_str=event.target.parent_tag_str;
   var table_name=event.target.table_name;
+
+  console.log('id:'+id);
+  console.log('parent_tag_str'+parent_tag_str);
+  console.log('table_name'+table_name);
 
   $.when(
 
@@ -52,7 +58,7 @@ function update_table(event){
 
       }
 
-      // console.log(query);
+      console.log('query:'+query);
       // alert(parent_tag_str);
 
       $.when(

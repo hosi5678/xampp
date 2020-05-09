@@ -1,5 +1,11 @@
 function create_table(parent_tag_str,col,row,table_name){
 
+  console.log('----- in create table -----');
+  console.log('parent_tag_str:'+parent_tag_str);
+  console.log('table_name:'+table_name);
+  console.log('col:'+col);
+  console.log('row:'+row);
+
   var parent_tag=document.getElementById(parent_tag_str+'_results');
 
   while(parent_tag.firstChild){

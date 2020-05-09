@@ -7,8 +7,9 @@ function delete_table(event){
 
   var query='delete from '+table_name+' where id='+id+';';
 
-  console.log('in delete table:');
+  console.log('----- in delete table -----');
   console.log('prev:'+prev);
+  console.log('qeery:'+query);
 
   $.when(
       ajax_stmt_exec(table_name,query,'assoc'),

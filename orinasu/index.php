@@ -58,6 +58,7 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
 	<script src="./js/ajax_stmt_exec.js"></script>
 	<script src="./js/select_from_table.js"></script>
 	<script src="./js/create_members_input_form.js"></script>
+	<script src="./js/create_products_input_form.js"></script>
 	<script src="./js/create_members_update_form.js"></script>
 	<script src="./js/create_table.js"></script>
 	<script src="./js/update_table.js"></script>
@@ -65,6 +66,7 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
 	<script src="./js/insert_table.js"></script>
 	<script src="./js/reject_str.js"></script>
 	<script src="./js/members_func.js"></script>
+	<script src="./js/products_func.js"></script>
 	<script src="./js/test.js"></script>
 
 </head>
@@ -96,6 +98,13 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
 <!--  need for members registration	 -->
 	
 	<div id="calendar"></div>
+
+	<a id='products_mark' href='#' onclick='products_func()'>販売記録の登録・削除▼</a>
+	<div id="products" class='onload-hidden'>
+		<p id='products_title'></p>
+		<div id="products_params"></div>
+		<div id="products_results"></div>
+	</div>
 
 	<a id='members_mark' href='#' onclick='members_func()'>利用者の登録・削除▼</a>
 	<div id="members" class='onload-hidden'>

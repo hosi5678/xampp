@@ -116,9 +116,9 @@ insert into riyou_keitai(content) values("午後");
 select * from riyou_keitai;
 
 
-drop view if exists members_work cascade;
+drop view if exists members_join cascade;
 
-create view members_work as
+create view members_join as
   select 
         members.id as id,
         members.myouji as '姓',
@@ -142,6 +142,6 @@ create view members_work as
 
         order by members.id asc;
 
-show create view members_work \G
+show create view members_join \G
 
-select * from members_work order by id asc;
+select * from members_join order by id asc;

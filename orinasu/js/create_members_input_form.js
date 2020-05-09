@@ -1,16 +1,25 @@
 function create_members_input_form(parent_tag_str,table_name){
 
+  console.log('----- in create members input form -----');
+  console.log('parent tag str:'+parent_tag_str);
+  console.log('table name:'+table_name);
+
   var parent_tag=document.getElementById(parent_tag_str+'_params');
 
    $.when(
 
-    ajax_stmt_exec('members_work',"select * from "+table_name+" limit 0;",'column'),
+    ajax_stmt_exec(table_name+'_join',"select * from "+table_name+" limit 0;",'column'),
     ajax_stmt_exec(table_name,"select * from "+table_name+" limit 0;",'column'),
-    ajax_stmt_exec('riyou_keitai',"select * from "+table_name+" limit 0;",'column'),
+    ajax_stmt_exec('riyou_keitai',"select * from riyou_keitai"+" limit 0;",'column'),
     ajax_stmt_exec('riyou_keitai','select * from riyou_keitai;','assoc')
 
     ).done(function(label,member_col,riyou_col,riyou_row){
       
+      console.log('label:'+label);
+      console.log('member_col:'+member_col);
+      console.log('riyou_col:'+riyou_col);
+ 
+
     // 画面の更新
     while(parent_tag.firstChild){
       parent_tag.removeChild(parent_tag.firstChild);
