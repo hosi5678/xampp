@@ -14,7 +14,19 @@ header("Content-Type:text/html;charset=UTF-8");
 
     $table_name=filter_input(INPUT_POST,'table_name');
     $query=filter_input(INPUT_POST,'query');
-    $fetch_mode=filter_input(INPUT_POST,'fetch_mode');
+		$fetch_mode=filter_input(INPUT_POST,'fetch_mode');
+		
+		$time=new Datetime();
+		$time=$time->format('Y-m-d H:i:s');
+
+		$stmt=$db->prepare('insert into table_access_log(ip_address,table_name,query,time) values(?,?,?,?);');
+
+		$stmt->bindParam(1,$_SERVER["REMOTE_ADDR"],PDO::PARAM_STR);
+		$stmt->bindParam(2,$table_name,PDO::PARAM_STR);
+		$stmt->bindParam(3,$query,PDO::PARAM_STR);
+		$stmt->bindParam(4,$time,PDO::PARAM_STR);
+
+		$stmt->execute();
 
 		$stmt="select * from ".$table_name." limit 0;";
 
@@ -67,7 +79,7 @@ header("Content-Type:text/html;charset=UTF-8");
 				header('Content-type: application/json');
 				echo json_encode($column_array,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
 		}
-		
+
     $db->commit();
 
 	}catch(PDOException $e) {
