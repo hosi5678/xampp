@@ -24,24 +24,6 @@ function ip_address_check($ip_address_ext){
 			exit('許可されていないアクセスです。(this ip address is not allowed.)');
 		}
 
-		// $table_name='members';
-
-		// $stmt_str="select * from ".$table_name.";";
-
-		// $stmt = $db->prepare($stmt_str);
-
-		// $stmt->execute();
-
-		// $columns = array();
-		
-		// for ($i = 0; $i < $stmt->columnCount(); $i++) {
-		// 		$meta = $stmt->getColumnMeta($i);
-		// 		$columns[] = $meta['name'];
-		// 		echo $meta['name'].'<br>';
-		// }
-		
-		// var_dump($columns);
-
 		return $flag;
 
 		$db->commit();
