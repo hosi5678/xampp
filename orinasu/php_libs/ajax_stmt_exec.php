@@ -56,18 +56,16 @@ header("Content-Type:text/html;charset=UTF-8");
 			$json_array=array();
 	
 			foreach($results as $elem ){
-	
-											$i=0;
-			
-											$tmp_array=array();
-			
-											while($i<count($column_array)){
-												$key=$column_array[$i];
-												$temp_array[$key]=$elem[$key];
-												$i++;
-											}
-	
-									 $json_array[]=$temp_array;
+					$i=0;
+					$tmp_array=array();
+					
+					while($i<count($column_array)){
+						$key=$column_array[$i];
+						$temp_array[$key]=$elem[$key];
+						$i++;
+					}
+					
+					$json_array[]=$temp_array;
 	
 			}
 	
