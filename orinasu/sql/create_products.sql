@@ -39,7 +39,7 @@ insert into tax(tax) values(0);
 insert into tax(tax) values(8);
 insert into tax(tax) values(10);
 
-drop view if exists products_work;
+drop view if exists products_join;
 
 create view products_join as
   select 
@@ -47,7 +47,7 @@ create view products_join as
         category.name as 'カテゴリー',
         products.product_name as '商品名',
         products.place as '販売場所',
-		products.customer as '顧客名',
+    		products.customer as '顧客名',
         products.tanka as '商品単価',
         tax.tax as '消費税',
         products.sales_date as '販売日',

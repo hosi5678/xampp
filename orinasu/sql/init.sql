@@ -21,7 +21,9 @@ create table members(
  wed tinyint unsigned,
  thu tinyint unsigned,
  fri tinyint unsigned,
- sat tinyint unsigned
+ sat tinyint unsigned,
+
+ bikou text
 
 );
 
@@ -129,7 +131,8 @@ create view members_join as
         wed.content as '水',
         thu.content as '木',
         fri.content as '金',
-        sat.content as '土'
+        sat.content as '土',
+        members.bikou as '備考'
 
         from members
           inner join riyou_keitai as sun on (members.sun+1)=sun.id
