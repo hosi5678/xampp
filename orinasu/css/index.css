@@ -102,6 +102,10 @@ td {
 	display:none;
 }
 
+.td-bikou {
+	width:300px;
+}
+
 .show {
 	opacity: 1;
 	transform: translateY(20px);
