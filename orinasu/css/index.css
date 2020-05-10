@@ -103,12 +103,3 @@ td {
 	transition: 500ms;
 }
 
-.hide {
-	opacity: 0;
-	transition: 500ms;
-}
-
-.onload-hidden {
-	visibility:visible;
-}
-
