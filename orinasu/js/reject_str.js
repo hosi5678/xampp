@@ -17,6 +17,7 @@ function reject_str(str){
         (str.indexOf('drop') != -1)||
         (str.indexOf('show') != -1)||
         (str.indexOf('change') != -1)||
+        (str.indexOf('query') != -1)||
         (str.indexOf(';') != -1)||
         (str.indexOf('*') != -1)||
         (str.indexOf('into') != -1) )

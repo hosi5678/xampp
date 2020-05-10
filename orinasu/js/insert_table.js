@@ -4,6 +4,7 @@ function insert_table(event){
   var prev=event.target.prev;
   var table_name=event.target.table_name;
   var parent_tag_str=event.target.parent_tag_str;
+  var label=event.target.label;
 
   console.log('-----in insert table-----');
   console.log('table name:'+table_name);
@@ -23,6 +24,11 @@ function insert_table(event){
   console.log('query_columns:'+query_columns);
   console.log('query columns length:'+query_columns.length);
 
+  var message=document.getElementById(parent_tag_str+'_message');
+  while(message.firstChild){
+    message.removeChild(message.firstChild);
+  }
+
   for(var i=0;i<col.length;i++){
 
     if((col[i]=='id')||(col[i]=='bikou')) continue;
@@ -40,6 +46,11 @@ function insert_table(event){
 
       // 名前が空欄のとき
       if(str==''){
+        var p=document.createElement('p');
+        p.classList.add('message');
+        p.innerText=label[i]+'を入力してください。'
+        message.appendChild(p);
+
         return false;
       }
 

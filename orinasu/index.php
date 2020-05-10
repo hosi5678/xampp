@@ -109,6 +109,7 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
 	<a id='members_mark' href='#' onclick='members_func()'>利用者の登録・削除▼</a>
 	<div id="members">
 		<p id='members_title'></p>
+		<div id='members_message'></div>
 		<div id="members_params"></div>
 		<div id="members_results"></div>
 	</div>
