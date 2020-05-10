@@ -20,7 +20,8 @@ function create_members_update_form(event){
     tds_val.push(tds[i].innerText);
   }
 
-  // console.log(tds_val);
+  console.log('tds val:');
+  console.log(tds_val);
 
    $.when(
 
@@ -41,7 +42,7 @@ function create_members_update_form(event){
       console.log(tds_val);
 
       var p=document.getElementById(parent_tag_str+'_title');
-      p.innerText='修正';
+      p.innerText='メンバー情報の修正';
  
       var parent_tag=document.getElementById(parent_tag_str+'_params');
 
@@ -177,6 +178,11 @@ function create_members_update_form(event){
 
     form.appendChild(table);
     parent_tag.appendChild(form);
+
+    document.createElement('p');
+    p.innerText='備考欄';
+
+    form.appendChild(p);
 
     for(var i=0;i<label.length;i++){
       if(label[i]=='備考'){
