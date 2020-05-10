@@ -10,8 +10,6 @@ function create_members_input_form(parent_tag_str,table_name){
     ajax_stmt_exec(table_name,"select * from "+table_name+" limit 0;",'column'),
     ajax_stmt_exec('riyou_keitai',"select * from riyou_keitai"+" limit 0;",'column'),
     ajax_stmt_exec('riyou_keitai','select * from riyou_keitai;','assoc')
-    // ajax_stmt_exec('youbi',"select * from youbi"+" limit 0;",'column'),
-    // ajax_stmt_exec('youbi',"select * from youbi"+" limit 0;",'assoc')
 
     ).done(function(label,member_col,riyou_col,riyou_row){
       
@@ -19,7 +17,7 @@ function create_members_input_form(parent_tag_str,table_name){
       console.log('members_col:'+member_col);
       console.log('riyou_col:'+riyou_col);
  
-              // 画面の更新
+    // 画面の更新
     var parent_tag=document.getElementById(parent_tag_str+'_params');
 
     while(parent_tag.firstChild){
@@ -40,7 +38,7 @@ function create_members_input_form(parent_tag_str,table_name){
        console.log(riyou);
  
         var p=document.createElement('p');
-        p.innerText='新規登録';
+        p.innerText='メンバーの新規登録';
 
         var form=document.createElement('form');
         form.name='form1';
@@ -192,139 +190,3 @@ function create_members_input_form(parent_tag_str,table_name){
   });
 
 }
-
-   
-
-  
-  //   var form=document.createElement('form');
-
-  //   var table=document.createElement('table');
-  //   var thead=document.createElement('thead');
-  //   var tbody=document.createElement('tbody');
-
-  //   var a=document.createElement("a");
-
-  //   a.href='#'+parent_tag_str;
-  //   a.innerText='新規登録する';
-  //   a.style.display='block';
-    
-  //   a.addEventListener('click',insert_table);
-    
-  //   a.col=member_col;
-  //   a.table_name=table_name;
-  //   a.prev='create_members_input_form';
-  //   a.parent_tag_str=parent_tag_str;
-
-  //   var table=document.createElement('table');
-
-  //   var tr=document.createElement('tr');
-
-  //   for(var i=1;i<label.length;i++){
-
-  //     if(label[i]=='姓'||label[i]=='名'){
-
-  //       var th=document.createElement('th');
-
-  //       th.innerText=label[i];
-
-  //       thead.appendChild(th);
-
-  //       var td=document.createElement('td');
-  //       var input=document.createElement('input');
-
-  //       input.type='text';
-  //       input.placeholder=label[i];
-  //       input.id=parent_tag_str+i;
-
-  //       td.appendChild(input);
-
-  //       tr.appendChild(td);
-
-
-  //   }
-  // }
-
-  //   tbody.appendChild(tr);
-
-  //   table.appendChild(thead);
-  //   table.appendChild(tbody);
-
-  //   form.appendChild(table);
-  //   // form.appendChild(textarea);
-  //   parent_tag.appendChild(form);
-
-
-
-
-    // var table=document.createElement('table');
-    // var thead=document.createElement('thead');
-    // var tbody=document.createElement('tbody');
-
-    // var tr=document.createElement('tr');
-
-    // for(var j=;j<label.length;j++){
-    //   // if(j==3) continue; // 日曜日はスキップ
-
-    //   var th=document.createElement('th');
-    //   var td=document.createElement('td');
-
-    //   if(label[j]=='日'){
-    //     th.classList.add('td-hide');
-    //     td.classList.add('td-hide');
-    //   } 
-
-    //   if(label[j]=='土') th.classList.add('td-sat');
-
-    //   th.innerText=label[j];
-    //   thead.appendChild(th);
-
-    //   var select=document.createElement('select');
-    //   select.id=table_name+j;
-
-    //     for(var i=0;i<riyou.length;i++){
-    //       if((j==label.length-1)&&((i==1)||i==3)) continue; // 土曜日の終日と午後はスキップ
-
-    //       var option=document.createElement('option');
-
-    //         option.innerText=riyou[i];
-    //         option.value=i;
-
-    //         select.appendChild(option);
-           
-    //       }
-
-    //       td.appendChild(select);
-
-    //     tr.appendChild(td);
-
-    //     tbody.appendChild(tr);
-
-    // }
-
-    // table.appendChild(thead);
-    // table.appendChild(tbody);
-
-    // form.appendChild(table);
-
-    // // var textarea=document.createElement('textarea');
-    // // textarea.rows=5;
-    // // textarea.cols=80;
-
-    // form.appendChild(textarea);
-
-    // // var a=document.createElement("a");
-
-    // // a.href='#'+parent_tag_str;
-    // // a.innerText='新規登録する';
-    // // a.style.display='block';
-    
-    // // a.addEventListener('click',insert_table);
-    
-    // // a.col=member_col;
-    // // a.table_name=table_name;
-    // // a.prev='create_members_input_form';
-    // // a.parent_tag_str=parent_tag_str;
-
-    // form.appendChild(a);
-
-    // parent_tag.appendChild(form);
