@@ -18,18 +18,18 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
  insert_access_log($ip_address_ext,$flag);
 
 // ログアウトの処理
-if(isset($_POST["logout"])|!empty($_POST["logout"])){
+// if(isset($_POST["logout"])|!empty($_POST["logout"])){
 
-	if(escape_string($_POST["logout"])==1){
-		$msg="ログアウトしました。";
-		unset($_POST["id"]);
-		unset($_POST["logout"]);
-		session_destroy();
-		$_SESSION=array();
-	}
-}else{
-	$msg="";
-}
+// 	if(escape_string($_POST["logout"])==1){
+// 		$msg="ログアウトしました。";
+// 		unset($_POST["id"]);
+// 		unset($_POST["logout"]);
+// 		session_destroy();
+// 		$_SESSION=array();
+// 	}
+// }else{
+// 	$msg="";
+// }
 
 ?>
 
@@ -78,22 +78,15 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
 		<h1>おりなすデータベース</h1>
 	</div>
 
-	<div id="menu">
-		<form action="./menu.php" method="post" name="send1">	
-			<input type="hidden" name="id" value="1">
-			<a href="javascript:send1.submit()">管理用ログイン(アクセスログ等)</a>
-		</form>
-
-		<form action="./menu.php" method="post" name="send2">	
-			<input type="hidden" name="id" value="2">
-			<a href="javascript:send2.submit()">一般用途ログイン(在庫閲覧等)</a>
-		</form>
-	</div>
+	<!-- <form action="./menu.php" method="post" name="send1">	
+		<input type="hidden" name="id" value="1">
+		<a href="javascript:send1.submit()">ログアウト</a>
+	</form>
 
 	<div>
 	    <div id="container"></div>
 		<p id="message"><?php echo $msg;?></p>
-  </div>
+  </div> -->
 
 <!--  need for members registration	 -->
 	
@@ -106,7 +99,7 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
 		<div id="products_results"></div>
 	</div>
 
-	<a id='members_mark' href='#' onclick='members_func()'>利用者の登録・削除▼</a>
+	<a id='members_mark' href='#' onclick='members_func();'>利用者の登録・削除▼</a>
 	<div id="members">
 		<p id='members_title'></p>
 		<div id='members_message'></div>
@@ -114,11 +107,26 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
 		<div id="members_results"></div>
 	</div>
 
-	<script>
+	<!-- <script>
   // call_hightchart();
 		// ajax_create_calendar("calendar");
 		document.getElementById('members').style.visibility='visible';
+	//	members_func();
+
+	</script> -->
+
+	<script>
+				
+		document.getElementById('members').style.visibility='visible';
 		members_func();
+    //.accordion1の中のp要素がクリックされたら
+    // $('#members_mark').click(function(){
+		// 		//クリックされた.accordion1の中のp要素に隣接するul要素が開いたり閉じたりする。
+		// 		members_func();
+		// 		$(this).next('div').slideToggle();
+
+    // });
+
 
 	</script>
 
