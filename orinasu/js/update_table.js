@@ -9,8 +9,8 @@ function update_table(event){
   var label=event.target.label;
 
   console.log('id:'+id);
-  console.log('parent_tag_str'+parent_tag_str);
-  console.log('table_name'+table_name);
+  console.log('parent_tag_str:'+parent_tag_str);
+  console.log('table_name:'+table_name);
   console.log('col is:');
   console.log(col);
   console.log('label is:');
@@ -91,16 +91,23 @@ function update_table(event){
       
   //       }
 
-      col.shift(); // idを除去
+      query_label=new Array();
+
+      // col.shift(); // idを除去,shiftは不可。
+
+      for(var i=0;i<col.length;i++){
+        if(col[i]=='id') continue;
+        query_label.push(col[i]);
+      }
 
       var query='update '+table_name+' set ';
 
-      for(var i=0;i<col.length;i++){
-        // if(col[i]=='id') continue;
+      for(var i=0;i<query_label.length;i++){
+        // if(query_label[i]=='id') continue;
 
-        query+=col[i]+'='+update_val[i];
+        query+=query_label[i]+'='+update_val[i];
 
-        if(i!=col.length-1){
+        if(i!=query_label.length-1){
           query+=',';
         }else{
           query+=' where id='+id+';';
