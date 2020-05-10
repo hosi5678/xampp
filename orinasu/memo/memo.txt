@@ -2,4 +2,9 @@
 ・ajax phpに操作ログが必要
 ・tableのレコードは色を反転させる。
 
+insert,updateした後は必ずselectする。
+echoは1回だけ。
+$stmt=$db->prepare($stmt);($stmt->ではない。)
+insertとupdateを分ける。(空欄がベルトコンベアーの様にながれてしまう。)
+
 
