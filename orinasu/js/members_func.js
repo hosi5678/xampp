@@ -9,14 +9,19 @@ function members_func(){
   
   if(tmp=='visible'){
 
-    create_members_input_form(parent_tag_str,parent_tag_str);
+    create_members_input_form(parent_tag_str,table_name);
     select_from_table(parent_tag_str,table_name);
     document.getElementById(parent_tag_str+"_mark").innerText='利用者の登録・削除▲';
+    document.getElementById(parent_tag_str).style.height='auto';
 
   }else{
     document.getElementById(parent_tag_str+"_mark").innerText='利用者の登録・削除▼';
+    document.getElementById(parent_tag_str).style.height=0;
+    // $('#'+parent_tag_str).fadeToggle();
   }
 
   document.getElementById(parent_tag_str).style.visibility = tmp;
+
+  // $('#'+parent_tag_str).slideToggle(1000);
 
 }
