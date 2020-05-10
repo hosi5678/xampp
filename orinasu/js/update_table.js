@@ -18,6 +18,12 @@ function update_table(event){
 
   var update_val=new Array();
 
+  var message=document.getElementById(parent_tag_str+'_message');
+
+  while(message.firstChild){
+    message.removeChild(message.firstChild);
+  }
+
   for(var i=0;i<label.length;i++){
     if(label[i]=='id') continue;
     
@@ -30,8 +36,19 @@ function update_table(event){
         return false;
       }
 
+       // 名前が空欄のとき
+       if(str==''){
+        var p=document.createElement('p');
+          p.classList.add('message');
+          p.innerText=label[i]+'を入力してください。'
+          message.appendChild(p);
+
+        return false;
+      }
+
       update_val.push('"'+str+'"');
 
+    // 備考の取り出しは別になる。
     }else if(label[i]=='備考'){
 
       var str=document.forms["form1"].elements["bikou"].value;
@@ -44,6 +61,7 @@ function update_table(event){
 
       update_val.push('"'+str+'"');
 
+    // それ以外は曜日となる。
     }else{
       update_val.push(document.getElementById(table_name+i).value);
     }
