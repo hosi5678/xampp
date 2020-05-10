@@ -5,13 +5,11 @@ function insert_table(event){
   var table_name=event.target.table_name;
   var parent_tag_str=event.target.parent_tag_str;
 
-  // col.shift(); // idは削除
-
   console.log('-----in insert table-----');
   console.log('table name:'+table_name);
   console.log('prev:'+prev);
   console.log('parent_tag_str:'+parent_tag_str);
-  console.log('col:'+col);
+  console.log('col:'+col); // 10
 
   var params=new Array();
 
@@ -23,12 +21,15 @@ function insert_table(event){
   }
 
   console.log('query_columns:'+query_columns);
+  console.log('query columns length:'+query_columns.length);
 
-  for(var i=0;i<query_columns.length;i++){
+  for(var i=0;i<col.length;i++){
 
-    var str=document.getElementById(table_name+(i+1)).value;
+    if((col[i]=='id')||(col[i]=='bikou')) continue;
 
-    if(query_columns[i]=='myouji'||query_columns[i]=='namae'){
+    if((col[i]=='myouji')||(col[i]=='namae')){
+
+      var str=document.getElementById('members'+i).value;
 
       // 悪意がある場合
       str=reject_str(str);
@@ -45,18 +46,27 @@ function insert_table(event){
       params.push('"'+str+'"');
 
     }else{
+      var str=document.getElementById('members'+i).value;
       params.push(str);
     }
 
-    if(query_columns[i]=='sun') params[i]=0;
-
   }
+
+  console.log('bikou:');
+  console.log(document.forms["form1"].elements["bikou"].value);
+
+  var bikou=document.forms["form1"].elements["bikou"].value;
+  bikou=reject_str(bikou);
+
+  if(bikou===1){
+    return false;
+  }
+
+  params.push('"'+bikou+'"');
 
   var query='insert into '+table_name+'(';
   
   for(var i=0;i<query_columns.length;i++){
-      // if(col[i]=='id') continue;
-
       query+=query_columns[i];
         if(i!=query_columns.length-1) query+=',';
   }
@@ -66,7 +76,6 @@ function insert_table(event){
   for(var i=0;i<query_columns.length;i++){
     query+=params[i];
        if(i!=query_columns.length-1) query+=',';
-  
   }
 
   query+=');';
@@ -77,6 +86,6 @@ function insert_table(event){
     ajax_stmt_exec(table_name,query,'assoc'),
   ).done(function(){
     select_from_table(parent_tag_str,table_name);
-});
+  });
 
 }

@@ -4,131 +4,332 @@ function create_members_input_form(parent_tag_str,table_name){
   console.log('parent tag str:'+parent_tag_str);
   console.log('table name:'+table_name);
 
-  var parent_tag=document.getElementById(parent_tag_str+'_params');
-
    $.when(
 
     ajax_stmt_exec(table_name+'_join',"select * from "+table_name+" limit 0;",'column'),
     ajax_stmt_exec(table_name,"select * from "+table_name+" limit 0;",'column'),
     ajax_stmt_exec('riyou_keitai',"select * from riyou_keitai"+" limit 0;",'column'),
     ajax_stmt_exec('riyou_keitai','select * from riyou_keitai;','assoc')
+    // ajax_stmt_exec('youbi',"select * from youbi"+" limit 0;",'column'),
+    // ajax_stmt_exec('youbi',"select * from youbi"+" limit 0;",'assoc')
 
     ).done(function(label,member_col,riyou_col,riyou_row){
       
       console.log('label:'+label);
-      console.log('member_col:'+member_col);
+      console.log('members_col:'+member_col);
       console.log('riyou_col:'+riyou_col);
+      // console.log('youbi_col:'+youbi_col);
+      // console.log('youbi_row:');
+      // console.log(youbi_row);
  
+              // 画面の更新
+    var parent_tag=document.getElementById(parent_tag_str+'_params');
 
-    // 画面の更新
     while(parent_tag.firstChild){
       parent_tag.removeChild(parent_tag.firstChild);
     }
 
-    var p=document.getElementById(parent_tag_str+'_title');
-    p.innerText='新規登録';
-  
-    var form=document.createElement('form');
+       // 利用形態の取得
+       var riyou=new Array();
+   
+       for(var j=0;j<riyou_row.length;j++){
+           for(var i=0;i<riyou_col.length;i++){
+               if(riyou_col[i]=='id') continue;
+                 riyou.push(riyou_row[j][riyou_col[i]]);
+           }
+       }
 
-    var table=document.createElement('table');
-    var thead=document.createElement('thead');
-    var tbody=document.createElement('tbody');
+       console.log('---riyou---');
+       console.log(riyou);
+ 
+        var p=document.createElement('p');
+        p.innerText='新規登録';
 
-    var tr=document.createElement('tr');
+          //   var table=document.createElement('table');
 
-    for(var i=1;i<3;i++){
-      var th=document.createElement('th');
-        th.innerText=label[i];
-        thead.appendChild(th);
+        var form=document.createElement('form');
+        form.name='form1';
 
-        var td=document.createElement('td');
-        var input=document.createElement('input');
-        input.type='text';
-        input.placeholder=label[i];
-        input.id=table_name+i;
+        form.appendChild(p);
 
-        td.appendChild(input);
-        tr.appendChild(td);
-        tbody.appendChild(tr);
+        var table=document.createElement('table');
+        var thead=document.createElement('thead');
+        var tbody=document.createElement('tbody');
 
-    }
+        var tr=document.createElement('tr');
 
-    table.appendChild(thead);
-    table.appendChild(tbody);
+        for(var i=0;i<label.length;i++){
 
-    var riyou=new Array();
+          if(label[i]=='姓'||label[i]=='名'){
 
-    for(var j=0;j<riyou_row.length;j++){
-        for(var i=0;i<riyou_col.length;i++){
-            if(i==0) continue;
-              riyou.push(riyou_row[j][riyou_col[i]]);
+            var th=document.createElement('th');
+
+            th.innerText=label[i];
+
+            thead.appendChild(th);
+
+            var td=document.createElement('td');
+            var input=document.createElement('input');
+
+            input.type='text';
+            input.placeholder=label[i];
+            input.id=parent_tag_str+i;
+
+            td.appendChild(input);
+            tr.appendChild(td);
         }
-    }
+      }
 
-    form.appendChild(table);
-    parent_tag.appendChild(form);
+      tbody.appendChild(tr);
+      table.appendChild(thead);
+      table.appendChild(tbody);
 
-    var table=document.createElement('table');
-    var thead=document.createElement('thead');
-    var tbody=document.createElement('tbody');
+      form.appendChild(table);
+      parent_tag.appendChild(form);
 
-    var tr=document.createElement('tr');
+      var p=document.createElement('p');
+      p.innerText='利用曜日';
 
-    for(var j=3;j<label.length;j++){
-      // if(j==3) continue; // 日曜日はスキップ
+      form.appendChild(p);
 
-      var th=document.createElement('th');
-      var td=document.createElement('td');
+      var table=document.createElement('table');
+      var thead=document.createElement('thead');
+      var tbody=document.createElement('tbody');
 
-      if(label[j]=='日'){
-        th.classList.add('td-hide');
-        td.classList.add('td-hide');
-      } 
+      var tr=document.createElement('tr');
 
-      if(label[j]=='土') th.classList.add('td-sat');
+      for(var i=0;i<label.length;i++){
 
-      th.innerText=label[j];
-      thead.appendChild(th);
+          if(label[i]=='id') continue;
+          if(label[i]=='姓') continue;
+          if(label[i]=='名') continue;
+          if(label[i]=='備考') continue;
 
-      var select=document.createElement('select');
-      select.id=table_name+j;
+          var th=document.createElement('th');
 
-        for(var i=0;i<riyou.length;i++){
-          if((j==label.length-1)&&((i==1)||i==3)) continue; // 土曜日の終日と午後はスキップ
+          th.innerText=label[i];
+          
+          thead.appendChild(th);
+          
+          var td=document.createElement('td');
 
-          var option=document.createElement('option');
+          if(label[i]=='土'){
+              th.classList.add('td-sat');
+              td.classList.add('td-sat');
+          }
 
-            option.innerText=riyou[i];
-            option.value=i;
+          if(label[i]=='日'){
+            th.classList.add('td-hide');
+            td.classList.add('td-hide');
+          } 
+
+          var select=document.createElement('select');
+          select.id=table_name+i;
+
+          for(var k=0;k<riyou.length;k++){
+            
+            if((label[i]=='土')&&((riyou[k]=='終日')||(riyou[k]=='午後'))) continue;
+            
+            var option=document.createElement('option');
+            
+            option.innerText=riyou[k];
+            option.value=k;
+            
+              if(label[i]=='日') {
+                  option.value=0;
+                  select.appendChild(option);
+                  break;
+              }
 
             select.appendChild(option);
            
           }
 
           td.appendChild(select);
+          tr.appendChild(td);
 
-        tr.appendChild(td);
+      }
+    
 
-        tbody.appendChild(tr);
+      tbody.appendChild(tr);
 
+      table.appendChild(thead);
+      table.appendChild(tbody);
+
+      form.appendChild(table);
+      parent_tag.appendChild(form);
+
+      var p=document.createElement('p');
+      p.innerText='備考欄';
+
+      form.appendChild(p);
+
+      for(var i=0;i<label.length;i++){
+
+        if(label[i]=='備考'){
+          var textarea=document.createElement('textarea');
+          textarea.name='bikou';
+          textarea.rows=5;
+          textarea.cols=80;
+
+          form.appendChild(textarea);
+      }
     }
 
-    var button=document.createElement("button");
+        var a=document.createElement("a");
 
-    button.innerText='新規登録する';
-    button.addEventListener('click',insert_table);
-    
-    button.col=member_col;
-    button.table_name=table_name;
-    button.prev='create_members_input_form';
-    button.parent_tag_str=parent_tag_str;
+        a.href='#'+parent_tag_str;
+        a.innerText='新規登録する';
+        a.style.display='block';
+        
+        a.addEventListener('click',insert_table);
+        
+        a.col=member_col;
+        a.label=label;
+        a.table_name=table_name;
+        a.prev='create_members_input_form';
+        a.parent_tag_str=parent_tag_str;
 
-    table.appendChild(thead);
-    table.appendChild(tbody);
-    form.appendChild(table);
-    form.appendChild(button);
-    parent_tag.appendChild(form);
+        form.appendChild(a);
+
+      parent_tag.appendChild(form);
 
   });
 
 }
+
+   
+
+  
+  //   var form=document.createElement('form');
+
+  //   var table=document.createElement('table');
+  //   var thead=document.createElement('thead');
+  //   var tbody=document.createElement('tbody');
+
+  //   var a=document.createElement("a");
+
+  //   a.href='#'+parent_tag_str;
+  //   a.innerText='新規登録する';
+  //   a.style.display='block';
+    
+  //   a.addEventListener('click',insert_table);
+    
+  //   a.col=member_col;
+  //   a.table_name=table_name;
+  //   a.prev='create_members_input_form';
+  //   a.parent_tag_str=parent_tag_str;
+
+  //   var table=document.createElement('table');
+
+  //   var tr=document.createElement('tr');
+
+  //   for(var i=1;i<label.length;i++){
+
+  //     if(label[i]=='姓'||label[i]=='名'){
+
+  //       var th=document.createElement('th');
+
+  //       th.innerText=label[i];
+
+  //       thead.appendChild(th);
+
+  //       var td=document.createElement('td');
+  //       var input=document.createElement('input');
+
+  //       input.type='text';
+  //       input.placeholder=label[i];
+  //       input.id=parent_tag_str+i;
+
+  //       td.appendChild(input);
+
+  //       tr.appendChild(td);
+
+
+  //   }
+  // }
+
+  //   tbody.appendChild(tr);
+
+  //   table.appendChild(thead);
+  //   table.appendChild(tbody);
+
+  //   form.appendChild(table);
+  //   // form.appendChild(textarea);
+  //   parent_tag.appendChild(form);
+
+
+
+
+    // var table=document.createElement('table');
+    // var thead=document.createElement('thead');
+    // var tbody=document.createElement('tbody');
+
+    // var tr=document.createElement('tr');
+
+    // for(var j=;j<label.length;j++){
+    //   // if(j==3) continue; // 日曜日はスキップ
+
+    //   var th=document.createElement('th');
+    //   var td=document.createElement('td');
+
+    //   if(label[j]=='日'){
+    //     th.classList.add('td-hide');
+    //     td.classList.add('td-hide');
+    //   } 
+
+    //   if(label[j]=='土') th.classList.add('td-sat');
+
+    //   th.innerText=label[j];
+    //   thead.appendChild(th);
+
+    //   var select=document.createElement('select');
+    //   select.id=table_name+j;
+
+    //     for(var i=0;i<riyou.length;i++){
+    //       if((j==label.length-1)&&((i==1)||i==3)) continue; // 土曜日の終日と午後はスキップ
+
+    //       var option=document.createElement('option');
+
+    //         option.innerText=riyou[i];
+    //         option.value=i;
+
+    //         select.appendChild(option);
+           
+    //       }
+
+    //       td.appendChild(select);
+
+    //     tr.appendChild(td);
+
+    //     tbody.appendChild(tr);
+
+    // }
+
+    // table.appendChild(thead);
+    // table.appendChild(tbody);
+
+    // form.appendChild(table);
+
+    // // var textarea=document.createElement('textarea');
+    // // textarea.rows=5;
+    // // textarea.cols=80;
+
+    // form.appendChild(textarea);
+
+    // // var a=document.createElement("a");
+
+    // // a.href='#'+parent_tag_str;
+    // // a.innerText='新規登録する';
+    // // a.style.display='block';
+    
+    // // a.addEventListener('click',insert_table);
+    
+    // // a.col=member_col;
+    // // a.table_name=table_name;
+    // // a.prev='create_members_input_form';
+    // // a.parent_tag_str=parent_tag_str;
+
+    // form.appendChild(a);
+
+    // parent_tag.appendChild(form);

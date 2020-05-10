@@ -85,4 +85,7 @@ function create_table(parent_tag_str,col,row,table_name){
   form.appendChild(table);
   parent_tag.appendChild(form);
 
+  // document.getElementById(parent_tag_str).style.visibility = 'visible';
+  
+
 }

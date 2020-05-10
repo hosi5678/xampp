@@ -1,6 +1,6 @@
 function create_members_update_form(event){
 
-  console.log('in create members update form:');
+  console.log('----- in create members update form: -----');
 
   parent_tag_str=event.target.parent_tag_str;
   table_name=event.target.table_name;
@@ -11,13 +11,6 @@ function create_members_update_form(event){
   console.log('table_name:'+table_name);
   console.log('id:'+id);
   console.log('prev:'+prev);
-
-  // var parent_tag=document.getElementById(parent_tag_str+'_params');
-
-
-  // while(parent_tag.firstChild){
-  //   parent_tag.removeChild(parent_tag.firstChild);
-  // }
 
   var tds=$(this).closest('tr').children();
 
@@ -38,6 +31,15 @@ function create_members_update_form(event){
 
     ).done(function(label,member_col,riyou_col,riyou_row){
 
+      console.log('in create members update form:');
+
+      console.log('label:');
+      console.log(label);
+      console.log('member_col:');
+      console.log(member_col);
+      console.log('tds_val:');
+      console.log(tds_val);
+
       var p=document.getElementById(parent_tag_str+'_title');
       p.innerText='修正';
  
@@ -48,7 +50,21 @@ function create_members_update_form(event){
       parent_tag.removeChild(parent_tag.firstChild);
     }
 
+    // riyou情報の作成
+    var riyou=new Array();
+
+    for(var j=0;j<riyou_row.length;j++){
+        for(var i=0;i<riyou_col.length;i++){
+            if(riyou_col[i]=='id') continue; // idはskip
+            riyou.push(riyou_row[j][riyou_col[i]]);
+        }
+    }
+
+    console.log('riyou is:');
+    console.log(riyou);
+    // formの作成
     var form=document.createElement('form');
+    form.name='form1';
 
     var table=document.createElement('table');
     var thead=document.createElement('thead');
@@ -56,40 +72,38 @@ function create_members_update_form(event){
 
     var tr=document.createElement('tr');
 
-    var ids=new Array();
+    var id;
 
-    for(var i=1;i<3;i++){
-      var th=document.createElement('th');
-        th.innerText=label[i];
-        thead.appendChild(th);
+    for(var i=0;i<label.length;i++){
+      
+      if(label[i]=='id'){
+        id=tds_val[i];
+        continue;
+      } 
 
-        var td=document.createElement('td');
-        var input=document.createElement('input');
-        input.type='text';
-        input.placeholder=label[i];
-        input.id=table_name+i;
+      if(label[i]=='姓'||label[i]=='名'){
+        var th=document.createElement('th');
 
-        input.value=tds_val[i];
+          th.innerText=label[i];
+          thead.appendChild(th);
+          var td=document.createElement('td');
 
-        ids.push(i);
-        td.appendChild(input);
-        tr.appendChild(td);
-        tbody.appendChild(tr);
+          var input=document.createElement('input');
+          input.type='text';
+          input.id=parent_tag_str+i;
+          input.value=tds_val[i];
 
+          td.appendChild(input);
+
+          tr.appendChild(td);
+
+      }
     }
 
+    tbody.appendChild(tr);
+    
     table.appendChild(thead);
     table.appendChild(tbody);
-
-    var riyou=new Array();
-
-    for(var j=0;j<riyou_row.length;j++){
-        for(var i=0;i<riyou_col.length;i++){
-            if(i==0) continue;
-            // console.log(riyou_row[j][riyou_col[i]]);
-            riyou.push(riyou_row[j][riyou_col[i]]);
-        }
-    }
 
     form.appendChild(table);
     parent_tag.appendChild(form);
@@ -97,62 +111,103 @@ function create_members_update_form(event){
     var table=document.createElement('table');
     var thead=document.createElement('thead');
     var tbody=document.createElement('tbody');
-
     var tr=document.createElement('tr');
 
-    for(var j=3;j<label.length;j++){
-      // if(j==3) continue; // 日曜日はスキップ
-      var th=document.createElement('th');
-      var td=document.createElement('td');
+    for(var i=0;i<label.length;i++){
+      
+        if(label[i]=='id') continue;
+        if(label[i]=='姓'||label[i]=='名') continue;
+        // if(label[i]=='日') continue;
+        if(label[i]=='備考') continue;
 
-      if(label[j]=='日'){
-        th.classList.add('td-hide');
-        td.classList.add('td-hide');
-      }
+        var th=document.createElement('th');
+        
+        if(label[i]=='土'){
+          th.classList.add('td-sat');
+        }
+        
+        th.innerText=label[i];
+        thead.appendChild(th);
+        
+        var td=document.createElement('td');
 
-      th.innerText=label[j];
-      thead.appendChild(th);
+        if(label[i]=='日'){
+          th.classList.add('td-hide');
+          td.classList.add('td-hide');
+        }
 
-      var select=document.createElement('select');
-      select.id=table_name+j;
+        var select=document.createElement('select');
+        select.id=parent_tag_str+i;
 
-        for(var i=0;i<riyou.length;i++){
-          if((j==label.length-1)&&((i==1)||i==3)) continue; // 土曜日の終日と午後はスキップ
+        for(var k=0;k<riyou.length;k++){
+          if((label[i]=='土')&&((riyou[k]=='終日')||(riyou[k]=='午後'))) continue;
 
           var option=document.createElement('option');
 
-          if(riyou[i]==tds_val[j]){
-            option.selected=true;
-            } 
+          if(label[i]=='日'){
+            if(riyou[k]=tds_val[i]){
+              option.innerText=riyou[k];
+              option.value=k;
+              select.appendChild(option);
 
-            option.innerText=riyou[i];
-            option.value=i;
+              break;
+            }
+          }
+  
+          if(riyou[k]==tds_val[i]){
+            option.selected=true;
+          }
+
+            option.innerText=riyou[k];
+            option.value=k;
 
             select.appendChild(option);
-
+  
           }
           
-        td.appendChild(select);      
-        tr.appendChild(td);
-
-        tbody.appendChild(tr);
+          td.appendChild(select);      
+          tr.appendChild(td)
 
     }
 
-    var button=document.createElement("button");
-
-    button.innerText='修正する';
-    button.addEventListener('click',update_table);
-
-    button.col=member_col;
-    button.table_name=table_name;
-    button.parent_tag_str=parent_tag_str;
-    button.id=id;
+    tbody.appendChild(tr);
 
     table.appendChild(thead);
     table.appendChild(tbody);
+
     form.appendChild(table);
-    form.appendChild(button);
+    parent_tag.appendChild(form);
+
+    for(var i=0;i<label.length;i++){
+      if(label[i]=='備考'){
+          var textarea=document.createElement('textarea');
+          textarea.name='bikou';
+          textarea.rows=5;
+          textarea.cols=80;
+
+          textarea.value=tds_val[i];
+      }
+    }
+
+    form.appendChild(textarea);
+    parent_tag.appendChild(form);
+
+    var a=document.createElement("a");
+
+    a.style.display='block';
+
+    a.href='#'+parent_tag_str;
+    a.innerText='修正する';
+    a.addEventListener('click',update_table);
+
+    a.table_name=table_name;
+    a.parent_tag_str=parent_tag_str;
+    a.col=member_col;
+    a.label=label;
+    a.prev='create_members_input_form';
+    a.id=id;
+
+    form.appendChild(a);
     parent_tag.appendChild(form);
 
   });
