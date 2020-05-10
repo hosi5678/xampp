@@ -3,8 +3,10 @@ function create_table(parent_tag_str,col,row,table_name){
   console.log('----- in create table -----');
   console.log('parent_tag_str:'+parent_tag_str);
   console.log('table_name:'+table_name);
-  console.log('col:'+col);
-  console.log('row:'+row);
+  console.log('col:');
+  console.log(col);
+  console.log('row:');
+  console.log(row);
 
   var parent_tag=document.getElementById(parent_tag_str+'_results');
 
@@ -16,6 +18,7 @@ function create_table(parent_tag_str,col,row,table_name){
   form.name='form1';
 
   var table=document.createElement('table');
+  table.classList.add('table-nth-gray');
 
   var thead=document.createElement('thead');
 
