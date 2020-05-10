@@ -18,9 +18,6 @@ function create_members_input_form(parent_tag_str,table_name){
       console.log('label:'+label);
       console.log('members_col:'+member_col);
       console.log('riyou_col:'+riyou_col);
-      // console.log('youbi_col:'+youbi_col);
-      // console.log('youbi_row:');
-      // console.log(youbi_row);
  
               // 画面の更新
     var parent_tag=document.getElementById(parent_tag_str+'_params');
@@ -44,8 +41,6 @@ function create_members_input_form(parent_tag_str,table_name){
  
         var p=document.createElement('p');
         p.innerText='新規登録';
-
-          //   var table=document.createElement('table');
 
         var form=document.createElement('form');
         form.name='form1';
