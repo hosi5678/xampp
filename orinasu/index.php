@@ -100,14 +100,14 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
 	<div id="calendar"></div>
 
 	<a id='products_mark' href='#' onclick='products_func()'>販売記録の登録・削除▼</a>
-	<div id="products" class='onload-hidden'>
+	<div id="products">
 		<p id='products_title'></p>
 		<div id="products_params"></div>
 		<div id="products_results"></div>
 	</div>
 
 	<a id='members_mark' href='#' onclick='members_func()'>利用者の登録・削除▼</a>
-	<div id="members" class='onload-hidden'>
+	<div id="members">
 		<p id='members_title'></p>
 		<div id="members_params"></div>
 		<div id="members_results"></div>
@@ -118,10 +118,6 @@ if(isset($_POST["logout"])|!empty($_POST["logout"])){
 		// ajax_create_calendar("calendar");
 		document.getElementById('members').style.visibility='visible';
 		members_func();
-
-
-		// window.addEventListener('load',test(event));
-		// event.prev='index';
 
 	</script>
 
