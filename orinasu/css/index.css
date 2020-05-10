@@ -26,6 +26,7 @@ a {
 	font-size:20px;
 	text-decoration:none;
 	color:steelblue;
+	width:160px;
 }
 
 a:hover {
@@ -36,8 +37,12 @@ form {
 	margin-bottom:30px;
 }
 
-#message {
+/* #message {
 	font-size:20px;
+} */
+
+.message {
+	color:salmon;
 }
 
 /* for high chart test */
@@ -85,7 +90,7 @@ td {
 }
 
 .td-delete:hover{
-	background-color: pink;
+	background-color: #faa;
 	cursor: pointer;
 }
 
@@ -103,3 +108,10 @@ td {
 	transition: 500ms;
 }
 
+.table-nth-gray tr:nth-child(even) {
+	background: #eee;
+}
+
+.table-nth-gray tr:hover {
+	background:#fdc;
+}
