@@ -110,16 +110,94 @@ function create_products_input_form(parent_tag_str,table_name){
       form.appendChild(p);
 
       // カテゴリ-,tax,ラウンドのセレクトをまず配置する
+      var table=document.createElement('table');
+      var thead=document.createElement('thead');
+      var tbody=document.createElement('tbody');
+
+      var tr=document.createElement('tr');
 
       for(var i=0;i<label.length;i++){
-        // if(label[i]=='カテゴリー'||label[i]=='消費税'||label[i]=='')
+
+        var th=document.createElement('th');
+
+        if(label[i]=='カテゴリー'||label[i]=='消費税'||label[i]=='四捨五入'){
+
+          th.innerText=label[i];
+          
+          thead.appendChild(th);
+          
+          if(label[i]=='カテゴリー'){
+            var td=document.createElement('td');
+            var select=document.createElement('select');
+            select.id=table_name+i;
+
+            for(k=0;k<category.length;k++){
+              var option=document.createElement('option');
+              option.value=k;
+              option.innerText=category[k]
+              
+              select.appendChild(option);
+            }
+
+            td.appendChild(select);
+            tr.appendChild(td);
+
+          }
+
+          if(label[i]=='消費税'){
+            var td=document.createElement('td');
+            var select=document.createElement('select');
+            select.id=table_name+i;
+
+            for(k=0;k<tax.length;k++){
+              var option=document.createElement('option');
+              option.value=k;
+              option.innerText=tax[k]+'%'
+              
+              select.appendChild(option);
+            }
+            
+            td.appendChild(select);
+            tr.appendChild(td);
+
+          }
+
+          if(label[i]=='四捨五入'){
+            var td=document.createElement('td');
+            var select=document.createElement('select');
+            select.id=table_name+i;
+
+            for(k=0;k<round.length;k++){
+              var option=document.createElement('option');
+              option.value=k;
+              option.innerText=round[k];
+              
+              select.appendChild(option);
+            }
+            
+            td.appendChild(select);
+            tr.appendChild(td);
+
+          }
+
+        }
 
       }
 
-    //   table.appendChild(thead);
-    //   table.appendChild(tbody);
-    //   form.appendChild(table);
-    //   form.appendChild(button);
+      tbody.appendChild(tr);
+      table.appendChild(thead);
+      table.appendChild(tbody);
+
+      form.appendChild(table);
+
+      var table=document.createElement('table');
+      var thead=document.createElement('thead');
+      var tbody=document.createElement('tbody');
+
+      for(var i=0;i<label.length;i++){
+        
+      }
+
       parent_tag.appendChild(form);
   
     });

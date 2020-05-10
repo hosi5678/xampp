@@ -143,7 +143,6 @@ function create_members_input_form(parent_tag_str,table_name){
 
       }
     
-
       tbody.appendChild(tr);
 
       table.appendChild(thead);
