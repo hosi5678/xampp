@@ -50,6 +50,7 @@ function create_table(parent_tag_str,col,row,table_name){
 
           if(col[i]=='id') td.classList.add('td-hide');
           if(col[i]=='日') td.classList.add('td-hide');
+          if(col[i]=='備考') td.classList.add('td-bikou');
 
           td.innerText=row[j][col[i]];
           tr.appendChild(td);
@@ -73,10 +74,10 @@ function create_table(parent_tag_str,col,row,table_name){
         td.classList.add('td-delete');
 
         td.addEventListener('click',delete_table);
-        td.id=row[j][col[0]];
         td.table_name=table_name;
         td.parent_tag_str=parent_tag_str;
         td.prev='create_table';
+        td.col=col;
 
         tr.appendChild(td);
 
