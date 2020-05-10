@@ -64,10 +64,12 @@ function insert_table(event){
   }
 
   console.log('bikou:');
-  console.log(document.forms["form1"].elements["bikou"].value);
+  // console.log(document.forms["form1"].elements["bikou"].value);
 
   var bikou=document.forms["form1"].elements["bikou"].value;
   bikou=reject_str(bikou);
+
+  console.log(bikou);
 
   if(bikou===1){
     return false;
