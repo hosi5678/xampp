@@ -98,6 +98,7 @@ function insert_table(event){
   $.when(
     ajax_stmt_exec(table_name,query,'assoc'),
   ).done(function(){
+    create_members_input_form(parent_tag_str,table_name);
     select_from_table(parent_tag_str,table_name);
   });
 

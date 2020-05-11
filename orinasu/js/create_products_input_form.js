@@ -54,7 +54,6 @@ function create_products_input_form(parent_tag_str,table_name){
         console.log('round type row is below:');
         console.log(round_row);
 
-
         // 画面の更新
         var parent_tag=document.getElementById(parent_tag_str+'_params');
 
@@ -155,6 +154,12 @@ function create_products_input_form(parent_tag_str,table_name){
           var select=document.createElement('select');
           select.id=table_name+i;
 
+          select.addEventListener('change',product_price_calc);
+          select.label=label;
+          select.parent_tag_str=parent_tag_str;
+          select.tax=tax;
+          select.round=round;
+
           for(k=0;k<tax.length;k++){
             var option=document.createElement('option');
             option.value=k;
@@ -168,11 +173,11 @@ function create_products_input_form(parent_tag_str,table_name){
 
           }
 
-          if(label[i]=='四捨五入'){
+          if(label[i]=='端数処理'){
   
             var th=document.createElement('th');
   
-            th.innerText='端数処理';//label[i];
+            th.innerText=label[i];
             thead.appendChild(th);
   
             var td=document.createElement('td');
@@ -219,6 +224,18 @@ function create_products_input_form(parent_tag_str,table_name){
             tr.appendChild(td);
           }
 
+          if(label[i]=='販売日'){
+            var th=document.createElement('th');
+            th.innerText=label[i];
+            thead.appendChild(th);
+            var td=document.createElement('td');
+            var input=document.createElement('input');
+            input.type='date';
+            input.id=parent_tag_str+i;
+            td.appendChild(input);
+            tr.appendChild(td);
+          }
+
           if(label[i]=='販売場所'){
             var th=document.createElement('th');
             th.innerText=label[i];
@@ -238,18 +255,6 @@ function create_products_input_form(parent_tag_str,table_name){
             var td=document.createElement('td');
             var input=document.createElement('input');
             input.type='text'
-            input.id=parent_tag_str+i;
-            td.appendChild(input);
-            tr.appendChild(td);
-          }
-
-          if(label[i]=='販売日'){
-            var th=document.createElement('th');
-            th.innerText=label[i];
-            thead.appendChild(th);
-            var td=document.createElement('td');
-            var input=document.createElement('input');
-            input.type='date';
             input.id=parent_tag_str+i;
             td.appendChild(input);
             tr.appendChild(td);
@@ -308,7 +313,6 @@ function create_products_input_form(parent_tag_str,table_name){
           var td=document.createElement('td');
           var input=document.createElement('input');
           input.type='number';
-          // input.min="0";
           input.id=parent_tag_str+i;
           td.appendChild(input);
           tr.appendChild(td);
@@ -326,15 +330,21 @@ function create_products_input_form(parent_tag_str,table_name){
       var thead=document.createElement('thead');
       var tbody=document.createElement('tbody');
 
-      var th=document.createElement('th');
 
       var tr=document.createElement('tr');
       var td=document.createElement('td');
 
-      var input=document.createElement('input');
-      input.type='number';
-
-      th.innerText='計算額(円)';
+      for(var i=0;i<label.length;i++){
+        if(label[i]=='計算額'){
+          var th=document.createElement('th');
+          var input=document.createElement('input');
+          input.type='number';
+          input.id=parent_tag_str+i;
+          input.name='calc';
+ 
+          th.innerText='計算額(円)';
+        }
+      }
 
       td.appendChild(input);
       tr.appendChild(td);

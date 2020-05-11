@@ -123,3 +123,11 @@ td {
 .table-nth-gray tr:hover {
 	background:#fdc;
 }
+
+.delete-message {
+	font-size: 20px;
+}
+
+.delete-alert {
+	color:red;
+}

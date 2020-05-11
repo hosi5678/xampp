@@ -70,7 +70,7 @@ function create_table(parent_tag_str,col,row,table_name){
 
         td.classList.add('td-delete');
 
-        td.addEventListener('click',delete_table);
+        td.addEventListener('click',create_members_delete_confirm);
         td.table_name=table_name;
         td.parent_tag_str=parent_tag_str;
         td.prev='create_table';

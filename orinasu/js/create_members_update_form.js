@@ -32,7 +32,7 @@ function create_members_update_form(event){
 
     ).done(function(label,member_col,riyou_col,riyou_row){
 
-      console.log('in create members update form:');
+      console.log('----- in create members update form:------');
 
       console.log('label:');
       console.log(label);
@@ -40,16 +40,25 @@ function create_members_update_form(event){
       console.log(member_col);
       console.log('tds_val:');
       console.log(tds_val);
+      console.log('parent_tag_str:'+parent_tag_str);
 
-      var p=document.getElementById(parent_tag_str+'_title');
-      p.innerText='メンバー情報の修正';
- 
+      // var parent_tag=document.getElementById(parent_tag_str+'_params');
       var parent_tag=document.getElementById(parent_tag_str+'_params');
 
-    // 画面の更新
-    while(parent_tag.firstChild){
-      parent_tag.removeChild(parent_tag.firstChild);
-    }
+      // 画面の更新
+      while(parent_tag.firstChild){
+        parent_tag.removeChild(parent_tag.firstChild);
+      }
+
+      var p=document.createElement('p');
+      p.innerText='メンバー情報の修正';
+  
+      parent_tag.appendChild(p);
+       // 画面の更新
+      //  while(parent_tag.firstChild){
+      //   parent_tag.removeChild(parent_tag.firstChild);
+      // }
+      // parent_tag.appendChild(p);
 
     // riyou情報の作成
     var riyou=new Array();
@@ -179,7 +188,7 @@ function create_members_update_form(event){
     form.appendChild(table);
     parent_tag.appendChild(form);
 
-    document.createElement('p');
+    var p=document.createElement('p');
     p.innerText='備考欄';
 
     form.appendChild(p);

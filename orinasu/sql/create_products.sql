@@ -29,6 +29,7 @@ insert into category(name) values('バッグ');
 insert into category(name) values('ポーチ');
 insert into category(name) values('お財布');
 insert into category(name) values('マスク');
+insert into category(name) values('アクセサリ');
 
 select * from category;
 
@@ -63,17 +64,20 @@ drop view if exists products_join;
 create view products_join as
   select 
         products.id as id,
+
         category.name as 'カテゴリー',
+        tax.tax as '消費税',
+        products.round_type as '端数処理',
+
         products.product_name as '商品名',
+        products.sales_date as '販売日',
         products.place as '販売場所',
     		products.customer as '顧客名',
+
         products.tanka as '商品単価',
-        tax.tax as '消費税',
-        products.round_type as '四捨五入',
-        products.sales_date as '販売日',
         products.kosuu as '販売個数',
         products.tyousei as '調整額',
-        products.uriage as '売上',
+        products.uriage as '計算額',
         products.bikou as '備考'
 
         from products

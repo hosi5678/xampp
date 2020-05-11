@@ -1,5 +1,21 @@
 ・membersに備考欄が必要
 ・ajax phpに操作ログが必要
 ・tableのレコードは色を反転させる。
+・delete時に確認させる。
 
-・formの名前(name)が重複すると機能しない。
+/js
+要素の取得は番号ではなく、名前で行う。
+insertとupdateは別ファイルになる。でないと、空欄がベルトコンベアに流れていく。
+form nameは別にしないと、機能しない。
+ページ遷移すると配列は渡せない。
+
+/php
+php ajaxにて
+・echo は2回しない。
+・insert,updateした後は必ずselectする。
+
+/jquery
+ var tds=$(this).closest('tr').children();
+ で列のtdを取得する。
+ 個別の値はtds.length,tds[i].innerTextで取得できる。
+

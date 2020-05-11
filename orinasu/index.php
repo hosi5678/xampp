@@ -17,20 +17,6 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 // アクセスログ(簡易版)テーブルに書き込み
  insert_access_log($ip_address_ext,$flag);
 
-// ログアウトの処理
-// if(isset($_POST["logout"])|!empty($_POST["logout"])){
-
-// 	if(escape_string($_POST["logout"])==1){
-// 		$msg="ログアウトしました。";
-// 		unset($_POST["id"]);
-// 		unset($_POST["logout"]);
-// 		session_destroy();
-// 		$_SESSION=array();
-// 	}
-// }else{
-// 	$msg="";
-// }
-
 ?>
 
 <!doctype html>
@@ -60,6 +46,7 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 	<script src="./js/create_members_input_form.js"></script>
 	<script src="./js/create_products_input_form.js"></script>
 	<script src="./js/create_members_update_form.js"></script>
+	<script src="./js/create_members_delete_confirm.js"></script>
 	<script src="./js/create_table.js"></script>
 	<script src="./js/update_table.js"></script>
 	<script src="./js/delete_table.js"></script>
@@ -67,6 +54,7 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 	<script src="./js/reject_str.js"></script>
 	<script src="./js/members_func.js"></script>
 	<script src="./js/products_func.js"></script>
+	<script src="./js/product_price_calc.js"></script>
 	<script src="./js/test.js"></script>
 
 </head>
@@ -117,6 +105,10 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 
 
 	</script>
+
+<noscript>
+	<p>JavaScriptを有効にしてください。</p>
+</noscript>
 
 </div>
 
