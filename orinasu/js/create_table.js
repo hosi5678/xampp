@@ -14,9 +14,6 @@ function create_table(parent_tag_str,col,row,table_name){
     parent_tag.removeChild(parent_tag.firstChild);
   }
 
-  var form=document.createElement('form');
-  form.name='form1';
-
   var table=document.createElement('table');
   table.classList.add('table-nth-gray');
 
@@ -86,8 +83,7 @@ function create_table(parent_tag_str,col,row,table_name){
 
   table.appendChild(tbody);
 
-  form.appendChild(table);
-  parent_tag.appendChild(form);
+  parent_tag.appendChild(table);
 
   // document.getElementById(parent_tag_str).style.visibility = 'visible';
   

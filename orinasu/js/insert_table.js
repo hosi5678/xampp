@@ -25,6 +25,7 @@ function insert_table(event){
   console.log('query columns length:'+query_columns.length);
 
   var message=document.getElementById(parent_tag_str+'_message');
+
   while(message.firstChild){
     message.removeChild(message.firstChild);
   }
@@ -64,9 +65,8 @@ function insert_table(event){
   }
 
   console.log('bikou:');
-  // console.log(document.forms["form1"].elements["bikou"].value);
 
-  var bikou=document.forms["form1"].elements["bikou"].value;
+  var bikou=document.form_members_insert.bikou.value;
   bikou=reject_str(bikou);
 
   console.log(bikou);

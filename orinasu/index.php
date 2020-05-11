@@ -77,18 +77,6 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 	<div id="title">
 		<h1>おりなすデータベース</h1>
 	</div>
-
-	<!-- <form action="./menu.php" method="post" name="send1">	
-		<input type="hidden" name="id" value="1">
-		<a href="javascript:send1.submit()">ログアウト</a>
-	</form>
-
-	<div>
-	    <div id="container"></div>
-		<p id="message"><?php echo $msg;?></p>
-  </div> -->
-
-<!--  need for members registration	 -->
 	
 	<div id="calendar"></div>
 

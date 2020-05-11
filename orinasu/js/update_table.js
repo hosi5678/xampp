@@ -51,7 +51,7 @@ function update_table(event){
     // 備考の取り出しは別になる。
     }else if(label[i]=='備考'){
 
-      var str=document.forms["form1"].elements["bikou"].value;
+      var str=document.form_members_update.bikou.value;
 
       str=reject_str(str);
 

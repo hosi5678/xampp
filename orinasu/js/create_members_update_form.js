@@ -65,7 +65,7 @@ function create_members_update_form(event){
     console.log(riyou);
     // formの作成
     var form=document.createElement('form');
-    form.name='form1';
+    form.name='form_members_update';
 
     var table=document.createElement('table');
     var thead=document.createElement('thead');

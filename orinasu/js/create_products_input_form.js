@@ -105,7 +105,7 @@ function create_products_input_form(parent_tag_str,table_name){
       p.innerText='商品売上の登録';
 
       var form=document.createElement('form');
-      form.name='form1';
+      form.name='form_products_insert';
 
       form.appendChild(p);
 
@@ -120,53 +120,65 @@ function create_products_input_form(parent_tag_str,table_name){
 
         var th=document.createElement('th');
 
-        if(label[i]=='カテゴリー'||label[i]=='消費税'||label[i]=='四捨五入'){
+        if(label[i]=='カテゴリー'){
+
+          var th=document.createElement('th');
 
           th.innerText=label[i];
-          
           thead.appendChild(th);
-          
-          if(label[i]=='カテゴリー'){
-            var td=document.createElement('td');
-            var select=document.createElement('select');
-            select.id=table_name+i;
 
-            for(k=0;k<category.length;k++){
-              var option=document.createElement('option');
-              option.value=k;
-              option.innerText=category[k]
-              
-              select.appendChild(option);
-            }
+          var td=document.createElement('td');
+          var select=document.createElement('select');
+          select.id=table_name+i;
 
-            td.appendChild(select);
-            tr.appendChild(td);
-
+          for(k=0;k<category.length;k++){
+            var option=document.createElement('option');
+            option.value=k;
+            option.innerText=category[k]
+            
+            select.appendChild(option);
           }
 
-          if(label[i]=='消費税'){
-            var td=document.createElement('td');
-            var select=document.createElement('select');
-            select.id=table_name+i;
+          td.appendChild(select);
+          tr.appendChild(td);
 
-            for(k=0;k<tax.length;k++){
-              var option=document.createElement('option');
-              option.value=k;
-              option.innerText=tax[k]+'%'
-              
-              select.appendChild(option);
-            }
+        }
+
+        if(label[i]=='消費税'){
+
+          var th=document.createElement('th');
+
+          th.innerText=label[i];
+          thead.appendChild(th);
+
+          var td=document.createElement('td');
+          var select=document.createElement('select');
+          select.id=table_name+i;
+
+          for(k=0;k<tax.length;k++){
+            var option=document.createElement('option');
+            option.value=k;
+            option.innerText=tax[k]+'%'
             
-            td.appendChild(select);
-            tr.appendChild(td);
+            select.appendChild(option);
+          }
+          
+          td.appendChild(select);
+          tr.appendChild(td);
 
           }
 
           if(label[i]=='四捨五入'){
+  
+            var th=document.createElement('th');
+  
+            th.innerText=label[i];
+            thead.appendChild(th);
+  
             var td=document.createElement('td');
             var select=document.createElement('select');
             select.id=table_name+i;
-
+  
             for(k=0;k<round.length;k++){
               var option=document.createElement('option');
               option.value=k;
@@ -177,8 +189,6 @@ function create_products_input_form(parent_tag_str,table_name){
             
             td.appendChild(select);
             tr.appendChild(td);
-
-          }
 
         }
 
@@ -194,12 +204,178 @@ function create_products_input_form(parent_tag_str,table_name){
       var thead=document.createElement('thead');
       var tbody=document.createElement('tbody');
 
+      var tr=document.createElement('tr');
+
       for(var i=0;i<label.length;i++){
-        
+          if(label[i]=='商品名'){
+            var th=document.createElement('th');
+            th.innerText=label[i];
+            thead.appendChild(th);
+            var td=document.createElement('td');
+            var input=document.createElement('input');
+            input.type='text';
+            input.id=parent_tag_str+i;
+            td.appendChild(input);
+            tr.appendChild(td);
+          }
+
+          if(label[i]=='販売場所'){
+            var th=document.createElement('th');
+            th.innerText=label[i];
+            thead.appendChild(th);
+            var td=document.createElement('td');
+            var input=document.createElement('input');
+            input.type='text';
+            input.id=parent_tag_str+i;
+            td.appendChild(input);
+            tr.appendChild(td);
+          }
+
+          if(label[i]=='顧客名'){
+            var th=document.createElement('th');
+            th.innerText=label[i];
+            thead.appendChild(th);
+            var td=document.createElement('td');
+            var input=document.createElement('input');
+            input.type='text'
+            input.id=parent_tag_str+i;
+            td.appendChild(input);
+            tr.appendChild(td);
+          }
+
+          if(label[i]=='販売日'){
+            var th=document.createElement('th');
+            th.innerText=label[i];
+            thead.appendChild(th);
+            var td=document.createElement('td');
+            var input=document.createElement('input');
+            input.type='date';
+            input.id=parent_tag_str+i;
+            td.appendChild(input);
+            tr.appendChild(td);
+          }
+
       }
 
+      tbody.appendChild(tr);
+      table.appendChild(thead);
+      table.appendChild(tbody);
+
+      form.appendChild(table);
+
       parent_tag.appendChild(form);
+
+      var table=document.createElement('table');
+      var thead=document.createElement('thead');
+      var tbody=document.createElement('tbody');
+
+      var tr=document.createElement('tr');
+
+      for(var i=0;i<label.length;i++){
+        if(label[i]=='商品単価'){
+          var th=document.createElement('th');
+          th.innerText=label[i]+'(円)';
+          thead.appendChild(th);
+
+          var td=document.createElement('td');
+          var input=document.createElement('input');
+          input.type='number';
+          input.min="0";
+          input.id=parent_tag_str+i;
+          td.appendChild(input);
+          tr.appendChild(td);
+        }
+
+        if(label[i]=='販売個数'){
+          var th=document.createElement('th');
+          th.innerText=label[i]+'(個)';
+          thead.appendChild(th);
+
+          var td=document.createElement('td');
+          var input=document.createElement('input');
+          input.type='number';
+          input.min="0";
+          input.id=parent_tag_str+i;
+          td.appendChild(input);
+          tr.appendChild(td);
+        }
+
+        if(label[i]=='調整額'){
+          var th=document.createElement('th');
+          th.innerText=label[i]+'(±円)';
+          thead.appendChild(th);
+
+          var td=document.createElement('td');
+          var input=document.createElement('input');
+          input.type='number';
+          // input.min="0";
+          input.id=parent_tag_str+i;
+          td.appendChild(input);
+          tr.appendChild(td);
+        }
+      
+      }
+
+      tbody.appendChild(tr);
+      table.appendChild(thead);
+      table.appendChild(tbody);
+
+      form.appendChild(table);
+
+      var table=document.createElement('table');
+      var thead=document.createElement('thead');
+      var tbody=document.createElement('tbody');
+
+      var th=document.createElement('th');
+
+      var tr=document.createElement('tr');
+      var td=document.createElement('td');
+
+      var input=document.createElement('input');
+      input.type='number';
+
+      th.innerText='計算額(円)';
+
+      td.appendChild(input);
+      tr.appendChild(td);
+      
+      thead.appendChild(th);
+      tbody.appendChild(tr);
+
+      table.appendChild(thead);
+      table.appendChild(tbody);
+
+      form.appendChild(table);
+      parent_tag.appendChild(form);
+
+      for(var i=0;i<label.length;i++){
+        if(label[i]=='備考'){
+          document.createElement('p');
+          p.innerText='備考欄';
+      
+          form.appendChild(p);
+
+          var textarea=document.createElement('textarea');
+          textarea.name='bikou';
+          textarea.rows=5;
+          textarea.cols=80;
+
+          form.appendChild(textarea);
+        }
+      }
   
+      parent_tag.appendChild(form);
+
+      var a=document.createElement("a");
+
+      a.href='#'+parent_tag_str;
+      a.innerText='売り上げの新規登録';
+      a.style.display='block';
+
+      form.appendChild(a);
+
+      parent_tag.appendChild(form);
+
     });
   
   }
