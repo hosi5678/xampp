@@ -58,7 +58,7 @@ function create_table(parent_tag_str,col,row,table_name){
         td.classList.add('td-mod');
 
         td.addEventListener('click',create_members_update_form);
-        td.id=row[j][col[0]];
+        // td.id=row[j][col[0]];
         td.parent_tag_str=parent_tag_str;
         td.table_name=table_name;
         td.prev='create_table';

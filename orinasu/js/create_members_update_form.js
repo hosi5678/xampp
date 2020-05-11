@@ -4,12 +4,12 @@ function create_members_update_form(event){
 
   parent_tag_str=event.target.parent_tag_str;
   table_name=event.target.table_name;
-  id=event.target.id;
+  // id=event.target.id;
   prev=event.target.prev;
 
   console.log('parent tag str:'+parent_tag_str);
   console.log('table_name:'+table_name);
-  console.log('id:'+id);
+  // console.log('id:'+id);
   console.log('prev:'+prev);
 
   var tds=$(this).closest('tr').children();

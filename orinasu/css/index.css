@@ -1,7 +1,6 @@
 * {
 	margin:0px;
 	padding:0px;
-
 }	
 
 body {
@@ -37,18 +36,10 @@ form {
 	margin-bottom:30px;
 }
 
-/* #message {
-	font-size:20px;
-} */
-
 .message {
 	color:salmon;
 }
 
-/* for high chart test */
-/* #container {
-
-} */
 input {
 	font-size: 20px;
 	border:none;
@@ -85,7 +76,6 @@ td {
 .td-delete{
 	width:50px;
 	cursor:pointer;
-	/* background-color: pink; */
 }
 
 .td-mod:hover{
@@ -117,11 +107,11 @@ td {
 }
 
 .table-nth-gray tr:nth-child(even) {
-	background: #eee;
+	background-color: #eee;
 }
 
 .table-nth-gray tr:hover {
-	background:#fdc;
+	background-color:#fdc;
 }
 
 .delete-message {
@@ -130,4 +120,28 @@ td {
 
 .delete-alert {
 	color:red;
+}
+
+.a-cancel {
+	width:auto;
+	margin-right: 100px;
+}
+
+.a-cancel:hover {
+	background-color:lightgreen;
+	cursor: pointer;
+}
+
+.a-delete {
+	width:auto;
+}
+
+.a-delete:hover{
+	background-color:lightcoral;
+	cursor: pointer;
+}
+
+.a-back:hover{
+	background-color: aquamarine;
+	cursor: pointer;
 }

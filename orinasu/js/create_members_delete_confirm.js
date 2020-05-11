@@ -65,6 +65,7 @@ function create_members_delete_confirm(event){
 
   a.innerText='キャンセルする';
   a.style.display='inline-block';
+  a.classList.add('a-cancel');
   a.table_name=table_name;
   a.parent_tag_str=parent_tag_str;
 
@@ -84,7 +85,7 @@ function create_members_delete_confirm(event){
 
   a.addEventListener('click',delete_table);
   a.style.display='inline-block';
-  a.style.marginRight='100px';
+  a.classList.add('a-delete');
   a.id=id;
   a.table_name=table_name;
   a.prev='create_members_delete_confirm';
