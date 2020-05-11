@@ -172,7 +172,7 @@ function create_products_input_form(parent_tag_str,table_name){
   
             var th=document.createElement('th');
   
-            th.innerText=label[i];
+            th.innerText='端数処理';//label[i];
             thead.appendChild(th);
   
             var td=document.createElement('td');
