@@ -5,16 +5,20 @@ drop table if exists products;
 create table products(
   id int unsigned not NULL  AUTO_INCREMENT PRIMARY KEY ,
   category tinyint ,
-  product_name varchar(80),
-  customer varchar(50),
-  place varchar(180),
-  tanka int UNSIGNED ,
   tax tinyint UNSIGNED ,
   round_type tinyint UNSIGNED ,
-  sales_date datetime,
+
+  product_name varchar(80),
+  sales_date date,
+
+  place varchar(180),
+  customer varchar(50),
+ 
+  tanka int UNSIGNED ,
   kosuu int UNSIGNED ,
   tyousei int,
   uriage int,
+  
   bikou text
 );
 

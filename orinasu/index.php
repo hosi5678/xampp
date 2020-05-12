@@ -71,6 +71,7 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 	<a id='products_mark' href='#' onclick='products_func()'>販売記録の登録・削除▼</a>
 	<div id="products">
 		<p id='products_title'></p>
+		<div id='products_message'></div>
 		<div id="products_params"></div>
 		<div id="products_results"></div>
 	</div>

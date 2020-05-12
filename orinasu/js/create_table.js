@@ -14,6 +14,11 @@ function create_table(parent_tag_str,col,row,table_name){
     parent_tag.removeChild(parent_tag.firstChild);
   }
 
+  var p=document.createElement('p');
+  p.innerText='テーブル一覧';
+
+  parent_tag.appendChild(p);
+
   var table=document.createElement('table');
   table.classList.add('table-nth-gray');
 

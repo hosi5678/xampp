@@ -66,6 +66,10 @@ th {
 	color:rgb(70, 70, 70);
 }
 
+.th-calc {
+	width:auto;
+}
+
 td {
 	border: 1px solid black;
 	padding: 3px;

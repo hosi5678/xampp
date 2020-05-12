@@ -11,6 +11,8 @@ function insert_table(event){
   console.log('prev:'+prev);
   console.log('parent_tag_str:'+parent_tag_str);
   console.log('col:'+col); // 10
+  console.log('label is:');
+  console.log(label);
 
   var params=new Array();
 
@@ -30,13 +32,23 @@ function insert_table(event){
     message.removeChild(message.firstChild);
   }
 
-  for(var i=0;i<col.length;i++){
+  var str;
 
-    if((col[i]=='id')||(col[i]=='bikou')) continue;
+  for(var i=0;i<label.length;i++){
 
-    if((col[i]=='myouji')||(col[i]=='namae')){
+    if((label[i]=='id')||(label[i]=='備考')) continue;
 
-      var str=document.getElementById('members'+i).value;
+    if(
+          (label[i]=='姓')||
+          (label[i]=='名')||
+          (label[i]=='商品名')||
+          (label[i]=='顧客名')||
+          (label[i]=='販売場所')||
+          (label[i]=='販売日')
+       
+       ){
+
+        str=document.getElementById(parent_tag_str+i).value;
 
       // 悪意がある場合
       str=reject_str(str);
@@ -58,15 +70,20 @@ function insert_table(event){
       params.push('"'+str+'"');
 
     }else{
-      var str=document.getElementById('members'+i).value;
+      var str=document.getElementById(parent_tag_str+i).value;
       params.push(str);
     }
 
   }
 
-  console.log('bikou:');
+  var bikou;
 
-  var bikou=document.form_members_insert.bikou.value;
+  if(table_name=='members'){
+    bikou=document.form_members_insert.bikou.value;
+  }else if(table_name='products'){
+    bikou=document.form_products_insert.bikou.value;
+  }
+
   bikou=reject_str(bikou);
 
   console.log(bikou);
@@ -76,6 +93,9 @@ function insert_table(event){
   }
 
   params.push('"'+bikou+'"');
+
+  console.log('params are:');
+  console.log(params);
 
   var query='insert into '+table_name+'(';
   
@@ -98,7 +118,13 @@ function insert_table(event){
   $.when(
     ajax_stmt_exec(table_name,query,'assoc'),
   ).done(function(){
-    create_members_input_form(parent_tag_str,table_name);
+
+    if(table_name=='members'){
+      create_members_input_form(parent_tag_str,table_name);
+    }else if(table_name=='products'){
+      create_products_input_form(parent_tag_str,table_name);
+    }
+
     select_from_table(parent_tag_str,table_name);
   });
 

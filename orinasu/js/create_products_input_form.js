@@ -17,13 +17,6 @@ function create_products_input_form(parent_tag_str,table_name){
       ajax_stmt_exec('tax',"select * from "+'tax'+";",'assoc'),
       ajax_stmt_exec('category',"select * from "+'category'+";",'assoc'),
       ajax_stmt_exec('round_type',"select * from "+'round_type'+";",'assoc'),
-
-
-
-    //   ajax_stmt_exec('ri',"select * from "+table_name+" limit 0;",'column'),
-    //   ajax_stmt_exec('riyou_keitai','select * from riyou_keitai;','assoc')
-    //   ajax_stmt_exec('riyou_keitai',"select * from "+table_name+" limit 0;",'column'),
-    //   ajax_stmt_exec('riyou_keitai','select * from riyou_keitai;','assoc')
   
       ).done(function(label,products_col,tax_col,category_col,round_col,tax_row,category_row,round_row){
 
@@ -183,6 +176,12 @@ function create_products_input_form(parent_tag_str,table_name){
             var td=document.createElement('td');
             var select=document.createElement('select');
             select.id=table_name+i;
+
+            select.addEventListener('change',product_price_calc);
+            select.label=label;
+            select.parent_tag_str=parent_tag_str;
+            select.tax=tax;
+            select.round=round;
   
             for(k=0;k<round.length;k++){
               var option=document.createElement('option');
@@ -277,6 +276,7 @@ function create_products_input_form(parent_tag_str,table_name){
       var tr=document.createElement('tr');
 
       for(var i=0;i<label.length;i++){
+
         if(label[i]=='商品単価'){
           var th=document.createElement('th');
           th.innerText=label[i]+'(円)';
@@ -287,6 +287,14 @@ function create_products_input_form(parent_tag_str,table_name){
           input.type='number';
           input.min="0";
           input.id=parent_tag_str+i;
+          input.value=0;
+
+          input.addEventListener('change',product_price_calc);
+          input.label=label;
+          input.parent_tag_str=parent_tag_str;
+          input.tax=tax;
+          input.round=round;
+
           td.appendChild(input);
           tr.appendChild(td);
         }
@@ -301,6 +309,14 @@ function create_products_input_form(parent_tag_str,table_name){
           input.type='number';
           input.min="0";
           input.id=parent_tag_str+i;
+          input.value=1;
+
+          input.addEventListener('change',product_price_calc);
+          input.label=label;
+          input.parent_tag_str=parent_tag_str;
+          input.tax=tax;
+          input.round=round;
+
           td.appendChild(input);
           tr.appendChild(td);
         }
@@ -314,6 +330,14 @@ function create_products_input_form(parent_tag_str,table_name){
           var input=document.createElement('input');
           input.type='number';
           input.id=parent_tag_str+i;
+          input.value=0;
+
+          input.addEventListener('change',product_price_calc);
+          input.label=label;
+          input.parent_tag_str=parent_tag_str;
+          input.tax=tax;
+          input.round=round;
+
           td.appendChild(input);
           tr.appendChild(td);
         }
@@ -341,8 +365,10 @@ function create_products_input_form(parent_tag_str,table_name){
           input.type='number';
           input.id=parent_tag_str+i;
           input.name='calc';
+          input.value=0;
  
-          th.innerText='計算額(円)';
+          th.innerText='計算額(単価×個数×税±調整額)(円)';
+          th.classList.add('th-calc');
         }
       }
 
@@ -381,6 +407,14 @@ function create_products_input_form(parent_tag_str,table_name){
       a.href='#'+parent_tag_str;
       a.innerText='売り上げの新規登録';
       a.style.display='block';
+
+      a.addEventListener('click',insert_table);
+
+      a.label=label;
+      a.col=products_col;
+      a.parent_tag_str=parent_tag_str;
+      a.prev='ceate_products_input_form';
+      a.table_name=table_name;
 
       form.appendChild(a);
 
