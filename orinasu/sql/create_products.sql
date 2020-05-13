@@ -71,7 +71,7 @@ create view products_join as
 
         category.name as 'カテゴリー',
         tax.tax as '消費税',
-        products.round_type as '端数処理',
+        round_type.type as '端数処理',
 
         products.product_name as '商品名',
         products.sales_date as '販売日',
