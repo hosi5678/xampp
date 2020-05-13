@@ -94,7 +94,7 @@ function create_products_input_form(parent_tag_str,table_name){
       console.log(round);
 
       var p=document.createElement('p');
-      p.innerText='商品売上の登録';
+      p.innerText='売上の登録';
 
       var form=document.createElement('form');
       form.name='form_products_insert';
@@ -359,7 +359,7 @@ function create_products_input_form(parent_tag_str,table_name){
       var td=document.createElement('td');
 
       for(var i=0;i<label.length;i++){
-        if(label[i]=='計算額'){
+        if(label[i]=='売上額'){
           var th=document.createElement('th');
           var input=document.createElement('input');
           input.type='number';
@@ -367,7 +367,7 @@ function create_products_input_form(parent_tag_str,table_name){
           input.name='calc';
           input.value=0;
  
-          th.innerText='計算額(単価×個数×税±調整額)(円)';
+          th.innerText='売上額(=単価×個数×消費税±調整額)(円)';
           th.classList.add('th-calc');
         }
       }
@@ -405,7 +405,7 @@ function create_products_input_form(parent_tag_str,table_name){
       var a=document.createElement("a");
 
       a.href='#'+parent_tag_str;
-      a.innerText='売り上げの新規登録';
+      a.innerText='売上の新規登録';
       a.style.display='block';
       a.classList.add('a-insert');
 
