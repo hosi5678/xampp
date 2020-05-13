@@ -27,7 +27,14 @@ function update_table(event){
   for(var i=0;i<label.length;i++){
     if(label[i]=='id') continue;
     
-    if(label[i]=='姓'||label[i]=='名'){
+    if(
+      (label[i]=='姓')||
+      (label[i]=='名')||
+      (label[i]=='商品名')||
+      (label[i]=='顧客名')||
+      (label[i]=='販売場所')||
+      (label[i]=='販売日')
+    ){
       var str=document.getElementById(parent_tag_str+i).value;
  
       str=reject_str(str);
@@ -36,7 +43,7 @@ function update_table(event){
         return false;
       }
 
-       // 名前が空欄のとき
+       // 空欄のとき
        if(str==''){
         var p=document.createElement('p');
           p.classList.add('message');
@@ -51,7 +58,11 @@ function update_table(event){
     // 備考の取り出しは別になる。
     }else if(label[i]=='備考'){
 
-      var str=document.form_members_update.bikou.value;
+      if(table_name=='members'){
+        var str=document.form_members_update.bikou.value;
+      }else if(table_name=='products'){
+        var str=document.form_products_update.bikou.value;
+      }
 
       str=reject_str(str);
 
@@ -61,39 +72,16 @@ function update_table(event){
 
       update_val.push('"'+str+'"');
 
-    // それ以外は曜日となる。
     }else{
       update_val.push(document.getElementById(table_name+i).value);
     }
 
   }
 
-  console.log('update val is:');
-  console.log(update_val);
-
-  // $.when(
-
-  //   ajax_stmt_exec(table_name,"select * from "+table_name+" limit 0;",'column'),
-
-  //   ).done(function(col_name){
-     
-  //     var update_val=new Array();
-
-  //     for(var i=0;i<col_name.length;i++){
-  //         if(i==0) continue;
-          
-  //         if(i==1||i==2){
-  //           update_val.push('"'+document.getElementById(table_name+i).value+'"');
-
-  //         }else{
-  //           update_val.push(document.getElementById(table_name+i).value);
-  //         }
-      
-  //       }
+      console.log('update val is:');
+      console.log(update_val);
 
       query_label=new Array();
-
-      // col.shift(); // idを除去,shiftは不可。
 
       for(var i=0;i<col.length;i++){
         if(col[i]=='id') continue;
@@ -120,10 +108,12 @@ function update_table(event){
       $.when(
         ajax_stmt_exec(table_name,query,'assoc'),
       ).done(function(){
-        create_members_input_form(parent_tag_str,table_name);
+        if(table_name=='members'){
+          create_members_input_form(parent_tag_str,table_name);
+        }else if(table_name=='products'){
+          create_products_input_form(parent_tag_str,table_name);
+        }
         select_from_table(parent_tag_str,table_name);
       });
-
-  // });
 
 }

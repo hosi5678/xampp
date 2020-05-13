@@ -19,3 +19,9 @@ php ajaxにて
  で列のtdを取得する。
  個別の値はtds.length,tds[i].innerTextで取得できる。
 
+ /mysql
+・ .sqlでcolとlabel(join)の順番は一致させる。
+ ALTER USER 'root'@'localhost' IDENTIFIED BY "Password";
+上記の2つ目のコマンドのPasswordの部分は自分の新しく設定するパスワードに変えてください。
+
+※要 xamppフォルダ丸々backup

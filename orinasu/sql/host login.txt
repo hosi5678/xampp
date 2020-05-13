@@ -1,2 +1,0 @@
-mysql -h 192.168.1.3 -u myapp_user -p myapp
-行末にコロンは不要。

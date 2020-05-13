@@ -37,11 +37,11 @@ function create_members_input_form(parent_tag_str,table_name){
        console.log('---riyou---');
        console.log(riyou);
  
-        var p=document.createElement('p');
-        p.innerText='メンバーの新規登録';
-
         var form=document.createElement('form');
         form.name='form_members_insert';
+
+        var p=document.createElement('p');
+        p.innerText='メンバーの新規登録';
 
         form.appendChild(p);
 

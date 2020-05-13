@@ -126,7 +126,7 @@ function create_products_input_form(parent_tag_str,table_name){
           for(k=0;k<category.length;k++){
             var option=document.createElement('option');
             option.value=k;
-            option.innerText=category[k]
+            option.innerText=category[k];
             
             select.appendChild(option);
           }
@@ -156,7 +156,7 @@ function create_products_input_form(parent_tag_str,table_name){
           for(k=0;k<tax.length;k++){
             var option=document.createElement('option');
             option.value=k;
-            option.innerText=tax[k]+'%'
+            option.innerText=tax[k]+'%';
             
             select.appendChild(option);
           }
@@ -386,7 +386,7 @@ function create_products_input_form(parent_tag_str,table_name){
 
       for(var i=0;i<label.length;i++){
         if(label[i]=='備考'){
-          document.createElement('p');
+          var p=document.createElement('p');
           p.innerText='備考欄';
       
           form.appendChild(p);

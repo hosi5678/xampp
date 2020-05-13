@@ -62,8 +62,12 @@ function create_table(parent_tag_str,col,row,table_name){
         td.innerText='修正する';
         td.classList.add('td-mod');
 
-        td.addEventListener('click',create_members_update_form);
-        // td.id=row[j][col[0]];
+        if(table_name=='members'){
+          td.addEventListener('click',create_members_update_form);
+        }else if(table_name=='products'){
+          td.addEventListener('click',create_products_update_form);
+        }
+
         td.parent_tag_str=parent_tag_str;
         td.table_name=table_name;
         td.prev='create_table';
@@ -75,7 +79,11 @@ function create_table(parent_tag_str,col,row,table_name){
 
         td.classList.add('td-delete');
 
-        td.addEventListener('click',create_members_delete_confirm);
+        if(table_name=='members'){
+          td.addEventListener('click',create_members_delete_confirm);
+        }else if(table_name=='products'){
+          td.addEventListener('click',create_products_delete_confirm);
+        }
         td.table_name=table_name;
         td.parent_tag_str=parent_tag_str;
         td.prev='create_table';
