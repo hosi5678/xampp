@@ -57,7 +57,12 @@ function delete_table(event){
           message.removeChild(message.firstChild);
         }
 
-        create_members_input_form(parent_tag_str,table_name);
+        if(table_name=='members'){
+          create_members_input_form(parent_tag_str,table_name);
+        }else if(table_name=='products'){
+          create_products_input_form(parent_tag_str,table_name);
+        }
+        
         select_from_table(parent_tag_str,table_name);
     
       });
