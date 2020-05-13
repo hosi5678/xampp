@@ -81,7 +81,7 @@ create view products_join as
         products.tanka as '商品単価',
         products.kosuu as '販売個数',
         products.tyousei as '調整額',
-        products.uriage as '計算額',
+        products.uriage as '売上額',
         products.bikou as '備考'
 
         from products
