@@ -39,7 +39,6 @@ function create_products_update_form(){
 
       console.log('----- in create_products_update_form(after ajax) -----');
 
-
       console.log('label is below:');
       console.log(label);
 
@@ -405,7 +404,7 @@ function create_products_update_form(){
     var td=document.createElement('td');
 
     for(var i=0;i<label.length;i++){
-      if(label[i]=='計算額'){
+      if(label[i]=='売上額'){
         var th=document.createElement('th');
         var input=document.createElement('input');
         input.type='number';
@@ -415,7 +414,7 @@ function create_products_update_form(){
         input.name='calc';
         input.value=tds_val[i];
 
-        th.innerText='計算額(単価×個数×税±調整額)(円)';
+        th.innerText='売上額(=単価×個数×消費税±調整額)(円)';
         th.classList.add('th-calc');
       }
     }
@@ -455,7 +454,7 @@ function create_products_update_form(){
     var a=document.createElement("a");
 
     a.href='#'+parent_tag_str;
-    a.innerText='売り上げデータの修正';
+    a.innerText='売上データの修正';
     a.style.display='block';
     a.classList.add('a-mod');
 

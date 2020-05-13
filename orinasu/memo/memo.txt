@@ -27,10 +27,19 @@ php ajaxにて
  /mysql
 ・ .sqlでcolとlabel(join)の順番は一致させる。
 ルートのpw変更:
- ALTER USER 'root'@'localhost' IDENTIFIED BY "Password";
-上記の2つ目のコマンドのPasswordの部分は自分の新しく設定するパスワードに変えてください。
+ ALTER USER 'root'@'localhost' IDENTIFIED BY "your password";
+上記の2つ目のコマンドのPasswordの部分は自分の新しく設定するパスワードに変える。
 
-※要 xamppフォルダ丸々backup
+データのバックアップ
+mysqldump
+mysqldump -u root -p orinasu_db>orinasu_db_backup.sql
+とする。
+
+mysqldump --single-transaction -u DBユーザ名 -p DB名 > 出力先ファイル名
+もある。
+
+dumpからの復元
+\. sqlをdrag&dropでよい。
 
 mysql 停止
 mysqladmin -u root -p shutdown

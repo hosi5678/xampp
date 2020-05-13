@@ -1,10 +1,24 @@
 * {
 	margin:0px;
 	padding:0px;
-}	
+}
 
 body {
 	font-family:Arial,sans-serif;
+}
+
+.logo {
+	border-collapse: collapse;
+	border-top: none;
+	border-bottom: none;
+	border-left:none;
+	border-right: none;
+	font-size: 25px;
+	font-weight:bold;
+	text-align: center;
+	margin-right:10px;
+	color:#0074bf;
+	margin-bottom: 3px;
 }
 
 #wrapper {
