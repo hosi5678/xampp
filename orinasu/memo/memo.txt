@@ -8,6 +8,11 @@
 insertとupdateは別ファイルになる。でないと、空欄がベルトコンベアに流れていく。
 form nameは別にしないと、機能しない。
 ページ遷移すると配列は渡せない。
+備考の取得:
+tableからなら、tdsから取得
+formからなら、document.form_name.textarea_name.valueから取得
+備考の設定:
+textarea.valueにて設定
 
 /php
 php ajaxにて
@@ -21,7 +26,13 @@ php ajaxにて
 
  /mysql
 ・ .sqlでcolとlabel(join)の順番は一致させる。
+ルートのpw変更:
  ALTER USER 'root'@'localhost' IDENTIFIED BY "Password";
 上記の2つ目のコマンドのPasswordの部分は自分の新しく設定するパスワードに変えてください。
 
 ※要 xamppフォルダ丸々backup
+
+mysql 停止
+mysqladmin -u root -p shutdown
+mysql 開始
+

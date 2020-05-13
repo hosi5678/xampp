@@ -70,7 +70,7 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 	
 	<div id="calendar"></div>
 
-	<a id='products_mark' href='#' onclick='products_func()'>販売記録の登録・削除▼</a>
+	<a id='products_mark' href='#' onclick='products_func()' class='a-link'>販売記録の登録・削除▼</a>
 	<div id="products">
 		<p id='products_title'></p>
 		<div id='products_message'></div>
@@ -78,7 +78,7 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 		<div id="products_results"></div>
 	</div>
 
-	<a id='members_mark' href='#' onclick='members_func();'>利用者の登録・削除▼</a>
+	<a id='members_mark' href='#' onclick='members_func();' class='a-link'>利用者の登録・削除▼</a>
 	<div id="members">
 		<p id='members_title'></p>
 		<div id='members_message'></div>

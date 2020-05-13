@@ -407,6 +407,7 @@ function create_products_input_form(parent_tag_str,table_name){
       a.href='#'+parent_tag_str;
       a.innerText='売り上げの新規登録';
       a.style.display='block';
+      a.classList.add('a-insert');
 
       a.addEventListener('click',insert_table);
 

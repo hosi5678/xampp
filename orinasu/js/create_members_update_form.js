@@ -210,6 +210,7 @@ function create_members_update_form(event){
     var a=document.createElement("a");
 
     a.style.display='block';
+    a.classList.add('a-mod');
 
     a.href='#'+parent_tag_str;
     a.innerText='修正する';

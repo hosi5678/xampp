@@ -172,7 +172,7 @@ function create_products_update_form(){
         thead.appendChild(th);
 
         var td=document.createElement('td');
-        
+
         var select=document.createElement('select');
         select.id=table_name+i;
 
@@ -457,6 +457,7 @@ function create_products_update_form(){
     a.href='#'+parent_tag_str;
     a.innerText='売り上げデータの修正';
     a.style.display='block';
+    a.classList.add('a-mod');
 
     a.addEventListener('click',update_table);
 
