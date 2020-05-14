@@ -209,7 +209,31 @@ function create_members_update_form(event){
 
     var a=document.createElement("a");
 
-    a.style.display='block';
+    a.style.display='inline-block';
+    a.classList.add('a-cancel');
+
+    a.parent_tag_str=parent_tag_str;
+    a.table_name=table_name;
+
+    a.href='#'+parent_tag_str;
+    a.innerText='戻る';
+
+    a.addEventListener('click',function(event){
+      parent_tag_str=event.target.parent_tag_str;
+      console.log('-------------')
+      console.log(parent_tag_str);
+      parent_tag_str=event.target.parent_tag_str;
+      table_name=event.target.table_name;
+      create_members_input_form(parent_tag_str,table_name);
+      select_from_table(parent_tag_str,table_name);
+
+    });
+
+    form.appendChild(a);
+
+    var a=document.createElement("a");
+
+    a.style.display='inline-block';
     a.classList.add('a-mod');
 
     a.href='#'+parent_tag_str;

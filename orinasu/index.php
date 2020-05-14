@@ -26,7 +26,7 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 <head>
 <meta charset="utf-8">
 <title>おりなすデータベース</title>
-	<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="favicon.ico">
+	<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="./favicon.ico">
 	<link rel="stylesheet" type="text/css" href="./css/index.css">
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.19/themes/redmond/jquery-ui.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
