@@ -451,24 +451,54 @@ function create_products_update_form(){
 
     parent_tag.appendChild(form);
 
+    var div=document.createElement('div');
+
     var a=document.createElement("a");
 
+    a.style.display='inline-block';
+    a.classList.add('a-cancel');
+
+    a.parent_tag_str=parent_tag_str;
+    a.table_name=table_name;
+
     a.href='#'+parent_tag_str;
-    a.innerText='売上データの修正';
-    a.style.display='block';
+    a.innerText='戻る';
+
+    a.addEventListener('click',function(event){
+      parent_tag_str=event.target.parent_tag_str;
+      console.log('-------------')
+      console.log(parent_tag_str);
+      parent_tag_str=event.target.parent_tag_str;
+      table_name=event.target.table_name;
+      create_products_input_form(parent_tag_str,table_name);
+      select_from_table(parent_tag_str,table_name);
+
+    });
+
+    div.appendChild(a);
+
+    // form.appendChild(a);
+
+    var a=document.createElement("a");
+
+    a.style.display='inline-block';
     a.classList.add('a-mod');
 
+    a.href='#'+parent_tag_str;
+    a.innerText='修正する';
     a.addEventListener('click',update_table);
 
-    a.label=label;
-    a.col=products_col;
-    a.parent_tag_str=parent_tag_str;
-    a.prev='ceate_products_update_form';
     a.table_name=table_name;
+    a.parent_tag_str=parent_tag_str;
+    a.col=products_col;
+    a.label=label;
+    a.prev='create_products_input_form';
     a.id=id;
 
-    form.appendChild(a);
+    div.appendChild(a);
 
+    form.appendChild(div);
+    
     parent_tag.appendChild(form);
 
   });

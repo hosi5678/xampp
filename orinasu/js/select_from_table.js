@@ -16,15 +16,27 @@ function select_from_table(parent_tag_str,table_name){
   $.when(
 
     // ajaxは単体で使わない。whenと使う
-    ajax_stmt_exec(table_name_tmp,column_query,'column'),
+    ajax_get_label(table_name),
+    ajax_get_col(table_name),
     ajax_stmt_exec(table_name_tmp,query,'assoc')
 
     // ajax_stmt_exec(table_name_tmp,'select * from '+table_name_tmp+';','assoc')
 
-    ).done(function(col,row){
+    ).done(function(label,col,row){
 
-    create_table(parent_tag_str,col,row,table_name);
+      var mode='select';
 
-  });
+      console.log('--- after ajax select from table --- ');
+      console.log('label is:');
+      console.log(label);
+      console.log('col is:');
+      console.log(col);
+      console.log('row is:');
+      console.log(row);
+          
+
+      create_table(parent_tag_str,table_name,label,col,row,mode);
+
+    });
 
 }

@@ -148,6 +148,8 @@ function create_products_input_form(parent_tag_str,table_name){
           select.id=table_name+i;
 
           select.addEventListener('change',product_price_calc);
+          select.addEventListener('click',product_price_calc);
+
           select.label=label;
           select.parent_tag_str=parent_tag_str;
           select.tax=tax;
@@ -178,6 +180,8 @@ function create_products_input_form(parent_tag_str,table_name){
             select.id=table_name+i;
 
             select.addEventListener('change',product_price_calc);
+            select.addEventListener('click',product_price_calc);
+
             select.label=label;
             select.parent_tag_str=parent_tag_str;
             select.tax=tax;
@@ -290,6 +294,9 @@ function create_products_input_form(parent_tag_str,table_name){
           input.value=0;
 
           input.addEventListener('change',product_price_calc);
+          input.addEventListener('keyup',product_price_calc);
+          input.addEventListener('click',product_price_calc);
+
           input.label=label;
           input.parent_tag_str=parent_tag_str;
           input.tax=tax;
@@ -312,6 +319,9 @@ function create_products_input_form(parent_tag_str,table_name){
           input.value=1;
 
           input.addEventListener('change',product_price_calc);
+          input.addEventListener('keyup',product_price_calc);
+          input.addEventListener('click',product_price_calc);
+
           input.label=label;
           input.parent_tag_str=parent_tag_str;
           input.tax=tax;
@@ -333,6 +343,9 @@ function create_products_input_form(parent_tag_str,table_name){
           input.value=0;
 
           input.addEventListener('change',product_price_calc);
+          input.addEventListener('keyup',product_price_calc);
+          input.addEventListener('click',product_price_calc);
+
           input.label=label;
           input.parent_tag_str=parent_tag_str;
           input.tax=tax;

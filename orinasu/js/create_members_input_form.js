@@ -68,6 +68,14 @@ function create_members_input_form(parent_tag_str,table_name){
             input.placeholder=label[i];
             input.id=parent_tag_str+i;
 
+            if(label[i]=='姓'){
+              input.addEventListener('keyup',select_from_like);
+              input.col=member_col[i];
+              input.table_name=table_name;
+              input.parent_tag_str=parent_tag_str;
+              input.label=label;
+            }
+
             td.appendChild(input);
             tr.appendChild(td);
         }

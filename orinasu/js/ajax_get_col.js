@@ -1,14 +1,12 @@
-function ajax_stmt_exec(table_name,query,fetch_mode){
+function ajax_get_col(table_name){
 
   var defer = new $.Deferred;
 
   $.ajax({
     type:'POST',
-    url: '../php_libs/ajax_stmt_exec.php',
+    url: '../php_libs/ajax_get_col.php',
       data:{
-       'table_name':table_name,
-       'query':query,
-       'fetch_mode':fetch_mode,
+       'table_name':table_name
       },
 
       dataType:'json', 

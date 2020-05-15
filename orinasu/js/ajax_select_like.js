@@ -1,14 +1,14 @@
-function ajax_stmt_exec(table_name,query,fetch_mode){
+function ajax_select_like(table_name,col_name,key){
 
   var defer = new $.Deferred;
 
   $.ajax({
     type:'POST',
-    url: '../php_libs/ajax_stmt_exec.php',
+    url: '../php_libs/ajax_select_like.php',
       data:{
        'table_name':table_name,
-       'query':query,
-       'fetch_mode':fetch_mode,
+       'col_name':col_name,
+       'key':key,
       },
 
       dataType:'json', 
@@ -18,7 +18,7 @@ function ajax_stmt_exec(table_name,query,fetch_mode){
 
     defer.resolve(res);
 
-  }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+  }).fail(function(XMLHttpRequest,textStatus,errorThrown){
         console.log(XMLHttpRequest);
         console.log(textStatus);
         console.log(errorThrown);

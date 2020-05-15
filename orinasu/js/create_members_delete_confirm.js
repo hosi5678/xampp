@@ -3,6 +3,7 @@ function create_members_delete_confirm(event){
   var table_name=event.target.table_name;
   var parent_tag_str=event.target.parent_tag_str;
   var col=event.target.col;
+  var label=event.target.label;
 
   console.log('----- in create members delete confirmation -----');
 
@@ -32,8 +33,8 @@ function create_members_delete_confirm(event){
 
   var id;
 
-  for(var i=0;i<col.length;i++){
-    if(col[i]=='id'){
+  for(var i=0;i<label.length;i++){
+    if(label[i]=='id'){
       id=tds[i].innerText;
     }     
   }
@@ -46,10 +47,10 @@ function create_members_delete_confirm(event){
   var namae;
 
   for(var i=0;i<tds.length;i++){
-    if(col[i]=='姓'){
+    if(label[i]=='姓'){
       myouji=tds[i].innerText;
     }
-    if(col[i]=='名'){
+    if(label[i]=='名'){
       namae=tds[i].innerText;
     }
 
@@ -63,7 +64,7 @@ function create_members_delete_confirm(event){
 
   var a=document.createElement('a');
 
-  a.innerText='キャンセルする';
+  a.innerText='キャンセル';
   a.style.display='inline-block';
   a.classList.add('a-cancel');
   a.table_name=table_name;
@@ -89,7 +90,7 @@ function create_members_delete_confirm(event){
   a.id=id;
   a.table_name=table_name;
   a.prev='create_members_delete_confirm';
-  a.col=col;
+  a.label=label;
   a.parent_tag_str=parent_tag_str;
 
   parent_tag.appendChild(a);

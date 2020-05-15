@@ -116,8 +116,11 @@ function insert_table(event){
   console.log('query:'+query);
 
   $.when(
-    ajax_stmt_exec(table_name,query,'assoc'),
-  ).done(function(){
+    ajax_get_label(table_name),
+    ajax_get_col(table_name),
+    ajax_stmt_exec(table_name,query,'assoc')
+
+  ).done(function(label,col,row){
 
     if(table_name=='members'){
       create_members_input_form(parent_tag_str,table_name);
@@ -125,7 +128,8 @@ function insert_table(event){
       create_products_input_form(parent_tag_str,table_name);
     }
 
-    select_from_table(parent_tag_str,table_name);
+     create_table(parent_tag_str,table_name,label,col,row,"select")
+
   });
 
 }

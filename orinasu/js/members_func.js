@@ -17,11 +17,10 @@ function members_func(){
   }else{
     document.getElementById(parent_tag_str+"_mark").innerText='利用者の登録・削除▼';
     document.getElementById(parent_tag_str).style.height=0;
-    // $('#'+parent_tag_str).fadeToggle();
+    // $('#'+parent_tag_str).slideToggle();
   }
 
   document.getElementById(parent_tag_str).style.visibility = tmp;
 
-  // $('#'+parent_tag_str).slideToggle(1000);
 
 }

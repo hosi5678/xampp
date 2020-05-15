@@ -207,6 +207,8 @@ function create_members_update_form(event){
     form.appendChild(textarea);
     parent_tag.appendChild(form);
 
+    var div=document.createElement('div');
+
     var a=document.createElement("a");
 
     a.style.display='inline-block';
@@ -229,7 +231,9 @@ function create_members_update_form(event){
 
     });
 
-    form.appendChild(a);
+    div.appendChild(a);
+
+    // form.appendChild(a);
 
     var a=document.createElement("a");
 
@@ -247,7 +251,10 @@ function create_members_update_form(event){
     a.prev='create_members_input_form';
     a.id=id;
 
-    form.appendChild(a);
+    div.appendChild(a);
+
+    form.appendChild(div);
+    
     parent_tag.appendChild(form);
 
   });

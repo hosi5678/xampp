@@ -13,11 +13,15 @@ tableからなら、tdsから取得
 formからなら、document.form_name.textarea_name.valueから取得
 備考の設定:
 textarea.valueにて設定
+テーブルレコードの作成
+thはlabel(table_name_join)から、tdはcol(table_name)からとりだす。
 
 /php
 php ajaxにて
 ・echo は2回しない。
 ・insert,updateした後は必ずselectする。
+・select * from table_name like column_name like "%value%";
+  は別ファイルで行う。
 
 /jquery
  var tds=$(this).closest('tr').children();

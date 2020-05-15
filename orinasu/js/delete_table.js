@@ -42,7 +42,7 @@ function delete_table(event){
       var a=document.createElement('a');
 
       a.innerText='戻る';
-      a.classList.add('a-back');
+      a.classList.add('a-cancel');
 
       a.parent_tag_str=parent_tag_str;
       a.table_name=table_name;

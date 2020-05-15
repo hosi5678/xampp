@@ -44,6 +44,7 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 	<script src="./js/create_calendar.js"></script>
 	<script src="./js/ajax_stmt_exec.js"></script>
 	<script src="./js/select_from_table.js"></script>
+	<script src="./js/select_from_like.js"></script>
 	<script src="./js/create_members_input_form.js"></script>
 	<script src="./js/create_products_input_form.js"></script>
 	<script src="./js/create_members_update_form.js"></script>
@@ -58,73 +59,51 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 	<script src="./js/members_func.js"></script>
 	<script src="./js/products_func.js"></script>
 	<script src="./js/product_price_calc.js"></script>
+	<script src="./js/ajax_select_like.js"></script>
 	<script src="./js/test.js"></script>
+	<script src="./js/ajax_get_label.js"></script>
+	<script src='./js/ajax_get_col.js'></script>
 
 </head>
 
 <body>
 
 <div id="wrapper">
-	<div id="title">
+							<div class='logo'>
+								<img class='logo-img' src='./images/orinasu_logo.png'>
+								<p class='logo-txt'>おりなすデータベース</p>
+							</div>
 
-		<table class='logo'>
-		<tr class='logo'>
-			<td class='logo'><img class='logo' src='./images/orinasu_logo.png'></td>
-			<td class='logo'>おりなすデータベース</td>
-		</tr>
+							<div class='line'></div>
+						
+	<div id='contents'>
+								<div id="calendar"></div>
 
-		</table>
+								<a id='products_mark' href='#' onclick='products_func()' class='a-link'>販売データの登録・削除▼</a>
+								<div id="products">
+									<p id='products_title'></p>
+									<div id='products_message'></div>
+									<div id="products_params"></div>
+									<div id="products_like"></div>
+									<div id="products_results"></div>
+								</div>
+
+								<a id='members_mark' href='#' onclick='members_func();' class='a-link'>利用者の登録・削除▼</a>
+								<div id="members">
+									<p id='members_title'></p>
+									<div id='members_message'></div>
+									<div id="members_params"></div>
+									<div id="members_like"></div>
+									<div id="members_results"></div>
+								</div>
+
 	</div>
-	
-	<div id="calendar"></div>
-
-	<a id='products_mark' href='#' onclick='products_func()' class='a-link'>販売データの登録・削除▼</a>
-	<div id="products">
-		<p id='products_title'></p>
-		<div id='products_message'></div>
-		<div id="products_params"></div>
-		<div id="products_like"></div>
-		<div id="products_results"></div>
-	</div>
-
-	<a id='members_mark' href='#' onclick='members_func();' class='a-link'>利用者の登録・削除▼</a>
-	<div id="members">
-		<p id='members_title'></p>
-		<div id='members_message'></div>
-		<div id="members_params"></div>
-		<div id="members_params"></div>
-		<div id="members_like"></div>
-		<div id="members_results"></div>
-	</div>
-
-	<!-- <script>
-  // call_hightchart();
-		// ajax_create_calendar("calendar");
-		document.getElementById('members').style.visibility='visible';
-	//	members_func();
-
-	</script> -->
-
-	<script>
-				
-		document.getElementById('members').style.visibility='visible';
-		members_func();
-    //.accordion1の中のp要素がクリックされたら
-    // $('#members_mark').click(function(){
-		// 		//クリックされた.accordion1の中のp要素に隣接するul要素が開いたり閉じたりする。
-		// 		members_func();
-		// 		$(this).next('div').slideToggle();
-
-    // });
-
-
-	</script>
-
-<noscript>
-	<p>JavaScriptを有効にしてください。</p>
-</noscript>
 
 </div>
+
+	<noscript>
+		<p>JavaScriptを有効にしてください。</p>
+	</noscript>
 
 </body>
 

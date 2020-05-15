@@ -2,14 +2,14 @@ function create_products_delete_confirm(event){
 
   var table_name=event.target.table_name;
   var parent_tag_str=event.target.parent_tag_str;
-  var col=event.target.col;
+  var label=event.target.label;
 
   console.log('----- in create_products_delete_confirm -----');
 
   console.log('table_name:'+table_name);
   console.log('parent_tag_str:'+parent_tag_str);
-  console.log('col is:');
-  console.log(col);
+  console.log('label is:');
+  console.log(label);
 
     // 画面の更新
   var parent_tag=document.getElementById(parent_tag_str+'_params');
@@ -32,8 +32,8 @@ function create_products_delete_confirm(event){
 
   var id;
 
-  for(var i=0;i<col.length;i++){
-    if(col[i]=='id'){
+  for(var i=0;i<label.length;i++){
+    if(label[i]=='id'){
       id=tds[i].innerText;
     }     
   }
@@ -43,7 +43,7 @@ function create_products_delete_confirm(event){
   var name;
 
   for(var i=0;i<tds.length;i++){
-    if(col[i]=='商品名'){
+    if(label[i]=='商品名'){
       name=tds[i].innerText;
     }
  
@@ -57,7 +57,7 @@ function create_products_delete_confirm(event){
 
   var a=document.createElement('a');
 
-  a.innerText='キャンセルする';
+  a.innerText='キャンセル';
   a.style.display='inline-block';
   a.classList.add('a-cancel');
   a.table_name=table_name;
@@ -83,7 +83,7 @@ function create_products_delete_confirm(event){
   a.id=id;
   a.table_name=table_name;
   a.prev='create_products_delete_confirm';
-  a.col=col;
+  a.label=label;
   a.parent_tag_str=parent_tag_str;
 
   parent_tag.appendChild(a);
