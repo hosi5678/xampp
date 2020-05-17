@@ -26,17 +26,38 @@ header("Content-Type:text/html;charset=UTF-8");
 				$meta = $stmt->getColumnMeta($i);
 				$column_array[]=$meta['name'];
     }
-    
+
+    $stmt=$db->prepare('select * from '.$table_name.';');
+
+		$stmt->execute();
+
+    $results=$stmt->fetchAll();
+    $json_array=array();
+
+    foreach($results as $elem ){
+        $i=0;
+        $tmp_array=array();
+        
+        while($i<count($column_array)){
+          $key=$column_array[$i];
+          $temp_array[$key]=$elem[$key];
+          $i++;
+        }
+        
+        $json_array[]=$temp_array;
+
+    }
+
     header('Content-type: application/json');
-    echo json_encode($column_array,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
+    echo json_encode($json_array,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
 
     $db->commit();
 
 	}catch(PDOException $e) {
 		$db->rollBack();
-		echo $e->getMessage();
-
+    echo $e->getMessage();
+    
 	}finally{
-		$db=null;
-		
+    $db=null;
+    
 	}

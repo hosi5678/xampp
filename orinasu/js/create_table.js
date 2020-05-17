@@ -1,16 +1,17 @@
 function create_table(parent_tag_str,table_name,label,col,row,mode){
 
   console.log('----- in create table -----');
-  console.log('parent_tag_str:'+parent_tag_str);
-  console.log('table_name:'+table_name);
-  console.log('mode:'+mode);
+  
+  // console.log('parent_tag_str:'+parent_tag_str);
+  // console.log('table_name:'+table_name);
+  // console.log('mode:'+mode);
 
-  console.log('label is:');
-  console.log(label);
-  console.log('col is:');
-  console.log(col);
-  console.log('row is:');
-  console.log(row);
+  // console.log('label is:');
+  // console.log(label);
+  // console.log('col is:');
+  // console.log(col);
+  // console.log('row is:');
+  // console.log(row);
 
   var parent_tag=document.getElementById(parent_tag_str+'_results');
 
@@ -59,11 +60,7 @@ function create_table(parent_tag_str,table_name,label,col,row,mode){
           if(label[i]=='日') td.classList.add('td-hide');
           if(label[i]=='備考') td.classList.add('td-bikou');
 
-          if(mode=='select'){
-            td.innerText=row[j][label[i]];
-          }else if(mode=='like'){
-            td.innerText=row[j][col[i]];
-          }
+          td.innerText=row[j][label[i]];
 
           tr.appendChild(td);
         }

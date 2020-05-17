@@ -116,9 +116,9 @@ function insert_table(event){
   console.log('query:'+query);
 
   $.when(
-    ajax_get_label(table_name),
+    ajax_get_col(table_name+'_join'),
     ajax_get_col(table_name),
-    ajax_stmt_exec(table_name,query,'assoc')
+    ajax_stmt_exec(table_name,query)
 
   ).done(function(label,col,row){
 

@@ -6,6 +6,9 @@ function members_func(){
   var tmp = document.getElementById(parent_tag_str).style.visibility;
 
   tmp = (tmp == "visible") ? "hidden" : "visible";
+      // $('#'+parent_tag_str).slideToggle();
+      // var tmp = document.getElementById(parent_tag_str).style.visibility;
+
   
   if(tmp=='visible'){
 

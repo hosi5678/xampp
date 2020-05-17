@@ -29,17 +29,18 @@ header("Content-Type:text/html;charset=UTF-8");
 				$column_array[]=$meta['name'];
 		}
 
-		// $time=new Datetime();
-		// $time=$time->format('Y-m-d H:i:s');
+		$stmt="select * from ".$table_name.'_join'." limit 0;";
 
-		// $stmt=$db->prepare('insert into table_access_log(ip_address,table_name,query,time) values(?,?,?,?);');
+		$stmt = $db->prepare($stmt);
 
-		// $stmt->bindParam(1,$_SERVER["REMOTE_ADDR"],PDO::PARAM_STR);
-		// $stmt->bindParam(2,$table_name,PDO::PARAM_STR);
-		// $stmt->bindParam(3,$query,PDO::PARAM_STR);
-		// $stmt->bindParam(4,$time,PDO::PARAM_STR);
+		$stmt->execute();
 
-		// $stmt->execute();
+		$column_array_join=array();
+
+		for ($i = 0; $i < $stmt->columnCount(); $i++) {
+				$meta = $stmt->getColumnMeta($i);
+				$column_array_join[]=$meta['name'];
+		}
 
     // $stmt="select * from ".$table_name." limit 0;";
     
@@ -48,13 +49,6 @@ header("Content-Type:text/html;charset=UTF-8");
 		$stmt = $db->prepare($stmt);
 
 		$stmt->execute();
-
-		// insert,updatre時は必ずこのクエリが必要。
-		// $stmt=$db->prepare('select * from '.$table_name.';');
-
-		// $stmt->execute();
-
-		// if($fetch_mode=='assoc'||$fetch_mode==''){
 
       $results=$stmt->fetchAll();
       
@@ -66,7 +60,9 @@ header("Content-Type:text/html;charset=UTF-8");
 					
 					while($i<count($column_array)){
 						$key=$column_array[$i];
-						$temp_array[$key]=$elem[$key];
+						$key_join=$column_array_join[$i];
+
+						$temp_array[$key_join]=$elem[$key];
 						$i++;
 					}
 					
@@ -74,24 +70,17 @@ header("Content-Type:text/html;charset=UTF-8");
 	
 			}
 	
-				header('Content-type: application/json');
-				echo json_encode($json_array,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
-		// 		// echo json_encode($query,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
+			header('Content-type: application/json');
+			echo json_encode($json_array,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
 
-		// 	}else if($fetch_mode=='column'){
-		// 		header('Content-type: application/json');
-		// 		echo json_encode($column_array,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
-		// }
 
-    $db->commit();
+ 		  $db->commit();
 
 	}catch(PDOException $e) {
-
-		$db->rollBack();
-    echo $e->getMessage();
+			$db->rollBack();
+    	echo $e->getMessage();
     
 	}finally{
-
-    $db=null;
+    	$db=null;
     
 	}

@@ -25,10 +25,10 @@ function create_members_update_form(event){
 
    $.when(
 
-    ajax_stmt_exec(table_name+'_join',"select * from "+table_name+" limit 0;",'column'),
-    ajax_stmt_exec(table_name,"select * from "+table_name+" limit 0;",'column'),
-    ajax_stmt_exec('riyou_keitai',"select * from "+table_name+" limit 0;",'column'),
-    ajax_stmt_exec('riyou_keitai','select * from riyou_keitai;','assoc')
+    ajax_get_col(table_name+'_join'),
+    ajax_get_col(table_name),
+    ajax_get_col('riyou_keitai'),
+    ajax_select_from_table('riyou_keitai')
 
     ).done(function(label,member_col,riyou_col,riyou_row){
 

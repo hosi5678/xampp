@@ -14,7 +14,6 @@ header("Content-Type:text/html;charset=UTF-8");
 
     $table_name=filter_input(INPUT_POST,'table_name');
     $query=filter_input(INPUT_POST,'query');
-		$fetch_mode=filter_input(INPUT_POST,'fetch_mode');
 		
 		$time=new Datetime();
 		$time=$time->format('Y-m-d H:i:s');
@@ -28,17 +27,32 @@ header("Content-Type:text/html;charset=UTF-8");
 
 		$stmt->execute();
 
-		$stmt="select * from ".$table_name." limit 0;";
+		// $stmt="select * from ".$table_name." limit 0;";
+
+		// $stmt = $db->prepare($stmt);
+
+		// $stmt->execute();
+
+		// $column_array=array();
+
+		// for ($i = 0; $i < $stmt->columnCount(); $i++) {
+		// 		$meta = $stmt->getColumnMeta($i);
+		// 		$column_array[]=$meta['name'];
+		// }
+
+// _join key
+
+		$stmt="select * from ".$table_name.'_join'." limit 0;";
 
 		$stmt = $db->prepare($stmt);
 
 		$stmt->execute();
 
-		$column_array=array();
+		$column_array_join=array();
 
 		for ($i = 0; $i < $stmt->columnCount(); $i++) {
 				$meta = $stmt->getColumnMeta($i);
-				$column_array[]=$meta['name'];
+				$column_array_join[]=$meta['name'];
 		}
 
 		$stmt=$db->prepare($query);
@@ -46,22 +60,21 @@ header("Content-Type:text/html;charset=UTF-8");
 		$stmt->execute();
 
 		// insert,updatre時は必ずこのクエリが必要。
-		$stmt=$db->prepare('select * from '.$table_name.';');
+		$stmt=$db->prepare('select * from '.$table_name.'_join'.';');
 
 		$stmt->execute();
 
-		if($fetch_mode=='assoc'||$fetch_mode==''){
-
-			$results=$stmt->fetchAll();
-			$json_array=array();
+		$results=$stmt->fetchAll();
+		$json_array=array();
 	
 			foreach($results as $elem ){
 					$i=0;
 					$tmp_array=array();
 					
-					while($i<count($column_array)){
-						$key=$column_array[$i];
-						$temp_array[$key]=$elem[$key];
+					while($i<count($column_array_join)){
+						// $key=$column_array[$i];
+						$key_join=$column_array_join[$i];
+						$temp_array[$key_join]=$elem[$key_join];
 						$i++;
 					}
 					
@@ -69,20 +82,16 @@ header("Content-Type:text/html;charset=UTF-8");
 	
 			}
 	
-				header('Content-type: application/json');
-				echo json_encode($json_array,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
-				// echo json_encode($query,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
-
-			}else if($fetch_mode=='column'){
-				header('Content-type: application/json');
-				echo json_encode($column_array,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
-		}
+		header('Content-type: application/json');
+		echo json_encode($json_array,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
 
     $db->commit();
 
 	}catch(PDOException $e) {
 		$db->rollBack();
 		echo $e->getMessage();
+
 	}finally{
 		$db=null;
+		
 	}

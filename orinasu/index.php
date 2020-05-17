@@ -61,8 +61,8 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 	<script src="./js/product_price_calc.js"></script>
 	<script src="./js/ajax_select_like.js"></script>
 	<script src="./js/test.js"></script>
-	<script src="./js/ajax_get_label.js"></script>
 	<script src='./js/ajax_get_col.js'></script>
+	<script src='./js/ajax_select_from_table.js'></script>
 
 </head>
 

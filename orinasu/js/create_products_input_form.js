@@ -8,44 +8,45 @@ function create_products_input_form(parent_tag_str,table_name){
   
      $.when(
   
-      ajax_stmt_exec(table_name+'_join',"select * from "+table_name+" limit 0;",'column'),
-      ajax_stmt_exec(table_name,"select * from "+table_name+" limit 0;",'column'),
-      ajax_stmt_exec('tax',"select * from "+'tax'+" limit 0;",'column'),
-      ajax_stmt_exec('category',"select * from "+'category'+" limit 0;",'column'),
-      ajax_stmt_exec('round_type',"select * from "+'round_type'+" limit 0;",'column'),
+      ajax_get_col(table_name+'_join'),
+      ajax_get_col(table_name),
 
-      ajax_stmt_exec('tax',"select * from "+'tax'+";",'assoc'),
-      ajax_stmt_exec('category',"select * from "+'category'+";",'assoc'),
-      ajax_stmt_exec('round_type',"select * from "+'round_type'+";",'assoc'),
+      ajax_get_col('tax'),
+      ajax_get_col('category'),
+      ajax_get_col('round_type'),
+
+      ajax_select_from_table('tax'),
+      ajax_select_from_table('category'),
+      ajax_select_from_table('round_type'),
   
       ).done(function(label,products_col,tax_col,category_col,round_col,tax_row,category_row,round_row){
 
         console.log('----- in create_products_input_form(after ajax) -----');
 
 
-        console.log('label is below:');
-        console.log(label);
+        // console.log('label is below:');
+        // console.log(label);
 
-        console.log('products col is below:');
-        console.log(products_col);
+        // console.log('products col is below:');
+        // console.log(products_col);
 
-        console.log('tax col is below:');
-        console.log(tax_col);
+        // console.log('tax col is below:');
+        // console.log(tax_col);
 
-        console.log('category col is below:');
-        console.log(category_col);
+        // console.log('category col is below:');
+        // console.log(category_col);
 
-        console.log('round type col is below:');
-        console.log(round_col);
+        // console.log('round type col is below:');
+        // console.log(round_col);
 
-        console.log('tax row is below:');
-        console.log(tax_row);
+        // console.log('tax row is below:');
+        // console.log(tax_row);
 
-        console.log('category row is below:');
-        console.log(category_row);
+        // console.log('category row is below:');
+        // console.log(category_row);
 
-        console.log('round type row is below:');
-        console.log(round_row);
+        // console.log('round type row is below:');
+        // console.log(round_row);
 
         // 画面の更新
         var parent_tag=document.getElementById(parent_tag_str+'_params');
@@ -149,6 +150,7 @@ function create_products_input_form(parent_tag_str,table_name){
 
           select.addEventListener('change',product_price_calc);
           select.addEventListener('click',product_price_calc);
+          select.addEventListener('keyup',product_price_calc);
 
           select.label=label;
           select.parent_tag_str=parent_tag_str;
@@ -181,6 +183,7 @@ function create_products_input_form(parent_tag_str,table_name){
 
             select.addEventListener('change',product_price_calc);
             select.addEventListener('click',product_price_calc);
+            select.addEventListener('keyup',product_price_calc);
 
             select.label=label;
             select.parent_tag_str=parent_tag_str;
@@ -219,10 +222,21 @@ function create_products_input_form(parent_tag_str,table_name){
             var th=document.createElement('th');
             th.innerText=label[i];
             thead.appendChild(th);
+
             var td=document.createElement('td');
             var input=document.createElement('input');
+
             input.type='text';
             input.id=parent_tag_str+i;
+
+            input.addEventListener('keyup',select_from_like);
+            input.addEventListener('click',select_from_like);
+
+            input.col=products_col[i];
+            input.table_name=table_name;
+            input.parent_tag_str=parent_tag_str;
+            input.label=label;
+
             td.appendChild(input);
             tr.appendChild(td);
           }
@@ -291,7 +305,7 @@ function create_products_input_form(parent_tag_str,table_name){
           input.type='number';
           input.min="0";
           input.id=parent_tag_str+i;
-          input.value=0;
+          input.value=100;
 
           input.addEventListener('change',product_price_calc);
           input.addEventListener('keyup',product_price_calc);

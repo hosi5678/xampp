@@ -1,13 +1,12 @@
-function ajax_stmt_exec(table_name,query){
+function ajax_select_from_table(table_name){
 
   var defer = new $.Deferred;
 
   $.ajax({
     type:'POST',
-    url: '../php_libs/ajax_stmt_exec.php',
+    url: '../php_libs/ajax_select_from_table.php',
       data:{
-       'table_name':table_name,
-       'query':query,
+       'table_name':table_name
       },
 
       dataType:'json', 

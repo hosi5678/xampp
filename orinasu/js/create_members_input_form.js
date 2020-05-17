@@ -6,16 +6,16 @@ function create_members_input_form(parent_tag_str,table_name){
 
    $.when(
 
-    ajax_stmt_exec(table_name+'_join',"select * from "+table_name+" limit 0;",'column'),
-    ajax_stmt_exec(table_name,"select * from "+table_name+" limit 0;",'column'),
-    ajax_stmt_exec('riyou_keitai',"select * from riyou_keitai"+" limit 0;",'column'),
-    ajax_stmt_exec('riyou_keitai','select * from riyou_keitai;','assoc')
+    ajax_get_col(table_name+'_join'),
+    ajax_get_col(table_name),
+    ajax_get_col('riyou_keitai'),
+    ajax_select_from_table('riyou_keitai')
 
     ).done(function(label,member_col,riyou_col,riyou_row){
       
-      console.log('label:'+label);
-      console.log('members_col:'+member_col);
-      console.log('riyou_col:'+riyou_col);
+      // console.log('label:'+label);
+      // console.log('members_col:'+member_col);
+      // console.log('riyou_col:'+riyou_col);
  
     // 画面の更新
     var parent_tag=document.getElementById(parent_tag_str+'_params');
@@ -70,6 +70,10 @@ function create_members_input_form(parent_tag_str,table_name){
 
             if(label[i]=='姓'){
               input.addEventListener('keyup',select_from_like);
+              // input.addEventListener('change',select_from_like);
+              input.addEventListener('click',select_from_like);
+
+
               input.col=member_col[i];
               input.table_name=table_name;
               input.parent_tag_str=parent_tag_str;

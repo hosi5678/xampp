@@ -1,4 +1,4 @@
-function create_products_update_form(){
+function create_products_update_form(event){
 
   console.log('----- in create_products_update_form(before ajax): -----');
 
@@ -25,15 +25,16 @@ function create_products_update_form(){
 
   $.when(
   
-    ajax_stmt_exec(table_name+'_join',"select * from "+table_name+" limit 0;",'column'),
-    ajax_stmt_exec(table_name,"select * from "+table_name+" limit 0;",'column'),
-    ajax_stmt_exec('tax',"select * from "+'tax'+" limit 0;",'column'),
-    ajax_stmt_exec('category',"select * from "+'category'+" limit 0;",'column'),
-    ajax_stmt_exec('round_type',"select * from "+'round_type'+" limit 0;",'column'),
+    ajax_get_col(table_name+'_join'),
+    ajax_get_col(table_name),
 
-    ajax_stmt_exec('tax',"select * from "+'tax'+";",'assoc'),
-    ajax_stmt_exec('category',"select * from "+'category'+";",'assoc'),
-    ajax_stmt_exec('round_type',"select * from "+'round_type'+";",'assoc'),
+    ajax_get_col('tax'),
+    ajax_get_col('category'),
+    ajax_get_col('round_type'),
+
+    ajax_select_from_table('tax'),
+    ajax_select_from_table('category'),
+    ajax_select_from_table('round_type'),
 
     ).done(function(label,products_col,tax_col,category_col,round_col,tax_row,category_row,round_row){
 
