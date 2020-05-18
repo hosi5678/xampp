@@ -1,4 +1,4 @@
-function create_table(parent_tag_str,table_name,label,col,row,mode){
+function create_table(parent_tag_str,table_name,label,col,row){
 
   console.log('----- in create table -----');
   
@@ -6,12 +6,12 @@ function create_table(parent_tag_str,table_name,label,col,row,mode){
   // console.log('table_name:'+table_name);
   // console.log('mode:'+mode);
 
-  // console.log('label is:');
-  // console.log(label);
+  console.log('label is:');
+  console.log(label);
   // console.log('col is:');
   // console.log(col);
-  // console.log('row is:');
-  // console.log(row);
+  console.log('row is:');
+  console.log(row);
 
   var parent_tag=document.getElementById(parent_tag_str+'_results');
 
@@ -24,6 +24,23 @@ function create_table(parent_tag_str,table_name,label,col,row,mode){
   p.innerText='テーブル一覧';
 
   parent_tag.appendChild(p);
+
+  var uriage_total=0;
+
+  for(var i=0;i<label.length;i++){
+    if(label[i]=='売上額'){
+      for(var j=0;j<row.length;j++){
+        uriage_total+=parseInt(row[j][label[i]]);
+      }
+    }
+  }
+
+  var p=document.createElement('p');
+  p.innerText='売上総額:'+uriage_total+'円';
+
+  parent_tag.appendChild(p);
+
+  // console.log(uriage_total+'円');
 
   var table=document.createElement('table');
   table.classList.add('table-nth-gray');

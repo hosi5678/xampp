@@ -128,7 +128,7 @@ function insert_table(event){
       create_products_input_form(parent_tag_str,table_name);
     }
 
-     create_table(parent_tag_str,table_name,label,col,row,"select")
+     create_table(parent_tag_str,table_name,label,col,row)
 
   });
 

@@ -4,25 +4,30 @@ function select_from_like(event){
   var col=event.target.col;
   var parent_tag_str=event.target.parent_tag_str;
   var label=event.target.label;
+  var id=event.target.id;
 
   var parent_tag=document.getElementById(parent_tag_str+'_like');
   
   console.log('-----in select from like function(before ajax) -----');
-  console.log('parent_tag_str:'+parent_tag_str+'_like');
+  console.log('parent_tag_str:'+parent_tag_str);
   console.log('table_name:'+table_name);
-  // console.log('col:'+col);
+  console.log('col:'+col);
+  console.log('id:'+id);
+
 
   while(parent_tag.firstChild){
     parent_tag.removeChild(parent_tag.firstChild);
   }
 
-  var key;
+  var key=document.getElementById(id).value;
 
-  for(var i=0;i<label.length;i++){
-    if(label[i]=='姓'||label[i]=='商品名'){
-        key=document.getElementById(parent_tag_str+i).value;
-    }
-  }
+  console.log(key);
+
+  // for(var i=0;i<label.length;i++){
+  //   if(label[i]=='姓'||label[i]=='カテゴリー'){ // || lalel[i]=='商品名'
+  //       key=document.getElementById(parent_tag_str+i).value;
+  //   }
+  // }
 
   $.when(
     // ajaxは単体で使わない。whenと使う
@@ -66,7 +71,7 @@ function select_from_like(event){
       // console.log('category row is');
       // console.log(category_row);
 
-      var mode='like';
+      // var mode='like';
 
       var youbi=new Array();
 
@@ -181,7 +186,7 @@ function select_from_like(event){
       // console.log('----- select like row:------ ');
       // console.log(row);
     
-      create_table(parent_tag_str,table_name,label,col,row,mode);
+      create_table(parent_tag_str,table_name,label,col,row);
 
   });
 

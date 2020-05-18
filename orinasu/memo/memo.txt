@@ -15,6 +15,7 @@ formからなら、document.form_name.textarea_name.valueから取得
 textarea.valueにて設定
 テーブルレコードの作成
 thはlabel(table_name_join)から、tdはcol(table_name)からとりだす。
+ajaxの処理ボタンはbuttonではなくaで行う。
 
 /php
 php ajaxにて
@@ -39,7 +40,7 @@ mysqldump
 mysqldump -u root -p orinasu_db>orinasu_db_backup.sql
 とする。
 
-mysqldump --single-transaction -u root -p orinasu_db>orinasu_db_dump_2020_05_18.sql
+mysqldump --single-transaction -u root -p orinasu_db>orinasu_db_dump_2020_05_19.sql
 もある。
 
 dumpからの復元

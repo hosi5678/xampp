@@ -14,7 +14,7 @@ function select_from_table(parent_tag_str,table_name){
 
     ).done(function(label,col,row){
 
-      var mode='select';
+      // var mode='select';
 
       console.log('----- select from table(after ajax) ----- ');
       // console.log('label is:');
@@ -24,7 +24,7 @@ function select_from_table(parent_tag_str,table_name){
       // console.log('row is:');
       // console.log(row);
           
-      create_table(parent_tag_str,table_name,label,col,row,mode);
+      create_table(parent_tag_str,table_name,label,col,row);
 
     });
 

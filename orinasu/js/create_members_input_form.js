@@ -78,6 +78,8 @@ function create_members_input_form(parent_tag_str,table_name){
               input.table_name=table_name;
               input.parent_tag_str=parent_tag_str;
               input.label=label;
+              input.id=parent_tag_str+i;
+
             }
 
             td.appendChild(input);

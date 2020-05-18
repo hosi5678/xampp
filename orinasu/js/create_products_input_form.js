@@ -122,7 +122,17 @@ function create_products_input_form(parent_tag_str,table_name){
 
           var td=document.createElement('td');
           var select=document.createElement('select');
-          select.id=table_name+i;
+          select.id=parent_tag_str+i;
+
+          select.addEventListener('keyup',select_from_like);
+          select.addEventListener('click',select_from_like);
+
+          select.col=products_col[i];
+          select.table_name=table_name;
+          select.parent_tag_str=parent_tag_str;
+          select.label=label;
+          select.id=parent_tag_str+i;
+
 
           for(k=0;k<category.length;k++){
             var option=document.createElement('option');
@@ -218,6 +228,7 @@ function create_products_input_form(parent_tag_str,table_name){
       var tr=document.createElement('tr');
 
       for(var i=0;i<label.length;i++){
+
           if(label[i]=='商品名'){
             var th=document.createElement('th');
             th.innerText=label[i];
@@ -236,6 +247,7 @@ function create_products_input_form(parent_tag_str,table_name){
             input.table_name=table_name;
             input.parent_tag_str=parent_tag_str;
             input.label=label;
+            input.id=parent_tag_str+i;
 
             td.appendChild(input);
             tr.appendChild(td);

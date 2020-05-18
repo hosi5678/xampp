@@ -17,11 +17,14 @@ function products_func(){
 
     }else{
       document.getElementById(parent_tag_str+"_mark").innerText='販売データの登録・削除▼';
-      document.getElementById(parent_tag_str).style.height=0;
+      
+      document.getElementById(parent_tag_str).style.height='0px';
+
     }
   
     document.getElementById(parent_tag_str).style.visibility = tmp;
     // $('#'+parent_tag_str).slideToggle();
+    // document.getElementById(parent_tag_str).style.marginBottom = '10px';
 
   
   }
