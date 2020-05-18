@@ -3,11 +3,17 @@ create database orinasu_db;
 
 use orinasu_db;
 
--- drop user if exists user cascade;
+drop table if exists table_access_log;
 
--- create user user@localhost identified by 'orinasu_user';
+create table table_access_log(
+  id int unsigned not NULL AUTO_INCREMENT PRIMARY KEY ,
+  ip_address varchar(20) not NULL,
+  table_name varchar(50) not NULL ,
+  query text not null,
+  time datetime 
+);
 
--- grant all on orinasu_db.* to user@localhost identified by 'orinasu_user';
+desc table_access_log \G
 
 drop table if exists members cascade;
 

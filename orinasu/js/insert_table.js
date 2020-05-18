@@ -50,15 +50,15 @@ function insert_table(event){
 
         str=document.getElementById(parent_tag_str+i).value;
 
-      // 悪意がある場合
+      // 悪意がある場合(SQL injection)
       str=reject_str(str);
 
       if(str===1){
         return false;
       }
 
-      // 名前が空欄のとき
-      if(str==''){
+      // 名前が空欄のとき // ただし、顧客名は空欄でよい。
+      if((str=='')&&(label[i]!='顧客名')){
         var p=document.createElement('p');
         p.classList.add('message');
         p.innerText=label[i]+'を入力してください。'
