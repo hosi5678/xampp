@@ -197,10 +197,13 @@ td {
 	cursor: pointer;
 }
 
-/* .a-back:hover {
-	background-color: #adf;
-	cursor: pointer;
-} */
+.hide{
+	display:none;
+}
+
+.block {
+	display:block;
+}
 
 .a-insert {
 	width:250px;

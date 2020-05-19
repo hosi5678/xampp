@@ -81,20 +81,20 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 	<div id='contents'>
 
 		<div class='content'>
-			<a id='staff_calendar_mark' href='#contents' onclick='staff_calender_func()' class='a-link'>カレンダー▼</a>
+			<a id='staff_calendar_mark' href='#wrapper' onclick='staff_calender_func()' class='a-link'>カレンダー▼</a>
 				<div id="staff_calendar">
-					<p id='calendar_title'></p>
-					<div id='calendar_message'></div>
-					<div id="calendar_params"></div>
-					<div id="calendar_like"></div>
-					<div id="calendar_results"></div>
+					<p id='staff_calendar_title'></p>
+					<div id='staff_calendar_message'></div>
+					<div id="staff_calendar_params"></div>
+					<div id="staff_calendar_like"></div>
+					<div id="staff_calendar_results"></div>
 
 				</div>
 		
 		</div>
 
 		<div class='content'>
-			<a id='products_mark' href='#contents' onclick='products_func()' class='a-link'>販売データの登録・削除▼</a>
+			<a id='products_mark' href='#wrapper' onclick='products_func()' class='a-link'>販売データの登録・削除▼</a>
 				<div id="products">
 					<p id='products_title'></p>
 					<div id='products_message'></div>
@@ -106,7 +106,7 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 		</div>
 
 		<div class='content'>
-			<a id='members_mark' href='#contents' onclick='members_func();' class='a-link'>利用者の登録・削除▼</a>
+			<a id='members_mark' href='#wrapper' onclick='members_func();' class='a-link'>利用者の登録・削除▼</a>
 				<div id="members">
 					<p id='members_title'></p>
 					<div id='members_message'></div>

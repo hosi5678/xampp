@@ -25,6 +25,11 @@ function create_table(parent_tag_str,table_name,label,col,row){
 
   parent_tag.appendChild(p);
 
+  var p=document.createElement('p');
+  p.innerText=row.length+'件 見つかりました';
+
+  parent_tag.appendChild(p);
+
   var uriage_total=0;
 
   for(var i=0;i<label.length;i++){
@@ -34,11 +39,14 @@ function create_table(parent_tag_str,table_name,label,col,row){
       }
     }
   }
-
-  var p=document.createElement('p');
-  p.innerText='売上総額:'+uriage_total+'円';
-
-  parent_tag.appendChild(p);
+  
+  if(table_name=='products'){
+    var p=document.createElement('p');
+    p.innerText='売上総額:'+uriage_total+'円';
+  
+    parent_tag.appendChild(p);
+  
+  }
 
   // console.log(uriage_total+'円');
 
