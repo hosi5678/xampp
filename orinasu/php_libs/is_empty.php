@@ -1,5 +1,4 @@
 <?php
-
 function is_empty($s){
 	if(empty($s)|!isset($s)){
 		echo '値がセットされていません。<br>';

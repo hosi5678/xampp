@@ -28,7 +28,7 @@ function staff_calender_func(){
             console.log('--- youbi ---');
             console.log(youbi);
                        
-            create_staff_calendar(parent_tag_str,table_name,youbi);
+            create_staff_calendar_input_form(parent_tag_str,table_name,youbi);
         
         });
         

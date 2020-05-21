@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors', "On");
+ini_set('display_errors',"On");
 require_once("./db_define.php");
 require_once("./escape_string.php");
 

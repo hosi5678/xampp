@@ -226,6 +226,5 @@ create view products_join as
 
         order by products.id asc;
 
-create index products_index on products(product_name);
-
-
+        create index products_name_index on products(product_name);
+        create index products_category_index on products(category);
