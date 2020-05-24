@@ -36,8 +36,9 @@ function create_calendar(parent_tag_str,year,month,youbi){
     var div_title=document.createElement('div');
      		 
 		 var div=document.createElement('div');
+		 div.classList.add('calendar-yajirushi');
 		 div.style.display='inline-block';
-		 div.innerText='<<';
+		 div.innerText='◀';
 		 div.youbi=youbi;
 
 		 div.addEventListener('click',function(event){
@@ -54,22 +55,25 @@ function create_calendar(parent_tag_str,year,month,youbi){
 
 		div_title.appendChild(div);
 
-		var div=document.createElement('div');
-		div.style.display='inline-block';
-		div.innerText='今月';
-		div.youbi=youbi;
+		var a=document.createElement('a');
+		// div.style.display='inline-block';
+		a.innerText='今月';
+		a.youbi=youbi;
 
-		div.addEventListener('click',function(event){
+		a.href='#';
+
+		a.addEventListener('click',function(event){
 	
 			create_calendar(parent_tag_str,currYear,currMonth,youbi);
 
 		});
 
-		div_title.appendChild(div);
+		div_title.appendChild(a);
 
 		var div=document.createElement('div');
 		div.style.display='inline-block';
-		div.innerText='>>';
+		div.classList.add('calendar-yajirushi');
+		div.innerText='▶';
 		div.youbi=youbi;
 
 		div.addEventListener('click',function(event){
@@ -93,13 +97,16 @@ function create_calendar(parent_tag_str,year,month,youbi){
 
 		parent_tag.appendChild(form);
 
+		var div=document.createElement('div');
+
 		var p=document.createElement('p');
+
 		p.id='year';
 		p.value=year;
 		p.innerText=year+'年';
 		p.style.display='inline';
 	
-		div_title.appendChild(p);
+		div.appendChild(p);
 
 		var p=document.createElement('p');
 
@@ -108,106 +115,187 @@ function create_calendar(parent_tag_str,year,month,youbi){
 		p.innerText=(month+1)+'月';
 		p.style.display='inline';
 
-		div_title.appendChild(p);
+		div.appendChild(p);
+		
+		div_title.appendChild(div);
 		
 		form.appendChild(div_title);
 
 		 
-		 console.log('今月のカレンダーの開始日:'+(prevMonth_lastday.getDate()-prevMonth_lastday.getDay()));
-		 console.log('今日は何年か?'+year);
-		 console.log('今月は何月か？(curr+1):'+(month+1));
-		 console.log('今日は何日か？:'+thisMonth.getDate());
-		 // 曜日の取得
-		 console.log('今日の曜日:'+youbi[thisMonth.getDay()]);
+		//  console.log('今月のカレンダーの開始日:'+(prevMonth_lastday.getDate()-prevMonth_lastday.getDay()));
+		//  console.log('今日は何年か?'+year);
+		//  console.log('今月は何月か？(curr+1):'+(month+1));
+		//  console.log('今日は何日か？:'+thisMonth.getDate());
+		//  // 曜日の取得
+		//  console.log('今日の曜日:'+youbi[thisMonth.getDay()]);
  
-		 // 先月の末尾を取得する
-		 console.log('先月は何年か？'+prevMonth_lastday.getFullYear());
-		 console.log('先月は何月か？'+(prevMonth_lastday.getMonth()+1));
+		//  // 先月の末尾を取得する
+		//  console.log('先月は何年か？'+prevMonth_lastday.getFullYear());
+		//  console.log('先月は何月か？'+(prevMonth_lastday.getMonth()+1));
  
-		 console.log('先月の末尾:'+prevMonth_lastday.getDate());
-		 console.log('先月の末尾の曜日番号:'+prevMonth_lastday.getDay());
+		//  console.log('先月の末尾:'+prevMonth_lastday.getDate());
+		//  console.log('先月の末尾の曜日番号:'+prevMonth_lastday.getDay());
  
+		//  console.log('今月の末尾:'+currMonth_lastday.getDate());
+		//  console.log('今月の末尾は何年か？:'+currMonth_lastday.getFullYear()); // ->今月の末尾は同年
+		//  console.log('今月の末尾は何月か？:'+(currMonth_lastday.getMonth()+1)); // ->今月の末尾は同月
  
-		 console.log('今月の末尾:'+currMonth_lastday.getDate());
-		 console.log('今月の末尾は何年か？:'+currMonth_lastday.getFullYear()); // ->今月の末尾は同年
-		 console.log('今月の末尾は何月か？:'+(currMonth_lastday.getMonth()+1)); // ->今月の末尾は同月
+		//  console.log('今月の末尾の曜日番号:'+currMonth_lastday.getDay());
  
-		 console.log('今月の末尾の曜日番号:'+currMonth_lastday.getDay());
+		//  console.log('今日の週番号:'+getWeekNum(thisMonth));
  
-		 console.log('今日の週番号:'+getWeekNum(thisMonth));
- 
-		 console.log('今月が何週あるか:'+getWeekNum(currMonth_lastday));
+		//  console.log('今月が何週あるか:'+getWeekNum(currMonth_lastday));
  
 		 var holidays = JapaneseHolidays.getHolidaysOf(thisMonth.getFullYear());
+
+		 var holidays_thisMonth=new Array();
  
 			holidays.forEach(function(holiday) {
 				if(holiday.month==(thisMonth.getMonth()+1)){
-					console.log(
-						thisMonth.getFullYear()+'/'+
-						holiday.month+'/'+
-						holiday.date+'/'+
-						holiday.name
-					);          
+					// console.log(
+					// 	thisMonth.getFullYear()+'/'+
+					// 	holiday.month+'/'+
+					// 	holiday.date+'/'+
+					// 	holiday.name
+					// );
+					holidays_thisMonth.push({date:thisMonth.getFullYear()+'-'+holiday.month+'-'+holiday.date
+					,name:holiday.name});	
+
 				}
 			});
 
-		console.log(nextMonth_firstday.getFullYear());
+		// console.log('holidays this month:');
+		// console.log(nextMonth_firstday.getFullYear());
+
+		// console.log(holidays_thisMonth);
 
 		var table=document.createElement('table');
 
-		console.log('prev-prev:'+(prevMonth_lastday.getDate()-prevMonth_lastday.getDay()));
-		console.log('prev last:'+prevMonth_lastday.getDate());
-		console.log('getWeekNum:'+getWeekNum(currMonth_lastday));
+		// console.log('prev-prev:'+(prevMonth_lastday.getDate()-prevMonth_lastday.getDay()));
+		// console.log('prev last:'+prevMonth_lastday.getDate());
+		// console.log('getWeekNum:'+getWeekNum(currMonth_lastday));
+
+		var thead=document.createElement('thead');
+		var tbody=document.createElement('tbody');
+
+		for(var i=0;i<youbi.length;i++){
+			var th=document.createElement('th');
+
+			if(youbi[i]=='日') th.classList.add('td-sun');
+			if(youbi[i]=='土') th.classList.add('td-sat');
+
+				th.innerText=youbi[i];
+				thead.appendChild(th);
+		}
+
+		table.appendChild(thead);
 
 		var thisMonthDate=1;
 
 		for(var j=0;j<getWeekNum(currMonth_lastday);j++){
 			var tr=document.createElement('tr');
 
-				// 最初の週の処理
+				// 最初の週の処理,先月
 				if(j==0){
 					if(prevMonth_lastday.getDay()!=6){
 						for(var i=(prevMonth_lastday.getDate()-prevMonth_lastday.getDay());i<=prevMonth_lastday.getDate();i++){
 							var td=document.createElement('td');
-							td.innerText=(prevMonth_lastday.getMonth()+1)+'/'+i;
+
+							td.classList.add('td-gray');
+							td.classList.add('td-calendar');
+
+							td.id=prevMonth_lastday.getFullYear()+'-'+(prevMonth_lastday.getMonth()+1)+'-'+i;
+							// td.innerText=(prevMonth_lastday.getMonth()+1)+'/'+i;
+							td.innerText=i;
+
 							tr.appendChild(td);
 						}
 					}
 
+					// 最初の週の処理,今月
 					for(var i=thisMonth.getDay();i<7;i++){
+
 							var td=document.createElement('td');
-							td.innerText=(thisMonth.getMonth()+1)+'/'+thisMonthDate;
+
+							td.classList.add('td-calendar');
+
+							if(i==0) td.classList.add('td-sun');	
+							if(i==6) td.classList.add('td-sat');
+
+							if(thisMonth.getFullYear()==currYear&&thisMonth.getMonth()==currMonth&&thisMonthDate==currDate) td.classList.add('td-today');
+
+							td.id=thisMonth.getFullYear()+'-'+(thisMonth.getMonth()+1)+'-'+thisMonthDate;
+
+							for(var k=0;k<holidays_thisMonth.length;k++){
+								if(holidays_thisMonth[k].date==td.id){
+									td.classList.add('td-shukujitu');
+								}
+							}
+
+							// td.innerText=(thisMonth.getMonth()+1)+'/'+thisMonthDate;
+							td.innerText=thisMonthDate;
+
 							tr.appendChild(td);
 							thisMonthDate=thisMonthDate+1;
 					}
 
-					// 途中の週の処理
+					// 今月の処理
 				}else if(j<(getWeekNum(currMonth_lastday))){
 					
-					var tmp_date=new Date(year,month,thisMonthDate);
-
 					for(var i=0;i<7;i++){
 						if(thisMonthDate<=currMonth_lastday.getDate()){
+							
 							var td=document.createElement('td');
-							td.innerText=(thisMonth.getMonth()+1)+'/'+thisMonthDate;
+
+							td.classList.add('td-calendar');
+
+							if(i==0) td.classList.add('td-sun');	
+							if(i==6) td.classList.add('td-sat');
+
+							if(thisMonth.getFullYear()==currYear&&thisMonth.getMonth()==currMonth&&thisMonthDate==currDate) td.classList.add('td-today');
+
+							// console.log('thismonth:');
+
+
+
+							td.id=thisMonth.getFullYear()+'-'+(thisMonth.getMonth()+1)+'-'+thisMonthDate;
+
+							for(var k=0;k<holidays_thisMonth.length;k++){
+								if(holidays_thisMonth[k].date==td.id){
+									td.classList.add('td-shukujitu');
+								}
+							}
+
+							// td.innerText=(thisMonth.getMonth()+1)+'/'+thisMonthDate;
+							td.innerText=thisMonthDate;
+
 							tr.appendChild(td);
 						}
 						thisMonthDate=thisMonthDate+1;
 					}
 
+					// 来月の処理
 					if(thisMonthDate>currMonth_lastday.getDate()&&nextMonth_firstday.getDay()!=0){
 						thisMonthDate=1;
 						for(var i=nextMonth_firstday.getDay();i<7;i++){
 							var td=document.createElement('td');
-							td.innerText=(nextMonth_firstday.getMonth()+1)+'/'+thisMonthDate;
+							td.classList.add('td-gray');
+							td.classList.add('td-calendar');
+
+							// td.innerText=(nextMonth_firstday.getMonth()+1)+'/'+thisMonthDate;
+							td.innerText=thisMonthDate;
+
+							td.id=nextMonth_firstday.getFullYear()+'-'+(nextMonth_firstday.getMonth()+1)+'-'+thisMonthDate;
 							tr.appendChild(td);
 							thisMonthDate=thisMonthDate+1;
 						}
 					}
 				}
 
-			table.appendChild(tr);
+			tbody.appendChild(tr);
 		}
+
+		table.appendChild(tbody);
  
 		form.appendChild(table);
 

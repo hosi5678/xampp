@@ -5,6 +5,7 @@ function select_from_like(event){
   var parent_tag_str=event.target.parent_tag_str;
   var label=event.target.label;
   var id=event.target.id;
+  var riyou=event.target.riyou;
 
   var parent_tag=document.getElementById(parent_tag_str+'_like');
   
@@ -186,7 +187,7 @@ function select_from_like(event){
       // console.log('----- select like row:------ ');
       // console.log(row);
     
-      create_table(parent_tag_str,table_name,label,col,row);
+      create_table({parent_tag_str:parent_tag_str,table_name:table_name,label:label,col:col,row:row,riyou:riyou});
 
   });
 

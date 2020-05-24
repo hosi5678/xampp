@@ -1,5 +1,7 @@
 function create_members_delete_confirm(event){
 
+  'use strict';
+
   var table_name=event.target.table_name;
   var parent_tag_str=event.target.parent_tag_str;
   var col=event.target.col;
@@ -24,6 +26,14 @@ function create_members_delete_confirm(event){
   while(parent_tag.firstChild){
     parent_tag.removeChild(parent_tag.firstChild);
   }
+
+  var exec=document.getElementById(parent_tag_str+'_exec');
+
+  // 画面の更新
+  while(exec.firstChild){
+    exec.removeChild(exec.firstChild);
+  }
+
 
   var parent_tag=document.getElementById(parent_tag_str+'_params');
 

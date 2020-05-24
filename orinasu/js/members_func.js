@@ -1,5 +1,7 @@
 function members_func(){
 
+  'use strict';
+
   var parent_tag_str='members';
   var table_name='members';
 
@@ -8,23 +10,36 @@ function members_func(){
   var tmp = document.getElementById(parent_tag_str).style.visibility;
 
   tmp = (tmp == "visible") ? "hidden" : "visible";
-      // $('#'+parent_tag_str).slideToggle();
-      // var tmp = document.getElementById(parent_tag_str).style.visibility;
 
-  
+  // $('#'+parent_tag_str).slideToggle();
+
   if(tmp=='visible'){
 
-    create_members_input_form(parent_tag_str,table_name);
-    select_from_table(parent_tag_str,table_name);
-    parent_tag.classList.add('block');
-    document.getElementById(parent_tag_str+"_mark").innerText='利用者の登録・削除▲';
-    // document.getElementById(parent_tag_str).style.height='auto';
+    $.when(
+      ajax_get_col(table_name+'_join'),
+      ajax_get_col(table_name),
+      ajax_get_col('riyou_keitai'),
+      ajax_select_from_table('riyou_keitai'),
+
+    ).done(function(label,col,riyou_col,riyou_row){
+
+        var riyou=new Array();
+        riyou=getArrayFromRows(riyou,riyou_col,riyou_row);
+
+        // console.log('----- riyou(use getArray) is:-----');
+        // console.log(riyou);
+
+        create_members_input_form({parent_tag_str:parent_tag_str,table_name:table_name,label:label,col:col,riyou:riyou});
+        select_from_table(parent_tag_str,table_name);
+
+        // parent_tag.classList.add('block');
+        document.getElementById(parent_tag_str+"_mark").innerText='利用者の登録・削除▲';
+    
+    });
 
   }else{
     document.getElementById(parent_tag_str+"_mark").innerText='利用者の登録・削除▼';
     parent_tag.classList.add('hide');
-    // document.getElementById(parent_tag_str).addclassList.a;
-    // $('#'+parent_tag_str).slideToggle();
   }
 
   document.getElementById(parent_tag_str).style.visibility = tmp;

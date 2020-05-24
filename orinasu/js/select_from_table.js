@@ -1,4 +1,4 @@
-function select_from_table(parent_tag_str,table_name){
+function select_from_table(parent_tag_str,table_name,riyou){
 
   // var parent_tag=document.getElementById(parent_tag_str);
   console.log('----- in select from table(before ajax)-----');
@@ -24,7 +24,7 @@ function select_from_table(parent_tag_str,table_name){
       // console.log('row is:');
       // console.log(row);
           
-      create_table(parent_tag_str,table_name,label,col,row);
+      create_table({parent_tag_str,table_name,label,col,row,riyou});
 
     });
 

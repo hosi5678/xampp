@@ -1,27 +1,24 @@
 function delete_table(event){
 
-  console.log('----- in delete table -----');
+  'use strict';
+
+  // console.log('----- in delete table -----');
 
   var table_name=event.target.table_name;
   var parent_tag_str=event.target.parent_tag_str;
-  var prev=event.target.prev;
-  var col=event.target.col;
   var id=event.target.id;
 
   // var tds=$(this).closest('tr').children();
-  console.log('id:'+id);
-  console.log('col is:')
-  console.log(col);
+  // console.log('id:'+id);
 
   var query='delete from '+table_name+' where id='+id+';';
 
-  console.log('id:'+id);
-  console.log('prev:'+prev);
-  console.log('query:'+query);
+  // console.log('id:'+id);
+  // console.log('query:'+query);
 
   $.when(
       ajax_stmt_exec(table_name,query,'assoc'),
-    ).done(function(){
+    ).done(function(row){
 
       var parent_tag=document.getElementById(parent_tag_str+'_params');
 
@@ -31,8 +28,8 @@ function delete_table(event){
   
       var message_tag=document.getElementById(parent_tag_str+'_message');
 
-      console.log('message tag:');
-      console.log(message_tag);
+      // console.log('delete rows:');
+      // console.log(row);
 
       var p=document.createElement('p');
       p.innerText='削除しました。';
@@ -44,12 +41,12 @@ function delete_table(event){
       a.innerText='戻る';
       a.classList.add('a-cancel');
 
-      a.parent_tag_str=parent_tag_str;
-      a.table_name=table_name;
+      // a.parent_tag_str=parent_tag_str;
+      // a.table_name=table_name;
 
       a.addEventListener('click',function(event){
-        parent_tag_str=event.target.parent_tag_str;
-        table_name=event.target.table_name;
+        // parent_tag_str=event.target.parent_tag_str;
+        // table_name=event.target.table_name;
 
         var message=document.getElementById(parent_tag_str+'_message');
 
@@ -58,18 +55,33 @@ function delete_table(event){
         }
 
         if(table_name=='members'){
-          create_members_input_form(parent_tag_str,table_name);
+
+          $.when(
+            ajax_get_col(table_name+'_join'),
+            ajax_get_col(table_name),
+            ajax_get_col('riyou_keitai'),
+            ajax_select_from_table('riyou_keitai'),
+            ajax_stmt_exec(table_name,query),
+          ).done(function(label,col,riyou_col,riyou_row,results){
+    
+            var riyou=new Array();
+            riyou=getArrayFromRows(riyou,riyou_col,riyou_row);
+    
+            create_members_input_form({parent_tag_str:parent_tag_str,table_name:table_name,label:label,col:col,riyou:riyou});
+    
+            create_table({parent_tag_str:parent_tag_str,table_name:table_name,label:label,col:col,riyou:riyou,row:results});
+    
+    
+          });
+              // create_members_input_form({parent_tag_str:parent_tag_str,table_name:table_name,label:label,col:col,riyou:riyou});
         }else if(table_name=='products'){
           create_products_input_form(parent_tag_str,table_name);
         }
         
-        select_from_table(parent_tag_str,table_name);
-    
       });
 
       message_tag.appendChild(a);
 
-      // select_from_table(parent_tag_str,table_name);
   });
 
 }

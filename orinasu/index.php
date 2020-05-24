@@ -64,6 +64,7 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 	<script src='./js/ajax_select_from_table.js'></script>
 	<script src='./js/staff_calender_func.js'></script>
 	<script src='./js/create_staff_calendar_input_form.js'></script>
+	<script src='./js/getArrayFromRows.js'></script>
 
 </head>
 
@@ -107,6 +108,7 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 				<p id='members_title'></p>
 				<div id='members_message'></div>
 				<div id="members_params"></div>
+				<div id='members_exec'></div>
 				<div id="members_like"></div>
 				<div id="members_results"></div>
 			</div>

@@ -135,6 +135,42 @@ td {
 	color:blue;
 }
 
+.td-sun {
+	color:red;
+}
+
+/* for calendar */
+.td-gray {
+	background-color:#ddd;
+}
+
+.td-calendar:hover {
+	cursor: pointer;
+	background-color:#adf;
+}
+
+.td-shukujitu {
+	color:red;
+}
+
+.option-hide {
+	display:none;
+}
+
+/* calendar yajirushi */
+.calendar-yajirushi {
+	cursor:pointer;
+	color:lightgreen;
+}
+
+.calendar-yajirushi:hover {
+	background-color:#adf;
+}
+
+.td-today {
+	background-color:#afe;
+}
+
 .td-hide{
 	display:none;
 }

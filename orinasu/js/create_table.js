@@ -1,4 +1,4 @@
-function create_table(parent_tag_str,table_name,label,col,row){
+function create_table({parent_tag_str,table_name,label,col,row}){
 
   console.log('----- in create table -----');
   
@@ -8,8 +8,8 @@ function create_table(parent_tag_str,table_name,label,col,row){
 
   console.log('label is:');
   console.log(label);
-  // console.log('col is:');
-  // console.log(col);
+  console.log('col is:');
+  console.log(col);
   console.log('row is:');
   console.log(row);
 
@@ -120,9 +120,8 @@ function create_table(parent_tag_str,table_name,label,col,row){
 
         td.table_name=table_name;
         td.parent_tag_str=parent_tag_str;
-        td.prev='create_table';
-        td.col=col;
         td.label=label;
+        td.col=col;
 
         tr.appendChild(td);
 
@@ -130,83 +129,8 @@ function create_table(parent_tag_str,table_name,label,col,row){
 
   }
 
-    // tbody.appendChild(tr);
-
-  // for(var i=0;i<col.length;i++){
-  //   var th=document.createElement('th');
-  //   th.innerText=col[i];
-    
-  //   if(col[i]=='id') th.classList.add('td-hide');
-
-  //   if(col[i]=='土') th.classList.add('td-sat');
-
-  //   // 日曜日は非表示
-  //   if(col[i]=='日') th.classList.add('td-hide');
-    
-  //   thead.appendChild(th);
-
-  // }
-
-  // table.appendChild(thead);
-
-  // tbody=document.createElement('tbody');
-
-  // for(var j=0;j<row.length;j++){
-  //     var tr=document.createElement('tr');
-  //     tr.id=table_name+'_id_'+row[j][col[0]];
-
-  //       for(var i=0;i<col.length;i++){
-  //         var td=document.createElement('td');
-
-  //         if(col[i]=='id') td.classList.add('td-hide');
-  //         if(col[i]=='日') td.classList.add('td-hide');
-  //         if(col[i]=='備考') td.classList.add('td-bikou');
-
-  //         td.innerText=row[j][col[i]];
-  //         tr.appendChild(td);
-  //       }
-
-  //       var td=document.createElement('td');
-  //       td.innerText='修正する';
-  //       td.classList.add('td-mod');
-
-  //       if(table_name=='members'){
-  //         td.addEventListener('click',create_members_update_form);
-  //       }else if(table_name=='products'){
-  //         td.addEventListener('click',create_products_update_form);
-  //       }
-
-  //       td.parent_tag_str=parent_tag_str;
-  //       td.table_name=table_name;
-  //       td.prev='create_table';
-
-  //       tr.appendChild(td);
-
-  //       var td=document.createElement('td');
-  //       td.innerText='x';
-
-  //       td.classList.add('td-delete');
-
-  //       if(table_name=='members'){
-  //         td.addEventListener('click',create_members_delete_confirm);
-  //       }else if(table_name=='products'){
-  //         td.addEventListener('click',create_products_delete_confirm);
-  //       }
-  //       td.table_name=table_name;
-  //       td.parent_tag_str=parent_tag_str;
-  //       td.prev='create_table';
-  //       td.col=col;
-
-  //       tr.appendChild(td);
-
-  //       tbody.appendChild(tr);
-  // }
-
   table.appendChild(tbody);
 
-  parent_tag.appendChild(table);
-
-  // document.getElementById(parent_tag_str).style.visibility = 'visible';
-  
+  parent_tag.appendChild(table);  
 
 }

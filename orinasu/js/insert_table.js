@@ -5,6 +5,7 @@ function insert_table(event){
   var table_name=event.target.table_name;
   var parent_tag_str=event.target.parent_tag_str;
   var label=event.target.label;
+  var riyou=event.target.riyou;
 
   console.log('-----in insert table-----');
   console.log('table name:'+table_name);
@@ -115,21 +116,30 @@ function insert_table(event){
 
   console.log('query:'+query);
 
-  $.when(
-    ajax_get_col(table_name+'_join'),
-    ajax_get_col(table_name),
-    ajax_stmt_exec(table_name,query)
-
-  ).done(function(label,col,row){
-
     if(table_name=='members'){
-      create_members_input_form(parent_tag_str,table_name);
+
+      $.when(
+        ajax_get_col(table_name+'_join'),
+        ajax_get_col(table_name),
+        ajax_get_col('riyou_keitai'),
+        ajax_select_from_table('riyou_keitai'),
+        ajax_stmt_exec(table_name,query),
+      ).done(function(label,col,riyou_col,riyou_row,results){
+
+        var riyou=new Array();
+        riyou=getArrayFromRows(riyou,riyou_col,riyou_row);
+
+        create_members_input_form({parent_tag_str:parent_tag_str,table_name:table_name,label:label,col:col,riyou:riyou});
+
+        create_table({parent_tag_str:parent_tag_str,table_name:table_name,label:label,col:col,riyou:riyou,row:results});
+
+
+      });
+
     }else if(table_name=='products'){
       create_products_input_form(parent_tag_str,table_name);
     }
 
-     create_table(parent_tag_str,table_name,label,col,row)
 
-  });
 
 }
