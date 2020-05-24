@@ -26,20 +26,15 @@ function members_func(){
         var riyou=new Array();
         riyou=getArrayFromRows(riyou,riyou_col,riyou_row);
 
-        // console.log('----- riyou(use getArray) is:-----');
-        // console.log(riyou);
-
         create_members_input_form({parent_tag_str:parent_tag_str,table_name:table_name,label:label,col:col,riyou:riyou});
         select_from_table(parent_tag_str,table_name);
 
-        // parent_tag.classList.add('block');
         document.getElementById(parent_tag_str+"_mark").innerText='利用者の登録・削除▲';
     
     });
 
   }else{
     document.getElementById(parent_tag_str+"_mark").innerText='利用者の登録・削除▼';
-    parent_tag.classList.add('hide');
   }
 
   document.getElementById(parent_tag_str).style.visibility = tmp;

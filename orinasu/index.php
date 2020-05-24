@@ -103,7 +103,7 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 		</div>
 
 		<div class='content'>
-			<a id='members_mark' href='#wrapper' onclick='members_func();' class='a-link'>利用者の登録・削除▼</a>
+			<a id='members_mark' href='#wrapper' onclick='members_func()' class='a-link'>利用者の登録・削除▼</a>
 			<div id="members">
 				<p id='members_title'></p>
 				<div id='members_message'></div>
