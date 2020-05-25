@@ -1,14 +1,22 @@
-function update_table(event){
+'use strict';
 
-  'use strict';
+function update_table({
+  parent_tag_str,
+  table_name,
+  label,
+  col,
+  id,
+  event
+}){
+
 
   console.log('----- in update_table -----');
 
-  var id=event.target.id;
-  var parent_tag_str=event.target.parent_tag_str;
-  var table_name=event.target.table_name;
-  var col=event.target.col;
-  var label=event.target.label;
+  // var id=event.target.id;
+  // var parent_tag_str=event.target.parent_tag_str;
+  // var table_name=event.target.table_name;
+  // var col=event.target.col;
+  // var label=event.target.label;
 
   // console.log('id:'+id);
   // console.log('parent_tag_str:'+parent_tag_str);
@@ -74,28 +82,6 @@ function update_table(event){
 
   }
 
-
-  // else if(label[i]=='備考'){
-
-  //   if(table_name=='members'){
-  //     var str=document.form_members_update.bikou.value;
-  //   }else if(table_name=='products'){
-  //     var str=document.form_products_update.bikou.value;
-  //   }
-
-  //   str=reject_str(str);
-
-  //   if(str==1){
-  //     return false;
-  //   }
-
-  //   update_val.push('"'+str+'"');
-
-  // }
-
-      // console.log('update val is:');
-      // console.log(update_val);
-
       var query_label=new Array();
 
       for(var i=0;i<col.length;i++){
@@ -141,7 +127,14 @@ function update_table(event){
               col:col,
               riyou:riyou});
     
-            create_table({parent_tag_str:parent_tag_str,table_name:table_name,label:label,col:col,riyou:riyou,row:results});
+            create_table({
+              parent_tag_str:parent_tag_str,
+              table_name:table_name,
+              label:label,
+              col:col,
+              riyou:riyou,
+              row:results
+            });
     
     
           });

@@ -26,7 +26,17 @@ function members_func(){
         var riyou=new Array();
         riyou=getArrayFromRows(riyou,riyou_col,riyou_row);
 
-        create_members_input_form({parent_tag_str:parent_tag_str,table_name:table_name,label:label,col:col,riyou:riyou});
+        var mode='insert';
+
+        create_members_input_form({
+          parent_tag_str:parent_tag_str,
+          table_name:table_name,
+          label:label,
+          col:col,
+          riyou:riyou,
+          mode:mode
+        });
+
         select_from_table(parent_tag_str,table_name);
 
         document.getElementById(parent_tag_str+"_mark").innerText='利用者の登録・削除▲';
@@ -34,10 +44,9 @@ function members_func(){
     });
 
   }else{
-    document.getElementById(parent_tag_str+"_mark").innerText='利用者の登録・削除▼';
+        document.getElementById(parent_tag_str+"_mark").innerText='利用者の登録・削除▼';
   }
 
-  document.getElementById(parent_tag_str).style.visibility = tmp;
-
+        document.getElementById(parent_tag_str).style.visibility = tmp;
 
 }

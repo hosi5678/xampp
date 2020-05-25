@@ -1,20 +1,21 @@
-function insert_table(event){
+function insert_table({parent_tag_str,table_name,label,col,riyou}){
 
-  var col=event.target.col;
-  var prev=event.target.prev;
-  var table_name=event.target.table_name;
-  var parent_tag_str=event.target.parent_tag_str;
-  var label=event.target.label;
-  var riyou=event.target.riyou;
+  // var col=event.target.col;
+  // var prev=event.target.prev;
+  // var table_name=event.target.table_name;
+  // var parent_tag_str=event.target.parent_tag_str;
+  // var label=event.target.label;
+  // var riyou=event.target.riyou;
 
   console.log('-----in insert table-----');
   console.log('table name:'+table_name);
-  console.log('prev:'+prev);
   console.log('parent_tag_str:'+parent_tag_str);
   console.log('col:'+col); // 10
   console.log('label is:');
   console.log(label);
-
+  console.log('riyou is:');
+  console.log(riyou);
+ 
   var params=new Array();
 
   var query_columns=new Array();
@@ -119,20 +120,30 @@ function insert_table(event){
     if(table_name=='members'){
 
       $.when(
-        ajax_get_col(table_name+'_join'),
-        ajax_get_col(table_name),
-        ajax_get_col('riyou_keitai'),
-        ajax_select_from_table('riyou_keitai'),
         ajax_stmt_exec(table_name,query),
-      ).done(function(label,col,riyou_col,riyou_row,results){
+      ).done(function(results){
+
+        var mode='insert';
 
         var riyou=new Array();
-        riyou=getArrayFromRows(riyou,riyou_col,riyou_row);
+        // riyou=getArrayFromRows(riyou,riyou_col,riyou_row);
 
-        create_members_input_form({parent_tag_str:parent_tag_str,table_name:table_name,label:label,col:col,riyou:riyou});
-
-        create_table({parent_tag_str:parent_tag_str,table_name:table_name,label:label,col:col,riyou:riyou,row:results});
-
+        create_members_input_form({
+          parent_tag_str:parent_tag_str,
+          table_name:table_name,
+          label:label,
+          col:col,
+          riyou:riyou,
+          mode:mode,
+        });
+ 
+        create_table({
+          parent_tag_str:parent_tag_str,
+          table_name:table_name,
+          label:label,col:col,
+          riyou:riyou,
+          row:results
+        });
 
       });
 

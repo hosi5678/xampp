@@ -1,6 +1,13 @@
 'use strict';
 
-function create_members_input_form({parent_tag_str,table_name,label,col,riyou}){
+function create_members_input_form({
+  parent_tag_str,
+  table_name,
+  label,
+  col,
+  riyou,
+  mode
+}){
 
   console.log('----- in create members input form -----');
   console.log('parent tag str:'+parent_tag_str);
@@ -13,6 +20,8 @@ function create_members_input_form({parent_tag_str,table_name,label,col,riyou}){
   console.log('riyou:');
   console.log(riyou);
 
+  console.log('mode:'+mode);
+
     // 画面の更新
     var parent_tag=document.getElementById(parent_tag_str+'_params');
 
@@ -21,7 +30,7 @@ function create_members_input_form({parent_tag_str,table_name,label,col,riyou}){
     }
  
         var form=document.createElement('form');
-        form.name='form_members_insert';
+        form.name='form_'+parent_tag_str+'_insert';
 
         var p=document.createElement('p');
         p.id='form-title';
@@ -189,14 +198,26 @@ function create_members_input_form({parent_tag_str,table_name,label,col,riyou}){
         a.style.display='block';
         a.classList.add('a-insert');
         
-        a.addEventListener('click',insert_table);
+        a.addEventListener('click',function(event){
+
+          var mode='insert';
+
+          insert_table({
+            parent_tag_str:parent_tag_str,
+            table_name:table_name,
+            label:label,
+            col:col,
+            riyou:riyou
+          })
+        });
         
-        a.col=col;
-        a.label=label;
-        a.table_name=table_name;
-        a.prev='create_members_input_form';
-        a.parent_tag_str=parent_tag_str;
-        a.riyou=riyou;
+        // a.col=col;
+        // a.label=label;
+        // a.table_name=table_name;
+        // a.prev='create_members_input_form';
+        // a.parent_tag_str=parent_tag_str;
+        // a.riyou=riyou;
+        // a.mode='insert';
 
         exec.appendChild(a);
 

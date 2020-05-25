@@ -1,3 +1,5 @@
+  'use strict';
+
 function create_table({parent_tag_str,table_name,label,col,row}){
 
   console.log('----- in create table -----');
@@ -48,8 +50,6 @@ function create_table({parent_tag_str,table_name,label,col,row}){
   
   }
 
-  // console.log(uriage_total+'円');
-
   var table=document.createElement('table');
   table.classList.add('table-nth-gray');
 
@@ -70,13 +70,11 @@ function create_table({parent_tag_str,table_name,label,col,row}){
 
   table.appendChild(thead);
 
-  tbody=document.createElement('tbody');
-
-  var id;
+  var tbody=document.createElement('tbody');
 
   for(var j=0;j<row.length;j++){
       var tr=document.createElement('tr');
-      tr.id=table_name+'_id_'+row[j]['id'];
+      tr.id=table_name+row[j]['id'];
 
         for(var i=0;i<label.length;i++){
           var td=document.createElement('td');
@@ -95,15 +93,19 @@ function create_table({parent_tag_str,table_name,label,col,row}){
         td.classList.add('td-mod');
   
         if(table_name=='members'){
+
           td.addEventListener('click',create_members_update_form);
+
+          td.table_name=table_name;
+          td.parent_tag_str=parent_tag_str;
+          td.label=label;
+          td.col=col;
+          td.mode='update';
+
         }else if(table_name=='products'){
           td.addEventListener('click',create_products_update_form);
         }
   
-        td.table_name=table_name;
-        td.parent_tag_str=parent_tag_str;
-        td.prev='create_table';
-        td.col=col;
   
         tr.appendChild(td);
 

@@ -6,7 +6,6 @@ function select_from_table(parent_tag_str,table_name,riyou){
   // console.log('table_name:'+table_name);
 
   $.when(
-
     // ajaxは単体で使わない。whenと使う
     ajax_get_col(table_name+'_join'),
     ajax_get_col(table_name),
@@ -14,17 +13,16 @@ function select_from_table(parent_tag_str,table_name,riyou){
 
     ).done(function(label,col,row){
 
-      // var mode='select';
-
       console.log('----- select from table(after ajax) ----- ');
-      // console.log('label is:');
-      // console.log(label);
-      // console.log('col is:');
-      // console.log(col);
-      // console.log('row is:');
-      // console.log(row);
           
-      create_table({parent_tag_str,table_name,label,col,row,riyou});
+      create_table({
+        parent_tag_str:parent_tag_str,
+        table_name:table_name,
+        label:label,
+        col:col,
+        row:row,
+        riyou:riyou
+      });
 
     });
 

@@ -97,6 +97,7 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 				<p id='products_title'></p>
 				<div id='products_message'></div>
 				<div id="products_params"></div>
+				<div id='products_exec'></div>
 				<div id="products_like"></div>
 				<div id="products_results"></div>
 			</div>
