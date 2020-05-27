@@ -22,6 +22,8 @@ function create_members_update_form(event){
 
   console.log('update mode:'+mode);
 
+  console.log('event type:'+event.type);
+
   var tds=$(this).closest('tr').children();
 
   var tds_val=new Array();
@@ -45,6 +47,8 @@ function create_members_update_form(event){
     ajax_select_from_table('riyou_keitai'),
 
     ).done(function(youbi_col,youbi_row,riyou_col,riyou_row){
+
+      var mode='update';
 
       console.log('----- in create members update form(after ajax):------');
 
@@ -81,8 +85,6 @@ function create_members_update_form(event){
       console.log('youbi is:');
       console.log(youbi);
 
-      var mode='update';
-
       console.log('mode:'+mode);
 
       create_members_input_form({
@@ -99,13 +101,8 @@ function create_members_update_form(event){
       // titleの書き換え
       if(mode='update'){
 
-      
       var form_title=document.getElementById('form-title');
       form_title.innerText='メンバー情報の修正';
-
-      // // 各カラムの上書き
-
-      // console.log('上書き');
 
       var id;
 
@@ -132,7 +129,6 @@ function create_members_update_form(event){
 
         }
 
-
       }
 
       var exec=document.getElementById(parent_tag_str+'_exec');
@@ -145,6 +141,7 @@ function create_members_update_form(event){
       var a=document.createElement("a");
 
       a.href='#'+parent_tag_str;
+      a.classList.add('a-mod');
 
       a.innerText='修正する';
       a.addEventListener('click',function(event){
@@ -187,7 +184,8 @@ function create_members_update_form(event){
         }
       );
 
-      exec.appendChild(a);
+        exec.appendChild(a);
+
       }
 
   });

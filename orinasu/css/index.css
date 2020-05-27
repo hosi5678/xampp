@@ -225,7 +225,7 @@ td {
 
 .a-mod {
 	width:auto;
-	margin-left:300px;
+	margin-right:100px;
 }
 
 .a-mod:hover {
@@ -242,7 +242,7 @@ td {
 }
 
 .a-insert {
-	width:250px;
+	width:150px;
 }
 
 .a-insert:hover {

@@ -22,6 +22,7 @@ ajaxの処理ボタンはbuttonではなくaで行う。
 insertとupdateに切り分け
 ->引数の渡しは共通化できない。
 定型的な処理は引数、クリックイベントはevent引数で行う。
+やはりloadとclickは違うのか？
 
 /php
 php ajaxにて
