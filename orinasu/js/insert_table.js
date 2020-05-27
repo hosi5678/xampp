@@ -1,11 +1,20 @@
-function insert_table({parent_tag_str,table_name,label,col,riyou}){
+'use strict';
 
-  // var col=event.target.col;
+function insert_table(event){
+
+  var parent_tag_str=event.target.parent_tag_str;
+  var table_name=event.target.table_name;
+  var label=event.target.label;
+
+  var col=event.target.col;
   // var prev=event.target.prev;
-  // var table_name=event.target.table_name;
-  // var parent_tag_str=event.target.parent_tag_str;
-  // var label=event.target.label;
-  // var riyou=event.target.riyou;
+  var riyou; // =event.target.riyou;
+
+  var mode=event.target.mode;
+
+  if(table_name=='members'){
+    riyou=event.target.riyou;
+  }
 
   console.log('-----in insert table-----');
   console.log('table name:'+table_name);
@@ -15,6 +24,9 @@ function insert_table({parent_tag_str,table_name,label,col,riyou}){
   console.log(label);
   console.log('riyou is:');
   console.log(riyou);
+  console.log('event type:'+event.type);
+
+  // mode='insert';
  
   var params=new Array();
 
@@ -38,7 +50,7 @@ function insert_table({parent_tag_str,table_name,label,col,riyou}){
 
   for(var i=0;i<label.length;i++){
 
-    if((label[i]=='id')||(label[i]=='備考')) continue;
+    if(label[i]=='id') continue;
 
     if(
           (label[i]=='姓')||
@@ -46,7 +58,8 @@ function insert_table({parent_tag_str,table_name,label,col,riyou}){
           (label[i]=='商品名')||
           (label[i]=='顧客名')||
           (label[i]=='販売場所')||
-          (label[i]=='販売日')
+          (label[i]=='販売日')||
+          (label[i]=='備考')
        
        ){
 
@@ -59,8 +72,10 @@ function insert_table({parent_tag_str,table_name,label,col,riyou}){
         return false;
       }
 
-      // 名前が空欄のとき // ただし、顧客名は空欄でよい。
-      if((str=='')&&(label[i]!='顧客名')){
+      // 空欄のとき,ただし、名と顧客名と備考は空欄でよい。
+      if(str==''&&((label[i]!='名')||(label[i]!='備考')||(label[i]!='顧客名'))){
+
+      // if((str=='')&&(label[i]!='顧客名')){
         var p=document.createElement('p');
         p.classList.add('message');
         p.innerText=label[i]+'を入力してください。'
@@ -78,23 +93,26 @@ function insert_table({parent_tag_str,table_name,label,col,riyou}){
 
   }
 
-  var bikou;
+  // var bikou;
 
-  if(table_name=='members'){
-    bikou=document.form_members_insert.bikou.value;
-  }else if(table_name='products'){
-    bikou=document.form_products_insert.bikou.value;
-  }
+  // if(table_name=='members'){
 
-  bikou=reject_str(bikou);
+  //   console.log('members10:'+document.getElementById('members10').value);
 
-  console.log(bikou);
+  //   bikou=document.form_members_insert.bikou.value;
+  // }else if(table_name='products'){
+  //   bikou=document.form_products_insert.bikou.value;
+  // }
 
-  if(bikou===1){
-    return false;
-  }
+  // bikou=reject_str(bikou);
 
-  params.push('"'+bikou+'"');
+  // console.log(bikou);
+
+  // if(bikou===1){
+  //   return false;
+  // }
+
+  // params.push('"'+bikou+'"');
 
   console.log('params are:');
   console.log(params);

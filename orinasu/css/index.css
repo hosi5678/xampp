@@ -203,6 +203,11 @@ td {
 	color:red;
 }
 
+.delete-done {
+	font-size: 20px;
+	color:red;
+}
+
 .a-cancel {
 	width:auto;
 	margin-right: 100px;

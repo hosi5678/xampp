@@ -74,10 +74,18 @@ function create_members_update_form(event){
       parent_tag.appendChild(p);
 
       var riyou=new Array();
-      riyou=getArrayFromRows(riyou,riyou_col,riyou_row);
+      riyou=getArrayFromRows({
+        array:riyou,
+        cols:riyou_col,
+        rows:riyou_row
+      });
 
       var youbi=new Array();
-      youbi=getArrayFromRows(youbi,youbi_col,youbi_row);
+      youbi=getArrayFromRows({
+        array:youbi,
+        cols:youbi_col,
+        rows:youbi_row
+      });
 
       console.log('riyou is:');
       console.log(riyou);
@@ -144,15 +152,17 @@ function create_members_update_form(event){
       a.classList.add('a-mod');
 
       a.innerText='修正する';
-      a.addEventListener('click',function(event){
-        update_table({
-          parent_tag_str:parent_tag_str,
-          table_name:table_name,
-          label:label,
-          col:col,
-          id:id
-        })
-      });
+      a.addEventListener('click',update_table,
+
+        // function(event){
+        //   update_table({
+        //     parent_tag_str:parent_tag_str,
+        //     table_name:table_name,
+        //     label:label,
+        //     col:col,
+        //     id:id
+        //   })
+      );
       
       a.parent_tag_str=parent_tag_str;
       a.table_name=table_name;

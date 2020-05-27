@@ -24,10 +24,24 @@ function members_func(){
     ).done(function(label,col,riyou_col,riyou_row){
 
         var riyou=new Array();
-        riyou=getArrayFromRows(riyou,riyou_col,riyou_row);
+        
+        riyou=getArrayFromRows({
+          array:riyou,
+          rows:riyou_row,
+          cols:riyou_col
+        });
 
         var mode='insert';
 
+        // event.label=label;
+        // test(event);
+
+        // document.addEventListener('DOMContentLoaded',create_members_input_form,'false');
+
+        // document.parent_tag_str=parent_tag_str;
+        // document.table_name=table_name;
+        // document.label=label;
+        // document.col=col;
         create_members_input_form({
           parent_tag_str:parent_tag_str,
           table_name:table_name,

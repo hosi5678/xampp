@@ -1,4 +1,6 @@
-function getArrayFromRows(array,cols,rows){
+'use strict';
+
+function getArrayFromRows({array,rows,cols}){
 
   for(var j=0;j<rows.length;j++){
     for(var i=0;i<cols.length;i++){

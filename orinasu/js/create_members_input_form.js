@@ -1,13 +1,18 @@
 'use strict';
 
-function create_members_input_form({
-  parent_tag_str,
-  table_name,
-  label,
-  col,
-  riyou,
-  mode
-}){
+function create_members_input_form(
+  // event
+  {
+    parent_tag_str,
+    table_name,
+    label,
+    col,
+    riyou,
+    mode,
+  }
+)
+
+{
 
   console.log('----- in create members input form -----');
   console.log('parent tag str:'+parent_tag_str);
@@ -21,6 +26,8 @@ function create_members_input_form({
   console.log(riyou);
 
   console.log('mode:'+mode);
+
+  // console.log('event type:'+event.type);
 
     // 画面の更新
     var parent_tag=document.getElementById(parent_tag_str+'_params');
@@ -198,26 +205,30 @@ function create_members_input_form({
         a.style.display='block';
         a.classList.add('a-insert');
         
-        a.addEventListener('click',function(event){
+        a.addEventListener('click',insert_table
+              // function(event){
 
-          var mode='insert';
+              //   // var mode='insert';
 
-          insert_table({
-            parent_tag_str:parent_tag_str,
-            table_name:table_name,
-            label:label,
-            col:col,
-            riyou:riyou
-          })
-        });
+              //   // insert_table({
+              //   //   parent_tag_str:parent_tag_str,
+              //   //   table_name:table_name,
+              //   //   label:label,
+              //   //   col:col,
+              //   //   riyou:riyou,
+              //   //   mode:mode,
+              //   //   event
+              //   // })
+              // }
+        );
         
-        // a.col=col;
-        // a.label=label;
-        // a.table_name=table_name;
+        a.parent_tag_str=parent_tag_str;
+        a.table_name=table_name;
+        a.label=label;
+        a.col=col;
+        a.riyou=riyou;
+     
         // a.prev='create_members_input_form';
-        // a.parent_tag_str=parent_tag_str;
-        // a.riyou=riyou;
-        // a.mode='insert';
 
         exec.appendChild(a);
 

@@ -100,7 +100,6 @@ function create_table({parent_tag_str,table_name,label,col,row}){
           td.parent_tag_str=parent_tag_str;
           td.label=label;
           td.col=col;
-          td.mode='update';
 
         }else if(table_name=='products'){
           td.addEventListener('click',create_products_update_form);

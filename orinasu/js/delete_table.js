@@ -32,6 +32,7 @@ function delete_table(event){
       // console.log(row);
 
       var p=document.createElement('p');
+      p.classList.add('delete-done');
       p.innerText='削除しました。';
 
       message_tag.appendChild(p);
@@ -62,15 +63,31 @@ function delete_table(event){
             ajax_get_col('riyou_keitai'),
             ajax_select_from_table('riyou_keitai'),
             ajax_stmt_exec(table_name,query),
+
           ).done(function(label,col,riyou_col,riyou_row,results){
     
             var riyou=new Array();
-            riyou=getArrayFromRows(riyou,riyou_col,riyou_row);
+
+              riyou=getArrayFromRows({
+                array:riyou,
+                cols:riyou_col,
+                rows:riyou_row
+              });
     
-            create_members_input_form({parent_tag_str:parent_tag_str,table_name:table_name,label:label,col:col,riyou:riyou});
+            create_members_input_form({
+              parent_tag_str:parent_tag_str,
+              table_name:table_name,
+              label:label,
+              col:col,
+              riyou:riyou
+            });
     
-            create_table({parent_tag_str:parent_tag_str,table_name:table_name,label:label,col:col,riyou:riyou,row:results});
-    
+            create_table({
+              parent_tag_str:parent_tag_str,
+              table_name:table_name,
+              label:label,
+              col:col,
+              row:results});
     
           });
               // create_members_input_form({parent_tag_str:parent_tag_str,table_name:table_name,label:label,col:col,riyou:riyou});

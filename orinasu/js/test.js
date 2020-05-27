@@ -1,5 +1,8 @@
 function test(event){
 
+  console.log('test event type:'+event.type);
+  console.log('test event label:'+event.target.label);
+
   // 汎用的なテスト用
 
   // var input=document.createElement('input');

@@ -23,6 +23,7 @@ insertとupdateに切り分け
 ->引数の渡しは共通化できない。
 定型的な処理は引数、クリックイベントはevent引数で行う。
 やはりloadとclickは違うのか？
+・5/27現在で、update_formとinput_formの融合は難しい。loadとeventの引数渡しが違う。
 
 /php
 php ajaxにて
