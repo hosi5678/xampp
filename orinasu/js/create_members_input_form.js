@@ -1,7 +1,6 @@
 'use strict';
 
 function create_members_input_form(
-  // event
   {
     parent_tag_str,
     table_name,
@@ -26,8 +25,6 @@ function create_members_input_form(
   console.log(riyou);
 
   console.log('mode:'+mode);
-
-  // console.log('event type:'+event.type);
 
     // 画面の更新
     var parent_tag=document.getElementById(parent_tag_str+'_params');
@@ -142,9 +139,9 @@ function create_members_input_form(
             option.value=k;
             
               if(label[i]=='日') {
-                  option.value=0;
-                  select.appendChild(option);
-                  break;
+                option.value=0;
+                select.appendChild(option);
+                break;
               }
 
             select.appendChild(option);
@@ -197,7 +194,6 @@ function create_members_input_form(
         exec.removeChild(exec.firstChild);
       }
 
-
         var a=document.createElement("a");
 
         a.href='#'+parent_tag_str;
@@ -205,22 +201,7 @@ function create_members_input_form(
         a.style.display='block';
         a.classList.add('a-insert');
         
-        a.addEventListener('click',insert_table
-              // function(event){
-
-              //   // var mode='insert';
-
-              //   // insert_table({
-              //   //   parent_tag_str:parent_tag_str,
-              //   //   table_name:table_name,
-              //   //   label:label,
-              //   //   col:col,
-              //   //   riyou:riyou,
-              //   //   mode:mode,
-              //   //   event
-              //   // })
-              // }
-        );
+        a.addEventListener('click',insert_table);
         
         a.parent_tag_str=parent_tag_str;
         a.table_name=table_name;
@@ -228,8 +209,6 @@ function create_members_input_form(
         a.col=col;
         a.riyou=riyou;
      
-        // a.prev='create_members_input_form';
-
         exec.appendChild(a);
 
         parent_tag.appendChild(form);

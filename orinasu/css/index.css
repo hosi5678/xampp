@@ -7,19 +7,6 @@ body {
 	font-family:Arial,sans-serif;
 }
 
-/* .logo {
-	border-collapse: collapse;
-	border-top: none;
-	border-bottom: none;
-	border-left:none;
-	border-right: none;
-	font-size: 25px;
-	font-weight:bold;
-	text-align: center;
-	margin-right:10px;
-	margin-bottom: 3px;
-} */
-
 #wrapper {
 	margin-left:20px;
 }
@@ -179,11 +166,11 @@ td {
 	width:280px;
 }
 
-.show {
+/* .show {
 	opacity: 1;
 	transform: translateY(20px);
 	transition: 500ms;
-}
+} */
 
 .table-nth-gray tr:nth-child(even) {
 	background-color: #eee;
@@ -249,6 +236,11 @@ td {
 .a-insert {
 	width:150px;
 }
+
+.hanbai-a-insert {
+	width:200px;
+}
+
 
 .a-insert:hover {
 	background-color: #adf;

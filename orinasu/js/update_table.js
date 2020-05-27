@@ -11,7 +11,6 @@ function update_table(
   // }
 ){
 
-
   console.log('----- in update_table -----');
 
   var id=event.target.id;

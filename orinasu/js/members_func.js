@@ -5,8 +5,6 @@ function members_func(){
   var parent_tag_str='members';
   var table_name='members';
 
-  var parent_tag=document.getElementById(parent_tag_str);
-
   var tmp = document.getElementById(parent_tag_str).style.visibility;
 
   tmp = (tmp == "visible") ? "hidden" : "visible";
@@ -23,6 +21,8 @@ function members_func(){
 
     ).done(function(label,col,riyou_col,riyou_row){
 
+        var mode='insert';
+
         var riyou=new Array();
         
         riyou=getArrayFromRows({
@@ -31,17 +31,6 @@ function members_func(){
           cols:riyou_col
         });
 
-        var mode='insert';
-
-        // event.label=label;
-        // test(event);
-
-        // document.addEventListener('DOMContentLoaded',create_members_input_form,'false');
-
-        // document.parent_tag_str=parent_tag_str;
-        // document.table_name=table_name;
-        // document.label=label;
-        // document.col=col;
         create_members_input_form({
           parent_tag_str:parent_tag_str,
           table_name:table_name,
@@ -59,6 +48,8 @@ function members_func(){
 
   }else{
         document.getElementById(parent_tag_str+"_mark").innerText='利用者の登録・削除▼';
+        document.getElementById(parent_tag_str).style.height='0px';
+
   }
 
         document.getElementById(parent_tag_str).style.visibility = tmp;

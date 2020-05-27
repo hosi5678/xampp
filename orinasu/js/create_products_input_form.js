@@ -1,53 +1,23 @@
-function create_products_input_form(parent_tag_str,table_name){
+'use strict';
 
-    console.log('----- in create_products_input_form(before ajax) -----');
+function create_products_input_form(
+    {
+      parent_tag_str,
+      table_name,
+      label,
+      col,
+      category,
+      tax,
+      round,
+      mode,
+    }
+){
+
     console.log('parent_tag_str:'+parent_tag_str);
     console.log('table_name:'+table_name);
 
     var parent_tag=document.getElementById(parent_tag_str+'_params');
   
-     $.when(
-  
-      ajax_get_col(table_name+'_join'),
-      ajax_get_col(table_name),
-
-      ajax_get_col('tax'),
-      ajax_get_col('category'),
-      ajax_get_col('round_type'),
-
-      ajax_select_from_table('tax'),
-      ajax_select_from_table('category'),
-      ajax_select_from_table('round_type'),
-  
-      ).done(function(label,products_col,tax_col,category_col,round_col,tax_row,category_row,round_row){
-
-        console.log('----- in create_products_input_form(after ajax) -----');
-
-
-        // console.log('label is below:');
-        // console.log(label);
-
-        // console.log('products col is below:');
-        // console.log(products_col);
-
-        // console.log('tax col is below:');
-        // console.log(tax_col);
-
-        // console.log('category col is below:');
-        // console.log(category_col);
-
-        // console.log('round type col is below:');
-        // console.log(round_col);
-
-        // console.log('tax row is below:');
-        // console.log(tax_row);
-
-        // console.log('category row is below:');
-        // console.log(category_row);
-
-        // console.log('round type row is below:');
-        // console.log(round_row);
-
         // 画面の更新
         var parent_tag=document.getElementById(parent_tag_str+'_params');
 
@@ -55,41 +25,11 @@ function create_products_input_form(parent_tag_str,table_name){
           parent_tag.removeChild(parent_tag.firstChild);
         }
 
-       // 消費税の取得
-       var tax=new Array();
-   
-       for(var j=0;j<tax_row.length;j++){
-           for(var i=0;i<tax_col.length;i++){
-               if(tax_col[i]=='id') continue;
-                 tax.push(tax_row[j][tax_col[i]]);
-           }
-       }
+      console.log('---tax---');
+      console.log(tax);
 
-       console.log('---tax---');
-       console.log(tax);
-
-       // 商品カテゴリーの取得
-       var category=new Array();
-   
-       for(var j=0;j<category_row.length;j++){
-           for(var i=0;i<category_col.length;i++){
-               if(category_col[i]=='id') continue;
-                 category.push(category_row[j][category_col[i]]);
-           }
-       }
-
-       console.log('---category---');
-       console.log(category);
-
-      // roundの取得
-      var round=new Array();
-   
-      for(var j=0;j<round_row.length;j++){
-          for(var i=0;i<round_col.length;i++){
-              if(round_col[i]=='id') continue;
-                round.push(round_row[j][round_col[i]]);
-          }
-      }
+      console.log('---category---');
+      console.log(category);
 
       console.log('---round---');
       console.log(round);
@@ -127,14 +67,14 @@ function create_products_input_form(parent_tag_str,table_name){
           select.addEventListener('keyup',select_from_like);
           select.addEventListener('click',select_from_like);
 
-          select.col=products_col[i];
+          select.col=col[i];
           select.table_name=table_name;
           select.parent_tag_str=parent_tag_str;
           select.label=label;
           select.id=parent_tag_str+i;
 
 
-          for(k=0;k<category.length;k++){
+          for(var k=0;k<category.length;k++){
             var option=document.createElement('option');
             option.value=k;
             option.innerText=category[k];
@@ -243,7 +183,7 @@ function create_products_input_form(parent_tag_str,table_name){
             input.addEventListener('keyup',select_from_like);
             input.addEventListener('click',select_from_like);
 
-            input.col=products_col[i];
+            input.col=col[i];
             input.table_name=table_name;
             input.parent_tag_str=parent_tag_str;
             input.label=label;
@@ -424,34 +364,52 @@ function create_products_input_form(parent_tag_str,table_name){
       parent_tag.appendChild(form);
 
       for(var i=0;i<label.length;i++){
+
         if(label[i]=='備考'){
+
           var p=document.createElement('p');
           p.innerText='備考欄';
       
           form.appendChild(p);
 
           var textarea=document.createElement('textarea');
+
           textarea.name='bikou';
           textarea.rows=5;
           textarea.cols=80;
 
+          textarea.addEventListener('click',select_from_like);
+          textarea.addEventListener('keyup',select_from_like);
+
+          textarea.col=col[i];
+          textarea.table_name=table_name;
+          textarea.parent_tag_str=parent_tag_str;
+          textarea.label=label;
+          textarea.id=parent_tag_str+i;
+
           form.appendChild(textarea);
+
         }
       }
   
-      parent_tag.appendChild(form);
+      var exec=document.getElementById(parent_tag_str+'_exec');
+
+      // 画面の更新
+      while(exec.firstChild){
+        exec.removeChild(exec.firstChild);
+      }
 
       var a=document.createElement("a");
 
       a.href='#'+parent_tag_str;
-      a.innerText='売上の新規登録';
+      a.innerText='販売データの新規登録';
       a.style.display='block';
-      a.classList.add('a-insert');
+      a.classList.add('hanbai-a-insert');
 
       a.addEventListener('click',insert_table);
 
       a.label=label;
-      a.col=products_col;
+      a.col=col;
       a.parent_tag_str=parent_tag_str;
       a.prev='ceate_products_input_form';
       a.table_name=table_name;
@@ -460,6 +418,4 @@ function create_products_input_form(parent_tag_str,table_name){
 
       parent_tag.appendChild(form);
 
-    });
-  
   }

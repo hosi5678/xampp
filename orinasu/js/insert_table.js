@@ -7,13 +7,21 @@ function insert_table(event){
   var label=event.target.label;
 
   var col=event.target.col;
-  // var prev=event.target.prev;
-  var riyou; // =event.target.riyou;
+ 
+  var riyou;
+
+  var tax;
+  var category;
+  var round;
 
   var mode=event.target.mode;
 
   if(table_name=='members'){
     riyou=event.target.riyou;
+  }else if(table_name=='products'){
+    category=event.target.category;
+    tax=event.target.tax;
+    round=event.target.round;
   }
 
   console.log('-----in insert table-----');
@@ -65,7 +73,7 @@ function insert_table(event){
 
         str=document.getElementById(parent_tag_str+i).value;
 
-      // 悪意がある場合(SQL injection)
+      // SQL injectionは認めない
       str=reject_str(str);
 
       if(str===1){
@@ -141,11 +149,6 @@ function insert_table(event){
         ajax_stmt_exec(table_name,query),
       ).done(function(results){
 
-        var mode='insert';
-
-        var riyou=new Array();
-        // riyou=getArrayFromRows(riyou,riyou_col,riyou_row);
-
         create_members_input_form({
           parent_tag_str:parent_tag_str,
           table_name:table_name,
@@ -166,7 +169,16 @@ function insert_table(event){
       });
 
     }else if(table_name=='products'){
-      create_products_input_form(parent_tag_str,table_name);
+
+       create_table({
+          parent_tag_str:parent_tag_str,
+          table_name:table_name,
+          label:label,col:col,
+          category:category,
+          tax:tax,
+          round:round,
+          row:results
+        });    
     }
 
 
