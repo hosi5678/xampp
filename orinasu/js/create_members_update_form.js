@@ -2,7 +2,6 @@
 
 function create_members_update_form(event){
 
-
   console.log('----- in create members update form: -----');
 
   var parent_tag_str=event.target.parent_tag_str;
@@ -10,15 +9,6 @@ function create_members_update_form(event){
   var mode=event.target.mode;
   var label=event.target.label;
   var col=event.target.col;
-
-
-  // id=event.target.id;
-  // prev=event.target.prev;
-
-  // console.log('parent tag str:'+parent_tag_str);
-  // console.log('table_name:'+table_name);
-  // // console.log('id:'+id);
-  // console.log('id:'+id);
 
   console.log('update mode:'+mode);
 
@@ -35,16 +25,13 @@ function create_members_update_form(event){
   console.log('tds val:');
   console.log(tds_val);
 
-   $.when(
+    $.when(
 
-    // ajax_get_col(table_name+'_join'),
-    // ajax_get_col(table_name),
+      ajax_get_col('youbi'),
+      ajax_select_from_table('youbi'),
 
-    ajax_get_col('youbi'),
-    ajax_select_from_table('youbi'),
-
-    ajax_get_col('riyou_keitai'),
-    ajax_select_from_table('riyou_keitai'),
+      ajax_get_col('riyou_keitai'),
+      ajax_select_from_table('riyou_keitai'),
 
     ).done(function(youbi_col,youbi_row,riyou_col,riyou_row){
 
@@ -74,6 +61,7 @@ function create_members_update_form(event){
       parent_tag.appendChild(p);
 
       var riyou=new Array();
+
       riyou=getArrayFromRows({
         array:riyou,
         cols:riyou_col,
@@ -81,6 +69,7 @@ function create_members_update_form(event){
       });
 
       var youbi=new Array();
+
       youbi=getArrayFromRows({
         array:youbi,
         cols:youbi_col,
@@ -107,9 +96,9 @@ function create_members_update_form(event){
       // update(書き換え)
 
       // titleの書き換え
-      if(mode='update'){
+      if(mode=='update'){
 
-      var form_title=document.getElementById('form-title');
+      var form_title=document.getElementById('form-'+parent_tag_str+'-title');
       form_title.innerText='メンバー情報の修正';
 
       var id;
@@ -152,16 +141,7 @@ function create_members_update_form(event){
       a.classList.add('a-mod');
 
       a.innerText='修正する';
-      a.addEventListener('click',update_table,
-
-        // function(event){
-        //   update_table({
-        //     parent_tag_str:parent_tag_str,
-        //     table_name:table_name,
-        //     label:label,
-        //     col:col,
-        //     id:id
-        //   })
+        a.addEventListener('click',update_table,
       );
       
       a.parent_tag_str=parent_tag_str;
@@ -198,6 +178,6 @@ function create_members_update_form(event){
 
       }
 
-  });
+    });
 
 }

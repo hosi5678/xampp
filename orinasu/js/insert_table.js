@@ -30,8 +30,6 @@ function insert_table(event){
   console.log('col:'+col); // 10
   console.log('label is:');
   console.log(label);
-  console.log('riyou is:');
-  console.log(riyou);
   console.log('event type:'+event.type);
 
   // mode='insert';
@@ -60,6 +58,7 @@ function insert_table(event){
 
     if(label[i]=='id') continue;
 
+    // 文字列のとき
     if(
           (label[i]=='姓')||
           (label[i]=='名')||
@@ -81,7 +80,7 @@ function insert_table(event){
       }
 
       // 空欄のとき,ただし、名と顧客名と備考は空欄でよい。
-      if(str==''&&((label[i]!='名')||(label[i]!='備考')||(label[i]!='顧客名'))){
+      if(str==''&&((label[i]!='名')&&(label[i]!='備考')&&(label[i]!='顧客名'))){
 
       // if((str=='')&&(label[i]!='顧客名')){
         var p=document.createElement('p');
@@ -142,45 +141,55 @@ function insert_table(event){
   query+=');';
 
   console.log('query:'+query);
+  
+  $.when(
+    ajax_stmt_exec(table_name,query),
+  ).done(function(results){
+      
+      if(table_name=='members'){
 
-    if(table_name=='members'){
-
-      $.when(
-        ajax_stmt_exec(table_name,query),
-      ).done(function(results){
-
-        create_members_input_form({
-          parent_tag_str:parent_tag_str,
-          table_name:table_name,
-          label:label,
-          col:col,
-          riyou:riyou,
-          mode:mode,
-        });
+          create_members_input_form({
+            parent_tag_str:parent_tag_str,
+            table_name:table_name,
+            label:label,
+            col:col,
+            riyou:riyou,
+            mode:mode,
+          });
  
-        create_table({
-          parent_tag_str:parent_tag_str,
-          table_name:table_name,
-          label:label,col:col,
-          riyou:riyou,
-          row:results
-        });
+          create_table({
+            parent_tag_str:parent_tag_str,
+            table_name:table_name,
+            label:label,
+            col:col,
+            row:results
+          });
 
-      });
+      }else if(table_name=='products'){
 
-    }else if(table_name=='products'){
+          create_products_input_form({
+            parent_tag_str:parent_tag_str,
+            table_name:table_name,
+            label:label,
+            col:col,
+            category:category,
+            tax:tax,
+            round:round,
+            mode:mode,
+          });
 
-       create_table({
-          parent_tag_str:parent_tag_str,
-          table_name:table_name,
-          label:label,col:col,
-          category:category,
-          tax:tax,
-          round:round,
-          row:results
-        });    
-    }
+          create_table({
+            parent_tag_str:parent_tag_str,
+            table_name:table_name,
+            label:label,col:col,
+            category:category,
+            tax:tax,
+            round:round,
+            row:results
+          });    
 
+      }
 
+  });
 
 }

@@ -34,7 +34,6 @@ function create_members_delete_confirm(event){
     exec.removeChild(exec.firstChild);
   }
 
-
   var parent_tag=document.getElementById(parent_tag_str+'_params');
 
   // idの取得

@@ -26,7 +26,6 @@ function products_func(){
         ajax_get_col('round_type'),
         ajax_select_from_table('round_type'),
 
-  
       ).done(function(label,cols,category_cols,category_rows,tax_cols,tax_rows,round_cols,round_rows){
   
         var mode='insert';

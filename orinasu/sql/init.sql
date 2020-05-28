@@ -22,7 +22,7 @@ create table members(
  id int unsigned not null auto_increment primary key,
  
  myouji varchar(25) not NULL ,
- namae varchar(25) not NULL ,
+ namae varchar(25),
  
  sun tinyint unsigned,
  mon tinyint unsigned,

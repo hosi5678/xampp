@@ -1,3 +1,5 @@
+'use strict';
+
 function create_products_delete_confirm(event){
 
   var table_name=event.target.table_name;
@@ -22,6 +24,12 @@ function create_products_delete_confirm(event){
 
   while(parent_tag.firstChild){
     parent_tag.removeChild(parent_tag.firstChild);
+  }
+
+  var exec=document.getElementById(parent_tag_str+'_exec');
+
+  while(exec.firstChild){
+    exec.removeChild(exec.firstChild);
   }
 
   var parent_tag=document.getElementById(parent_tag_str+'_params');
@@ -66,8 +74,19 @@ function create_products_delete_confirm(event){
   a.addEventListener('click',function(event){
       parent_tag_str=event.target.parent_tag_str;
       table_name=event.target.table_name;
-    create_products_input_form(parent_tag_str,table_name);
-    select_from_table(parent_tag_str,table_name);
+
+      create_products_input_form({
+        parent_tag_str:parent_tag_str,
+        table_name:table_name,
+        label:label,
+        col:col,
+        category:category,
+        tax:tax,
+        round:round,
+        mode:mode,
+      });
+
+      select_from_table(parent_tag_str,table_name);
 
   });
 

@@ -35,7 +35,7 @@ function update_table(
     message.removeChild(message.firstChild);
   }
 
-  var bikou;
+  // var bikou;
 
   for(var i=0;i<label.length;i++){
     if(label[i]=='id') continue;
@@ -46,6 +46,8 @@ function update_table(
         (label[i]=='名')||
         (label[i]=='商品名')||
         (label[i]=='販売日')||
+        (label[i]=='顧客名')||
+        (label[i]=='販売場所')||
         (label[i]=='備考')
       ){
       var str=document.getElementById(parent_tag_str+i).value;
@@ -115,7 +117,7 @@ function update_table(
 
       }
 
-      // console.log('query:'+query);
+      console.log('query:'+query);
 
       $.when(
         ajax_stmt_exec(table_name,query,'assoc'),
@@ -141,7 +143,8 @@ function update_table(
               table_name:table_name,
               label:label,
               col:col,
-              riyou:riyou});
+              riyou:riyou
+            });
     
             create_table({
               parent_tag_str:parent_tag_str,
@@ -152,12 +155,68 @@ function update_table(
               row:results
             });
     
-    
           });
     
         }else if(table_name=='products'){
-          create_products_input_form(parent_tag_str,table_name);
-          select_from_table(parent_tag_str,table_name);
+
+          $.when(
+            ajax_get_col(table_name+'_join'),
+            ajax_get_col(table_name),
+
+            ajax_get_col('category'),
+            ajax_select_from_table('category'),
+
+            ajax_get_col('tax'),
+            ajax_select_from_table('tax'),
+
+            ajax_get_col('round_type'),
+            ajax_select_from_table('round_type'),
+
+          ).done(function(label,col,category_cols,category_rows,tax_cols,tax_rows,round_cols,round_rows){
+
+            var mode='insert';
+
+            var category=new Array();
+            
+            category=getArrayFromRows({
+              array:category,
+              rows:category_rows,
+              cols:category_cols
+            });
+  
+            var tax=new Array();
+            
+            tax=getArrayFromRows({
+              array:tax,
+              rows:tax_rows,
+              cols:tax_cols
+            });
+  
+            var round=new Array();
+  
+            round=getArrayFromRows({
+              array:round,
+              rows:round_rows,
+              cols:round_cols
+            });
+  
+            create_products_input_form({
+              parent_tag_str:parent_tag_str,
+              table_name:table_name,
+              label:label,
+              col:col,
+              category:category,
+              tax:tax,
+              round:round,
+              mode:mode,
+            })
+
+            select_from_table(parent_tag_str,table_name);
+
+          });
+
+          // create_products_input_form(parent_tag_str,table_name);
+          // select_from_table(parent_tag_str,table_name);
         }
       });
 

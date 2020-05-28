@@ -1,7 +1,6 @@
 'use strict';
 
-function create_products_input_form(
-    {
+function create_products_input_form({
       parent_tag_str,
       table_name,
       label,
@@ -10,8 +9,7 @@ function create_products_input_form(
       tax,
       round,
       mode,
-    }
-){
+    }){
 
     console.log('parent_tag_str:'+parent_tag_str);
     console.log('table_name:'+table_name);
@@ -35,10 +33,11 @@ function create_products_input_form(
       console.log(round);
 
       var p=document.createElement('p');
+      p.id='form-'+parent_tag_str+'-title';
       p.innerText='売上の登録';
 
       var form=document.createElement('form');
-      form.name='form_products_insert';
+      form.name='form_'+parent_tag_str+'_insert';
 
       form.appendChild(p);
 
@@ -62,17 +61,6 @@ function create_products_input_form(
 
           var td=document.createElement('td');
           var select=document.createElement('select');
-          select.id=parent_tag_str+i;
-
-          select.addEventListener('keyup',select_from_like);
-          select.addEventListener('click',select_from_like);
-
-          select.col=col[i];
-          select.table_name=table_name;
-          select.parent_tag_str=parent_tag_str;
-          select.label=label;
-          select.id=parent_tag_str+i;
-
 
           for(var k=0;k<category.length;k++){
             var option=document.createElement('option');
@@ -81,6 +69,16 @@ function create_products_input_form(
             
             select.appendChild(option);
           }
+
+          select.addEventListener('click',select_from_like);
+          select.addEventListener('change',select_from_like);
+
+          select.id=parent_tag_str+i;
+          select.col=col[i];
+          select.table_name=table_name;
+          select.parent_tag_str=parent_tag_str;
+          select.label=label;
+          select.id=parent_tag_str+i;
 
           td.appendChild(select);
           tr.appendChild(td);
@@ -413,8 +411,12 @@ function create_products_input_form(
       a.parent_tag_str=parent_tag_str;
       a.prev='ceate_products_input_form';
       a.table_name=table_name;
+      a.tax=tax;
+      a.category=category;
+      a.round=round;
+      a.mode=mode;
 
-      form.appendChild(a);
+      exec.appendChild(a);
 
       parent_tag.appendChild(form);
 

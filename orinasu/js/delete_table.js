@@ -1,6 +1,7 @@
+'use strict';
+
 function delete_table(event){
 
-  'use strict';
 
   // console.log('----- in delete table -----');
 
@@ -87,12 +88,73 @@ function delete_table(event){
               table_name:table_name,
               label:label,
               col:col,
-              row:results});
+              row:results
+            });
     
           });
-              // create_members_input_form({parent_tag_str:parent_tag_str,table_name:table_name,label:label,col:col,riyou:riyou});
+
         }else if(table_name=='products'){
-          create_products_input_form(parent_tag_str,table_name);
+          $.when(
+            ajax_get_col(table_name+'_join'),
+            ajax_get_col(table_name),
+
+            ajax_get_col('category'),
+            ajax_select_from_table('category'),
+
+            ajax_get_col('tax'),
+            ajax_select_from_table('tax'),
+
+            ajax_get_col('round_type'),
+            ajax_select_from_table('round_type'),
+
+            ajax_stmt_exec(table_name,query),
+
+          ).done(function(label,col,category_col,category_row,tax_col,tax_row,round_col,round_row,results){
+
+            var category=new Array();
+
+            category=getArrayFromRows({
+              array:category,
+              cols:category_col,
+              rows:category_row
+            });
+
+            var tax=new Array();
+
+            tax=getArrayFromRows({
+              array:tax,
+              cols:tax_col,
+              rows:tax_row
+            });
+
+            var round=new Array();
+
+            round=getArrayFromRows({
+              array:round,
+              cols:round_col,
+              rows:round_row
+            });
+
+            create_products_input_form({
+              parent_tag_str:parent_tag_str,
+              table_name:table_name,
+              label:label,
+              col:col,
+              category:category,
+              tax:tax,
+              round:round,
+            });
+
+            create_table({
+              parent_tag_str:parent_tag_str,
+              table_name:table_name,
+              label:label,
+              col:col,
+              row:results
+            });
+
+
+          });
         }
         
       });

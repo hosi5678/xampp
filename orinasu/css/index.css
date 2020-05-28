@@ -234,7 +234,7 @@ td {
 }
 
 .a-insert {
-	width:150px;
+	width:200px;
 }
 
 .hanbai-a-insert {
@@ -252,6 +252,9 @@ td {
 	cursor: pointer;
 }
 
+#members_exec,#products_exec {
+	margin-bottom:30px;
+}
 /* #products {
 	margin-bottom: 10px;
 }

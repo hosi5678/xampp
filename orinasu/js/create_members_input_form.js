@@ -37,7 +37,7 @@ function create_members_input_form(
         form.name='form_'+parent_tag_str+'_insert';
 
         var p=document.createElement('p');
-        p.id='form-title';
+        p.id='form-'+parent_tag_str+'-title';
         p.innerText='メンバーの新規登録';
 
         form.appendChild(p);
@@ -131,7 +131,7 @@ function create_members_input_form(
 
           for(var k=0;k<riyou.length;k++){
             
-            if((label[i]=='土')&&(riyou[k]=='午後' || riyou[k]=='終日')) continue;
+            if((label[i]=='土')&&(riyou[k]=='午後'||riyou[k]=='終日')) continue;
  
             var option=document.createElement('option');
             
@@ -147,6 +147,14 @@ function create_members_input_form(
             select.appendChild(option);
            
           }
+
+          select.addEventListener('click',select_from_like);
+          select.addEventListener('change',select_from_like);
+
+          select.col=col[i];
+          select.table_name=table_name;
+          select.parent_tag_str=parent_tag_str;
+          select.label=label;
 
           td.appendChild(select);
           tr.appendChild(td);
@@ -169,7 +177,9 @@ function create_members_input_form(
       for(var i=0;i<label.length;i++){
 
         if(label[i]=='備考'){
+
           var textarea=document.createElement('textarea');
+
           textarea.name='bikou';
           textarea.rows=5;
           textarea.cols=80;
@@ -197,7 +207,7 @@ function create_members_input_form(
         var a=document.createElement("a");
 
         a.href='#'+parent_tag_str;
-        a.innerText='新規登録する';
+        a.innerText='メンバーの新規登録';
         a.style.display='block';
         a.classList.add('a-insert');
         
@@ -208,6 +218,7 @@ function create_members_input_form(
         a.label=label;
         a.col=col;
         a.riyou=riyou;
+        a.mode='insert';
      
         exec.appendChild(a);
 

@@ -1,4 +1,6 @@
-function select_from_table(parent_tag_str,table_name,riyou){
+'use strict';
+
+function select_from_table(parent_tag_str,table_name){
 
   // var parent_tag=document.getElementById(parent_tag_str);
   console.log('----- in select from table(before ajax)-----');
@@ -21,7 +23,6 @@ function select_from_table(parent_tag_str,table_name,riyou){
         label:label,
         col:col,
         row:row,
-        riyou:riyou
       });
 
     });

@@ -93,19 +93,18 @@ function create_table({parent_tag_str,table_name,label,col,row}){
         td.classList.add('td-mod');
   
         if(table_name=='members'){
-
           td.addEventListener('click',create_members_update_form);
-
-          td.table_name=table_name;
-          td.parent_tag_str=parent_tag_str;
-          td.label=label;
-          td.col=col;
-
         }else if(table_name=='products'){
           td.addEventListener('click',create_products_update_form);
         }
-  
-  
+
+        td.parent_tag_str=parent_tag_str;
+        td.table_name=table_name;
+        
+        td.label=label;
+        td.col=col;
+        td.mode='update';
+ 
         tr.appendChild(td);
 
         var td=document.createElement('td');
