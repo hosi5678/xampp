@@ -4,10 +4,6 @@ function create_table({parent_tag_str,table_name,label,col,row}){
 
   console.log('----- in create table -----');
   
-  // console.log('parent_tag_str:'+parent_tag_str);
-  // console.log('table_name:'+table_name);
-  // console.log('mode:'+mode);
-
   console.log('label is:');
   console.log(label);
   console.log('col is:');
@@ -67,6 +63,28 @@ function create_table({parent_tag_str,table_name,label,col,row}){
     thead.appendChild(th);
 
 }
+
+// 編集記号の追加
+  var th=document.createElement('th');
+  var i=document.createElement('i');
+  i.classList.add('fas');
+  i.classList.add('fa-edit');
+
+  th.appendChild(i);
+
+  thead.appendChild(th);
+
+  table.appendChild(thead);
+
+// ゴミ箱記号の追加
+  var th=document.createElement('th');
+  var i=document.createElement('i');
+  i.classList.add('fas');
+  i.classList.add('fa-trash');
+
+  th.appendChild(i);
+
+  thead.appendChild(th);
 
   table.appendChild(thead);
 
@@ -129,8 +147,8 @@ function create_table({parent_tag_str,table_name,label,col,row}){
 
   }
 
-  table.appendChild(tbody);
+      table.appendChild(tbody);
 
-  parent_tag.appendChild(table);  
+      parent_tag.appendChild(table);  
 
 }

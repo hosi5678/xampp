@@ -36,7 +36,7 @@ function create_calendar(parent_tag_str,year,month,youbi){
     var div_title=document.createElement('div');
      		 
 		 var div=document.createElement('div');
-		 div.classList.add('calendar-yajirushi');
+		 div.classList.add('calendar-left-arrow');
 		 div.style.display='inline-block';
 		 div.innerText='◀';
 		 div.youbi=youbi;
@@ -72,7 +72,7 @@ function create_calendar(parent_tag_str,year,month,youbi){
 
 		var div=document.createElement('div');
 		div.style.display='inline-block';
-		div.classList.add('calendar-yajirushi');
+		div.classList.add('calendar-right-arrow');
 		div.innerText='▶';
 		div.youbi=youbi;
 
@@ -121,31 +121,6 @@ function create_calendar(parent_tag_str,year,month,youbi){
 		
 		form.appendChild(div_title);
 
-		 
-		//  console.log('今月のカレンダーの開始日:'+(prevMonth_lastday.getDate()-prevMonth_lastday.getDay()));
-		//  console.log('今日は何年か?'+year);
-		//  console.log('今月は何月か？(curr+1):'+(month+1));
-		//  console.log('今日は何日か？:'+thisMonth.getDate());
-		//  // 曜日の取得
-		//  console.log('今日の曜日:'+youbi[thisMonth.getDay()]);
- 
-		//  // 先月の末尾を取得する
-		//  console.log('先月は何年か？'+prevMonth_lastday.getFullYear());
-		//  console.log('先月は何月か？'+(prevMonth_lastday.getMonth()+1));
- 
-		//  console.log('先月の末尾:'+prevMonth_lastday.getDate());
-		//  console.log('先月の末尾の曜日番号:'+prevMonth_lastday.getDay());
- 
-		//  console.log('今月の末尾:'+currMonth_lastday.getDate());
-		//  console.log('今月の末尾は何年か？:'+currMonth_lastday.getFullYear()); // ->今月の末尾は同年
-		//  console.log('今月の末尾は何月か？:'+(currMonth_lastday.getMonth()+1)); // ->今月の末尾は同月
- 
-		//  console.log('今月の末尾の曜日番号:'+currMonth_lastday.getDay());
- 
-		//  console.log('今日の週番号:'+getWeekNum(thisMonth));
- 
-		//  console.log('今月が何週あるか:'+getWeekNum(currMonth_lastday));
- 
 		 var holidays = JapaneseHolidays.getHolidaysOf(thisMonth.getFullYear());
 
 		 var holidays_thisMonth=new Array();
@@ -164,16 +139,7 @@ function create_calendar(parent_tag_str,year,month,youbi){
 				}
 			});
 
-		// console.log('holidays this month:');
-		// console.log(nextMonth_firstday.getFullYear());
-
-		// console.log(holidays_thisMonth);
-
 		var table=document.createElement('table');
-
-		// console.log('prev-prev:'+(prevMonth_lastday.getDate()-prevMonth_lastday.getDay()));
-		// console.log('prev last:'+prevMonth_lastday.getDate());
-		// console.log('getWeekNum:'+getWeekNum(currMonth_lastday));
 
 		var thead=document.createElement('thead');
 		var tbody=document.createElement('tbody');
@@ -231,7 +197,6 @@ function create_calendar(parent_tag_str,year,month,youbi){
 									td.classList.add('td-shukujitu');
 								}
 							}
-
 							// td.innerText=(thisMonth.getMonth()+1)+'/'+thisMonthDate;
 							td.innerText=thisMonthDate;
 
@@ -255,8 +220,6 @@ function create_calendar(parent_tag_str,year,month,youbi){
 							if(thisMonth.getFullYear()==currYear&&thisMonth.getMonth()==currMonth&&thisMonthDate==currDate) td.classList.add('td-today');
 
 							// console.log('thismonth:');
-
-
 
 							td.id=thisMonth.getFullYear()+'-'+(thisMonth.getMonth()+1)+'-'+thisMonthDate;
 

@@ -63,9 +63,10 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 	<script src="./js/test.js"></script>
 	<script src='./js/ajax_get_col.js'></script>
 	<script src='./js/ajax_select_from_table.js'></script>
-	<script src='./js/staff_calender_func.js'></script>
-	<script src='./js/create_staff_calendar_input_form.js'></script>
+	<script src='./js/calender_func.js'></script>
+	<script src='./js/create_calendar_input_form.js'></script>
 	<script src='./js/getArrayFromRows.js'></script>
+	<script src='./js/create_calendar_input_form.js'></script>
 
 </head>
 
@@ -82,18 +83,21 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 	<div id='contents'>
 
 		<div class='content'>
-			<a id='staff_calendar_mark' href='#wrapper' onclick='staff_calender_func()' class='a-link'>カレンダー▼</a>
-			<div id="staff_calendar">
-				<p id='staff_calendar_title'></p>
-				<div id='staff_calendar_message'></div>
-				<div id="staff_calendar_params"></div>
-				<div id="staff_calendar_like"></div>
-				<div id="staff_calendar_results"></div>
+			<i class="far fa-calendar-alt"></i>
+			<a id='calendar_mark' href='#wrapper' onclick='calender_func()' class='a-link'>カレンダー▼</a>
+			<div id="calendar">
+				<p id='calendar_title'></p>
+				<div id='calendar_message'></div>
+				<div id="calendar_params"></div>
+				<div id='products_exec'></div>
+				<div id="calendar_like"></div>
+				<div id="calendar_results"></div>
 			</div>
 		</div>
 
 		<div class='content'>
-			<a id='products_mark' href='#wrapper' onclick='products_func()' class='a-link'>販売データの登録・削除▼</a>
+			<i class="fas fa-coins"></i>
+			<a id='products_mark' href='#wrapper' onclick='products_func()' class='a-link'>売上データの登録・削除/検索▼</a>
 			<div id="products">
 				<p id='products_title'></p>
 				<div id='products_message'></div>
@@ -105,7 +109,8 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 		</div>
 
 		<div class='content'>
-			<a id='members_mark' href='#wrapper' onclick='members_func()' class='a-link'>利用者の登録・削除▼</a>
+			<i class="fas fa-user-friends"></i>
+			<a id='members_mark' href='#wrapper' onclick='members_func()' class='a-link'>利用者の登録・削除/検索▼</a>
 			<div id="members">
 				<p id='members_title'></p>
 				<div id='members_message'></div>

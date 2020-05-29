@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 * {
 	margin:0px;
 	padding:0px;
@@ -42,8 +44,20 @@ body {
 	margin-bottom: 20px;
 }
 
+/* .ui-tooltip {
+	width:120px;
+	height:100px;
+	font-size: 20px;
+	box-shadow: 2px 2px 2px #aaaaaa;
+	background:Lavender;
+} */
+
 h1 {
 	color:royalblue;
+}
+
+svg {
+	margin-right: 15px;
 }
 
 a {
@@ -83,6 +97,7 @@ table {
 	border-collapse: collapse;
 	text-align:center;
 	margin-bottom: 30px;
+	border-radius: 1em;
 }
 
 th {
@@ -90,6 +105,7 @@ th {
 	width: 100px;
 	border: 1px solid black;
 	color:rgb(70, 70, 70);
+	text-align: center;
 }
 
 .th-calc {
@@ -100,6 +116,7 @@ td {
 	border: 1px solid black;
 	padding: 3px;
 	color:rgb(0, 0, 0);
+	border-radius:3px;
 
 }
 
@@ -145,14 +162,26 @@ td {
 }
 
 /* calendar yajirushi */
-.calendar-yajirushi {
+.calendar-right-arrow {
+	margin-left:30px;
 	cursor:pointer;
 	color:lightgreen;
 }
 
-.calendar-yajirushi:hover {
+.calendar-right-arrow:hover {
 	background-color:#adf;
 }
+
+.calendar-left-arrow {
+	margin-right:30px;
+	cursor:pointer;
+	color:lightgreen;
+}
+
+.calendar-left-arrow:hover {
+	background-color:#adf;
+}
+
 
 .td-today {
 	background-color:#afe;
@@ -165,12 +194,6 @@ td {
 .td-bikou {
 	width:280px;
 }
-
-/* .show {
-	opacity: 1;
-	transform: translateY(20px);
-	transition: 500ms;
-} */
 
 .table-nth-gray tr:nth-child(even) {
 	background-color: #eee;

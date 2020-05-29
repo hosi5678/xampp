@@ -36,10 +36,11 @@ insert into riyou_keitai(content) values("午後");
 select * from riyou_keitai;
 
 insert into category(name) values('バッグ');
+insert into category(name) values('アクセサリ');
+insert into category(name) values('マスク');
 insert into category(name) values('ポーチ');
 insert into category(name) values('お財布');
-insert into category(name) values('マスク');
-insert into category(name) values('アクセサリ');
+insert into category(name) values('服飾');
 
 select * from category;
 

@@ -1,4 +1,4 @@
-function staff_calender_func(){
+function calender_func(){
 
     var parent_tag_str='staff_calendar';
     var table_name='staff_calendar';
@@ -28,7 +28,7 @@ function staff_calender_func(){
             console.log('--- youbi ---');
             console.log(youbi);
                        
-            create_staff_calendar_input_form(parent_tag_str,table_name,youbi);
+            create_calendar_input_form(parent_tag_str,table_name,youbi);
         
         });
         

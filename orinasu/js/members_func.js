@@ -42,12 +42,12 @@ function members_func(){
 
         select_from_table(parent_tag_str,table_name);
 
-        document.getElementById(parent_tag_str+"_mark").innerText='利用者の登録・削除▲';
-    
+        document.getElementById(parent_tag_str+"_mark").innerText='利用者の登録・削除/検索▲';
+        
     });
 
   }else{
-        document.getElementById(parent_tag_str+"_mark").innerText='利用者の登録・削除▼';
+        document.getElementById(parent_tag_str+"_mark").innerText='利用者の登録・削除/検索▼';
         document.getElementById(parent_tag_str).style.height='0px';
 
   }

@@ -75,6 +75,19 @@ function create_members_input_form(
               input.parent_tag_str=parent_tag_str;
               input.label=label;
               input.id=parent_tag_str+i;
+              input.title='姓を入力してください。';
+
+              $('#'+input.id).tooltip({
+                show: {
+                  effect: "size",
+                  delay: 100
+                },
+
+                hide: {
+                  effect: "size",
+                  delay: 100
+                }
+              });
 
             }
 
