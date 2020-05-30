@@ -22,6 +22,7 @@ open in browser
 Panda Theme
 PHP Debug
 PHP IntelliSense
+PHP Intelephense
 MySQL Client(cweijan)
 MySQL Syntax
 Path Autocomplete

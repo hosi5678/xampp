@@ -67,8 +67,10 @@
 
 2.document rootの変更
 	C:\xampp\apache\conf\httpd.conf の252行付近を
+
 	DocumentRoot "C:/xampp_opendoc/orinasu/"
 	<Directory "C:/xampp_opendoc/orinasu/">
+
 	の様に変更
 
 3.doument rootのファイルを非公開
@@ -86,11 +88,14 @@
 		Require ip 192.168.1.15
 	</Directory>
 	と許可するip addressを追記する。
+	適宜、追加する。
 
 5.favicon not foundの回避
 	C:\xampp\apache\conf\httpd.confの末尾に(どこか)
+
 	Redirect 404 /favicon.ico
 	ErrorDocument 404 "Not Found favicon"
+
 	を追記
 
 ■phpの設定
