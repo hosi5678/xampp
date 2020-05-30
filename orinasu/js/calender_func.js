@@ -1,7 +1,7 @@
 function calender_func(){
 
-    var parent_tag_str='staff_calendar';
-    var table_name='staff_calendar';
+    var parent_tag_str='calendar';
+    var table_name='calendar';
   
     var tmp = document.getElementById(parent_tag_str).style.visibility;
   
