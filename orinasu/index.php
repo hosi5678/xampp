@@ -8,14 +8,14 @@ require_once("./php_libs/ip_address.php");
 require_once("./php_libs/ip_address_check.php");
 require_once("./php_libs/insert_access_log.php");
 
-// 外部からの命令を無効化
-$ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
+// // 外部からの命令を無効化
+// $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 
-// ipアドレスをチェック
- $flag=ip_address_check($ip_address_ext);
+// // ipアドレスをチェック
+//  $flag=ip_address_check($ip_address_ext);
 
-// アクセスログ(簡易版)テーブルに書き込み
- insert_access_log($ip_address_ext,$flag);
+// // アクセスログ(簡易版)テーブルに書き込み
+//  insert_access_log($ip_address_ext,$flag);
 
 ?>
 
@@ -81,7 +81,6 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 	<div class='line'></div>
 						
 	<div id='contents'>
-
 		<div class='content'>
 			<i class="far fa-calendar-alt"></i>
 			<a id='calendar_mark' href='#wrapper' onclick='calender_func()' class='a-link'>カレンダー▼</a>
@@ -89,7 +88,7 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 				<p id='calendar_title'></p>
 				<div id='calendar_message'></div>
 				<div id="calendar_params"></div>
-				<div id='products_exec'></div>
+				<div id='calendar_exec'></div>
 				<div id="calendar_like"></div>
 				<div id="calendar_results"></div>
 			</div>
@@ -97,7 +96,7 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 
 		<div class='content'>
 			<i class="fas fa-coins"></i>
-			<a id='products_mark' href='#wrapper' onclick='products_func()' class='a-link'>売上データの登録・削除/検索▼</a>
+			<a id='products_mark' href='#wrapper' onclick='products_func()' class='a-link'>売上データの登録・削除／検索▼</a>
 			<div id="products">
 				<p id='products_title'></p>
 				<div id='products_message'></div>
@@ -110,7 +109,7 @@ $ip_address_ext=escape_string($_SERVER["REMOTE_ADDR"]);
 
 		<div class='content'>
 			<i class="fas fa-user-friends"></i>
-			<a id='members_mark' href='#wrapper' onclick='members_func()' class='a-link'>利用者の登録・削除/検索▼</a>
+			<a id='members_mark' href='#wrapper' onclick='members_func()' class='a-link'>利用者の登録・削除／検索▼</a>
 			<div id="members">
 				<p id='members_title'></p>
 				<div id='members_message'></div>
