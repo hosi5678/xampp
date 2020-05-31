@@ -44,9 +44,6 @@ php ajaxにて
  ALTER USER 'root'@'localhost' IDENTIFIED BY "your password";
 上記の2つ目のコマンドのPasswordの部分は自分の新しく設定するパスワードに変える。
 
-・insertは一回だけ行う。同じものが2回入るから。
-→確認する。
-
 データのバックアップ
 mysqldump
 mysqldump -u root -p orinasu_db>orinasu_db_backup.sql

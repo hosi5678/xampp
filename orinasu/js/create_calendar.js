@@ -21,6 +21,7 @@ function create_calendar(parent_tag_str,year,month,youbi){
 		var currMonth=curr.getMonth();
 		var currDate=curr.getDate();
 
+		 
      // 画面の更新
      var parent_tag=document.getElementById(parent_tag_str+'_results');
 
