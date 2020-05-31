@@ -1,17 +1,13 @@
 'use strict';
 
-function create_members_input_form(
-  {
+function create_members_input_form({
     parent_tag_str,
     table_name,
     label,
     col,
     riyou,
     mode,
-  }
-)
-
-{
+  }){
 
   console.log('----- in create members input form -----');
   console.log('parent tag str:'+parent_tag_str);

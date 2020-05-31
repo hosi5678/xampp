@@ -4,8 +4,6 @@ function products_func(){
 
     var parent_tag_str='products';
     var table_name='products';
-
-    // var parent_tag=document.getElementById(parent_tag_str);
   
     var tmp = document.getElementById(parent_tag_str).style.visibility;
   
@@ -73,10 +71,10 @@ function products_func(){
       });
   
     }else{
-          document.getElementById(parent_tag_str+"_mark").innerText='売上データの登録・削除／検索▼';
-          document.getElementById(parent_tag_str).style.height='0px';
+      document.getElementById(parent_tag_str+"_mark").innerText='売上データの登録・削除／検索▼';
+      document.getElementById(parent_tag_str).style.height='0px';
     }
   
-          document.getElementById(parent_tag_str).style.visibility = tmp;
+      document.getElementById(parent_tag_str).style.visibility = tmp;
     
   }

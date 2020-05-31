@@ -171,7 +171,7 @@ function create_calendar(parent_tag_str,year,month,youbi){
 							td.classList.add('td-calendar');
 
 							td.id=prevMonth_lastday.getFullYear()+'-'+(prevMonth_lastday.getMonth()+1)+'-'+i;
-							// td.innerText=(prevMonth_lastday.getMonth()+1)+'/'+i;
+
 							td.innerText=i;
 
 							tr.appendChild(td);
@@ -195,9 +195,23 @@ function create_calendar(parent_tag_str,year,month,youbi){
 							for(var k=0;k<holidays_thisMonth.length;k++){
 								if(holidays_thisMonth[k].date==td.id){
 									td.classList.add('td-shukujitu');
+
+									td.title=holidays_thisMonth[k].name;
+									
+									$('#'+td.id).tooltip({
+										show: {
+											effect: "size",
+											delay: 100
+										},		
+										hide: {
+											effect: "size",
+											delay: 100
+										}
+									});
+
 								}
 							}
-							// td.innerText=(thisMonth.getMonth()+1)+'/'+thisMonthDate;
+
 							td.innerText=thisMonthDate;
 
 							tr.appendChild(td);
@@ -219,17 +233,27 @@ function create_calendar(parent_tag_str,year,month,youbi){
 
 							if(thisMonth.getFullYear()==currYear&&thisMonth.getMonth()==currMonth&&thisMonthDate==currDate) td.classList.add('td-today');
 
-							// console.log('thismonth:');
-
 							td.id=thisMonth.getFullYear()+'-'+(thisMonth.getMonth()+1)+'-'+thisMonthDate;
 
 							for(var k=0;k<holidays_thisMonth.length;k++){
 								if(holidays_thisMonth[k].date==td.id){
 									td.classList.add('td-shukujitu');
+									td.title=holidays_thisMonth[k].name;
+									
+									$('#'+td.id).tooltip({
+										show: {
+											effect: "size",
+											delay: 100
+										},		
+										hide: {
+											effect: "size",
+											delay: 100
+										}
+									});
+
 								}
 							}
 
-							// td.innerText=(thisMonth.getMonth()+1)+'/'+thisMonthDate;
 							td.innerText=thisMonthDate;
 
 							tr.appendChild(td);
@@ -245,7 +269,6 @@ function create_calendar(parent_tag_str,year,month,youbi){
 							td.classList.add('td-gray');
 							td.classList.add('td-calendar');
 
-							// td.innerText=(nextMonth_firstday.getMonth()+1)+'/'+thisMonthDate;
 							td.innerText=thisMonthDate;
 
 							td.id=nextMonth_firstday.getFullYear()+'-'+(nextMonth_firstday.getMonth()+1)+'-'+thisMonthDate;

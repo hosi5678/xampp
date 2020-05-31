@@ -77,7 +77,7 @@ drop table if exists youbi cascade;
 
  create table youbi(
   id tinyint unsigned not null auto_increment primary key,
-  name varchar(10)
+  name varchar(10) UNIQUE 
 
  );
 
@@ -87,7 +87,7 @@ drop table if exists riyou_keitai cascade;
 
 create table riyou_keitai(
  id tinyint unsigned not null auto_increment primary key,
- content varchar(16) 
+ content varchar(16) UNIQUE
 
 );
 
