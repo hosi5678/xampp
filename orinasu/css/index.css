@@ -40,8 +40,8 @@ body {
 
 .line {
 	width:600px;
-	border-bottom: 2px solid purple;
-	margin-bottom: 20px;
+	border-bottom: 2px solid#CFBEFF;
+	margin-bottom: 15px;
 }
 
 /* .ui-tooltip {

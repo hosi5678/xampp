@@ -1,4 +1,6 @@
-function create_calendar(parent_tag_str,year,month,youbi){
+'use strict';
+
+function create_calendar({parent_tag_str,year,month,date,youbi}){
 
     console.log('in create calendar');
 
@@ -16,18 +18,19 @@ function create_calendar(parent_tag_str,year,month,youbi){
 		// 来月の初日を取得する
 		var nextMonth_firstday=new Date(year,(month+1),1);
 
-		var curr=new Date();
-		var currYear=curr.getFullYear();
-		var currMonth=curr.getMonth();
-		var currDate=curr.getDate();
+		// var curr=new Date();
+		// var currYear=curr.getFullYear();
+		// var currMonth=curr.getMonth();
+		// var currDate=curr.getDate();
 
-		 
-     // 画面の更新
-     var parent_tag=document.getElementById(parent_tag_str+'_results');
+		 // 画面の更新
+		 var parent_tag=childNodeClear(parent_tag_str+'_hyou');
 
-    while(parent_tag.firstChild){
-      parent_tag.removeChild(parent_tag.firstChild);
-    }
+    //  var parent_tag=document.getElementById(parent_tag_str+'_hyou');
+
+    // while(parent_tag.firstChild){
+    //   parent_tag.removeChild(parent_tag.firstChild);
+    // }
  
     var form=document.createElement('form');
 		 
@@ -50,22 +53,37 @@ function create_calendar(parent_tag_str,year,month,youbi){
 				year=year-1;
 			}
 
-			 create_calendar(parent_tag_str,year,month,youbi);
+			 create_calendar({
+				 parent_tag_str:parent_tag_str,
+				 year:year,
+				 month:month,
+				 youbi:youbi
+				});
 		 });
 
 		div_title.appendChild(div);
 
 		var a=document.createElement('a');
-		// div.style.display='inline-block';
+
 		a.innerText='今月';
 		a.youbi=youbi;
 
 		a.href='#';
 
 		a.addEventListener('click',function(event){
-	
-			create_calendar(parent_tag_str,currYear,currMonth,youbi);
 
+			var curr=new Date();
+			var currYear=curr.getFullYear();
+			var currMonth=curr.getMonth();
+			var currDate=curr.getDate();
+	
+			create_calendar({
+				parent_tag_str:parent_tag_str,
+				year:currYear,
+				month:currMonth,
+				date:currDate,
+				youbi:youbi
+			});
 		});
 
 		div_title.appendChild(a);
@@ -87,7 +105,12 @@ function create_calendar(parent_tag_str,year,month,youbi){
 				year=year+1;
 			}
 
-			create_calendar(parent_tag_str,year,month,youbi);
+			create_calendar({
+				parent_tag_str:parent_tag_str,
+				year:year,
+				month:month,
+				youbi:youbi
+			});
 
 		});
 
@@ -127,15 +150,14 @@ function create_calendar(parent_tag_str,year,month,youbi){
  
 			holidays.forEach(function(holiday) {
 				if(holiday.month==(thisMonth.getMonth()+1)){
-					// console.log(
-					// 	thisMonth.getFullYear()+'/'+
-					// 	holiday.month+'/'+
-					// 	holiday.date+'/'+
-					// 	holiday.name
-					// );
-					holidays_thisMonth.push({date:thisMonth.getFullYear()+'-'+holiday.month+'-'+holiday.date
-					,name:holiday.name});	
-
+					holidays_thisMonth.push({
+						date:
+						thisMonth.getFullYear()+'-'
+						+holiday.month+'-'
+						+holiday.date,
+						name:
+						holiday.name
+					});	
 				}
 			});
 
@@ -188,7 +210,10 @@ function create_calendar(parent_tag_str,year,month,youbi){
 							if(i==0) td.classList.add('td-sun');	
 							if(i==6) td.classList.add('td-sat');
 
-							if(thisMonth.getFullYear()==currYear&&thisMonth.getMonth()==currMonth&&thisMonthDate==currDate) td.classList.add('td-today');
+							// thisMonth.getFullYear()==currYear&&thisMonth.getMonth()==currMonth&&thisMonthDate==currDate
+							if(thisMonth.getFullYear()==year&&thisMonth.getMonth()==month&&thisMonthDate==date){
+								td.classList.add('td-today');
+							} 
 
 							td.id=thisMonth.getFullYear()+'-'+(thisMonth.getMonth()+1)+'-'+thisMonthDate;
 
@@ -200,12 +225,12 @@ function create_calendar(parent_tag_str,year,month,youbi){
 									
 									$('#'+td.id).tooltip({
 										show: {
-											effect: "size",
-											delay: 100
+											effect:"size",
+											delay:50
 										},		
 										hide: {
-											effect: "size",
-											delay: 100
+											effect:"size",
+											delay:50
 										}
 									});
 
@@ -231,7 +256,9 @@ function create_calendar(parent_tag_str,year,month,youbi){
 							if(i==0) td.classList.add('td-sun');	
 							if(i==6) td.classList.add('td-sat');
 
-							if(thisMonth.getFullYear()==currYear&&thisMonth.getMonth()==currMonth&&thisMonthDate==currDate) td.classList.add('td-today');
+							if(thisMonth.getFullYear()==year&&thisMonth.getMonth()==month&&thisMonthDate==date){
+								td.classList.add('td-today');
+							} 
 
 							td.id=thisMonth.getFullYear()+'-'+(thisMonth.getMonth()+1)+'-'+thisMonthDate;
 
@@ -241,16 +268,15 @@ function create_calendar(parent_tag_str,year,month,youbi){
 									td.title=holidays_thisMonth[k].name;
 									
 									$('#'+td.id).tooltip({
-										show: {
-											effect: "size",
-											delay: 100
+										show:{
+											effect:"size",
+											delay:50
 										},		
-										hide: {
-											effect: "size",
-											delay: 100
+										hide:{
+											effect:"size",
+											delay:50
 										}
 									});
-
 								}
 							}
 

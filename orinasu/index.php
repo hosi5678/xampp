@@ -67,6 +67,7 @@ require_once("./php_libs/insert_access_log.php");
 	<script src='./js/create_calendar_input_form.js'></script>
 	<script src='./js/getArrayFromRows.js'></script>
 	<script src='./js/create_calendar_input_form.js'></script>
+	<script src='./js/childNodeClear.js'></script>
 
 </head>
 
@@ -81,18 +82,21 @@ require_once("./php_libs/insert_access_log.php");
 	<div class='line'></div>
 						
 	<div id='contents'>
+	
 		<div class='content'>
 			<i class="far fa-calendar-alt"></i>
 			<a id='calendar_mark' href='#wrapper' onclick='calender_func()' class='a-link'>カレンダー▼</a>
 			<div id="calendar">
 				<p id='calendar_title'></p>
-				<div id='calendar_message'></div>
-				<div id="calendar_params"></div>
-				<div id='calendar_exec'></div>
+				<div id='calendar_hyou'></div>
+				<div id='calendar_plan'></div>
+				<div id="calendar_param"></div>
 				<div id="calendar_like"></div>
 				<div id="calendar_results"></div>
 			</div>
 		</div>
+
+		<div class='line'></div>
 
 		<div class='content'>
 			<i class="fas fa-coins"></i>
@@ -106,6 +110,8 @@ require_once("./php_libs/insert_access_log.php");
 				<div id="products_results"></div>
 			</div>
 		</div>
+
+		<div class='line'></div>
 
 		<div class='content'>
 			<i class="fas fa-user-friends"></i>

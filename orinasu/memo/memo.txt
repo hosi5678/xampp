@@ -26,6 +26,21 @@ insertとupdateに切り分け
 ・5/27現在で、update_formとinput_formの融合は難しい。loadとeventの引数渡しが違う。
 'use strict'としたら、きちんと変数にvarをつける。
 
+// 祝日
+    // var holidays = JapaneseHolidays.getHolidaysOf(curr.getFullYear());
+
+    //     holidays.forEach(function(holiday) {
+    //       if(holiday.month==(curr.getMonth()+1)){
+    //         console.log(
+    //           curr.getFullYear()+'/'+
+    //           holiday.month+'/'+
+    //           holiday.date+'/'+
+    //           holiday.name
+    //         );          
+    //       }
+    //     });
+
+
 /php
 php ajaxにて
 ・echo は2回しない。

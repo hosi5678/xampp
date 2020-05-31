@@ -1,13 +1,10 @@
 function create_calendar_input_form(parent_tag_str,table_name,youbi){
 
     // 画面の更新
-    var parent_tag=document.getElementById(parent_tag_str+'_results');
 
-    while(parent_tag.firstChild){
-        parent_tag.removeChild(parent_tag.firstChild);
-    }
+    var parent_tag=childNodeClear(parent_tag_str+'_hyou');
     
-    console.log('----- in create calendar----- ');
+    console.log('----- in create calendar input form ----- ');
 
     console.log('parent_tag_str:'+parent_tag_str);
     console.log('table_name:'+table_name);
@@ -17,21 +14,18 @@ function create_calendar_input_form(parent_tag_str,table_name,youbi){
 
     var curr=new Date();
     var currYear=curr.getFullYear();
-    var currMonth=curr.getMonth();
+		var currMonth=curr.getMonth();
+		var currDate=curr.getDate();
 
-    // var holidays = JapaneseHolidays.getHolidaysOf(curr.getFullYear());
-
-    //     holidays.forEach(function(holiday) {
-    //       if(holiday.month==(curr.getMonth()+1)){
-    //         console.log(
-    //           curr.getFullYear()+'/'+
-    //           holiday.month+'/'+
-    //           holiday.date+'/'+
-    //           holiday.name
-    //         );          
-    //       }
-    //     });
-
-  	create_calendar(parent_tag_str,currYear,currMonth,youbi);
+    create_calendar({
+        parent_tag_str:parent_tag_str,
+        year:currYear,
+				month:currMonth,
+				date:currDate,
+        youbi:youbi
+    });
+      
+    var form=document.createElement('form');
+    form.name=parent_tag_str+'_input';
 
 }
