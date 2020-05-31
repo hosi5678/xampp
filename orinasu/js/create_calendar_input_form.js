@@ -1,7 +1,6 @@
 function create_calendar_input_form(parent_tag_str,table_name,youbi){
 
     // 画面の更新
-
     var parent_tag=childNodeClear(parent_tag_str+'_hyou');
     
     console.log('----- in create calendar input form ----- ');
@@ -18,14 +17,22 @@ function create_calendar_input_form(parent_tag_str,table_name,youbi){
 		var currDate=curr.getDate();
 
     create_calendar({
-        parent_tag_str:parent_tag_str,
-        year:currYear,
-				month:currMonth,
-				date:currDate,
-        youbi:youbi
+      parent_tag_str:parent_tag_str,
+      year:currYear,
+			month:currMonth,
+			date:currDate,
+      youbi:youbi
     });
       
+    var parent_tag=childNodeClear(parent_tag_str+'_todo');
+
     var form=document.createElement('form');
-    form.name=parent_tag_str+'_input';
+    form.name=parent_tag_str+'_todo';
+
+    var textarea=document.createElement('textarea');
+
+    form.appendChild(textarea);
+
+    parent_tag.appendChild(form);
 
 }

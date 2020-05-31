@@ -53,12 +53,13 @@ function create_calendar({parent_tag_str,year,month,date,youbi}){
 				year=year-1;
 			}
 
-			 create_calendar({
+			create_calendar({
 				 parent_tag_str:parent_tag_str,
 				 year:year,
 				 month:month,
 				 youbi:youbi
-				});
+			});
+			
 		 });
 
 		div_title.appendChild(div);
@@ -162,7 +163,6 @@ function create_calendar({parent_tag_str,year,month,date,youbi}){
 			});
 
 		var table=document.createElement('table');
-
 		var thead=document.createElement('thead');
 		var tbody=document.createElement('tbody');
 
