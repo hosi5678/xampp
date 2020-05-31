@@ -17,13 +17,19 @@ function calender_func(){
         ).done(function(youbi_col,youbi_row){
               
             var youbi=new Array();
-   
-            for(var j=0;j<youbi_row.length;j++){
-                for(var i=0;i<youbi_col.length;i++){
-                    if(youbi_col[i]=='id') continue;
-                      youbi.push(youbi_row[j][youbi_col[i]]);
-                }
-            }
+	 
+						youbi=getArrayFromRows({
+							array:youbi,
+							cols:youbi_col,
+							rows:youbi_row
+						});	
+
+            // for(var j=0;j<youbi_row.length;j++){
+            //     for(var i=0;i<youbi_col.length;i++){
+            //         if(youbi_col[i]=='id') continue;
+            //           youbi.push(youbi_row[j][youbi_col[i]]);
+            //     }
+            // }
      
             console.log('--- youbi ---');
             console.log(youbi);
