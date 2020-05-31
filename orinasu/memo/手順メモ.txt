@@ -148,3 +148,6 @@ https://navi.dropbox.jp/windows10-file-sharing
 
 ※ajax 並列
 https://qiita.com/YusukeHirao/items/bca14c5f2fe4026fd4d7
+
+※ ricty diminishedは
+RictyDiminished-Regular.ttfをinstall
