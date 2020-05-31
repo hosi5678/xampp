@@ -19,6 +19,7 @@ function reject_str(str){
         (str.indexOf('change') != -1)||
         (str.indexOf('query') != -1)||
         (str.indexOf('root') != -1)||
+        (str.indexOf('%') != -1)||
         (str.indexOf(';') != -1)||
         (str.indexOf('*') != -1)||
         (str.indexOf('"') != -1)||
