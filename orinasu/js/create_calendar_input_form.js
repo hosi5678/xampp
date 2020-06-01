@@ -26,13 +26,40 @@ function create_calendar_input_form(parent_tag_str,table_name,youbi){
       
     var parent_tag=childNodeClear(parent_tag_str+'_todo');
 
-    var form=document.createElement('form');
-    form.name=parent_tag_str+'_todo';
+    // var form=document.createElement('form');
+    // form.name=parent_tag_str+'_todo';
+
+    var p=document.createElement('p');
+
+    p.innerText='今日の予定';
+
+    parent_tag.appendChild(p);
 
     var textarea=document.createElement('textarea');
 
-    form.appendChild(textarea);
+    // textarea.style.display='block';
 
-    parent_tag.appendChild(form);
+    // form.appendChild(textarea);
+
+    // parent_tag.appendChild(form);
+
+    parent_tag.appendChild(textarea);
+
+    var parent_tag=childNodeClear(parent_tag_str+'_memo');
+
+    var p=document.createElement('p');
+
+    p.innerText='メモ';
+
+    parent_tag.appendChild(p);
+
+
+    var textarea=document.createElement('textarea');
+
+    // textarea.style.display='block';
+
+    // form.appendChild(textarea);
+
+    parent_tag.appendChild(textarea);
 
 }

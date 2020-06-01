@@ -88,9 +88,23 @@ require_once("./php_libs/insert_access_log.php");
 			<a id='calendar_mark' href='#wrapper' onclick='calender_func()' class='a-link'>カレンダー▼</a>
 			<div id="calendar">
 				<p id='calendar_title'></p>
+
 				<div id='calendar_hyou'></div>
-				<div id='calendar_todo'></div>
-				<div id="calendar_param"></div>
+
+				<div id='calendar_param'>
+
+					<div id='calendar_todo'>
+						<form name='calendar_todo' id='calendar_todo'>
+						</form>
+					</div>
+
+					<div id='calendar_memo'>
+						<form name='calendar_memo' id='calendar_memo'>
+						</form>
+					</div>
+
+				</div>
+
 				<div id="calendar_like"></div>
 				<div id="calendar_results"></div>
 			</div>

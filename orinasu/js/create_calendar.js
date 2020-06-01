@@ -211,11 +211,11 @@ function create_calendar({parent_tag_str,year,month,date,youbi}){
 							if(i==6) td.classList.add('td-sat');
 
 							// thisMonth.getFullYear()==currYear&&thisMonth.getMonth()==currMonth&&thisMonthDate==currDate
+							td.id=thisMonth.getFullYear()+'-'+(thisMonth.getMonth()+1)+'-'+thisMonthDate;
+
 							if(thisMonth.getFullYear()==year&&thisMonth.getMonth()==month&&thisMonthDate==date){
 								td.classList.add('td-today');
 							} 
-
-							td.id=thisMonth.getFullYear()+'-'+(thisMonth.getMonth()+1)+'-'+thisMonthDate;
 
 							for(var k=0;k<holidays_thisMonth.length;k++){
 								if(holidays_thisMonth[k].date==td.id){
