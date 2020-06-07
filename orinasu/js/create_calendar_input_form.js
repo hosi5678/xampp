@@ -24,7 +24,7 @@ function create_calendar_input_form(parent_tag_str,table_name,youbi){
       youbi:youbi
     });
       
-    var parent_tag=childNodeClear(parent_tag_str+'_todo');
+    var parent_tag=childNodeClear(parent_tag_str+'_params');
 
     // var form=document.createElement('form');
     // form.name=parent_tag_str+'_todo';
@@ -37,6 +37,10 @@ function create_calendar_input_form(parent_tag_str,table_name,youbi){
 
     var textarea=document.createElement('textarea');
 
+    textarea.name=table_name+'_todo';
+    textarea.rows=5;
+    textarea.cols=80;
+
     // textarea.style.display='block';
 
     // form.appendChild(textarea);
@@ -44,8 +48,6 @@ function create_calendar_input_form(parent_tag_str,table_name,youbi){
     // parent_tag.appendChild(form);
 
     parent_tag.appendChild(textarea);
-
-    var parent_tag=childNodeClear(parent_tag_str+'_memo');
 
     var p=document.createElement('p');
 
@@ -56,10 +58,20 @@ function create_calendar_input_form(parent_tag_str,table_name,youbi){
 
     var textarea=document.createElement('textarea');
 
-    // textarea.style.display='block';
-
-    // form.appendChild(textarea);
+    textarea.name=parent_tag_str+'_memo';
+    textarea.rows=5;
+    textarea.cols=80;
 
     parent_tag.appendChild(textarea);
+
+    var a=document.createElement("a");
+
+    a.href='#'+parent_tag_str;
+    a.innerText='メモを書き込む';
+    a.style.display='block';
+    a.classList.add('a-insert');
+
+    parent_tag.appendChild(a);
+
 
 }

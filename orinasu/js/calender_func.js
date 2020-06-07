@@ -18,12 +18,18 @@ function calender_func(){
               
             var youbi=new Array();
    
-            for(var j=0;j<youbi_row.length;j++){
-                for(var i=0;i<youbi_col.length;i++){
-                    if(youbi_col[i]=='id') continue;
-                      youbi.push(youbi_row[j][youbi_col[i]]);
-                }
-            }
+            // for(var j=0;j<youbi_row.length;j++){
+            //     for(var i=0;i<youbi_col.length;i++){
+            //         if(youbi_col[i]=='id') continue;
+            //           youbi.push(youbi_row[j][youbi_col[i]]);
+            //     }
+            // }
+
+            youbi=getArrayFromRows({
+                array:youbi,
+                cols:youbi_col,
+                rows:youbi_row
+            });
      
             console.log('--- youbi ---');
             console.log(youbi);
@@ -36,11 +42,17 @@ function calender_func(){
     //   select_from_table(parent_tag_str,table_name);
 
       document.getElementById(parent_tag_str+"_mark").innerText='カレンダー▲';
-      document.getElementById(parent_tag_str).style.height='auto';
+      // document.getElementById(parent_tag_str).style.height='auto';
 
     }else{
       document.getElementById(parent_tag_str+"_mark").innerText='カレンダー▼';
-      document.getElementById(parent_tag_str).style.height=0;
+    //   document.getElementById(parent_tag_str).style.height=0;
+				childNodeClear(parent_tag_str+'_hyou');
+				childNodeClear(parent_tag_str+'_params');
+				childNodeClear(parent_tag_str+'_exec');
+				childNodeClear(parent_tag_str+'_like');
+				childNodeClear(parent_tag_str+'_results');
+
     }
   
     document.getElementById(parent_tag_str).style.visibility = tmp;

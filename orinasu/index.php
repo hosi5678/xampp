@@ -91,20 +91,9 @@ require_once("./php_libs/insert_access_log.php");
 
 				<div id='calendar_hyou'></div>
 
-				<div id='calendar_param'>
+				<div id='calendar_params'></div>
 
-					<div id='calendar_todo'>
-						<form name='calendar_todo' id='calendar_todo'>
-						</form>
-					</div>
-
-					<div id='calendar_memo'>
-						<form name='calendar_memo' id='calendar_memo'>
-						</form>
-					</div>
-
-				</div>
-
+				<div id='calendar_exec' class='exec'></div>
 				<div id="calendar_like"></div>
 				<div id="calendar_results"></div>
 			</div>
@@ -119,7 +108,7 @@ require_once("./php_libs/insert_access_log.php");
 				<p id='products_title'></p>
 				<div id='products_message'></div>
 				<div id="products_params"></div>
-				<div id='products_exec'></div>
+				<div id='products_exec' class='exec'></div>
 				<div id="products_like"></div>
 				<div id="products_results"></div>
 			</div>
@@ -134,11 +123,14 @@ require_once("./php_libs/insert_access_log.php");
 				<p id='members_title'></p>
 				<div id='members_message'></div>
 				<div id="members_params"></div>
-				<div id='members_exec'></div>
+				<div id='members_exec' class='exec'></div>
 				<div id="members_like"></div>
 				<div id="members_results"></div>
 			</div>
 		</div>
+
+		<div class='line'></div>
+
 	</div>
 
 </div>

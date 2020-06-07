@@ -206,12 +206,14 @@ function create_members_input_form({
       }
     }
 
-      var exec=document.getElementById(parent_tag_str+'_exec');
+    var exec=childNodeClear(parent_tag_str+'_exec');
 
-      // 画面の更新
-      while(exec.firstChild){
-        exec.removeChild(exec.firstChild);
-      }
+      // var exec=document.getElementById(parent_tag_str+'_exec');
+
+      // // 画面の更新
+      // while(exec.firstChild){
+      //   exec.removeChild(exec.firstChild);
+      // }
 
         var a=document.createElement("a");
 

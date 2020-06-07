@@ -48,7 +48,10 @@ function members_func(){
 
   }else{
         document.getElementById(parent_tag_str+"_mark").innerText='利用者の登録・削除／検索▼';
-        document.getElementById(parent_tag_str).style.height='0px';
+
+        var parent_tag=childNodeClear(parent_tag_str+'_params');
+         parent_tag=childNodeClear(parent_tag_str+'_exec');
+         parent_tag=childNodeClear(parent_tag_str+'_results');
 
   }
 

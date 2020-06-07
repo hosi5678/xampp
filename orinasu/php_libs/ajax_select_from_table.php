@@ -14,7 +14,7 @@ header("Content-Type:text/html;charset=UTF-8");
 
     $table_name=filter_input(INPUT_POST,'table_name');
 		
-		$stmt="select * from ".$table_name." limit 0;";
+		$stmt="select * from ".$table_name." order by id asc limit 0;";
 
 		$stmt = $db->prepare($stmt);
 

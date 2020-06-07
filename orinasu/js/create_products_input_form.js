@@ -16,12 +16,13 @@ function create_products_input_form({
 
     var parent_tag=document.getElementById(parent_tag_str+'_params');
   
-        // 画面の更新
-        var parent_tag=document.getElementById(parent_tag_str+'_params');
+    // console.log('parent_tag:'+parent_tag);
+        // // 画面の更新
+        // var parent_tag=document.getElementById(parent_tag_str+'_params');
 
-        while(parent_tag.firstChild){
-          parent_tag.removeChild(parent_tag.firstChild);
-        }
+        // while(parent_tag.firstChild){
+        //   parent_tag.removeChild(parent_tag.firstChild);
+        // }
 
       console.log('---tax---');
       console.log(tax);
