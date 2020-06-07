@@ -68,6 +68,8 @@ require_once("./php_libs/insert_access_log.php");
 	<script src='./js/getArrayFromRows.js'></script>
 	<script src='./js/create_calendar_input_form.js'></script>
 	<script src='./js/childNodeClear.js'></script>
+	<script src='./js/show_yotei.js'></script>
+	<script src='./js/ajax_select_from_where.js'></script>
 
 </head>
 
@@ -88,7 +90,7 @@ require_once("./php_libs/insert_access_log.php");
 			<a id='calendar_mark' href='#wrapper' onclick='calender_func()' class='a-link'>カレンダー▼</a>
 			<div id="calendar">
 				<p id='calendar_title'></p>
-
+				<div id='calendar_message'></div>
 				<div id='calendar_hyou'></div>
 
 				<div id='calendar_params'></div>

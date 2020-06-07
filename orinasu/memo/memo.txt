@@ -21,10 +21,21 @@ thはlabel(table_name_join)から、tdはcol(table_name)からとりだす。
 ajaxの処理ボタンはbuttonではなくaで行う。
 insertとupdateに切り分け
 ->引数の渡しは共通化できない。
-定型的な処理は引数、クリックイベントはevent引数で行う。->textareaのvalueはdocument.getElementByIdで取れる。
+定型的な処理は引数、クリックイベントはevent引数で行う。->textareaのvalueはform 形成後、document.getElementByIdで取れる。
 やはりloadとclickは違うのか？
 ・5/27現在で、update_formとinput_formの融合は難しい。loadとeventの引数渡しが違う。
 'use strict'としたら、きちんと変数にvarをつける。
+
+  $.when(    
+    ajax_get_col(table_name+'_join'),
+    ajax_get_col(table_name),
+    ajax_select_from_table(table_name+'_join')
+
+  ).done(function(label,col,row){
+    
+  });
+
+
 
 // 祝日
     // var holidays = JapaneseHolidays.getHolidaysOf(curr.getFullYear());

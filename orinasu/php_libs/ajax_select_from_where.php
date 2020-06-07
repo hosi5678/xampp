@@ -13,7 +13,7 @@ header("Content-Type:text/html;charset=UTF-8");
 		$db->beginTransaction();
 
     $table_name=filter_input(INPUT_POST,'table_name');
-    $col_name=filter_input(INPUT_POST,'col_name');
+    $col=filter_input(INPUT_POST,'col');
 		$key=filter_input(INPUT_POST,'key');
     
     $stmt="select * from ".$table_name." limit 0;";
@@ -41,12 +41,14 @@ header("Content-Type:text/html;charset=UTF-8");
 				$meta = $stmt->getColumnMeta($i);
 				$column_array_join[]=$meta['name'];
 		}
-
-    // $stmt="select * from ".$table_name." limit 0;";
     
-    $stmt='select * from '.$table_name.' where '.$col_name.' like '.'"%'.$key.'%"';
+    $stmt='select * from '.$table_name.' where '.$col.'="'.$key.'";';
 
-		$stmt = $db->prepare($stmt);
+    $stmt = $db->prepare($stmt);
+    
+    // $stmt->bindParam(1,$table_name,PDO::PARAM_STR);
+    // // $stmt->bindParam(2,$col,PDO::PARAM_STR);
+    // $stmt->bindParam(2,$key,PDO::PARAM_STR);
 
 		$stmt->execute();
 
@@ -72,6 +74,8 @@ header("Content-Type:text/html;charset=UTF-8");
 	
 			header('Content-type: application/json');
 			echo json_encode($json_array,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
+			// echo json_encode($key,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
+
 
  		  $db->commit();
 

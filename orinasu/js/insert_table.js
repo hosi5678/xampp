@@ -8,6 +8,7 @@ function insert_table(event){
 
   var col=event.target.col;
  
+  var youbi;
   var riyou;
 
   var tax;
@@ -22,12 +23,15 @@ function insert_table(event){
     category=event.target.category;
     tax=event.target.tax;
     round=event.target.round;
+  }else if(table_name='calendar'){
+    youbi=event.target.youbi;
   }
 
   console.log('-----in insert table-----');
   console.log('table name:'+table_name);
   console.log('parent_tag_str:'+parent_tag_str);
-  console.log('col:'+col); // 10
+  console.log('col:'); // 10
+  console.log(col);
   console.log('label is:');
   console.log(label);
   console.log('event type:'+event.type);
@@ -46,11 +50,13 @@ function insert_table(event){
   console.log('query_columns:'+query_columns);
   console.log('query columns length:'+query_columns.length);
 
-  var message=document.getElementById(parent_tag_str+'_message');
+  var message=childNodeClear(parent_tag_str+'_message');
+  
+  // document.getElementById(parent_tag_str+'_message');
 
-  while(message.firstChild){
-    message.removeChild(message.firstChild);
-  }
+  // while(message.firstChild){
+  //   message.removeChild(message.firstChild);
+  // }
 
   var str;
 
@@ -66,6 +72,9 @@ function insert_table(event){
           (label[i]=='顧客名')||
           (label[i]=='販売場所')||
           (label[i]=='販売日')||
+          (label[i]=='日付')||
+          (label[i]=='予定')||
+          (label[i]=='メモ')||
           (label[i]=='備考')
        
        ){
@@ -79,13 +88,13 @@ function insert_table(event){
         return false;
       }
 
-      // 空欄のとき,ただし、名と顧客名と備考は空欄でよい。
-      if(str==''&&((label[i]!='名')&&(label[i]!='備考')&&(label[i]!='顧客名'))){
+      // 空欄のとき,ただし、名と顧客名と備考と予定とメモは空欄でよい。
+      if(str==''&&((label[i]!='名')&&(label[i]!='備考')&&(label[i]!='顧客名')&&(label[i]!='予定')&&(label[i]!='メモ'))){
 
-      // if((str=='')&&(label[i]!='顧客名')){
         var p=document.createElement('p');
+
         p.classList.add('message');
-        p.innerText=label[i]+'を入力してください。'
+        p.innerText=label[i]+'を入力してください。';
         message.appendChild(p);
 
         return false;
@@ -99,27 +108,6 @@ function insert_table(event){
     }
 
   }
-
-  // var bikou;
-
-  // if(table_name=='members'){
-
-  //   console.log('members10:'+document.getElementById('members10').value);
-
-  //   bikou=document.form_members_insert.bikou.value;
-  // }else if(table_name='products'){
-  //   bikou=document.form_products_insert.bikou.value;
-  // }
-
-  // bikou=reject_str(bikou);
-
-  // console.log(bikou);
-
-  // if(bikou===1){
-  //   return false;
-  // }
-
-  // params.push('"'+bikou+'"');
 
   console.log('params are:');
   console.log(params);

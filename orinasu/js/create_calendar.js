@@ -1,6 +1,6 @@
 'use strict';
 
-function create_calendar({parent_tag_str,year,month,date,youbi}){
+function create_calendar({parent_tag_str,table_name,year,month,date,youbi}){
 
     console.log('in create calendar');
 
@@ -150,6 +150,7 @@ function create_calendar({parent_tag_str,year,month,date,youbi}){
 		 var holidays_thisMonth=new Array();
  
 			holidays.forEach(function(holiday) {
+
 				if(holiday.month==(thisMonth.getMonth()+1)){
 					holidays_thisMonth.push({
 						date:
@@ -196,6 +197,11 @@ function create_calendar({parent_tag_str,year,month,date,youbi}){
 
 							td.innerText=i;
 
+							td.addEventListener('click',show_yotei);
+
+							td.id=td.id;
+							td.table_name=table_name;
+
 							tr.appendChild(td);
 						}
 					}
@@ -212,6 +218,11 @@ function create_calendar({parent_tag_str,year,month,date,youbi}){
 
 							// thisMonth.getFullYear()==currYear&&thisMonth.getMonth()==currMonth&&thisMonthDate==currDate
 							td.id=thisMonth.getFullYear()+'-'+(thisMonth.getMonth()+1)+'-'+thisMonthDate;
+
+							td.addEventListener('click',show_yotei);
+
+							td.id=td.id;
+							td.table_name=table_name;
 
 							if(thisMonth.getFullYear()==year&&thisMonth.getMonth()==month&&thisMonthDate==date){
 								td.classList.add('td-today');
@@ -261,6 +272,7 @@ function create_calendar({parent_tag_str,year,month,date,youbi}){
 							} 
 
 							td.id=thisMonth.getFullYear()+'-'+(thisMonth.getMonth()+1)+'-'+thisMonthDate;
+							td.table_name=table_name;
 
 							for(var k=0;k<holidays_thisMonth.length;k++){
 								if(holidays_thisMonth[k].date==td.id){
@@ -282,6 +294,10 @@ function create_calendar({parent_tag_str,year,month,date,youbi}){
 
 							td.innerText=thisMonthDate;
 
+							td.addEventListener('click',show_yotei);
+
+							td.id=td.id;
+
 							tr.appendChild(td);
 						}
 						thisMonthDate=thisMonthDate+1;
@@ -298,6 +314,12 @@ function create_calendar({parent_tag_str,year,month,date,youbi}){
 							td.innerText=thisMonthDate;
 
 							td.id=nextMonth_firstday.getFullYear()+'-'+(nextMonth_firstday.getMonth()+1)+'-'+thisMonthDate;
+
+							td.addEventListener('click',show_yotei);
+
+							td.id=td.id;
+							td.table_name=table_name;
+
 							tr.appendChild(td);
 							thisMonthDate=thisMonthDate+1;
 						}

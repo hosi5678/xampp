@@ -11,20 +11,16 @@ function calender_func(){
   
         $.when(
             // ajaxは単体で使わない。whenと使う
+            ajax_get_col(table_name+'_join'),
+            ajax_get_col(table_name),
+      
             ajax_get_col("youbi"),
             ajax_select_from_table("youbi"),
         
-        ).done(function(youbi_col,youbi_row){
+        ).done(function(label,col,youbi_col,youbi_row){
               
             var youbi=new Array();
    
-            // for(var j=0;j<youbi_row.length;j++){
-            //     for(var i=0;i<youbi_col.length;i++){
-            //         if(youbi_col[i]=='id') continue;
-            //           youbi.push(youbi_row[j][youbi_col[i]]);
-            //     }
-            // }
-
             youbi=getArrayFromRows({
                 array:youbi,
                 cols:youbi_col,
@@ -34,12 +30,18 @@ function calender_func(){
             console.log('--- youbi ---');
             console.log(youbi);
                        
-            create_calendar_input_form(parent_tag_str,table_name,youbi);
+            create_calendar_input_form({
+                parent_tag_str:parent_tag_str,
+                table_name:table_name,
+                label:label,
+                col:col,
+                youbi:youbi
+            });
         
         });
         
 
-    //   select_from_table(parent_tag_str,table_name);
+      select_from_table(parent_tag_str,table_name);
 
       document.getElementById(parent_tag_str+"_mark").innerText='カレンダー▲';
       // document.getElementById(parent_tag_str).style.height='auto';
