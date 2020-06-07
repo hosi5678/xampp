@@ -58,31 +58,35 @@ function create_calendar_input_form({
       }
 
       if(label[i]=='予定'){
-        var p=document.createElement('p');
 
-        p.innerText='今日'+today+'の予定';
+        var p=document.createElement('p');
+        p.id='calendar_yotei';
+
+        p.innerText='今日('+today+')の予定';
         form.appendChild(p);
 
         var textarea=document.createElement('textarea');
 
-        textarea.id='calendar'+(i);
+        textarea.id='calendar'+i;
         textarea.rows=5;
         textarea.cols=80;
         textarea.style.display='block';
-        textarea.name='todo';
+        textarea.name='yotei';
         form.appendChild(textarea);
 
       }
 
       if(label[i]=='メモ'){
-        var p=document.createElement('p');
 
-        p.innerText='今日のメモ';
+        var p=document.createElement('p');
+        p.id='calendar_memo';
+
+        p.innerText='メモ';
         form.appendChild(p);
 
         var textarea=document.createElement('textarea');
 
-        textarea.id='calendar'+(i);
+        textarea.id='calendar'+i;
         textarea.rows=5;
         textarea.cols=80;
         textarea.style.display='block';

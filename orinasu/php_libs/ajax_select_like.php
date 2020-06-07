@@ -41,8 +41,6 @@ header("Content-Type:text/html;charset=UTF-8");
 				$meta = $stmt->getColumnMeta($i);
 				$column_array_join[]=$meta['name'];
 		}
-
-    // $stmt="select * from ".$table_name." limit 0;";
     
     $stmt='select * from '.$table_name.' where '.$col_name.' like '.'"%'.$key.'%"';
 

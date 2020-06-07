@@ -4,6 +4,7 @@ function show_yotei(event){
 
   var id=event.target.id;
   var table_name=event.target.table_name;
+  var parent_tag_str=event.target.parent_tag_str;
   // var col='date';
 
   console.log('---show yotei---');
@@ -27,7 +28,6 @@ function show_yotei(event){
   $.when(    
     ajax_get_col(table_name+'_join'),
     ajax_get_col(table_name),
-    // ajax_select_from_where(table_name+'_join')
     ajax_select_from_where({
       table_name:table_name,
       col:'date',
@@ -39,6 +39,14 @@ function show_yotei(event){
     console.log(label);
     console.log(col);
     console.log(row);
+    console.log(row[0]['メモ'])
+
+    for(var i=0;i<label.length;i++){
+      if(label[i]=='メモ'||label[i]=='予定'){
+        document.getElementById(parent_tag_str+i).value=row[0][label[i]];
+      }
+
+    }
     
   });
 

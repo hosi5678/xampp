@@ -55,6 +55,7 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi}){
 
 			create_calendar({
 				 parent_tag_str:parent_tag_str,
+				 table_name:table_name,
 				 year:year,
 				 month:month,
 				 youbi:youbi
@@ -108,6 +109,7 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi}){
 
 			create_calendar({
 				parent_tag_str:parent_tag_str,
+				table_name:table_name,
 				year:year,
 				month:month,
 				youbi:youbi
@@ -201,6 +203,7 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi}){
 
 							td.id=td.id;
 							td.table_name=table_name;
+							td.parent_tag_str=parent_tag_str;
 
 							tr.appendChild(td);
 						}
@@ -223,6 +226,7 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi}){
 
 							td.id=td.id;
 							td.table_name=table_name;
+							td.parent_tag_str=parent_tag_str;
 
 							if(thisMonth.getFullYear()==year&&thisMonth.getMonth()==month&&thisMonthDate==date){
 								td.classList.add('td-today');
@@ -273,6 +277,7 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi}){
 
 							td.id=thisMonth.getFullYear()+'-'+(thisMonth.getMonth()+1)+'-'+thisMonthDate;
 							td.table_name=table_name;
+							td.parent_tag_str=parent_tag_str;
 
 							for(var k=0;k<holidays_thisMonth.length;k++){
 								if(holidays_thisMonth[k].date==td.id){
@@ -297,6 +302,8 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi}){
 							td.addEventListener('click',show_yotei);
 
 							td.id=td.id;
+							td.parent_tag_str=parent_tag_str;
+							td.table_name=table_name;
 
 							tr.appendChild(td);
 						}
@@ -319,6 +326,7 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi}){
 
 							td.id=td.id;
 							td.table_name=table_name;
+							td.parent_tag_str=parent_tag_str;
 
 							tr.appendChild(td);
 							thisMonthDate=thisMonthDate+1;
