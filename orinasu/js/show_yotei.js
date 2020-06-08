@@ -5,7 +5,9 @@ function show_yotei(event){
   var id=event.target.id;
   var table_name=event.target.table_name;
   var parent_tag_str=event.target.parent_tag_str;
-  // var col='date';
+
+  var col='date';
+  var key=id;
 
   console.log('---show yotei---');
   console.log('id:'+id);
@@ -25,13 +27,16 @@ function show_yotei(event){
   console.log('month:'+month);
   console.log('date:'+date);
 
+  // var query='select * from '+table_name+' where date='+id+';';
+
   $.when(    
     ajax_get_col(table_name+'_join'),
     ajax_get_col(table_name),
+    // ajax_select_from_where({table_name,query})
     ajax_select_from_where({
       table_name:table_name,
-      col:'date',
-      key:id
+      col:col,
+      key:key
     }),
 
   ).done(function(label,col,row){

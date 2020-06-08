@@ -72,7 +72,6 @@ header("Content-Type:text/html;charset=UTF-8");
 					$tmp_array=array();
 					
 					while($i<count($column_array_join)){
-						// $key=$column_array[$i];
 						$key_join=$column_array_join[$i];
 						$temp_array[$key_join]=$elem[$key_join];
 						$i++;

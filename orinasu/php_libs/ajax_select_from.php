@@ -13,8 +13,9 @@ header("Content-Type:text/html;charset=UTF-8");
 		$db->beginTransaction();
 
     $table_name=filter_input(INPUT_POST,'table_name');
-    $col_name=filter_input(INPUT_POST,'col_name');
-		$key=filter_input(INPUT_POST,'key');
+    // $col_name=filter_input(INPUT_POST,'col_name');
+		// $key=filter_input(INPUT_POST,'key');
+		$query=filter_input(INPUT_POST,'query');
     
     $stmt="select * from ".$table_name." limit 0;";
 
@@ -42,9 +43,9 @@ header("Content-Type:text/html;charset=UTF-8");
 				$column_array_join[]=$meta['name'];
 		}
     
-    $stmt='select * from '.$table_name.' where '.$col_name.' like '.'"%'.$key.'%"';
-
-		$stmt = $db->prepare($stmt);
+    // $stmt='select * from '.$table_name.' where '.$col_name.' like '.'"%'.$key.'%"';
+		// $stmt = $db->prepare($stmt);
+		$stmt=$db->prepare($query);
 
 		$stmt->execute();
 

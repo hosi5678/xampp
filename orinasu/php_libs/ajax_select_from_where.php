@@ -46,10 +46,6 @@ header("Content-Type:text/html;charset=UTF-8");
 
     $stmt = $db->prepare($stmt);
     
-    // $stmt->bindParam(1,$table_name,PDO::PARAM_STR);
-    // // $stmt->bindParam(2,$col,PDO::PARAM_STR);
-    // $stmt->bindParam(2,$key,PDO::PARAM_STR);
-
 		$stmt->execute();
 
       $results=$stmt->fetchAll();

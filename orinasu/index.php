@@ -89,9 +89,9 @@ require_once("./php_libs/insert_access_log.php");
 			<i class="far fa-calendar-alt"></i>
 			<a id='calendar_mark' href='#wrapper' onclick='calender_func()' class='a-link'>カレンダー▼</a>
 			<div id="calendar">
-				<p id='calendar_title'></p>
 				<div id='calendar_message'></div>
 				<div id='calendar_hyou'></div>
+				<p id='calendar_title'></p>
 
 				<div id='calendar_params'></div>
 
