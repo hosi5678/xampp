@@ -18,33 +18,23 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi}){
 		// 来月の初日を取得する
 		var nextMonth_firstday=new Date(year,(month+1),1);
 
-		// var curr=new Date();
-		// var currYear=curr.getFullYear();
-		// var currMonth=curr.getMonth();
-		// var currDate=curr.getDate();
-
 		 // 画面の更新
-		 var parent_tag=childNodeClear(parent_tag_str+'_hyou');
-
-    //  var parent_tag=document.getElementById(parent_tag_str+'_hyou');
-
-    // while(parent_tag.firstChild){
-    //   parent_tag.removeChild(parent_tag.firstChild);
-    // }
+		var parent_tag=childNodeClear(parent_tag_str+'_hyou');
  
     var form=document.createElement('form');
 		 
-		form.name=parent_tag_str;
+		form.name=parent_tag_str+'_insert';
 
     var div_title=document.createElement('div');
      		 
-		 var div=document.createElement('div');
-		 div.classList.add('calendar-left-arrow');
-		 div.style.display='inline-block';
-		 div.innerText='◀';
-		 div.youbi=youbi;
+		var div=document.createElement('div');
 
-		 div.addEventListener('click',function(event){
+		div.classList.add('calendar-left-arrow');
+		div.style.display='inline-block';
+		div.innerText='◀';
+		div.youbi=youbi;
+
+		div.addEventListener('click',function(event){
 
 			month=month-1;
 
@@ -61,7 +51,7 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi}){
 				 youbi:youbi
 			});
 			
-		 });
+		});
 
 		div_title.appendChild(div);
 
@@ -147,11 +137,11 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi}){
 		
 		form.appendChild(div_title);
 
-		 var holidays = JapaneseHolidays.getHolidaysOf(thisMonth.getFullYear());
+		var holidays = JapaneseHolidays.getHolidaysOf(thisMonth.getFullYear());
 
-		 var holidays_thisMonth=new Array();
+		var holidays_thisMonth=new Array();
  
-			holidays.forEach(function(holiday) {
+		holidays.forEach(function(holiday) {
 
 				if(holiday.month==(thisMonth.getMonth()+1)){
 					holidays_thisMonth.push({
@@ -163,7 +153,7 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi}){
 						holiday.name
 					});	
 				}
-			});
+		});
 
 		var table=document.createElement('table');
 		var thead=document.createElement('thead');
@@ -185,11 +175,11 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi}){
 
 		for(var j=0;j<getWeekNum(currMonth_lastday);j++){
 			var tr=document.createElement('tr');
-
 				// 最初の週の処理,先月
 				if(j==0){
 					if(prevMonth_lastday.getDay()!=6){
 						for(var i=(prevMonth_lastday.getDate()-prevMonth_lastday.getDay());i<=prevMonth_lastday.getDate();i++){
+
 							var td=document.createElement('td');
 
 							td.classList.add('td-gray');
@@ -260,7 +250,7 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi}){
 							thisMonthDate=thisMonthDate+1;
 					}
 
-					// 今月の処理
+				// 今月の処理
 				}else if(j<(getWeekNum(currMonth_lastday))){
 					
 					for(var i=0;i<7;i++){

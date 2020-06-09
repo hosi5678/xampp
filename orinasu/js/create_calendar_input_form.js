@@ -56,7 +56,7 @@ function create_calendar_input_form({
         var input=document.createElement('input');
 
         input.type='hidden';
-        input.id='calendar'+(i);
+        input.id='calendar'+i;
         input.value=currYear+'-'+(currMonth+1)+'-'+currDate;
         form.appendChild(input);
       }

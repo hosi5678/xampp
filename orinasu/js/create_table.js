@@ -147,8 +147,8 @@ function create_table({parent_tag_str,table_name,label,col,row}){
 
   }
 
-      table.appendChild(tbody);
+  table.appendChild(tbody);
 
-      parent_tag.appendChild(table);  
+  parent_tag.appendChild(table);  
 
 }

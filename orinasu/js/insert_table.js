@@ -123,7 +123,7 @@ function insert_table(event){
 
   for(var i=0;i<query_columns.length;i++){
     query+=params[i];
-       if(i!=query_columns.length-1) query+=',';
+    if(i!=query_columns.length-1) query+=',';
   }
 
   query+=');';
@@ -145,13 +145,13 @@ function insert_table(event){
             mode:mode,
           });
  
-          create_table({
-            parent_tag_str:parent_tag_str,
-            table_name:table_name,
-            label:label,
-            col:col,
-            row:results
-          });
+          // create_table({
+          //   parent_tag_str:parent_tag_str,
+          //   table_name:table_name,
+          //   label:label,
+          //   col:col,
+          //   row:results
+          // });
 
       }else if(table_name=='products'){
 
@@ -166,17 +166,33 @@ function insert_table(event){
             mode:mode,
           });
 
-          create_table({
-            parent_tag_str:parent_tag_str,
-            table_name:table_name,
-            label:label,col:col,
-            category:category,
-            tax:tax,
-            round:round,
-            row:results
-          });    
+          // create_table({
+          //   parent_tag_str:parent_tag_str,
+          //   table_name:table_name,
+          //   label:label,
+          //   col:col,
+          //   row:results
+          // });    
+
+      }else if(table_name=='calendar'){
+
+        create_calendar_input_form({
+          parent_tag_str:parent_tag_str,
+          table_name:table_name,
+          label:label,
+          col:col,
+          youbi:youbi
+        });
 
       }
+
+      create_table({
+        parent_tag_str:parent_tag_str,
+        table_name:table_name,
+        label:label,
+        col:col,
+        row:results
+      });    
 
   });
 
