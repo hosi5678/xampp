@@ -1,6 +1,6 @@
-function create_members_delete_confirm(event){
+'use strict';
 
-  'use strict';
+function create_members_delete_confirm(event){
 
   var table_name=event.target.table_name;
   var parent_tag_str=event.target.parent_tag_str;
@@ -80,9 +80,19 @@ function create_members_delete_confirm(event){
   a.parent_tag_str=parent_tag_str;
 
   a.addEventListener('click',function(event){
-      parent_tag_str=event.target.parent_tag_str;
-      table_name=event.target.table_name;
-    create_members_input_form(parent_tag_str,table_name);
+      // parent_tag_str=event.target.parent_tag_str;
+      // table_name=event.target.table_name;
+//  $.when(ajax関数群).done(function(引数){引数をもとにしたその後の処理});
+
+
+
+    create_members_input_form({
+      parent_tag_str:parent_tag_str,
+      table_name:table_name,
+      label:label,
+      col:col
+    });
+
     select_from_table(parent_tag_str,table_name);
 
   });

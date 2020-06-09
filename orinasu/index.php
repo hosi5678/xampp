@@ -70,6 +70,7 @@ require_once("./php_libs/insert_access_log.php");
 	<script src='./js/childNodeClear.js'></script>
 	<script src='./js/show_yotei.js'></script>
 	<script src='./js/ajax_select_from_where.js'></script>
+	<script src='./js/ajax_select_from_memo.js'></script>
 
 </head>
 

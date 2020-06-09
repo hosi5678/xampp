@@ -4,8 +4,8 @@ function insert_table(event){
 
   var parent_tag_str=event.target.parent_tag_str;
   var table_name=event.target.table_name;
-  var label=event.target.label;
 
+  var label=event.target.label;
   var col=event.target.col;
  
   var youbi;

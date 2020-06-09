@@ -1,3 +1,6 @@
+// 列名を得る tableの表記に使う。
+
+'use strict';
 function ajax_get_label(table_name){
 
   var defer = new $.Deferred;

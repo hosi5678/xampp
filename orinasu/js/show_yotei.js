@@ -49,7 +49,7 @@ function show_yotei(event){
     console.log(label);
     console.log(col);
     console.log(row);
-    console.log(row[0]['メモ'])
+    // console.log(row[0]['メモ'])
 
     if(row.length>0){
       for(var i=0;i<label.length;i++){

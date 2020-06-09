@@ -50,7 +50,8 @@ function calender_func(){
       document.getElementById(parent_tag_str+"_mark").innerText='カレンダー▼';
     //   document.getElementById(parent_tag_str).style.height=0;
 				childNodeClear(parent_tag_str+'_hyou');
-				childNodeClear(parent_tag_str+'_params');
+                childNodeClear(parent_tag_str+'_params');
+                childNodeClear(parent_tag_str+'_title');
 				childNodeClear(parent_tag_str+'_exec');
 				childNodeClear(parent_tag_str+'_like');
 				childNodeClear(parent_tag_str+'_results');

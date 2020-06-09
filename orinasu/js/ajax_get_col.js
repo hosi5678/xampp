@@ -1,3 +1,7 @@
+// 列名を得る(英数字),dbの操作に使う
+
+'use strict';
+
 function ajax_get_col(table_name){
 
   var defer = new $.Deferred;
