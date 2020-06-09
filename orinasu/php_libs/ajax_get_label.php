@@ -23,8 +23,8 @@ header("Content-Type:text/html;charset=UTF-8");
 		$column_array=array();
 
 		for ($i = 0; $i < $stmt->columnCount(); $i++) {
-				$meta = $stmt->getColumnMeta($i);
-				$column_array[]=$meta['name'];
+			$meta = $stmt->getColumnMeta($i);
+			$column_array[]=$meta['name'];
     }
     
     header('Content-type: application/json');

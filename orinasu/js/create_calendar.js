@@ -2,7 +2,7 @@
 
 function create_calendar({parent_tag_str,table_name,year,month,date,youbi}){
 
-    console.log('in create calendar');
+    console.log('------in create calendar------');
 
 		console.log('youbi is:');
 		console.log(youbi);
@@ -204,6 +204,7 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi}){
 							td.id=td.id;
 							td.table_name=table_name;
 							td.parent_tag_str=parent_tag_str;
+							td.youbi=youbi;
 
 							tr.appendChild(td);
 						}
@@ -227,6 +228,7 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi}){
 							td.id=td.id;
 							td.table_name=table_name;
 							td.parent_tag_str=parent_tag_str;
+							td.youbi=youbi;
 
 							if(thisMonth.getFullYear()==year&&thisMonth.getMonth()==month&&thisMonthDate==date){
 								td.classList.add('td-today');
@@ -304,6 +306,7 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi}){
 							td.id=td.id;
 							td.parent_tag_str=parent_tag_str;
 							td.table_name=table_name;
+							td.youbi=youbi;
 
 							tr.appendChild(td);
 						}
@@ -327,13 +330,13 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi}){
 							td.id=td.id;
 							td.table_name=table_name;
 							td.parent_tag_str=parent_tag_str;
+							td.youbi=youbi;
 
 							tr.appendChild(td);
 							thisMonthDate=thisMonthDate+1;
 						}
 					}
 				}
-
 			tbody.appendChild(tr);
 		}
 

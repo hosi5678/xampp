@@ -10,11 +10,9 @@ function ajax_select_like(table_name,col,key){
 
   $.ajax({
     type:'post',
-    url: '../php_libs/ajax_select_from.php',
+    url:'../php_libs/ajax_select_from.php',
       data:{
        'table_name':table_name,
-      //  'col_name':col_name,
-      //  'key':key,
        'query':query,
       },
 

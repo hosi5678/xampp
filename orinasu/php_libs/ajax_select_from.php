@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors', "On");
+ini_set('display_errors',"On");
 require_once("./db_define.php");
 require_once("./escape_string.php");
 
@@ -13,8 +13,7 @@ header("Content-Type:text/html;charset=UTF-8");
 		$db->beginTransaction();
 
     $table_name=filter_input(INPUT_POST,'table_name');
-    // $col_name=filter_input(INPUT_POST,'col_name');
-		// $key=filter_input(INPUT_POST,'key');
+
 		$query=filter_input(INPUT_POST,'query');
     
     $stmt="select * from ".$table_name." limit 0;";
@@ -26,8 +25,8 @@ header("Content-Type:text/html;charset=UTF-8");
 		$column_array=array();
 
 		for ($i = 0; $i < $stmt->columnCount(); $i++) {
-				$meta = $stmt->getColumnMeta($i);
-				$column_array[]=$meta['name'];
+			$meta = $stmt->getColumnMeta($i);
+			$column_array[]=$meta['name'];
 		}
 
 		$stmt="select * from ".$table_name.'_join'." limit 0;";
@@ -39,33 +38,31 @@ header("Content-Type:text/html;charset=UTF-8");
 		$column_array_join=array();
 
 		for ($i = 0; $i < $stmt->columnCount(); $i++) {
-				$meta = $stmt->getColumnMeta($i);
-				$column_array_join[]=$meta['name'];
+			$meta = $stmt->getColumnMeta($i);
+			$column_array_join[]=$meta['name'];
 		}
     
-    // $stmt='select * from '.$table_name.' where '.$col_name.' like '.'"%'.$key.'%"';
-		// $stmt = $db->prepare($stmt);
 		$stmt=$db->prepare($query);
 
 		$stmt->execute();
 
-      $results=$stmt->fetchAll();
+    $results=$stmt->fetchAll();
       
-			$json_array=array();
+		$json_array=array();
 	
 			foreach($results as $elem ){
-					$i=0;
-					$tmp_array=array();
+				$i=0;
+				$tmp_array=array();
 					
-					while($i<count($column_array)){
-						$key=$column_array[$i];
-						$key_join=$column_array_join[$i];
+				while($i<count($column_array)){
+					$key=$column_array[$i];
+					$key_join=$column_array_join[$i];
 
-						$temp_array[$key_join]=$elem[$key];
-						$i++;
-					}
+					$temp_array[$key_join]=$elem[$key];
+					$i++;
+				}
 					
-					$json_array[]=$temp_array;
+				$json_array[]=$temp_array;
 	
 			}
 	
@@ -75,9 +72,9 @@ header("Content-Type:text/html;charset=UTF-8");
  		  $db->commit();
 
 	}catch(PDOException $e) {
-			$db->rollBack();
-    	echo $e->getMessage();
+		$db->rollBack();
+    echo $e->getMessage();
     
 	}finally{
-    	$db=null;
+    $db=null;
 	}

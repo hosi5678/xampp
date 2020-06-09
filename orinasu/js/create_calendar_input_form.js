@@ -27,6 +27,10 @@ function create_calendar_input_form({
     
     var today=currYear+'年'+(currMonth+1)+'月'+currDate+'日('+youbi[curr.getDay()]+')';
 
+    var title=childNodeClear(parent_tag_str+'_title');
+
+    title.innerText=today;
+
     create_calendar({
       parent_tag_str:parent_tag_str,
       table_name:table_name,
@@ -62,7 +66,7 @@ function create_calendar_input_form({
         var p=document.createElement('p');
         p.id='calendar_yotei';
 
-        p.innerText='今日('+today+')の予定';
+        p.innerText='今日の予定';
         form.appendChild(p);
 
         var textarea=document.createElement('textarea');

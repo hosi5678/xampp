@@ -9,7 +9,6 @@ function ajax_select_from_table(table_name){
     url: '../php_libs/ajax_select_from_table.php',
       data:{
        'table_name':table_name,
-      //  'query':query
       },
 
       dataType:'json', 

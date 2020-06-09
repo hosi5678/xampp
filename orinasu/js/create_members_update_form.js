@@ -106,8 +106,8 @@ function create_members_update_form(event){
       for(var i=0;i<label.length;i++){
 
         if(label[i]=='id'){
-            id=tds_val[i];
-            continue;
+          id=tds_val[i];
+          continue;
         } 
 
         if(label[i]=='姓'||label[i]=='名'||label[i]=='備考'){
