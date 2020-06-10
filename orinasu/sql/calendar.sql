@@ -2,7 +2,7 @@ drop table if exists calendar;
 
 create table calendar(
   id int unsigned not NULL AUTO_INCREMENT PRIMARY KEY ,
-  date varchar(25) unique not NULL,
+  date date unique not NULL,
   yotei text,
   memo text
 );

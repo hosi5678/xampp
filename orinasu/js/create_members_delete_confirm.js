@@ -4,8 +4,8 @@ function create_members_delete_confirm(event){
 
   var table_name=event.target.table_name;
   var parent_tag_str=event.target.parent_tag_str;
-  var col=event.target.col;
   var label=event.target.label;
+  var col=event.target.col;
 
   console.log('----- in create members delete confirmation -----');
 
@@ -76,24 +76,39 @@ function create_members_delete_confirm(event){
   a.innerText='キャンセル';
   a.style.display='inline-block';
   a.classList.add('a-cancel');
-  a.table_name=table_name;
-  a.parent_tag_str=parent_tag_str;
-
+  
   a.addEventListener('click',function(event){
-      // parent_tag_str=event.target.parent_tag_str;
-      // table_name=event.target.table_name;
-//  $.when(ajax関数群).done(function(引数){引数をもとにしたその後の処理});
+    
+    $.when(
+      ajax_get_col(table_name+'_join'),
 
+      ajax_get_col('riyou_keitai'),
+      ajax_select_from_table('riyou_keitai'),
 
+    ).done(function(label,riyou_col,riyou_row){
+
+      var mode='insert';
+
+      var riyou=new Array();
+
+      riyou=getArrayFromRows({
+        array:riyou,
+        rows:riyou_row,
+        cols:riyou_col
+      });
 
     create_members_input_form({
       parent_tag_str:parent_tag_str,
       table_name:table_name,
       label:label,
-      col:col
+      col:col,
+      riyou:riyou,
+      mode:mode
     });
 
-    select_from_table(parent_tag_str,table_name);
+      select_from_table(parent_tag_str,table_name);
+
+    });
 
   });
 
@@ -108,10 +123,12 @@ function create_members_delete_confirm(event){
   a.classList.add('a-delete');
   a.id=id;
   a.table_name=table_name;
-  a.prev='create_members_delete_confirm';
+  a.prev='delete_confirm';
   a.label=label;
   a.parent_tag_str=parent_tag_str;
 
   parent_tag.appendChild(a);
 
 }
+
+

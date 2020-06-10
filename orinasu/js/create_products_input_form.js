@@ -13,16 +13,8 @@ function create_products_input_form({
 
     console.log('parent_tag_str:'+parent_tag_str);
     console.log('table_name:'+table_name);
-
-    var parent_tag=document.getElementById(parent_tag_str+'_params');
-  
-    // console.log('parent_tag:'+parent_tag);
-        // // 画面の更新
-        // var parent_tag=document.getElementById(parent_tag_str+'_params');
-
-        // while(parent_tag.firstChild){
-        //   parent_tag.removeChild(parent_tag.firstChild);
-        // }
+		
+		var parent_tag=childNodeClear(parent_tag_str+'_params');
 
       console.log('---tax---');
       console.log(tax);
