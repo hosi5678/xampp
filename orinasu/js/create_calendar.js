@@ -1,6 +1,9 @@
 'use strict';
 
-function create_calendar({parent_tag_str,table_name,year,month,date,youbi,label,col}){
+function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col}){
+
+		// var parent_tag_str='calendar';
+		// var table_name='calendar';
 
     console.log('------in create calendar------');
 
@@ -13,12 +16,22 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi,label,
 		console.log('col is:');
 		console.log(col);
 
+		console.log('year:'+year+' / month:'+(month+1));
+
+		console.log('table name:'+table_name);
+
+		// 現在の日付の取得
 		var curr=new Date();
     var currYear=curr.getFullYear();
 		var currMonth=curr.getMonth();
 		var currDate=curr.getDate();
+
+		console.log('curr year:'+currYear+' / curr month:'+(currMonth+1)+' / '+currDate);
+
 		
-    var today=currYear+'年'+(currMonth+1)+'月'+currDate+'日('+youbi[curr.getDay()]+')';
+		var today=currYear+'年'+(currMonth+1)+'月'+currDate+'日('+youbi[curr.getDay()]+')';
+		
+		console.log('today:'+today);
 
     var title=childNodeClear(parent_tag_str+'_title');
 
@@ -40,11 +53,13 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi,label,
 		var where_start_date;
 
 		if(thisMonth.getDay()==0){
-			where_start_date=thisMonth.getFullYear()+'-'+(thisMonth.getMonth()+1)+'-'+1;
+			where_start_date=thisMonth.getFullYear()+'-'
+			+toDoubleDigits(thisMonth.getMonth()+1)+'-'
+			+toDoubleDigits(1);
 		}else{
-			where_start_date=prevMonth_lastday.getFullYear()+'-'+
-			(prevMonth_lastday.getMonth()+1)+'-'+
-			(prevMonth_lastday.getDate()-prevMonth_lastday.getDay());
+			where_start_date=prevMonth_lastday.getFullYear()+'-'
+			+toDoubleDigits(prevMonth_lastday.getMonth()+1)+'-'
+			+toDoubleDigits(prevMonth_lastday.getDate()-prevMonth_lastday.getDay());
 		}
 		
 		console.log('where start date:'+where_start_date);
@@ -54,11 +69,13 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi,label,
 		var where_end_date;
 
 		if(currMonth_lastday.getDay()==6){
-			where_end_date=currMonth_lastday.getFullYear()+'-'+(currMonth_lastday.getMonth()+1)+'-'+currMonth_lastday.getDate();
+			where_end_date=currMonth_lastday.getFullYear()+'-'
+			+toDoubleDigits(currMonth_lastday.getMonth()+1)+'-'
+			+toDoubleDigits(currMonth_lastday.getDate());
 		}else{
-			where_end_date=nextMonth_firstday.getFullYear()+'-'+
-			(nextMonth_firstday.getMonth()+1)+'-'+
-			(nextMonth_firstday.getDate()+(6-nextMonth_firstday.getDay()));
+			where_end_date=nextMonth_firstday.getFullYear()+'-'
+			+toDoubleDigits(nextMonth_firstday.getMonth()+1)+'-'
+			+toDoubleDigits(nextMonth_firstday.getDate()+(6-nextMonth_firstday.getDay()));
 		}
 
 		console.log('where end date:'+where_end_date);
@@ -85,13 +102,13 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi,label,
 			}
 
 			create_calendar({
-				 parent_tag_str:parent_tag_str,
-				 table_name:table_name,
-				 year:year,
-				 month:month,
-				 youbi:youbi,
-				 label:label,
-				 col:col
+				parent_tag_str:parent_tag_str,
+				table_name:table_name,
+				year:year,
+				month:month,
+				youbi:youbi,
+				label:label,
+				col:col
 			});
 			
 		});
@@ -109,9 +126,9 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi,label,
 	
 			create_calendar({
 				parent_tag_str:parent_tag_str,
+				table_name:table_name,
 				year:currYear,
 				month:currMonth,
-				date:currDate,
 				youbi:youbi,
 				label:label,
 				col:col
@@ -231,8 +248,10 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi,label,
 
 								td.classList.add('td-gray');
 								td.classList.add('td-calendar');
-
-								td.id=prevMonth_lastday.getFullYear()+'-'+(prevMonth_lastday.getMonth()+1)+'-'+i;
+								
+								td.id=prevMonth_lastday.getFullYear()+'-'
+								+toDoubleDigits(prevMonth_lastday.getMonth()+1)+'-'
+								+toDoubleDigits(i);
 
 								td.innerText=i;
 
@@ -257,25 +276,9 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi,label,
 								if(i==0) td.classList.add('td-sun');	
 								if(i==6) td.classList.add('td-sat');
 
-								// thisMonth.getFullYear()==currYear&&thisMonth.getMonth()==currMonth&&thisMonthDate==currDate
-								td.id=thisMonth.getFullYear()+'-'+(thisMonth.getMonth()+1)+'-'+thisMonthDate;
+								td.id=thisMonth.getFullYear()+'-'+toDoubleDigits(thisMonth.getMonth()+1)+'-'+toDoubleDigits(thisMonthDate);
 
-								td.addEventListener('click',show_yotei);
-
-								td.id=td.id;
-								td.table_name=table_name;
-								td.parent_tag_str=parent_tag_str;
-								td.youbi=youbi;
-
-								if(thisMonth.getFullYear()==year&&thisMonth.getMonth()==month&&thisMonthDate==date){
-									td.classList.add('td-today');
-								}
-
-								if(memo[j]['日付']==td.id){
-									var div=document.createElement('div');
-									div.innerText='●';
-									td.appendChild(div);
-								}
+								if(year==currYear && month==currMonth && thisMonthDate==currDate) td.classList.add('td-today');
 
 								for(var k=0;k<holidays_thisMonth.length;k++){
 									if(holidays_thisMonth[k].date==td.id){
@@ -299,11 +302,30 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi,label,
 
 								td.innerText=thisMonthDate;
 
+								td.addEventListener('click',show_yotei);
+
+								td.id=td.id;
+								td.table_name=table_name;
+								td.parent_tag_str=parent_tag_str;
+								td.youbi=youbi;
+
+								for(var p=0;p<memo.length;p++){
+									for(var q=0;q<label.length;q++){
+										if(label[q]=='日付'){
+											if(memo[p][label[q]]==td.id){
+												console.log('td-memo:matched.')
+												td.innerText+='\n●';
+											}
+									}
+									}
+								}
+
+
 								tr.appendChild(td);
 								thisMonthDate=thisMonthDate+1;
 						}
 
-					// 今月の処理
+					// 今月(本体)の処理(1-30,31)
 					}else if(j<(getWeekNum(currMonth_lastday))){
 						
 						for(var i=0;i<7;i++){
@@ -316,13 +338,11 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi,label,
 								if(i==0) td.classList.add('td-sun');	
 								if(i==6) td.classList.add('td-sat');
 
-								if(thisMonth.getFullYear()==year&&thisMonth.getMonth()==month&&thisMonthDate==date){
-									td.classList.add('td-today');
-								} 
+								if(year==currYear && month==currMonth && thisMonthDate==currDate) td.classList.add('td-today');
 
-								td.id=thisMonth.getFullYear()+'-'+(thisMonth.getMonth()+1)+'-'+thisMonthDate;
-								td.table_name=table_name;
-								td.parent_tag_str=parent_tag_str;
+								td.id=thisMonth.getFullYear()+'-'
+								+toDoubleDigits(thisMonth.getMonth()+1)+'-'
+								+toDoubleDigits(thisMonthDate);
 
 								for(var k=0;k<holidays_thisMonth.length;k++){
 									if(holidays_thisMonth[k].date==td.id){
@@ -351,6 +371,17 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi,label,
 								td.table_name=table_name;
 								td.youbi=youbi;
 
+								for(var p=0;p<memo.length;p++){
+									for(var q=0;q<label.length;q++){
+										if(label[q]=='日付'){
+											if(memo[p][label[q]]==td.id){
+												console.log('td-memo:matched.')
+												td.innerText+='\n●';
+											}
+									}
+									}
+								}
+
 								tr.appendChild(td);
 							}
 							thisMonthDate=thisMonthDate+1;
@@ -366,7 +397,9 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi,label,
 
 								td.innerText=thisMonthDate;
 
-								td.id=nextMonth_firstday.getFullYear()+'-'+(nextMonth_firstday.getMonth()+1)+'-'+thisMonthDate;
+								td.id=nextMonth_firstday.getFullYear()+'-'
+								+toDoubleDigits(nextMonth_firstday.getMonth()+1)+'-'
+								+toDoubleDigits(thisMonthDate);
 
 								td.addEventListener('click',show_yotei);
 
@@ -374,6 +407,18 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi,label,
 								td.table_name=table_name;
 								td.parent_tag_str=parent_tag_str;
 								td.youbi=youbi;
+
+								for(var p=0;p<memo.length;p++){
+									for(var q=0;q<label.length;q++){
+										if(label[q]=='日付'){
+											if(memo[p][label[q]]==td.id){
+												console.log('td-memo:matched.')
+												td.innerText+='\n●';
+											}
+									}
+									}
+								}
+
 
 								tr.appendChild(td);
 								thisMonthDate=thisMonthDate+1;
@@ -384,11 +429,11 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi,label,
 			}
 			console.log('memo:');
 			console.log(memo);
+
+			
 		});
 
 		table.appendChild(tbody);
-
-		// form.appendChild(table);
 
 		parent_tag.appendChild(table);
 
@@ -401,31 +446,20 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi,label,
 		var input;
 
 		for(var i=0;i<label.length;i++){
-			if(label[i]=='日付'){
-				input=document.createElement('input');
-				input.type='hidden';
-				input.id=parent_tag_str+i;
-				input.value=year+'-'+month+'-'+date;
-			}
-		}
- 
-		form.appendChild(input);
-
-		for(var i=0;i<label.length;i++){
 
       if(label[i]=='id') continue;
 
       if(label[i]=='予定'){
 
         var p=document.createElement('p');
-        p.id='calendar_yotei';
+        p.id=parent_tag_str+'_'+col[i];
 
         p.innerText='今日の予定';
         form.appendChild(p);
 
         var textarea=document.createElement('textarea');
 
-        textarea.id='calendar'+i;
+        textarea.id=parent_tag_str+i;
         textarea.rows=5;
         textarea.cols=80;
         textarea.style.display='block';
@@ -437,14 +471,14 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi,label,
       if(label[i]=='メモ'){
 
         var p=document.createElement('p');
-        p.id='calendar_memo';
+        p.id=parent_tag_str+'_'+col[i];
 
         p.innerText='メモ';
         form.appendChild(p);
 
         var textarea=document.createElement('textarea');
 
-        textarea.id='calendar'+i;
+        textarea.id=parent_tag_str+i;
         textarea.rows=5;
         textarea.cols=80;
         textarea.style.display='block';
@@ -477,6 +511,4 @@ function create_calendar({parent_tag_str,table_name,year,month,date,youbi,label,
  
 		exec.appendChild(a);
 		
-    // parent_tag.appendChild(form);
-
 }

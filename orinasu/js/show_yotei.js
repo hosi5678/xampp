@@ -13,6 +13,7 @@ function show_yotei(event){
   console.log('---show yotei---');
   console.log('id:'+id);
   console.log('table_name:'+table_name);
+  console.log('parent_tag_str:'+parent_tag_str);
 
   var ymd=new Array();
 
@@ -49,7 +50,14 @@ function show_yotei(event){
     console.log(label);
     console.log(col);
     console.log(row);
-    // console.log(row[0]['メモ'])
+
+    // 内容を一旦クリア
+    for(var i=0;i<label.length;i++){
+      if(label[i]=='メモ'||label[i]=='予定'){
+        document.getElementById(parent_tag_str+i).value='';
+      }
+    }
+
 
     if(row.length>0){
       for(var i=0;i<label.length;i++){
