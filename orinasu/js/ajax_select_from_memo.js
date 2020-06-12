@@ -8,7 +8,7 @@ function ajax_select_from_memo({
 
   var defer = new $.Deferred;
 
-  var query='select * from '+table_name+' where date>="'+start_date+'"'+' and date<="'+end_date+'";';
+  var query='select * from '+table_name+' where date>="'+start_date+'"'+' and date<="'+end_date+'" order by date asc;';
 
   console.log(query);
 

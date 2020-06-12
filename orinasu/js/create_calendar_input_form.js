@@ -38,7 +38,6 @@ function create_calendar_input_form({
       table_name:table_name,
       year:currYear,
 			month:currMonth,
-			date:currDate,
       youbi:youbi,
       label:label,
       col:col

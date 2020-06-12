@@ -29,7 +29,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 		console.log('curr year:'+currYear+' / curr month:'+(currMonth+1)+' / '+currDate);
 
 		
-		var today=currYear+'年'+(currMonth+1)+'月'+currDate+'日('+youbi[curr.getDay()]+')';
+		var today=currYear+'年'+toDoubleDigits(currMonth+1)+'月'+toDoubleDigits(currDate)+'日('+youbi[curr.getDay()]+')';
 		
 		console.log('today:'+today);
 
@@ -170,8 +170,6 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 
 		parent_tag.appendChild(div_title);
 
-		// parent_tag.appendChild(form);
-
 		var div=document.createElement('div');
 
 		var p=document.createElement('p');
@@ -206,8 +204,8 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 					holidays_thisMonth.push({
 						date:
 						thisMonth.getFullYear()+'-'
-						+holiday.month+'-'
-						+holiday.date,
+						+toDoubleDigits(holiday.month)+'-'
+						+toDoubleDigits(holiday.date),
 						name:
 						holiday.name
 					});	
@@ -232,10 +230,11 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 
 		var thisMonthDate=1;
 
-//  $.when(ajax関数群).done(function(引数){その後の処理});
-
-		$.when(ajax_select_from_memo({table_name:table_name,start_date:where_start_date,end_date:where_end_date}))
-		.done(function(memo){
+		$.when(ajax_select_from_memo({
+			table_name:table_name,
+			start_date:where_start_date,
+			end_date:where_end_date
+		})).done(function(memo){
 
 			for(var j=0;j<getWeekNum(currMonth_lastday);j++){
 				var tr=document.createElement('tr');
@@ -319,7 +318,6 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 									}
 									}
 								}
-
 
 								tr.appendChild(td);
 								thisMonthDate=thisMonthDate+1;
@@ -419,96 +417,130 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 									}
 								}
 
-
 								tr.appendChild(td);
 								thisMonthDate=thisMonthDate+1;
 							}
 						}
 					}
-				tbody.appendChild(tr);
+					tbody.appendChild(tr);
 			}
+			
 			console.log('memo:');
 			console.log(memo);
 
-			
-		});
+			table.appendChild(tbody);
 
-		table.appendChild(tbody);
+			var parent_tag=document.getElementById(parent_tag_str+'_hyou');
 
-		parent_tag.appendChild(table);
+			parent_tag.appendChild(table);
+	
+			var parent_tag=childNodeClear(parent_tag_str+'_params');
 
-		var parent_tag=childNodeClear(parent_tag_str+'_params');
+			var form=document.createElement('form');
+			 
+			form.name=parent_tag_str+'_insert';
+	
+			for(var i=0;i<label.length;i++){
+	
+				if(label[i]=='id') continue;
 
-		var form=document.createElement('form');
-		 
-		form.name=parent_tag_str+'_insert';
+				if(label[i]=='日付'){
+					var input=document.createElement('input');
+					input.type='hidden';
+					input.id=parent_tag_str+i;
+					input.value=year+'-'+toDoubleDigits(month+1)+'-'+toDoubleDigits(currDate);
+					form.appendChild(input);
+				}
+	
+				if(label[i]=='予定'){
+	
+					var p=document.createElement('p');
+					p.id=parent_tag_str+'_'+col[i];
+	
+					p.innerText='予定';
+					form.appendChild(p);
+	
+					var textarea=document.createElement('textarea');
+	
+					textarea.id=parent_tag_str+i;
+					textarea.rows=5;
+					textarea.cols=80;
+					textarea.style.display='block';
+					textarea.name=col[i];
+					form.appendChild(textarea);
+	
+				}
+	
+				if(label[i]=='メモ'){
+	
+					var p=document.createElement('p');
+					p.id=parent_tag_str+'_'+col[i];
+	
+					p.innerText='メモ';
+					form.appendChild(p);
+	
+					var textarea=document.createElement('textarea');
+	
+					textarea.id=parent_tag_str+i;
+					textarea.rows=5;
+					textarea.cols=80;
+					textarea.style.display='block';
+					textarea.name=col[i];
 
-		var input;
+					for(var r=0;r<memo.length;r++){
+						if(((currYear+'-'+toDoubleDigits(currMonth+1)+'-'+toDoubleDigits(currDate))==memo[r]["日付"])&&(memo[r]["メモ"]!="")){
+							textarea.value=memo[r]["メモ"];
+						}
+				}
+		
 
-		for(var i=0;i<label.length;i++){
+					form.appendChild(textarea);
+	
+				}
+			 
+			}
+	
+			parent_tag.appendChild(form);
+	
+			var exec=childNodeClear(parent_tag_str+'_exec');
+	
+			var a=document.createElement("a");
+	
+			a.href='#'+parent_tag_str;
+			a.style.display='block';
+			a.classList.add('a-insert');
 
-      if(label[i]=='id') continue;
+			a.innerText='メモを記入する';
 
-      if(label[i]=='予定'){
+			for(var r=0;r<memo.length;r++){
+				if(((currYear+'-'+toDoubleDigits(currMonth+1)+'-'+toDoubleDigits(currDate))==memo[r]["日付"])&&(memo[r]["メモ"]!="")){
+					a.innerText='メモを編集する';
+					a.addEventListener('click',update_table);
+				}
+			}
+			// a.innerText='メモを記入する';
+			a.addEventListener('click',insert_table);
+				
+			a.parent_tag_str=parent_tag_str;
+			a.table_name=table_name;
+			a.label=label;
+			a.col=col;
+			a.youbi=youbi;
+			a.mode='insert';
+	 
+			exec.appendChild(a);
 
-        var p=document.createElement('p');
-        p.id=parent_tag_str+'_'+col[i];
+			var parent_tag=childNodeClear(parent_tag_str+'_results');
 
-        p.innerText='今日の予定';
-        form.appendChild(p);
+			create_table({
+				parent_tag_str:parent_tag_str,
+				table_name:table_name,
+				label:label,
+				col:col,
+				row:memo
+			});
+	
+		}); // ajax 終わり
 
-        var textarea=document.createElement('textarea');
-
-        textarea.id=parent_tag_str+i;
-        textarea.rows=5;
-        textarea.cols=80;
-        textarea.style.display='block';
-        textarea.name='yotei';
-        form.appendChild(textarea);
-
-      }
-
-      if(label[i]=='メモ'){
-
-        var p=document.createElement('p');
-        p.id=parent_tag_str+'_'+col[i];
-
-        p.innerText='メモ';
-        form.appendChild(p);
-
-        var textarea=document.createElement('textarea');
-
-        textarea.id=parent_tag_str+i;
-        textarea.rows=5;
-        textarea.cols=80;
-        textarea.style.display='block';
-        textarea.name='memo';
-        form.appendChild(textarea);
-
-      }
-     
-    }
-
-		parent_tag.appendChild(form);
-
-		var exec=childNodeClear(parent_tag_str+'_exec');
-
-    var a=document.createElement("a");
-
-    a.href='#'+parent_tag_str;
-    a.innerText='メモを書き込む';
-    a.style.display='block';
-    a.classList.add('a-insert');
-
-    a.addEventListener('click',insert_table);
-        
-    a.parent_tag_str=parent_tag_str;
-    a.table_name=table_name;
-    a.label=label;
-    a.col=col;
-    a.youbi=youbi;
-		a.mode='insert';
- 
-		exec.appendChild(a);
 		
 }

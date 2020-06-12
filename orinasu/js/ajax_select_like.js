@@ -1,3 +1,5 @@
+'use strict';
+
 function ajax_select_like(table_name,col,key){
 
   var defer = new $.Deferred;
