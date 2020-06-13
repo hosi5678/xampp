@@ -6,6 +6,7 @@ function show_yotei(event){
   var table_name=event.target.table_name;
   var parent_tag_str=event.target.parent_tag_str;
   var youbi=event.target.youbi;
+  var label=event.target.label;
 
   var col='date';
   var key=id;
@@ -35,6 +36,12 @@ function show_yotei(event){
   console.log('month:'+month);
   console.log('date:'+date);
 
+  for(var i=0;i<label.length;i++){
+    if(label[i]=='日付'){
+      document.getElementById(parent_tag_str+i).value=year+'-'+month+'-'+date;
+    }
+  }
+
   $.when(    
     ajax_get_col(table_name+'_join'),
     ajax_get_col(table_name),
@@ -58,14 +65,32 @@ function show_yotei(event){
       }
     }
 
-
     if(row.length>0){
       for(var i=0;i<label.length;i++){
         if(label[i]=='メモ'||label[i]=='予定'){
           document.getElementById(parent_tag_str+i).value=row[0][label[i]];
         }
-
       }
+
+      var title=childNodeClear(parent_tag_str+'_exec');
+      var a=document.createElement('a');
+      a.innerText='メモを修正する';
+      a.addEventListener('click',update_table);
+      a.id=id;
+      a.table_name=table_name;
+
+      title.appendChild(a);
+
+    }else{
+      var title=childNodeClear(parent_tag_str+'_exec');
+      var a=document.createElement('a');
+      a.innerText='メモを記入する';
+      a.addEventListener('click',insert_table);
+      a.id=id;
+      a.table_name=table_name;
+
+      title.appendChild(a);
+
     }
     
   });

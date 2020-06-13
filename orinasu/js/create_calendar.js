@@ -2,9 +2,6 @@
 
 function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col}){
 
-		// var parent_tag_str='calendar';
-		// var table_name='calendar';
-
     console.log('------in create calendar------');
 
 		console.log('youbi is:');
@@ -260,6 +257,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 								td.table_name=table_name;
 								td.parent_tag_str=parent_tag_str;
 								td.youbi=youbi;
+								td.label=label;
 
 								tr.appendChild(td);
 							}
@@ -307,6 +305,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 								td.table_name=table_name;
 								td.parent_tag_str=parent_tag_str;
 								td.youbi=youbi;
+								td.label=label;
 
 								for(var p=0;p<memo.length;p++){
 									for(var q=0;q<label.length;q++){
@@ -315,7 +314,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 												console.log('td-memo:matched.')
 												td.innerText+='\n●';
 											}
-									}
+										}
 									}
 								}
 
@@ -368,6 +367,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 								td.parent_tag_str=parent_tag_str;
 								td.table_name=table_name;
 								td.youbi=youbi;
+								td.label=label;
 
 								for(var p=0;p<memo.length;p++){
 									for(var q=0;q<label.length;q++){
@@ -405,6 +405,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 								td.table_name=table_name;
 								td.parent_tag_str=parent_tag_str;
 								td.youbi=youbi;
+								td.label=label;
 
 								for(var p=0;p<memo.length;p++){
 									for(var q=0;q<label.length;q++){
@@ -493,7 +494,6 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 						}
 				}
 		
-
 					form.appendChild(textarea);
 	
 				}
