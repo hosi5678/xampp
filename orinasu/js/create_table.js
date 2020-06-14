@@ -66,11 +66,13 @@ function create_table({parent_tag_str,table_name,label,col,row}){
 
 // 編集記号の追加
   var th=document.createElement('th');
-  var i=document.createElement('i');
-  i.classList.add('fas');
-  i.classList.add('fa-edit');
 
-  th.appendChild(i);
+  var img=document.createElement('img');
+  img.src='../images/pencil.jpg';
+  img.alt='trash';
+  img.classList.add('img');
+
+  th.appendChild(img);
 
   thead.appendChild(th);
 
@@ -78,11 +80,13 @@ function create_table({parent_tag_str,table_name,label,col,row}){
 
 // ゴミ箱記号の追加
   var th=document.createElement('th');
-  var i=document.createElement('i');
-  i.classList.add('fas');
-  i.classList.add('fa-trash');
 
-  th.appendChild(i);
+  var img=document.createElement('img');
+  img.src='../images/trash.png';
+  img.alt='trash';
+  img.classList.add('img');
+
+  th.appendChild(img);
 
   thead.appendChild(th);
 

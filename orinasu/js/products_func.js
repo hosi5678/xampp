@@ -74,6 +74,7 @@ function products_func(){
 
         document.getElementById(parent_tag_str+"_mark").innerText='売上データの登録・削除／検索▼';
 
+        childNodeClear(parent_tag_str+'_message');
         childNodeClear(parent_tag_str+'_params');
         childNodeClear(parent_tag_str+'_exec');
         childNodeClear(parent_tag_str+'_results');

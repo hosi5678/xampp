@@ -38,6 +38,21 @@ body {
 	vertical-align: middle;
 }
 
+.pack {
+	display:table;
+}
+
+img {
+	margin:10px;
+	display:table-cell;
+}
+
+.txt {
+	display:table-cell;
+	vertical-align: middle;
+}
+
+
 .line {
 	width:600px;
 	border-bottom: 1.5px solid#CFBEFF;
@@ -269,6 +284,10 @@ td {
 .a-insert:hover {
 	background-color: #adf;
 	cursor: pointer;
+}
+
+.a-link {
+	width:400px;
 }
 
 .a-link:hover {

@@ -29,15 +29,17 @@ require_once("./php_libs/insert_access_log.php");
 	<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="./favicon.ico">
 	<link rel="stylesheet" type="text/css" href="./css/index.css">
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.19/themes/redmond/jquery-ui.css">
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src='./js/jquery-3.4.1.min.js'></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script> -->
+	<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
 	<script src="https://code.highcharts.com/highcharts.js"></script>
 	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<!-- <script src='./js/japanese-holidays.js'></script>
+	<script src='./js/japanese-holidays.min.js'></script> -->
 	<script src="https://cdn.rawgit.com/osamutake/japanese-holidays-js/v1.0.9/lib/japanese-holidays.min.js"></script>
-	<script defer src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" integrity="sha384-ujbKXb9V3HdK7jcWL6kHL1c+2Lj4MR4Gkjl7UtwpSHg/ClpViddK9TI7yU53frPN" crossorigin="anonymous"></script>
+	<!-- <script defer src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" integrity="sha384-ujbKXb9V3HdK7jcWL6kHL1c+2Lj4MR4Gkjl7UtwpSHg/ClpViddK9TI7yU53frPN" crossorigin="anonymous"></script> -->
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highstock/6.0.3/highstock.js"></script> -->
 	<script src="./js/call_hightchart.js"></script>
 	<script src="./js/getWeekNum.js"></script>
@@ -83,7 +85,7 @@ require_once("./php_libs/insert_access_log.php");
 
 <div id="wrapper">
 	<div class='logo'>
-		<img class='logo-img' src='./images/orinasu_logo.png'>
+		<img class='logo-img' src='./images/orinasu_logo.png' alt='orinasu database'>
 		<p class='logo-txt'>おりなすデータベース</p>
 	</div>
 
@@ -92,8 +94,10 @@ require_once("./php_libs/insert_access_log.php");
 	<div id='contents'>
 	
 		<div class='content'>
-			<i class="far fa-calendar-alt"></i>
-			<a id='calendar_mark' href='#wrapper' onclick='calender_func()' class='a-link'>カレンダー▼</a>
+			<div class='pack'>
+				<img class='img' src='./images/calendar.png' alt='calendar'>
+				<a id='calendar_mark' href='#wrapper' onclick='calender_func()' class='a-link txt'>カレンダー▼</a>
+			</div>
 			<div id="calendar">
 				<div id='calendar_message'></div>
 				<div id='calendar_hyou'></div>
@@ -110,8 +114,10 @@ require_once("./php_libs/insert_access_log.php");
 		<div class='line'></div>
 
 		<div class='content'>
-			<i class="fas fa-coins"></i>
-			<a id='products_mark' href='#wrapper' onclick='products_func()' class='a-link'>売上データの登録・削除／検索▼</a>
+			<div class='pack'>
+				<img class='img' src='./images/coin.png' alt='sales'>
+				<a id='products_mark' href='#wrapper' onclick='products_func()' class='a-link txt'>売上データの登録・削除／検索▼</a>
+			</div>
 			<div id="products">
 				<p id='products_title'></p>
 				<div id='products_message'></div>
@@ -125,8 +131,10 @@ require_once("./php_libs/insert_access_log.php");
 		<div class='line'></div>
 
 		<div class='content'>
-			<i class="fas fa-user-friends"></i>
-			<a id='members_mark' href='#wrapper' onclick='members_func()' class='a-link'>利用者の登録・削除／検索▼</a>
+			<div class='pack'>
+			<img src='./images/person.jpg' class='img' alt='persons'> 
+			<a id='members_mark' href='#wrapper' onclick='members_func()' class='a-link txt'>利用者の登録・削除／検索▼</a>
+			</div>
 			<div id="members">
 				<p id='members_title'></p>
 				<div id='members_message'></div>
