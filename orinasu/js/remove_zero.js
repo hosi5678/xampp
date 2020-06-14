@@ -2,7 +2,7 @@
 
 function remove_zero(str){
 
-    var num;
+    var num='';
 
     // 文字列が空のとき
     if(str==''){
@@ -15,7 +15,7 @@ function remove_zero(str){
 
     	for(var i=0;i<str.length;i++){
         if(str[i]=='0') continue;
-        	num=str[i];
+        	num+=str[i];
 			}
 
 			return parseInt(num);
