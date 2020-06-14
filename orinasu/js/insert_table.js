@@ -50,64 +50,117 @@ function insert_table(event){
   console.log('query_columns:'+query_columns);
   console.log('query columns length:'+query_columns.length);
 
-  var message=childNodeClear(parent_tag_str+'_message');
+  params=get_input_value({
+    parent_tag_str:parent_tag_str,
+    table_name:table_name,
+    label:label,
+    params:params
+  });
+
+  // var message=childNodeClear(parent_tag_str+'_message');
   
-  // document.getElementById(parent_tag_str+'_message');
+  // var str;
 
-  // while(message.firstChild){
-  //   message.removeChild(message.firstChild);
+  // for(var i=0;i<label.length;i++){
+
+  //   if(label[i]=='id') continue;
+
+  //   // メンバーテーブルのとき
+  //   if(table_name=='members'){
+
+  //     // 文字列のとき
+  //     if((label[i]=='姓')||
+  //        (label[i]=='名')||
+  //        (label[i]=='備考')){
+
+  //       str=document.getElementById(parent_tag_str+i).value;
+
+  //       // sql injectionは認めない
+  //       str=reject_str(str);
+  //       if(str===1) return false;
+
+  //       if(str==''&&((label[i]!='名')||(label[i]!='備考'))){
+  //         var p=document.createElement('p');
+
+  //         p.classList.add('message');
+  //         p.innerText=label[i]+'を入力してください。';
+  //         message.appendChild(p);
+  
+  //         return false;
+
+  //       }else{
+  //         params.push('"'+str+'"');
+  //       }
+
+  //     }else{
+  //       var str=document.getElementById(parent_tag_str+i).value;
+  //       params.push(str);  
+  //     }
+
+  //   // 商品テーブルのとき
+  //   }else if(table_name=='products'){
+  //     // 文字列のとき
+  //     if((label[i]=='商品名')||
+  //        (label[i]=='顧客名')||
+  //        (label[i]=='販売場所')||
+  //        (label[i]=='販売日')||
+  //        (label[i]=='備考')){
+
+  //         str=document.getElementById(parent_tag_str+i).value;
+ 
+  //         // sql injectionは認めない
+  //         str=reject_str(str); 
+  //         if(str===1) return false;
+
+  //         // 顧客名と備考は空欄でもよい
+  //         if(str==''&&((label[i]!='顧客名')||(label[i]!='備考'))){
+  //           var p=document.createElement('p');
+  
+  //           p.classList.add('message');
+  //           p.innerText=label[i]+'を入力してください。';
+  //           message.appendChild(p);
+    
+  //           return false;
+
+  //         }else{
+  //           params.push('"'+str+'"');
+  //         }
+  
+  //     }else{
+  //       var str=document.getElementById(parent_tag_str+i).value;
+  //       params.push(str);  
+  //     }
+
+  //   // カレンダーテーブルのとき
+  //   }else if(table_name=='calendar'){
+  //     // 文字列のとき
+  //     if(label[i]=='予定'||label[i]=='メモ'){
+  //       str=document.getElementById(parent_tag_str+i).value;
+  //       str=reject_str(str);    
+  //       if(str===1) return false;
+        
+  //       if(str==''&&(label[i]!='予定')){
+  //         var p=document.createElement('p');
+
+  //         p.classList.add('message');
+  //         p.innerText=label[i]+'を入力してください。';
+  //         message.appendChild(p);
+  
+  //         return false;
+
+  //       }else{
+  //         params.push('"'+str+'"');
+  //       }
+
+  //     // 日付はhiddenで渡される
+  //     }else{
+  //       str=document.getElementById(parent_tag_str+i).value;
+  //       params.push('"'+str+'"');
+  //     }
+
+  //   }
+
   // }
-
-  var str;
-
-  for(var i=0;i<label.length;i++){
-
-    if(label[i]=='id') continue;
-
-    // 文字列のとき
-    if(
-          (label[i]=='姓')||
-          (label[i]=='名')||
-          (label[i]=='商品名')||
-          (label[i]=='顧客名')||
-          (label[i]=='販売場所')||
-          (label[i]=='販売日')||
-          (label[i]=='日付')||
-          (label[i]=='予定')||
-          (label[i]=='メモ')||
-          (label[i]=='備考')
-       
-       ){
-
-        str=document.getElementById(parent_tag_str+i).value;
-
-      // SQL injectionは認めない
-      str=reject_str(str);
-
-      if(str===1){
-        return false;
-      }
-
-      // 空欄のとき,ただし、名と顧客名と備考と予定とメモは空欄でよい。
-      if(str==''&&((label[i]!='名')&&(label[i]!='備考')&&(label[i]!='顧客名')&&(label[i]!='予定')&&(label[i]!='メモ'))){
-
-        var p=document.createElement('p');
-
-        p.classList.add('message');
-        p.innerText=label[i]+'を入力してください。';
-        message.appendChild(p);
-
-        return false;
-      }
-
-      params.push('"'+str+'"');
-
-    }else{
-      var str=document.getElementById(parent_tag_str+i).value;
-      params.push(str);
-    }
-
-  }
 
   console.log('params are:');
   console.log(params);

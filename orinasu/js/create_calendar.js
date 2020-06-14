@@ -23,7 +23,9 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 		var currMonth=curr.getMonth();
 		var currDate=curr.getDate();
 
-		console.log('curr year:'+currYear+' / curr month:'+(currMonth+1)+' / '+currDate);
+		var thisDate=currYear+'-'+toDoubleDigits(currMonth+1)+'-'+toDoubleDigits(currDate);
+
+		console.log('thisDate:'+thisDate);
 
 		
 		var today=currYear+'年'+toDoubleDigits(currMonth+1)+'月'+toDoubleDigits(currDate)+'日('+youbi[curr.getDay()]+')';
@@ -196,8 +198,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 		var holidays_thisMonth=new Array();
  
 		holidays.forEach(function(holiday) {
-
-				if(holiday.month==(thisMonth.getMonth()+1)){
+			if(holiday.month==(thisMonth.getMonth()+1)){
 					holidays_thisMonth.push({
 						date:
 						thisMonth.getFullYear()+'-'
@@ -206,7 +207,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 						name:
 						holiday.name
 					});	
-				}
+			}
 		});
 
 		var table=document.createElement('table');
@@ -258,12 +259,52 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 								td.parent_tag_str=parent_tag_str;
 								td.youbi=youbi;
 								td.label=label;
+								td.col=col;
+
+								// もし今日がメモの日付と合致したら
+								if(memo.length>0){
+									for(var p=0;p<memo.length;p++){
+										if(memo[p]['日付']==td.id){
+											td.innerText+='\n●';
+										}	
+									}
+								
+									var exec=childNodeClear(parent_tag_str+'_exec');
+									var a=document.createElement('a');
+									a.innerText='メモを修正する';
+									a.classList.add('a-mod');
+									a.addEventListener('click',update_table);
+									a.id='"'+td.id+'"';
+									a.parent_tag_str=parent_tag_str;
+									a.table_name=table_name;
+									a.col=col;
+									a.label=label;
+														
+									exec.appendChild(a);
+														
+								}else{
+									var exec=childNodeClear(parent_tag_str+'_exec');
+									var a=document.createElement('a');
+									a.innerText='メモを記入する';
+									a.classList.add('a-insert');
+
+									a.addEventListener('click',insert_table);
+
+									a.parent_tag_str=parent_tag_str;
+									a.table_name=table_name;
+									a.label=label;
+									a.col=col;
+									a.youbi=youbi;
+									a.mode='insert';
+														
+									exec.appendChild(a);
+								}
 
 								tr.appendChild(td);
 							}
 						}
 
-						// 最初の週の処理,今月
+						// 最初の週の処理,今月(1-)
 						for(var i=thisMonth.getDay();i<7;i++){
 
 								var td=document.createElement('td');
@@ -284,16 +325,15 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 										td.title=holidays_thisMonth[k].name;
 										
 										$('#'+td.id).tooltip({
-											show: {
+											show:{
 												effect:"size",
 												delay:50
 											},		
-											hide: {
+											hide:{
 												effect:"size",
 												delay:50
 											}
 										});
-
 									}
 								}
 
@@ -306,16 +346,43 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 								td.parent_tag_str=parent_tag_str;
 								td.youbi=youbi;
 								td.label=label;
+								td.col=col;
 
-								for(var p=0;p<memo.length;p++){
-									for(var q=0;q<label.length;q++){
-										if(label[q]=='日付'){
-											if(memo[p][label[q]]==td.id){
-												console.log('td-memo:matched.')
-												td.innerText+='\n●';
-											}
-										}
+								// もし今日がメモの日付と合致したら
+								if(memo.length>0){
+									for(var p=0;p<memo.length;p++){
+										if(memo[p]['日付']==td.id){
+										td.innerText+='\n●';
+										}	
 									}
+
+									var exec=childNodeClear(parent_tag_str+'_exec');
+									var a=document.createElement('a');
+									a.innerText='メモを修正する';
+									a.classList.add('a-mod');
+									a.addEventListener('click',update_table);
+									a.id='"'+td.id+'"';
+									a.parent_tag_str=parent_tag_str;
+									a.table_name=table_name;
+									a.col=col;
+									a.label=label;
+						
+									exec.appendChild(a);
+						
+								}else{
+									var exec=childNodeClear(parent_tag_str+'_exec');
+									var a=document.createElement('a');
+									a.innerText='メモを記入する';
+									a.classList.add('a-insert');
+									a.addEventListener('click',insert_table);
+									a.parent_tag_str=parent_tag_str;
+									a.table_name=table_name;
+									a.label=label;
+									a.col=col;
+									a.youbi=youbi;
+									a.mode='insert';
+
+									exec.appendChild(a);
 								}
 
 								tr.appendChild(td);
@@ -368,21 +435,50 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 								td.table_name=table_name;
 								td.youbi=youbi;
 								td.label=label;
+								td.col=col;
 
-								for(var p=0;p<memo.length;p++){
-									for(var q=0;q<label.length;q++){
-										if(label[q]=='日付'){
-											if(memo[p][label[q]]==td.id){
-												console.log('td-memo:matched.')
-												td.innerText+='\n●';
-											}
+								// もし今日がメモの日付と合致したら
+								if(memo.length>0){
+									for(var p=0;p<memo.length;p++){
+										if(memo[p]['日付']==td.id){
+										td.innerText+='\n●';
+										}	
 									}
-									}
+
+									var exec=childNodeClear(parent_tag_str+'_exec');
+									var a=document.createElement('a');
+									a.innerText='メモを修正する';
+									a.classList.add('a-mod');
+									a.addEventListener('click',update_table);
+									a.id='"'+td.id+'"';
+									a.parent_tag_str=parent_tag_str;
+									a.table_name=table_name;
+									a.col=col;
+									a.label=label;
+						
+									exec.appendChild(a);
+						
+								}else{
+									var exec=childNodeClear(parent_tag_str+'_exec');
+									var a=document.createElement('a');
+									a.innerText='メモを記入する';
+									a.classList.add('a-insert');
+									a.addEventListener('click',insert_table);
+									a.parent_tag_str=parent_tag_str;
+									a.table_name=table_name;
+									a.label=label;
+									a.col=col;
+									a.youbi=youbi;
+									a.mode='insert';
+
+									exec.appendChild(a);
 								}
 
 								tr.appendChild(td);
 							}
+
 							thisMonthDate=thisMonthDate+1;
+
 						}
 
 						// 来月の処理
@@ -407,17 +503,43 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 								td.youbi=youbi;
 								td.label=label;
 
-								for(var p=0;p<memo.length;p++){
-									for(var q=0;q<label.length;q++){
-										if(label[q]=='日付'){
-											if(memo[p][label[q]]==td.id){
-												console.log('td-memo:matched.')
-												td.innerText+='\n●';
-											}
+								// もし今日がメモの日付と合致したら
+								if(memo.length>0){
+									for(var p=0;p<memo.length;p++){
+										if(memo[p]['日付']==td.id){
+											td.innerText+='\n●';
+										}	
 									}
-									}
+								
+									var exec=childNodeClear(parent_tag_str+'_exec');
+									var a=document.createElement('a');
+									a.innerText='メモを修正する';
+									a.classList.add('a-mod');
+									a.addEventListener('click',update_table);
+									a.id='"'+td.id+'"';
+									a.parent_tag_str=parent_tag_str;
+									a.table_name=table_name;
+									a.col=col;
+									a.label=label;
+														
+									exec.appendChild(a);
+														
+								}else{
+									var exec=childNodeClear(parent_tag_str+'_exec');
+									var a=document.createElement('a');
+									a.innerText='メモを記入する';
+									a.classList.add('a-insert');
+									a.addEventListener('click',insert_table);
+									a.parent_tag_str=parent_tag_str;
+									a.table_name=table_name;
+									a.label=label;
+									a.col=col;
+									a.youbi=youbi;
+									a.mode='insert';
+								
+									exec.appendChild(a);
 								}
-
+								
 								tr.appendChild(td);
 								thisMonthDate=thisMonthDate+1;
 							}
@@ -458,7 +580,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 					var p=document.createElement('p');
 					p.id=parent_tag_str+'_'+col[i];
 	
-					p.innerText='予定';
+					p.innerText=label[i];
 					form.appendChild(p);
 	
 					var textarea=document.createElement('textarea');
@@ -477,7 +599,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 					var p=document.createElement('p');
 					p.id=parent_tag_str+'_'+col[i];
 	
-					p.innerText='メモ';
+					p.innerText=label[i];
 					form.appendChild(p);
 	
 					var textarea=document.createElement('textarea');
@@ -510,24 +632,47 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 			a.style.display='block';
 			a.classList.add('a-insert');
 
-			a.innerText='メモを記入する';
+			if(memo.length>0){
+				for(var r=0;r<memo.length;r++){
+					if(((currYear+'-'
+						 +toDoubleDigits(currMonth+1)+'-'
+						 +toDoubleDigits(currDate))==memo[r]["日付"])&&(memo[r]["メモ"]!="")){
+							a.innerText='メモを編集する';
+							a.classList.add('a-mod');
+							a.addEventListener('click',update_table);
+							a.table_name=table_name;
+							a.parent_tag_str=parent_tag_str;
+							a.label=label;
+							a.col=col;
+							a.id='"'+currYear+'-'+toDoubleDigits(currMonth+1)+'-'+toDoubleDigits(currDate)+'"';
+							a.mode='update';
+							
+						}else{
+							a.innerText='メモを記入する';
+							a.classList.add('a-insert');
+							a.addEventListener('click',insert_table);
+							a.parent_tag_str=parent_tag_str;
+							a.table_name=table_name;
+							a.label=label;
+							a.col=col;
+							a.youbi=youbi;
+							a.mode='insert';
 
-			for(var r=0;r<memo.length;r++){
-				if(((currYear+'-'+toDoubleDigits(currMonth+1)+'-'+toDoubleDigits(currDate))==memo[r]["日付"])&&(memo[r]["メモ"]!="")){
-					a.innerText='メモを編集する';
-					a.addEventListener('click',update_table);
+						}
 				}
+			}else{
+				a.innerText='メモを記入する';
+				a.classList.add('a-insert');
+				a.addEventListener('click',insert_table);
+				a.parent_tag_str=parent_tag_str;
+				a.table_name=table_name;
+				a.label=label;
+				a.col=col;
+				a.youbi=youbi;
+				a.mode='insert';
+
 			}
-			// a.innerText='メモを記入する';
-			a.addEventListener('click',insert_table);
-				
-			a.parent_tag_str=parent_tag_str;
-			a.table_name=table_name;
-			a.label=label;
-			a.col=col;
-			a.youbi=youbi;
-			a.mode='insert';
-	 
+					 
 			exec.appendChild(a);
 
 			var parent_tag=childNodeClear(parent_tag_str+'_results');
