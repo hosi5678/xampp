@@ -73,6 +73,9 @@ require_once("./php_libs/insert_access_log.php");
 	<script src='./js/ajax_select_from_memo.js'></script>
 	<script src='./js/toDoubleDigits.js'></script>
 	<script src='./js/get_input_value.js'></script>
+  <script src='./js/create_calendar_update_form.js'></script>
+  <script src='./js/remove_zero.js'></script>
+  <script src='./js/delete_confirm.js'></script>
 
 </head>
 

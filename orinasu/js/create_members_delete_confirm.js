@@ -7,10 +7,14 @@ function create_members_delete_confirm(event){
   var label=event.target.label;
   var col=event.target.col;
 
-  console.log('----- in create members delete confirmation -----');
+  console.log('----- in delete confirmation -----');
 
   console.log('table_name:'+table_name);
   console.log('parent_tag_str:'+parent_tag_str);
+
+  console.log('label is:');
+  console.log(label);
+
   console.log('col is:');
   console.log(col);
 

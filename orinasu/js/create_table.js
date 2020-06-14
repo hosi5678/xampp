@@ -114,6 +114,8 @@ function create_table({parent_tag_str,table_name,label,col,row}){
           td.addEventListener('click',create_members_update_form);
         }else if(table_name=='products'){
           td.addEventListener('click',create_products_update_form);
+        }else if(table_name=='calendar'){
+          td.addEventListener('click',create_calendar_update_form);
         }
 
         td.parent_tag_str=parent_tag_str;
@@ -134,6 +136,8 @@ function create_table({parent_tag_str,table_name,label,col,row}){
           td.addEventListener('click',create_members_delete_confirm);
         }else if(table_name=='products'){
           td.addEventListener('click',create_products_delete_confirm);
+        }else if(table_name=='calendar'){
+          td.addEventListener('click',delete_confirm);
         }
 
         td.table_name=table_name;
