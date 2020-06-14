@@ -155,7 +155,43 @@ function delete_table(event){
 
 
           });
-        }
+        }else if(table_name=='calendar'){
+
+          $.when(
+            ajax_get_col(table_name+'_join'),
+            ajax_get_col(table_name),
+
+            ajax_get_col('youbi'),
+            ajax_select_from_table('youbi'),
+  
+          ).done(function(label,col,youbi_cols,youbi_rows){
+
+            var mode='insert';
+            var youbi=new Array();
+          
+            youbi=getArrayFromRows({
+              array:youbi,
+              rows:youbi_rows,
+              cols:youbi_cols
+            });
+
+            var curr=new Date();
+            var currYear=curr.getFullYear();
+            var currMonth=curr.getMonth();
+          
+            create_calendar({
+              parent_tag_str:parent_tag_str,
+              table_name:table_name,
+              year:currYear,
+              month:currMonth,
+              youbi:youbi,
+              label:label,
+              col:col
+            });
+
+        });
+
+      }
         
       });
 

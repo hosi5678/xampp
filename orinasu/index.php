@@ -97,7 +97,7 @@ require_once("./php_libs/insert_access_log.php");
 			<div id="calendar">
 				<div id='calendar_message'></div>
 				<div id='calendar_hyou'></div>
-				<p id='calendar_title'></p>
+				<div id='calendar_title'></div>
 
 				<div id='calendar_params'></div>
 

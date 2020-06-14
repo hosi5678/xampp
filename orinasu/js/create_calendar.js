@@ -26,16 +26,19 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 		var thisDate=currYear+'-'+toDoubleDigits(currMonth+1)+'-'+toDoubleDigits(currDate);
 
 		console.log('thisDate:'+thisDate);
-
 		
-		var today=currYear+'年'+toDoubleDigits(currMonth+1)+'月'+toDoubleDigits(currDate)+'日('+youbi[curr.getDay()]+')';
+		var today=currYear+'年'+(currMonth+1)+'月'+(currDate)+'日('+youbi[curr.getDay()]+')';
 		
 		console.log('today:'+today);
 
     var title=childNodeClear(parent_tag_str+'_title');
 
-		title.innerText=today;
-		
+		var p=document.createElement('p');
+
+		p.innerText=today;
+
+		title.appendChild(p);
+
 		// 今月の取得
 		var thisMonth=new Date(year,month,1);
 		

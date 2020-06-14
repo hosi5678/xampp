@@ -62,6 +62,7 @@ function create_products_delete_confirm(event){
   }
 
   var p=document.createElement('p');
+  
   p.innerHTML='商品名 : '+name+'の情報を<span class="delete-alert">削除</span>します。よろしいですか？';
   p.classList.add('delete-message');
 

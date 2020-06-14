@@ -31,7 +31,7 @@ function show_yotei(event){
   var youbiNum=thisDate.getDay();
 
   var title=childNodeClear(parent_tag_str+'_title');
-  title.innerText=year+'年'+month+'月'+date+'日'+'('+youbi[youbiNum]+')';
+  title.innerText=year+'年'+remove_zero(month)+'月'+remove_zero(date)+'日'+'('+youbi[youbiNum]+')';
 
   console.log('year:'+year);
   console.log('month:'+month);
