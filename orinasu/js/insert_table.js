@@ -230,12 +230,25 @@ function insert_table(event){
 
       }else if(table_name=='calendar'){
 
-        create_calendar_input_form({
+        var ymd=document.getElementById(table_name+1).value;
+        console.log('ymd:'+ymd);
+        var tmp=new Array();
+        tmp=ymd.split('-');
+
+        var year=parseInt(tmp[0]);
+        var month=parseInt(remove_zero(tmp[1]))-1;
+
+        console.log('year:'+year);
+        console.log('month:'+(month+1));
+
+        create_calendar({
           parent_tag_str:parent_tag_str,
           table_name:table_name,
           label:label,
           col:col,
-          youbi:youbi
+          youbi:youbi,
+          year:year,
+          month:month
         });
 
       }

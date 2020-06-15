@@ -239,6 +239,17 @@ function update_table(event){
         
           ).done(function(label,col,youbi_col,youbi_row){
 
+            var ymd=document.getElementById(table_name+1).value;
+            console.log('ymd:'+ymd);
+            var tmp=new Array();
+            tmp=ymd.split('-');
+
+            var year=parseInt(tmp[0]);
+            var month=parseInt(remove_zero(tmp[1]))-1;
+
+            // console.log('year:'+year);
+            // console.log('month:'+remove_zero(month));
+
             var youbi=new Array();
             
             youbi=getArrayFromRows({
@@ -247,12 +258,14 @@ function update_table(event){
               rows:youbi_row
             });
 
-            create_calendar_input_form({
+            create_calendar({
               parent_tag_str:parent_tag_str,
               table_name:table_name,
               label:label,
               col:col,
-              youbi:youbi
+              youbi:youbi,
+              year:year,
+              month:month
             });
     
             create_table({
