@@ -151,19 +151,19 @@ desc table_access_log \G
 drop table if exists products;
 
 create table products(
-  id int unsigned not NULL  AUTO_INCREMENT PRIMARY KEY ,
-  category tinyint ,
-  tax tinyint UNSIGNED ,
-  round_type tinyint UNSIGNED ,
-
-  product_name varchar(80),
+  id int unsigned not NULL AUTO_INCREMENT PRIMARY KEY,
+  
   sales_date date,
-
-  place varchar(180),
+  place varchar(120),
   customer varchar(50),
- 
-  tanka int UNSIGNED ,
+
+  category tinyint,
+  product_name varchar(80),
+
+  tanka int UNSIGNED,
   kosuu int UNSIGNED ,
+  tax tinyint UNSIGNED,
+  round_type tinyint UNSIGNED ,
   tyousei int,
   uriage int,
   
@@ -204,19 +204,20 @@ create view products_join as
   select 
         products.id as id,
 
-        category.name as 'カテゴリー',
-        tax.tax as '消費税',
-        round_type.type as '端数処理',
-
-        products.product_name as '商品名',
         products.sales_date as '販売日',
         products.place as '販売場所',
     		products.customer as '顧客名',
 
+        category.name as 'カテゴリー',
+        products.product_name as '商品名',
+
         products.tanka as '商品単価',
         products.kosuu as '販売個数',
+        tax.tax as '消費税',
+        round_type.type as '端数処理',
         products.tyousei as '調整額',
         products.uriage as '売上額',
+
         products.bikou as '備考'
 
         from products
@@ -228,3 +229,26 @@ create view products_join as
 
         create index products_name_index on products(product_name);
         create index products_category_index on products(category);
+
+        drop table if exists calendar;
+
+-- カレンダーテーブル
+
+create table calendar(
+  id int unsigned not NULL AUTO_INCREMENT PRIMARY KEY ,
+  date date unique not NULL,
+  yotei text,
+  memo text
+);
+
+drop view if exists calendar_join;
+
+create view calendar_join as
+  select 
+    calendar.id as id,
+    calendar.date as '日付',
+    calendar.yotei as '予定',
+    calendar.memo as 'メモ'
+  from calendar
+  order by calendar.id asc;
+

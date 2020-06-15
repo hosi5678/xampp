@@ -77,7 +77,9 @@ require_once("./php_libs/insert_access_log.php");
 	<script src='./js/get_input_value.js'></script>
   <script src='./js/create_calendar_update_form.js'></script>
   <script src='./js/remove_zero.js'></script>
-  <script src='./js/delete_confirm.js'></script>
+	<script src='./js/delete_confirm.js'></script>
+	<script src='./js/select_equal.js'></script>
+	<script src='./js/ajax_select_equal_key.js'></script>
 
 </head>
 

@@ -13,6 +13,9 @@ function create_products_update_form(event){
   console.log('parent tag str:'+parent_tag_str);
   console.log('table_name:'+table_name);
 
+  console.log('label:'+label);
+  console.log('col:'+col);
+
   var tds=$(this).closest('tr').children();
 
   var tds_val=new Array();
@@ -104,13 +107,15 @@ function create_products_update_form(event){
           label[i]=='顧客名'||
           label[i]=='販売日'||
           label[i]=='売上額'||
+          label[i]=='販売個数'||
+          label[i]=='売上額'||
           label[i]=='備考'){
           document.getElementById(parent_tag_str+i).value=tds_val[i];
         }
 
         if(label[i]=='カテゴリー'){
           for(var k=0;k<document.getElementById(parent_tag_str+i).options.length;k++){
-            if(document.getElementById(parent_tag_str+i).options[k].innerText==(tds_val[i]+'%')){
+            if(document.getElementById(parent_tag_str+i).options[k].innerText==tds_val[i]){
               document.getElementById(parent_tag_str+i).options[k].selected=true;
             }
           }
@@ -126,7 +131,7 @@ function create_products_update_form(event){
 
         if(label[i]=='端数処理'){
           for(var k=0;k<document.getElementById(parent_tag_str+i).options.length;k++){
-            if(document.getElementById(parent_tag_str+i).options[k].innerText==(tds_val[i]+'%')){
+            if(document.getElementById(parent_tag_str+i).options[k].innerText==tds_val[i]){
               document.getElementById(parent_tag_str+i).options[k].selected=true;
             }
           }

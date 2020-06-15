@@ -23,11 +23,13 @@ function create_members_input_form({
   console.log('mode:'+mode);
 
     // 画面の更新
-    var parent_tag=document.getElementById(parent_tag_str+'_params');
+    var parent_tag=childNodeClear(parent_tag_str+'_params');
 
-    while(parent_tag.firstChild){
-      parent_tag.removeChild(parent_tag.firstChild);
-    }
+    // var parent_tag=document.getElementById(parent_tag_str+'_params');
+
+    // while(parent_tag.firstChild){
+    //   parent_tag.removeChild(parent_tag.firstChild);
+    // }
  
         var form=document.createElement('form');
         form.name='form_'+parent_tag_str+'_insert';
@@ -71,6 +73,8 @@ function create_members_input_form({
               input.parent_tag_str=parent_tag_str;
               input.label=label;
               input.id=parent_tag_str+i;
+
+              // tooltipの適用
               input.title='姓を入力してください。';
 
               $('#'+input.id).tooltip({
@@ -176,6 +180,56 @@ function create_members_input_form({
       table.appendChild(tbody);
 
       form.appendChild(table);
+
+      var youbi=new Array();
+
+      for(var i=0;i<label.length;i++){
+        if(label[i]=='id'||label[i]=='姓'||label[i]=='名'||label[i]=='日'||label[i]=='備考') continue;
+           youbi.push(label[i]);
+      }
+
+      var table=document.createElement('table');
+
+      var thead=document.createElement('thead');
+      var tbody=document.createElement('tbody');
+
+      var th=document.createElement('th');
+
+      th.innerText='利用者検索(曜日毎)';
+      
+      thead.appendChild(th);
+
+      var tr=document.createElement('tr');
+      
+      var td=document.createElement('td');
+
+      var select=document.createElement('select');
+      select.id=table_name+'_kensaku';
+
+      for(var i=0;i<youbi.length;i++){
+        var option=document.createElement('option');
+        option.innerText=youbi[i];
+        select.appendChild(option);
+      }
+
+      select.addEventListener('click',select_equal);
+      select.addEventListener('change',select_equal);
+
+      select.table_name=table_name;
+      select.parent_tag_str=parent_tag_str;
+      select.label=label;
+      select.col=col;
+      select.youbi=youbi;
+
+      td.appendChild(select);
+      tr.appendChild(td);
+      tbody.appendChild(tr);
+
+      table.appendChild(thead);
+      table.appendChild(tbody);
+
+      form.appendChild(table);
+
       parent_tag.appendChild(form);
 
       var p=document.createElement('p');

@@ -1,23 +1,3 @@
-insert into ip_address(ip_address) values("192.168.1.2");
-insert into ip_address(ip_address) values("192.168.1.3");
-insert into ip_address(ip_address) values("192.168.1.4");
-insert into ip_address(ip_address) values("192.168.1.5");
-insert into ip_address(ip_address) values("192.168.1.6");
-insert into ip_address(ip_address) values("192.168.1.7");
-insert into ip_address(ip_address) values("192.168.1.8");
-insert into ip_address(ip_address) values("192.168.1.9");
-insert into ip_address(ip_address) values("192.168.1.10");
-insert into ip_address(ip_address) values("192.168.1.12");
-insert into ip_address(ip_address) values("192.168.1.13");
-insert into ip_address(ip_address) values("192.168.1.15");
-
-select * from ip_address;
-
-insert into password(password) values("orinasu_admin");
-insert into password(password) values("orinasu_user");
-
-select * from password;
-
 INSERT INTO youbi(name) values('日');
 INSERT INTO youbi(name) values('月');
 INSERT INTO youbi(name) values('火');

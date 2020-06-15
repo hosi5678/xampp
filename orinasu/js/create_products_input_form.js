@@ -45,6 +45,59 @@ function create_products_input_form({
 
         var th=document.createElement('th');
 
+        if(label[i]=='販売日'){
+          var th=document.createElement('th');
+          th.innerText=label[i];
+          thead.appendChild(th);
+          var td=document.createElement('td');
+          var input=document.createElement('input');
+          input.type='date';
+          input.id=parent_tag_str+i;
+          td.appendChild(input);
+          tr.appendChild(td);
+        }
+
+        if(label[i]=='販売場所'){
+          var th=document.createElement('th');
+          th.innerText=label[i];
+          thead.appendChild(th);
+          var td=document.createElement('td');
+          var input=document.createElement('input');
+          input.type='text';
+          input.id=parent_tag_str+i;
+          td.appendChild(input);
+          tr.appendChild(td);
+        }
+
+        if(label[i]=='顧客名'){
+          var th=document.createElement('th');
+          th.innerText=label[i];
+          thead.appendChild(th);
+          var td=document.createElement('td');
+          var input=document.createElement('input');
+          input.type='text'
+          input.id=parent_tag_str+i;
+          td.appendChild(input);
+          tr.appendChild(td);
+        }
+
+
+      }
+
+      tbody.appendChild(tr);
+      table.appendChild(thead);
+      table.appendChild(tbody);
+
+      form.appendChild(table);
+
+      var table=document.createElement('table');
+      var thead=document.createElement('thead');
+      var tbody=document.createElement('tbody');
+
+      var tr=document.createElement('tr');
+
+      for(var i=0;i<label.length;i++){
+
         if(label[i]=='カテゴリー'){
 
           var th=document.createElement('th');
@@ -78,89 +131,7 @@ function create_products_input_form({
 
         }
 
-        if(label[i]=='消費税'){
-
-          var th=document.createElement('th');
-
-          th.innerText=label[i];
-          thead.appendChild(th);
-
-          var td=document.createElement('td');
-          var select=document.createElement('select');
-          select.id=table_name+i;
-
-          select.addEventListener('change',product_price_calc);
-          select.addEventListener('click',product_price_calc);
-          select.addEventListener('keyup',product_price_calc);
-
-          select.label=label;
-          select.parent_tag_str=parent_tag_str;
-          select.tax=tax;
-          select.round=round;
-
-          for(k=0;k<tax.length;k++){
-            var option=document.createElement('option');
-            option.value=k;
-            option.innerText=tax[k]+'%';
-            
-            select.appendChild(option);
-          }
-          
-          td.appendChild(select);
-          tr.appendChild(td);
-
-          }
-
-          if(label[i]=='端数処理'){
-  
-            var th=document.createElement('th');
-  
-            th.innerText=label[i];
-            thead.appendChild(th);
-  
-            var td=document.createElement('td');
-            var select=document.createElement('select');
-            select.id=table_name+i;
-
-            select.addEventListener('change',product_price_calc);
-            select.addEventListener('click',product_price_calc);
-            select.addEventListener('keyup',product_price_calc);
-
-            select.label=label;
-            select.parent_tag_str=parent_tag_str;
-            select.tax=tax;
-            select.round=round;
-  
-            for(k=0;k<round.length;k++){
-              var option=document.createElement('option');
-              option.value=k;
-              option.innerText=round[k];
-              
-              select.appendChild(option);
-            }
-            
-            td.appendChild(select);
-            tr.appendChild(td);
-
-        }
-
-      }
-
-      tbody.appendChild(tr);
-      table.appendChild(thead);
-      table.appendChild(tbody);
-
-      form.appendChild(table);
-
-      var table=document.createElement('table');
-      var thead=document.createElement('thead');
-      var tbody=document.createElement('tbody');
-
-      var tr=document.createElement('tr');
-
-      for(var i=0;i<label.length;i++){
-
-          if(label[i]=='商品名'){
+        if(label[i]=='商品名'){
             var th=document.createElement('th');
             th.innerText=label[i];
             thead.appendChild(th);
@@ -182,43 +153,7 @@ function create_products_input_form({
 
             td.appendChild(input);
             tr.appendChild(td);
-          }
-
-          if(label[i]=='販売日'){
-            var th=document.createElement('th');
-            th.innerText=label[i];
-            thead.appendChild(th);
-            var td=document.createElement('td');
-            var input=document.createElement('input');
-            input.type='date';
-            input.id=parent_tag_str+i;
-            td.appendChild(input);
-            tr.appendChild(td);
-          }
-
-          if(label[i]=='販売場所'){
-            var th=document.createElement('th');
-            th.innerText=label[i];
-            thead.appendChild(th);
-            var td=document.createElement('td');
-            var input=document.createElement('input');
-            input.type='text';
-            input.id=parent_tag_str+i;
-            td.appendChild(input);
-            tr.appendChild(td);
-          }
-
-          if(label[i]=='顧客名'){
-            var th=document.createElement('th');
-            th.innerText=label[i];
-            thead.appendChild(th);
-            var td=document.createElement('td');
-            var input=document.createElement('input');
-            input.type='text'
-            input.id=parent_tag_str+i;
-            td.appendChild(input);
-            tr.appendChild(td);
-          }
+        }
 
       }
 
@@ -288,6 +223,75 @@ function create_products_input_form({
           tr.appendChild(td);
         }
 
+        if(label[i]=='消費税'){
+
+          var th=document.createElement('th');
+
+          th.innerText=label[i];
+          thead.appendChild(th);
+
+          var td=document.createElement('td');
+          var select=document.createElement('select');
+          select.id=table_name+i;
+
+          select.addEventListener('change',product_price_calc);
+          select.addEventListener('click',product_price_calc);
+          select.addEventListener('keyup',product_price_calc);
+
+          select.label=label;
+          select.parent_tag_str=parent_tag_str;
+          select.tax=tax;
+          select.round=round;
+
+          for(k=0;k<tax.length;k++){
+            var option=document.createElement('option');
+            option.value=k;
+            option.innerText=tax[k]+'%';
+
+            if(k==2) option.selected=true;
+            
+            select.appendChild(option);
+          }
+          
+          td.appendChild(select);
+          tr.appendChild(td);
+
+        }
+
+        if(label[i]=='端数処理'){
+  
+            var th=document.createElement('th');
+  
+            th.innerText=label[i];
+            thead.appendChild(th);
+  
+            var td=document.createElement('td');
+            var select=document.createElement('select');
+            select.id=table_name+i;
+
+            select.addEventListener('change',product_price_calc);
+            select.addEventListener('click',product_price_calc);
+            select.addEventListener('keyup',product_price_calc);
+
+            select.label=label;
+            select.parent_tag_str=parent_tag_str;
+            select.tax=tax;
+            select.round=round;
+  
+            for(k=0;k<round.length;k++){
+              var option=document.createElement('option');
+              option.value=k;
+              option.innerText=round[k];
+              
+              select.appendChild(option);
+            }
+            
+            td.appendChild(select);
+            tr.appendChild(td);
+
+        }
+
+
         if(label[i]=='調整額'){
           var th=document.createElement('th');
           th.innerText=label[i]+'(±円)';
@@ -335,9 +339,9 @@ function create_products_input_form({
           input.type='number';
           input.id=parent_tag_str+i;
           input.name='calc';
-          input.value=0;
+          input.value=110;
  
-          th.innerText='売上額(=単価×個数×消費税±調整額)(円)';
+          th.innerText='売上額\n(=単価×個数×消費税±調整額)(円)';
           th.classList.add('th-calc');
         }
       }

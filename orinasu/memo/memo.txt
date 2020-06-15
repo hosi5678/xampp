@@ -9,7 +9,7 @@ todos:
 
 ・calendarでinsertしたときに今月に飛ぶのは課題
 ・productsのinputの並びは要検討
-・membersで通所状況を1clickで。
+・membersで通所状況を1clickで。->完了
 ・categoryごとに売り上げ高を集計する
 ->
  select category, sum(uriage) from products group by category order by sum(uriage) desc;

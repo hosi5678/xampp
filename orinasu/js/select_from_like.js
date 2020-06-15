@@ -196,5 +196,5 @@ function select_from_like(event){
        
       }
     }
-    )
+  );
 }

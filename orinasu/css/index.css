@@ -43,8 +43,16 @@ body {
 }
 
 img {
-	margin:10px;
+	margin-top: 5px;
+	margin-left:20px;
+	margin-right:30px;
 	display:table-cell;
+}
+
+.th-img {
+	margin-top: 5px;
+	margin-left:20px;
+
 }
 
 .txt {
@@ -65,6 +73,9 @@ img {
 	cursor:default;
 }
 
+#members_kensaku {
+	width:200px;
+}
 /* .ui-tooltip {
 	width:120px;
 	height:100px;
