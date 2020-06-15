@@ -3,12 +3,17 @@ todos:
 ・ajax phpに操作ログが必要
 ・tableのレコードは色を反転させる。
 ・delete時に確認させる。
--> done.
+-> 完了.
 
 // ・clock機能
 
 ・calendarでinsertしたときに今月に飛ぶのは課題
-
+・productsのinputの並びは要検討
+・membersで通所状況を1clickで。
+・categoryごとに売り上げ高を集計する
+->
+ select category, sum(uriage) from products group by category order by sum(uriage) desc;
+GROUP BY と集計関数は切っても切れない関係である
 /js
 要素の取得は番号ではなく、名前で行う。
 insertとupdateは別ファイルになる。でないと、空欄がベルトコンベアに流れていく。
