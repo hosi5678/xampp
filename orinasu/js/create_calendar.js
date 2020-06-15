@@ -355,7 +355,10 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 								if(memo.length>0){
 									for(var p=0;p<memo.length;p++){
 										if(memo[p]['日付']==td.id){
-										td.innerText+='\n●';
+											var p=document.createElement('p');
+											p.classList.add('p-memo');
+											p.innerText='●';
+											td.appendChild(p);
 										}	
 									}
 
@@ -444,7 +447,10 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 								if(memo.length>0){
 									for(var p=0;p<memo.length;p++){
 										if(memo[p]['日付']==td.id){
-										td.innerText+='\n●';
+											var p=document.createElement('p');
+											p.classList.add('p-memo');
+											p.innerText='●';
+											td.appendChild(p);
 										}	
 									}
 
@@ -617,8 +623,17 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 						if(((currYear+'-'+toDoubleDigits(currMonth+1)+'-'+toDoubleDigits(currDate))==memo[r]["日付"])&&(memo[r]["メモ"]!="")){
 							textarea.value=memo[r]["メモ"];
 						}
-				}
-		
+					}
+
+					textarea.addEventListener('click',select_from_like);
+          textarea.addEventListener('keyup',select_from_like);
+
+					textarea.id=parent_tag_str+i;
+          textarea.col=col[i];
+          textarea.table_name=table_name;
+          textarea.parent_tag_str=parent_tag_str;
+          textarea.label=label;
+
 					form.appendChild(textarea);
 	
 				}

@@ -45,19 +45,19 @@ function select_from_like(event){
 
             var youbi=new Array();
 
-              youbi=getArrayFromRows({
+            youbi=getArrayFromRows({
                 array:youbi,
                 cols:youbi_col,
                 rows:youbi_row
-              });
+            });
 
             var riyou=new Array();
 
-              riyou=getArrayFromRows({
+            riyou=getArrayFromRows({
                 array:riyou,
                 cols:riyou_col,
                 rows:riyou_row
-              });
+            });
 
             for(var j=0;j<row.length;j++){
 
@@ -169,6 +169,31 @@ function select_from_like(event){
     
         });
 
+      }else if(table_name=='calendar'){
+        $.when(
+          ajax_get_col('youbi'),
+          ajax_select_from_table('youbi'),
+  
+        ).done(function(youbi_col,youbi_row){
+
+          var youbi=new Array();
+          
+          youbi=getArrayFromRows({
+            array:youbi,
+            rows:youbi_row,
+            cols:youbi_col
+          });
+
+          create_table({
+            parent_tag_str:parent_tag_str,
+            table_name:table_name,
+            label:label,
+            col:col,
+            row:row
+          });
+    
+        });
+       
       }
     }
     )
