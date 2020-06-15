@@ -22,14 +22,10 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
     var currYear=curr.getFullYear();
 		var currMonth=curr.getMonth();
 		var currDate=curr.getDate();
-
-		var thisDate=currYear+'-'+toDoubleDigits(currMonth+1)+'-'+toDoubleDigits(currDate);
-
-		console.log('thisDate:'+thisDate);
 		
 		var today=currYear+'年'+(currMonth+1)+'月'+(currDate)+'日('+youbi[curr.getDay()]+')';
 		
-		console.log('today:'+today);
+		// console.log('today:'+today);
 
     var title=childNodeClear(parent_tag_str+'_title');
 
@@ -408,6 +404,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 								if(i==0) td.classList.add('td-sun');	
 								if(i==6) td.classList.add('td-sat');
 
+								// パラメータが今日なら色を塗る
 								if(year==currYear && month==currMonth && thisMonthDate==currDate) td.classList.add('td-today');
 
 								td.id=thisMonth.getFullYear()+'-'
@@ -456,6 +453,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 
 									var exec=childNodeClear(parent_tag_str+'_exec');
 									var a=document.createElement('a');
+
 									a.innerText='メモを修正する';
 									a.classList.add('a-mod');
 									a.addEventListener('click',update_table);
@@ -516,7 +514,10 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 								if(memo.length>0){
 									for(var p=0;p<memo.length;p++){
 										if(memo[p]['日付']==td.id){
-											td.innerText+='\n●';
+											var p=document.createElement('p');
+											p.classList.add('p-memo');
+											p.innerText='●';
+											td.appendChild(p);
 										}	
 									}
 								

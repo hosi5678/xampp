@@ -50,6 +50,7 @@ function insert_table(event){
   console.log('query_columns:'+query_columns);
   console.log('query columns length:'+query_columns.length);
 
+  // id部品の値を取得
   params=get_input_value({
     parent_tag_str:parent_tag_str,
     table_name:table_name,
