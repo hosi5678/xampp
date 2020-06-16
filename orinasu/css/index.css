@@ -73,6 +73,10 @@ img {
 	cursor:default;
 }
 
+.p-memo:hover {
+	background-color: white;
+}
+
 #members_kensaku {
 	width:200px;
 }
@@ -134,7 +138,7 @@ table {
 
 th {
 	/* border-spacing: 0px; */
-	width: 100px;
+	width:90px; /* 100px */
 	border: 1px solid black;
 	color:rgb(70, 70, 70);
 	text-align: center;
@@ -192,6 +196,12 @@ td {
 .option-hide {
 	display:none;
 }
+
+
+
+/* option {
+	text-align:center;
+} */
 
 /* calendar yajirushi */
 .calendar-right-arrow {
