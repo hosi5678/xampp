@@ -89,6 +89,29 @@ function show_yotei(event){
 
       exec.appendChild(a);
 
+      var a=document.createElement("a");
+
+      a.href='#'+parent_tag_str;
+
+      a.innerText='戻る';
+
+      var mode='insert';
+
+      a.addEventListener('click',
+
+        function(event){
+          create_calendar_input_form({
+            parent_tag_str:parent_tag_str,
+            table_name:table_name,
+            label:label,
+            col:col,
+            youbi:youbi
+          })
+        }
+      );
+
+      exec.appendChild(a);
+
     }else{
 
       var exec=childNodeClear(parent_tag_str+'_exec');
