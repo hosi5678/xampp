@@ -31,13 +31,12 @@ require_once("./php_libs/insert_access_log.php");
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.19/themes/redmond/jquery-ui.css">
 	<script src='./js/jquery-3.4.1.min.js'></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<!-- <script src='./js/highcharts.js'></script> -->
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
 	<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
-	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
 	<script src="https://code.highcharts.com/modules/exporting.js"></script>
-	<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/highstock/6.0.3/highstock.js'></script> -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/highstock/6.0.3/highstock.js'></script>
 	<!-- <script src='./js/japanese-holidays.js'></script>
 	<script src='./js/japanese-holidays.min.js'></script> -->
 	<script src="https://cdn.rawgit.com/osamutake/japanese-holidays-js/v1.0.9/lib/japanese-holidays.min.js"></script>
@@ -82,6 +81,7 @@ require_once("./php_libs/insert_access_log.php");
 	<script src='./js/delete_confirm.js'></script>
 	<script src='./js/select_equal.js'></script>
 	<script src='./js/ajax_select_equal_key.js'></script>
+	<script src='./js/uriage_graph_func.js'></script>
 
 </head>
 
@@ -96,7 +96,22 @@ require_once("./php_libs/insert_access_log.php");
 	<div class='line'></div>
 						
 	<div id='contents'>
+
+		<div class='content'>
+			<div class='pack'>
+			<img class='img' src='./images/graph.png' alt='graph'>
+				<a id='uriage_graph_mark' href='#wrapper' onclick='uriage_graph_func()' class='a-link txt'>売上グラフの表示▼</a>
+			</div>
+
+			<div id='uriage_graph'>
+				<div id='uriage_graph_params'></div>
+				<div id='uriage_graph_container'></div>
+			</div>
+
+		</div>
 	
+		<div class='line'></div>
+
 		<div class='content'>
 			<div class='pack'>
 				<img class='img' src='./images/calendar.png' alt='calendar'>

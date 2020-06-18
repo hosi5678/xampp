@@ -1,4 +1,4 @@
-function call_hightchart(){
+function call_hightchart(parent_tag_str){
  
     // console.log(window.location.href.split('/').pop());
 
@@ -21,7 +21,7 @@ function call_hightchart(){
    
     console.log(series);
 
-    $('#container').highcharts({
+    $('#'+parent_tag_str+'_container').highcharts({
       chart: {
         width:900,
         height:400
@@ -31,8 +31,8 @@ function call_hightchart(){
         x: -20 //center
       },
       subtitle: {
-        text: 'Source: WorldClimate.com',
-        x: -20
+        // text: 'Source: WorldClimate.com',
+        // x: -20
       },
       xAxis: {
         categories: xaxis,

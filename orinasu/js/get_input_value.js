@@ -2,6 +2,17 @@
 
 function get_input_value({parent_tag_str,table_name,label,params}){
 
+  console.log('---get_input_value---');
+  
+  console.log('parent_tag_str:'+parent_tag_str);
+  console.log('table_name:'+table_name);
+
+  console.log('label:');
+  console.log(label);
+
+  console.log('params:');
+  console.log(params);
+
   var message=childNodeClear(parent_tag_str+'_message');
   
   var str;

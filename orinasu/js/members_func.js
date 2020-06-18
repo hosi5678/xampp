@@ -1,6 +1,6 @@
-function members_func(){
+'use strict';
 
-  'use strict';
+function members_func(){
 
   var parent_tag_str='members';
   var table_name='members';
