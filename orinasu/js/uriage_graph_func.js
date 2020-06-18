@@ -32,7 +32,7 @@ function uriage_graph_func(){
   
         // childNodeClear(parent_tag_str+'_message');
         childNodeClear(parent_tag_str+'_params');
-        // childNodeClear(parent_tag_str+'_exec');
+        childNodeClear(parent_tag_str+'_container');
         // childNodeClear(parent_tag_str+'_results');
   
     }

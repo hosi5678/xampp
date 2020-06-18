@@ -25,8 +25,6 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 		
 		var today=currYear+'年'+(currMonth+1)+'月'+(currDate)+'日('+youbi[curr.getDay()]+')';
 		
-		// console.log('today:'+today);
-
     var title=childNodeClear(parent_tag_str+'_title');
 
 		var p=document.createElement('p');

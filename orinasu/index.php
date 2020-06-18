@@ -35,11 +35,13 @@ require_once("./php_libs/insert_access_log.php");
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
 	<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
 	<!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
-	<script src="https://code.highcharts.com/modules/exporting.js"></script>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/highstock/6.0.3/highstock.js'></script>
-	<!-- <script src='./js/japanese-holidays.js'></script>
-	<script src='./js/japanese-holidays.min.js'></script> -->
-	<script src="https://cdn.rawgit.com/osamutake/japanese-holidays-js/v1.0.9/lib/japanese-holidays.min.js"></script>
+  <script src='./js/hightcharts.js'></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+	<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/highstock/6.0.3/highstock.js'></script> -->
+	<script src='./js/japanese-holidays.js'></script>
+	<!-- <script src='./js/japanese-holidays.min.js'></script> -->
+	<!-- <script src="https://cdn.rawgit.com/osamutake/japanese-holidays-js/v1.0.9/lib/japanese-holidays.min.js"></script> -->
 	<!-- <script defer src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" integrity="sha384-ujbKXb9V3HdK7jcWL6kHL1c+2Lj4MR4Gkjl7UtwpSHg/ClpViddK9TI7yU53frPN" crossorigin="anonymous"></script> -->
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highstock/6.0.3/highstock.js"></script> -->
 	<script src="./js/call_hightchart.js"></script>
