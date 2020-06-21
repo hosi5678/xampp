@@ -197,7 +197,9 @@ td {
 	display:none;
 }
 
-
+.shori {
+	margin-left:30px;
+}
 
 /* option {
 	text-align:center;
@@ -292,6 +294,22 @@ td {
 
 .hide{
 	display:none;
+}
+
+.status {
+	color:#faf;
+	background-color:#cfd;
+	width:300px;
+}
+
+.csv_download {
+	font-size: 16px;
+	color:steelblue;
+	cursor:pointer;
+}
+
+.csv_download:hover {
+	background-color: #adf;
 }
 
 .block {

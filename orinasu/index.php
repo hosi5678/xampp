@@ -84,7 +84,10 @@ require_once("./php_libs/insert_access_log.php");
 	<script src='./js/select_equal.js'></script>
 	<script src='./js/ajax_select_equal_key.js'></script>
 	<script src='./js/uriage_graph_func.js'></script>
-
+	<script src='./js/anime.min.js'></script>
+	<script src='./js/create_csv.js'></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.5.1/pixi.min.js"></script>
+ 
 </head>
 
 <body>
@@ -105,7 +108,7 @@ require_once("./php_libs/insert_access_log.php");
 				<a id='uriage_graph_mark' href='#wrapper' onclick='uriage_graph_func()' class='a-link txt'>売上グラフの表示▼</a>
 			</div>
 
-			<div id='uriage_graph'>
+			<div id='uriage_graph' class='shori'>
 				<div id='uriage_graph_params'></div>
 				<div id='uriage_graph_container'></div>
 			</div>
@@ -119,13 +122,14 @@ require_once("./php_libs/insert_access_log.php");
 				<img class='img' src='./images/calendar.png' alt='calendar'>
 				<a id='calendar_mark' href='#wrapper' onclick='calender_func()' class='a-link txt'>カレンダー▼</a>
 			</div>
-			<div id="calendar">
+			<div id="calendar" class='shori'>
 				<div id='calendar_message'></div>
 				<div id='calendar_hyou'></div>
 				<div id='calendar_title'></div>
 
 				<div id='calendar_params'></div>
 
+				<p id='calendar_status' class='status'></p>
 				<div id='calendar_exec' class='exec'></div>
 				<div id="calendar_like"></div>
 				<div id="calendar_results"></div>
@@ -139,10 +143,11 @@ require_once("./php_libs/insert_access_log.php");
 				<img class='img' src='./images/coin.png' alt='sales'>
 				<a id='products_mark' href='#wrapper' onclick='products_func()' class='a-link txt'>売上データの登録・削除／検索▼</a>
 			</div>
-			<div id="products">
+			<div id="products" class='shori'>
 				<p id='products_title'></p>
 				<div id='products_message'></div>
 				<div id="products_params"></div>
+				<p id='products_status' class='status'></p>
 				<div id='products_exec' class='exec'></div>
 				<div id="products_like"></div>
 				<div id="products_results"></div>
@@ -156,10 +161,11 @@ require_once("./php_libs/insert_access_log.php");
 			<img src='./images/person.jpg' class='img' alt='persons'> 
 			<a id='members_mark' href='#wrapper' onclick='members_func()' class='a-link txt'>利用者の登録・削除／検索▼</a>
 			</div>
-			<div id="members">
+			<div id="members" class='shori'>
 				<p id='members_title'></p>
 				<div id='members_message'></div>
 				<div id="members_params"></div>
+				<p id='members_status' class='status'></p>
 				<div id='members_exec' class='exec'></div>
 				<div id="members_like"></div>
 				<div id="members_results"></div>

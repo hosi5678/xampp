@@ -27,75 +27,6 @@ function update_table(event){
     params:update_val
   });
 
-  // var message=childNodeClear(parent_tag_str+'_message');
-
-  // var message=document.getElementById(parent_tag_str+'_message');
-
-  // while(message.firstChild){
-  //   message.removeChild(message.firstChild);
-  // }
-
-  // var bikou;
-
-  // for(var i=0;i<label.length;i++){
-  //   if(label[i]=='id') continue;
-    
-  //   // 文字列の取得
-  //   if(
-  //       (label[i]=='姓')||
-  //       (label[i]=='名')||
-  //       (label[i]=='商品名')||
-  //       (label[i]=='販売日')||
-  //       (label[i]=='顧客名')||
-  //       (label[i]=='販売場所')||
-  //       (label[i]=='備考')
-  //     ){
-  //     var str=document.getElementById(parent_tag_str+i).value;
- 
-  //     // injectionは認めない
-  //     str=reject_str(str);
-
-  //     if(str==1){
-  //       return false;
-  //     }
-
-  //      // 空欄のとき,ただし、名と備考は空欄でよい。
-  //     if(str==''&&((label[i]!='名')||(label[i]!='備考')||(label[i]!='顧客名'))){
-  //     // if(str==''&&((label[i]!='名')||(label[i]!='備考'))){
-  //       var p=document.createElement('p');
-  //         p.classList.add('message');
-  //         p.innerText=label[i]+'を入力してください。'
-  //         message.appendChild(p);
-
-  //        return false;
-  //     }
-  //       update_val.push('"'+str+'"');
-
-  //     }
-  //     // else if(label[i]=='備考'){
-
-  //     //   if(table_name=='members'){
-  //     //     bikou=document.form_members_insert.bikou.value;
-  //     //   }else if(table_name='products'){
-  //     //     bikou=document.form_products_insert.bikou.value;
-  //     //   }
-
-  //     //   bikou=reject_str(bikou);
-  //     //   console.log('bikou:'+bikou);
-      
-  //     //   if(bikou===1){
-  //     //     return false;
-  //     //   }
-      
-  //     //   update_val.push('"'+bikou+'"');
-  //     // }
-  //     // 数値の取得
-  //     else{
-  //       update_val.push(document.getElementById(parent_tag_str+i).value);
-  //     }
-
-  // }
-
       var query_label=new Array();
 
       var where_key;
@@ -225,8 +156,6 @@ function update_table(event){
 
           });
 
-          // create_products_input_form(parent_tag_str,table_name);
-          // select_from_table(parent_tag_str,table_name);
         }else if(table_name=='calendar'){
 
           $.when(    
@@ -246,9 +175,6 @@ function update_table(event){
 
             var year=parseInt(tmp[0]);
             var month=parseInt(remove_zero(tmp[1]))-1;
-
-            // console.log('year:'+year);
-            // console.log('month:'+remove_zero(month));
 
             var youbi=new Array();
             
@@ -280,6 +206,14 @@ function update_table(event){
           });
 
         }
+
+        var status=document.getElementById(parent_tag_str+'_status');
+        status.innerText='修正が完了しました。';
+  
+        $('#'+parent_tag_str+'_status').show(1000,function(){
+          $('#'+parent_tag_str+'_status').hide(2500);
+        });
+  
 
       });
 

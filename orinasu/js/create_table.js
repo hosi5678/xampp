@@ -28,6 +28,19 @@ function create_table({parent_tag_str,table_name,label,col,row}){
 
   parent_tag.appendChild(p);
 
+  // csv download機能
+  var a=document.createElement('a');
+  a.innerText='表のダウンロード';
+  a.classList.add('csv_download');
+
+  a.addEventListener('click',create_csv);
+
+  a.table_name=table_name;
+  a.label=label;
+  a.row=row;
+
+  parent_tag.appendChild(a);
+
   var uriage_total=0;
 
   for(var i=0;i<label.length;i++){

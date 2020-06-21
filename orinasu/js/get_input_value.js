@@ -36,12 +36,14 @@ function get_input_value({parent_tag_str,table_name,label,params}){
 
         if(str===1) return false;
 
-        if(str==''&&((label[i]!='名')||(label[i]!='備考'))){
-          var p=document.createElement('p');
+        // 名と備考は空欄でも良い
+        if(str==''&&(label[i]=='姓')){
+          var status=childNodeClear(parent_tag_str+'_status');
 
+          var p=document.createElement('p');
           p.classList.add('message');
           p.innerText=label[i]+'を入力してください。';
-          message.appendChild(p);
+          status.appendChild(p);
   
           return false;
 
@@ -70,12 +72,15 @@ function get_input_value({parent_tag_str,table_name,label,params}){
           if(str===1) return false;
 
           // 顧客名と備考は空欄でもよい
-          if(str==''&&((label[i]!='顧客名')||(label[i]!='備考'))){
+          if(str==''&&((label[i]=='商品名')||(label[i]=='販売日'))){
+
+            var status=childNodeClear(parent_tag_str+'_status');
+
             var p=document.createElement('p');
   
             p.classList.add('message');
             p.innerText=label[i]+'を入力してください。';
-            message.appendChild(p);
+            status.appendChild(p);
     
             return false;
 

@@ -40,12 +40,16 @@ function delete_confirm(event){
 
   var parent_tag=document.getElementById(parent_tag_str+'_params');
 
-  var memo;
+  var memo='';
 
   for(var i=0;i<label.length;i++){
-    if(label[i]=='日付'){
-      memo=tds[i].innerText;
-    }     
+    if(table_name=='calendar'){
+      if(label[i]=='日付'){
+        memo+=tds[i].innerText;
+      }else if(label[i]=='メモ'){
+        memo+=' ,"'+tds[i].innerText+'" ';
+      }
+    }
   }
 
   var p=document.createElement('p');

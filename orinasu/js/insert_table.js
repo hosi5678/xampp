@@ -38,8 +38,6 @@ function insert_table(event){
 
   // mode='insert';
  
-  var params=new Array();
-
   var query_columns=new Array();
 
   for(var i=0;i<col.length;i++){
@@ -50,7 +48,9 @@ function insert_table(event){
   console.log('query_columns:'+query_columns);
   console.log('query columns length:'+query_columns.length);
 
-  // id部品の値を取得
+  // input 部品の値を取得
+  var params=new Array();
+
   params=get_input_value({
     parent_tag_str:parent_tag_str,
     table_name:table_name,
@@ -85,27 +85,27 @@ function insert_table(event){
       
       if(table_name=='members'){
 
-          create_members_input_form({
-            parent_tag_str:parent_tag_str,
-            table_name:table_name,
-            label:label,
-            col:col,
-            riyou:riyou,
-            mode:mode,
-          });
+        create_members_input_form({
+          parent_tag_str:parent_tag_str,
+          table_name:table_name,
+          label:label,
+          col:col,
+          riyou:riyou,
+          mode:mode,
+        });
  
       }else if(table_name=='products'){
 
-          create_products_input_form({
-            parent_tag_str:parent_tag_str,
-            table_name:table_name,
-            label:label,
-            col:col,
-            category:category,
-            tax:tax,
-            round:round,
-            mode:mode,
-          });
+        create_products_input_form({
+          parent_tag_str:parent_tag_str,
+          table_name:table_name,
+          label:label,
+          col:col,
+          category:category,
+          tax:tax,
+          round:round,
+          mode:mode,
+        });
 
       }else if(table_name=='calendar'){
 
@@ -131,6 +131,13 @@ function insert_table(event){
         });
 
       }
+
+      var status=document.getElementById(parent_tag_str+'_status');
+      status.innerText='記入が完了しました。';
+
+      $('#'+parent_tag_str+'_status').show(1000,function(){
+        $('#'+parent_tag_str+'_status').hide(2500);
+      });
 
       create_table({
         parent_tag_str:parent_tag_str,
