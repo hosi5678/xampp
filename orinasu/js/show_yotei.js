@@ -1,12 +1,19 @@
 'use strict';
 
-function show_yotei(event){
+function show_yotei({
+  id,
+  parent_tag_str,
+  table_name,
+  label,
+  col,
+  youbi
+}){
 
-  var id=event.target.id;
-  var table_name=event.target.table_name;
-  var parent_tag_str=event.target.parent_tag_str;
-  var youbi=event.target.youbi;
-  var label=event.target.label;
+  // var id=event.target.id;
+  // var table_name=event.target.table_name;
+  // var parent_tag_str=event.target.parent_tag_str;
+  // var youbi=event.target.youbi;
+  // var label=event.target.label;
 
   var key=id;
 

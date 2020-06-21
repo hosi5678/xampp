@@ -184,6 +184,10 @@ td {
 	background-color:#ddd;
 }
 
+.td-calendar {
+	height:40px;
+}
+
 .td-calendar:hover {
 	cursor: pointer;
 	background-color:#adf;
@@ -201,9 +205,14 @@ td {
 	margin-left:30px;
 }
 
-/* option {
-	text-align:center;
-} */
+.calendar-hizuke {
+	height:20px;
+	border-bottom: 1px dashed ;
+}
+
+.calendar-memo {
+	height:20px;
+}
 
 /* calendar yajirushi */
 .calendar-right-arrow {

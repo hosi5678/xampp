@@ -135,7 +135,7 @@ function insert_table(event){
       var status=document.getElementById(parent_tag_str+'_status');
       status.innerText='記入が完了しました。';
 
-      $('#'+parent_tag_str+'_status').show(1000,function(){
+      $('#'+parent_tag_str+'_status').show(2000,function(){
         $('#'+parent_tag_str+'_status').hide(2500);
       });
 

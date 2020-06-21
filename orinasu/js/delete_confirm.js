@@ -18,6 +18,7 @@ function delete_confirm(event){
     console.log('col is:');
     console.log(col);
 
+    // 画面のクリア
     childNodeClear(parent_tag_str+'_title');
     childNodeClear(parent_tag_str+'_hyou');
     childNodeClear(parent_tag_str+'_params');
@@ -38,6 +39,7 @@ function delete_confirm(event){
   
     console.log('id:'+id);
 
+  // 画面のクリア後、再度親ノードを取得
   var parent_tag=document.getElementById(parent_tag_str+'_params');
 
   var memo='';

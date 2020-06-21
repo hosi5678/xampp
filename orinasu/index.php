@@ -39,9 +39,9 @@ require_once("./php_libs/insert_access_log.php");
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 	<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/highstock/6.0.3/highstock.js'></script> -->
-	<script src='./js/japanese-holidays.js'></script>
+	<!-- <script src='./js/japanese-holidays.js'></script> -->
 	<!-- <script src='./js/japanese-holidays.min.js'></script> -->
-	<!-- <script src="https://cdn.rawgit.com/osamutake/japanese-holidays-js/v1.0.9/lib/japanese-holidays.min.js"></script> -->
+	<script src="https://cdn.rawgit.com/osamutake/japanese-holidays-js/v1.0.9/lib/japanese-holidays.min.js"></script>
 	<!-- <script defer src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" integrity="sha384-ujbKXb9V3HdK7jcWL6kHL1c+2Lj4MR4Gkjl7UtwpSHg/ClpViddK9TI7yU53frPN" crossorigin="anonymous"></script> -->
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highstock/6.0.3/highstock.js"></script> -->
 	<script src="./js/call_hightchart.js"></script>
@@ -86,7 +86,9 @@ require_once("./php_libs/insert_access_log.php");
 	<script src='./js/uriage_graph_func.js'></script>
 	<script src='./js/anime.min.js'></script>
 	<script src='./js/create_csv.js'></script>
+	<script src='./js/setCalendarDay.js'></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.5.1/pixi.min.js"></script>
+	<script src='./js/create_exec.js'></script>
  
 </head>
 
