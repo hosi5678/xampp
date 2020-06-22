@@ -78,6 +78,7 @@ function setCalendarDay({
 
       td.classList.add('td-shukujitu');
 
+      // 祝日のtooltipを表示
       td.title=holidays_thisMonth[k].name;
       
       $('#'+td.id).tooltip({
@@ -108,6 +109,7 @@ function setCalendarDay({
 
     for(var i=0;i<memo.length;i++){
       if(memo[i]['日付']==td.id){
+        p.classList.add('memo-pink');
         p.innerText='●';
       }
     }
@@ -118,7 +120,7 @@ function setCalendarDay({
       table_name:table_name,
       label:label,
       col:col,
-      mode:'mod', // modify
+      mode:'update', // update table
       class_str:'a_mod',
       id:'"'+td.id+'"',
     });
@@ -151,16 +153,6 @@ function setCalendarDay({
       youbi:youbi,
     })
   });
-
-  console.log('td.id:'+td.id);
-
-  // td.id=td.id;
-  // td.table_name=table_name;
-  // td.parent_tag_str=parent_tag_str;
-  // td.youbi=youbi;
-  // td.label=label;
-  // td.col=col;
-
 
   return td;
 

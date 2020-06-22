@@ -119,6 +119,8 @@ function insert_table(event){
 
         console.log('year:'+year);
         console.log('month:'+(month+1));
+        console.log('youbi:');
+        console.log(youbi);
 
         create_calendar({
           parent_tag_str:parent_tag_str,
@@ -135,7 +137,7 @@ function insert_table(event){
       var status=document.getElementById(parent_tag_str+'_status');
       status.innerText='記入が完了しました。';
 
-      $('#'+parent_tag_str+'_status').show(2000,function(){
+      $('#'+parent_tag_str+'_status').show(1000,function(){
         $('#'+parent_tag_str+'_status').hide(2500);
       });
 

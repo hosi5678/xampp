@@ -214,6 +214,10 @@ td {
 	height:20px;
 }
 
+.memo-pink {
+	color:pink;
+}
+
 /* calendar yajirushi */
 .calendar-right-arrow {
 	margin-left:30px;
@@ -350,6 +354,7 @@ td {
 
 textarea {
 	margin-bottom: 10px;
+	font-size:25px;
 }
 
 .exec {

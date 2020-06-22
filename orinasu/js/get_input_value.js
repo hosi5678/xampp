@@ -13,7 +13,7 @@ function get_input_value({parent_tag_str,table_name,label,params}){
   console.log('params:');
   console.log(params);
 
-  var message=childNodeClear(parent_tag_str+'_message');
+  var status=childNodeClear(parent_tag_str+'_status');
   
   var str;
 
@@ -38,7 +38,6 @@ function get_input_value({parent_tag_str,table_name,label,params}){
 
         // 名と備考は空欄でも良い
         if(str==''&&(label[i]=='姓')){
-          var status=childNodeClear(parent_tag_str+'_status');
 
           var p=document.createElement('p');
           p.classList.add('message');
@@ -74,8 +73,6 @@ function get_input_value({parent_tag_str,table_name,label,params}){
           // 顧客名と備考は空欄でもよい
           if(str==''&&((label[i]=='商品名')||(label[i]=='販売日'))){
 
-            var status=childNodeClear(parent_tag_str+'_status');
-
             var p=document.createElement('p');
   
             p.classList.add('message');
@@ -106,7 +103,7 @@ function get_input_value({parent_tag_str,table_name,label,params}){
 
           p.classList.add('message');
           p.innerText=label[i]+'を入力してください。';
-          message.appendChild(p);
+          status.appendChild(p);
   
           return false;
 

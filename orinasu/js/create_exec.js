@@ -27,7 +27,7 @@ function create_exec({
 
   if(table_name=='calendar'){
 
-    if(mode=='mod'){
+    if(mode=='update'){
       innerText='メモを修正する';
       a.innerText=innerText;
       a.addEventListener('click',update_table);

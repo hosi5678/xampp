@@ -198,23 +198,6 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 		
 		parent_tag.appendChild(div_title);
 
-		// var holidays = JapaneseHolidays.getHolidaysOf(thisMonth.getFullYear());
-
-		// var holidays_thisMonth=new Array();
- 
-		// holidays.forEach(function(holiday) {
-		// 	if(holiday.month==(thisMonth.getMonth()+1)){
-		// 			holidays_thisMonth.push({
-		// 				date:
-		// 				thisMonth.getFullYear()+'-'
-		// 				+toDoubleDigits(holiday.month)+'-'
-		// 				+toDoubleDigits(holiday.date),
-		// 				name:
-		// 				holiday.name
-		// 			});	
-		// 	}
-		// });
-
 		var table=document.createElement('table');
 		var thead=document.createElement('thead');
 		var tbody=document.createElement('tbody');
@@ -262,63 +245,6 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 									memo:memo
 								});
 
-								// td.classList.add('td-gray');
-								// td.classList.add('td-calendar');
-								
-								// td.id=prevMonth_lastday.getFullYear()+'-'
-								// +toDoubleDigits(prevMonth_lastday.getMonth()+1)+'-'
-								// +toDoubleDigits(i);
-
-								// td.innerText=i;
-
-								// td.addEventListener('click',show_yotei);
-
-								// td.id=td.id;
-								// td.table_name=table_name;
-								// td.parent_tag_str=parent_tag_str;
-								// td.youbi=youbi;
-								// td.label=label;
-								// td.col=col;
-
-								// // もし今日がメモの日付と合致したら
-								// if(memo.length>0){
-								// 	for(var p=0;p<memo.length;p++){
-								// 		if(memo[p]['日付']==td.id){
-								// 			td.innerText+='\n●';
-								// 		}	
-								// 	}
-								
-								// 	var exec=childNodeClear(parent_tag_str+'_exec');
-								// 	var a=document.createElement('a');
-								// 	a.innerText='メモを修正する';
-								// 	a.classList.add('a-mod');
-								// 	a.addEventListener('click',update_table);
-								// 	a.id='"'+td.id+'"';
-								// 	a.parent_tag_str=parent_tag_str;
-								// 	a.table_name=table_name;
-								// 	a.col=col;
-								// 	a.label=label;
-														
-								// 	exec.appendChild(a);
-														
-								// }else{
-								// 	var exec=childNodeClear(parent_tag_str+'_exec');
-								// 	var a=document.createElement('a');
-								// 	a.innerText='メモを記入する';
-								// 	a.classList.add('a-insert');
-
-								// 	a.addEventListener('click',insert_table);
-
-								// 	a.parent_tag_str=parent_tag_str;
-								// 	a.table_name=table_name;
-								// 	a.label=label;
-								// 	a.col=col;
-								// 	a.youbi=youbi;
-								// 	a.mode='insert';
-														
-								// 	exec.appendChild(a);
-								// }
-
 								tr.appendChild(td);
 							}
 						}
@@ -340,85 +266,6 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 									youbi:youbi,
 									memo:memo
 								});
-
-								// td.classList.add('td-calendar');
-
-								// if(i==0) td.classList.add('td-sun');	
-								// if(i==6) td.classList.add('td-sat');
-
-								// td.id=thisMonth.getFullYear()+'-'+toDoubleDigits(thisMonth.getMonth()+1)+'-'+toDoubleDigits(thisMonthDate);
-
-								// if(year==currYear && month==currMonth && thisMonthDate==currDate) td.classList.add('td-today');
-
-								// for(var k=0;k<holidays_thisMonth.length;k++){
-								// 	if(holidays_thisMonth[k].date==td.id){
-								// 		td.classList.add('td-shukujitu');
-
-								// 		td.title=holidays_thisMonth[k].name;
-										
-								// 		$('#'+td.id).tooltip({
-								// 			show:{
-								// 				effect:"size",
-								// 				delay:50
-								// 			},		
-								// 			hide:{
-								// 				effect:"size",
-								// 				delay:50
-								// 			}
-								// 		});
-								// 	}
-								// }
-
-								// td.innerText=thisMonthDate;
-
-								// td.addEventListener('click',show_yotei);
-
-								// td.id=td.id;
-								// td.table_name=table_name;
-								// td.parent_tag_str=parent_tag_str;
-								// td.youbi=youbi;
-								// td.label=label;
-								// td.col=col;
-
-								// // もし今日がメモの日付と合致したら
-								// if(memo.length>0){
-								// 	for(var p=0;p<memo.length;p++){
-								// 		if(memo[p]['日付']==td.id){
-								// 			var p=document.createElement('p');
-								// 			p.classList.add('p-memo');
-								// 			p.innerText='●';
-								// 			td.appendChild(p);
-								// 		}	
-								// 	}
-
-								// 	var exec=childNodeClear(parent_tag_str+'_exec');
-								// 	var a=document.createElement('a');
-								// 	a.innerText='メモを修正する';
-								// 	a.classList.add('a-mod');
-								// 	a.addEventListener('click',update_table);
-								// 	a.id='"'+td.id+'"';
-								// 	a.parent_tag_str=parent_tag_str;
-								// 	a.table_name=table_name;
-								// 	a.col=col;
-								// 	a.label=label;
-						
-								// 	exec.appendChild(a);
-						
-								// }else{
-								// 	var exec=childNodeClear(parent_tag_str+'_exec');
-								// 	var a=document.createElement('a');
-								// 	a.innerText='メモを記入する';
-								// 	a.classList.add('a-insert');
-								// 	a.addEventListener('click',insert_table);
-								// 	a.parent_tag_str=parent_tag_str;
-								// 	a.table_name=table_name;
-								// 	a.label=label;
-								// 	a.col=col;
-								// 	a.youbi=youbi;
-								// 	a.mode='insert';
-
-								// 	exec.appendChild(a);
-								// }
 
 								tr.appendChild(td);
 								thisMonthDate=thisMonthDate+1;
@@ -444,89 +291,6 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 									youbi:youbi,
 									memo:memo
 								});
-
-
-								// td.classList.add('td-calendar');
-
-								// if(i==0) td.classList.add('td-sun');	
-								// if(i==6) td.classList.add('td-sat');
-
-								// // パラメータが今日なら色を塗る
-								// if(year==currYear && month==currMonth && thisMonthDate==currDate) td.classList.add('td-today');
-
-								// td.id=thisMonth.getFullYear()+'-'
-								// +toDoubleDigits(thisMonth.getMonth()+1)+'-'
-								// +toDoubleDigits(thisMonthDate);
-
-								// for(var k=0;k<holidays_thisMonth.length;k++){
-								// 	if(holidays_thisMonth[k].date==td.id){
-								// 		td.classList.add('td-shukujitu');
-								// 		td.title=holidays_thisMonth[k].name;
-										
-								// 		$('#'+td.id).tooltip({
-								// 			show:{
-								// 				effect:"size",
-								// 				delay:50
-								// 			},		
-								// 			hide:{
-								// 				effect:"size",
-								// 				delay:50
-								// 			}
-								// 		});
-								// 	}
-								// }
-
-								// td.innerText=thisMonthDate;
-
-								// td.addEventListener('click',show_yotei);
-
-								// td.id=td.id;
-								// td.parent_tag_str=parent_tag_str;
-								// td.table_name=table_name;
-								// td.youbi=youbi;
-								// td.label=label;
-								// td.col=col;
-
-								// // もし今日がメモの日付と合致したら
-								// if(memo.length>0){
-								// 	for(var p=0;p<memo.length;p++){
-								// 		if(memo[p]['日付']==td.id){
-								// 			var p=document.createElement('p');
-								// 			p.classList.add('p-memo');
-								// 			p.innerText='●';
-								// 			td.appendChild(p);
-								// 		}	
-								// 	}
-
-								// 	var exec=childNodeClear(parent_tag_str+'_exec');
-								// 	var a=document.createElement('a');
-
-								// 	a.innerText='メモを修正する';
-								// 	a.classList.add('a-mod');
-								// 	a.addEventListener('click',update_table);
-								// 	a.id='"'+td.id+'"';
-								// 	a.parent_tag_str=parent_tag_str;
-								// 	a.table_name=table_name;
-								// 	a.col=col;
-								// 	a.label=label;
-						
-								// 	exec.appendChild(a);
-						
-								// }else{
-								// 	var exec=childNodeClear(parent_tag_str+'_exec');
-								// 	var a=document.createElement('a');
-								// 	a.innerText='メモを記入する';
-								// 	a.classList.add('a-insert');
-								// 	a.addEventListener('click',insert_table);
-								// 	a.parent_tag_str=parent_tag_str;
-								// 	a.table_name=table_name;
-								// 	a.label=label;
-								// 	a.col=col;
-								// 	a.youbi=youbi;
-								// 	a.mode='insert';
-
-								// 	exec.appendChild(a);
-								// }
 
 								tr.appendChild(td);
 							}
@@ -556,69 +320,13 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 									class_str:'td-gray',
 									memo:memo
 								});
-
-								// td.classList.add('td-gray');
-								// td.classList.add('td-calendar');
-
-								// td.innerText=thisMonthDate;
-
-								// td.id=nextMonth_firstday.getFullYear()+'-'
-								// +toDoubleDigits(nextMonth_firstday.getMonth()+1)+'-'
-								// +toDoubleDigits(thisMonthDate);
-
-								// td.addEventListener('click',show_yotei);
-
-								// td.id=td.id;
-								// td.table_name=table_name;
-								// td.parent_tag_str=parent_tag_str;
-								// td.youbi=youbi;
-								// td.label=label;
-
-								// // もし今日がメモの日付と合致したら
-								// if(memo.length>0){
-								// 	for(var p=0;p<memo.length;p++){
-								// 		if(memo[p]['日付']==td.id){
-								// 			var p=document.createElement('p');
-								// 			p.classList.add('p-memo');
-								// 			p.innerText='●';
-								// 			td.appendChild(p);
-								// 		}	
-								// 	}
-								
-								// 	var exec=childNodeClear(parent_tag_str+'_exec');
-								// 	var a=document.createElement('a');
-								// 	a.innerText='メモを修正する';
-								// 	a.classList.add('a-mod');
-								// 	a.addEventListener('click',update_table);
-								// 	a.id='"'+td.id+'"';
-								// 	a.parent_tag_str=parent_tag_str;
-								// 	a.table_name=table_name;
-								// 	a.col=col;
-								// 	a.label=label;
-														
-								// 	exec.appendChild(a);
-														
-								// }else{
-								// 	var exec=childNodeClear(parent_tag_str+'_exec');
-								// 	var a=document.createElement('a');
-								// 	a.innerText='メモを記入する';
-								// 	a.classList.add('a-insert');
-								// 	a.addEventListener('click',insert_table);
-								// 	a.parent_tag_str=parent_tag_str;
-								// 	a.table_name=table_name;
-								// 	a.label=label;
-								// 	a.col=col;
-								// 	a.youbi=youbi;
-								// 	a.mode='insert';
-								
-								// 	exec.appendChild(a);
-								// }
 								
 								tr.appendChild(td);
 								thisMonthDate=thisMonthDate+1;
 							}
 						}
 					}
+
 					tbody.appendChild(tr);
 			}
 			
@@ -716,47 +424,95 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 			a.classList.add('a-insert');
 
 			if(memo.length>0){
-				for(var r=0;r<memo.length;r++){
+					for(var r=0;r<memo.length;r++){
 					if(((currYear+'-'
 						 +toDoubleDigits(currMonth+1)+'-'
 						 +toDoubleDigits(currDate))==memo[r]["日付"])&&(memo[r]["メモ"]!="")){
-							a.innerText='メモを編集する';
-							a.classList.add('a-mod');
-							a.addEventListener('click',update_table);
-							a.table_name=table_name;
-							a.parent_tag_str=parent_tag_str;
-							a.label=label;
-							a.col=col;
-							a.id='"'+currYear+'-'+toDoubleDigits(currMonth+1)+'-'+toDoubleDigits(currDate)+'"';
-							a.mode='update';
+
+
+								create_exec({
+									parent_tag_str:parent_tag_str,
+									sub_tag_str:'_exec',
+									table_name:table_name,
+									label:label,
+									col:col,
+									mode:'update', // modify
+									class_str:'a-mod',
+									id:'"'+currYear+'-'+toDoubleDigits(currMonth+1)+'-'+toDoubleDigits(currDate)+'"',
+							});
+			
+
+							// a.innerText='メモを編集する';
+							// a.classList.add('a-mod');
+							// a.addEventListener('click',update_table);
+							// a.table_name=table_name;
+							// a.parent_tag_str=parent_tag_str;
+							// a.label=label;
+							// a.col=col;
+							// a.id='"'+currYear+'-'+toDoubleDigits(currMonth+1)+'-'+toDoubleDigits(currDate)+'"';
+							// a.mode='update';
+							// console.log('false:'+a.id);
+
+								break;
 							
 						}else{
-							a.innerText='メモを記入する';
-							a.classList.add('a-insert');
-							a.addEventListener('click',insert_table);
-							a.parent_tag_str=parent_tag_str;
-							a.table_name=table_name;
-							a.label=label;
-							a.col=col;
-							a.youbi=youbi;
-							a.mode='insert';
+
+							create_exec({
+								parent_tag_str:parent_tag_str,
+								sub_tag_str:'_exec',
+								table_name:table_name,
+								label:label,
+								col:col,
+								mode:'insert', // modify
+								class_str:'a-insert',
+								id:'"'+currYear+'-'+toDoubleDigits(currMonth+1)+'-'+toDoubleDigits(currDate)+'"',
+								youbi:youbi,
+						});
+
+
+							// a.innerText='メモを記入する';
+							// a.classList.add('a-insert');
+							// a.addEventListener('click',insert_table);
+							// a.parent_tag_str=parent_tag_str;
+							// a.table_name=table_name;
+							// a.label=label;
+							// a.col=col;
+							// a.youbi=youbi;
+							// a.mode='insert';
+
+							console.log('true');
+							console.log('memo:');
+							console.log(memo);
+
 
 						}
-				}
+					}
 			}else{
-				a.innerText='メモを記入する';
-				a.classList.add('a-insert');
-				a.addEventListener('click',insert_table);
-				a.parent_tag_str=parent_tag_str;
-				a.table_name=table_name;
-				a.label=label;
-				a.col=col;
-				a.youbi=youbi;
-				a.mode='insert';
+
+				create_exec({
+					parent_tag_str:parent_tag_str,
+					sub_tag_str:'_exec',
+					table_name:table_name,
+					label:label,
+					col:col,
+					mode:'insert', // modify
+					class_str:'a-insert',
+					youbi:youbi,
+			});
+
+				// a.innerText='メモを記入する';
+				// a.classList.add('a-insert');
+				// a.addEventListener('click',insert_table);
+				// a.parent_tag_str=parent_tag_str;
+				// a.table_name=table_name;
+				// a.label=label;
+				// a.col=col;
+				// a.youbi=youbi;
+				// a.mode='insert';
 
 			}
 					 
-			exec.appendChild(a);
+			// exec.appendChild(a);
 
 			var parent_tag=childNodeClear(parent_tag_str+'_results');
 

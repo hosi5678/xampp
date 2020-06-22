@@ -24,13 +24,13 @@ function create_calendar_input_form({
 
     var curr=new Date();
     var currYear=curr.getFullYear();
-		var currMonth=curr.getMonth();
+				var currMonth=curr.getMonth();
     
     create_calendar({
       parent_tag_str:parent_tag_str,
       table_name:table_name,
       year:currYear,
-			month:currMonth,
+						month:currMonth,
       youbi:youbi,
       label:label,
       col:col
