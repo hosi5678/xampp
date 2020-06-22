@@ -58,6 +58,8 @@ function create_exec({
 
   exec.appendChild(a);
 
+  return exec;
+
     // var exec=childNodeClear(parent_tag_str+'_exec');
     // var a=document.createElement('a');
     // a.innerText='メモを修正する';

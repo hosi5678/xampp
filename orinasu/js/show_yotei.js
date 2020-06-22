@@ -9,6 +9,8 @@ function show_yotei({
   youbi
 }){
 
+
+  // document.getElementById(id).classList.add('td-today');
   // var id=event.target.id;
   // var table_name=event.target.table_name;
   // var parent_tag_str=event.target.parent_tag_str;
@@ -81,28 +83,38 @@ function show_yotei({
         }
       }
 
-      var exec=childNodeClear(parent_tag_str+'_exec');
-      var a=document.createElement('a');
-      a.innerText='メモを修正する';
-      a.classList.add('a-mod');
-      a.addEventListener('click',update_table);
-			a.parent_tag_str=parent_tag_str;
-			a.table_name=table_name;
-			a.label=label;
-			a.col=col;
-      a.youbi=youbi;
-      a.id='"'+id+'"';
-			a.mode='update';
+      var exec=create_exec({
+        parent_tag_str:parent_tag_str,
+        sub_tag_str:'_exec',
+        table_name:table_name,
+        label:label,
+        col:col,
+        mode:'update', // update table
+        class_str:'a-mod',
+        id:'"'+id+'"',
+      });
 
-      exec.appendChild(a);
+
+      // var exec=childNodeClear(parent_tag_str+'_exec');
+      // var a=document.createElement('a');
+      // a.innerText='メモを修正する';
+      // a.classList.add('a-mod');
+      // a.addEventListener('click',update_table);
+			// a.parent_tag_str=parent_tag_str;
+			// a.table_name=table_name;
+			// a.label=label;
+			// a.col=col;
+      // a.youbi=youbi;
+      // a.id='"'+id+'"';
+			// a.mode='update';
+
+      // exec.appendChild(a);
 
       var a=document.createElement("a");
 
       a.href='#'+parent_tag_str;
 
       a.innerText='戻る';
-
-      var mode='insert';
 
       a.addEventListener('click',
 
@@ -121,20 +133,32 @@ function show_yotei({
 
     }else{
 
-      var exec=childNodeClear(parent_tag_str+'_exec');
-      var a=document.createElement('a');
-      a.innerText='メモを記入する';
-      a.classList.add('a-insert');
-      a.addEventListener('click',insert_table);
+      create_exec({
+        parent_tag_str:parent_tag_str,
+        sub_tag_str:'_exec',
+        table_name:table_name,
+        label:label,
+        col:col,
+        mode:'insert', 
+        class_str:'a-insert',
+        youbi:youbi,
+    });
 
-			a.parent_tag_str=parent_tag_str;
-			a.table_name=table_name;
-			a.label=label;
-			a.col=col;
-			a.youbi=youbi;
-			a.mode='insert';
 
-      exec.appendChild(a);
+      // var exec=childNodeClear(parent_tag_str+'_exec');
+      // var a=document.createElement('a');
+      // a.innerText='メモを記入する';
+      // a.classList.add('a-insert');
+      // a.addEventListener('click',insert_table);
+
+			// a.parent_tag_str=parent_tag_str;
+			// a.table_name=table_name;
+			// a.label=label;
+			// a.col=col;
+			// a.youbi=youbi;
+			// a.mode='insert';
+
+      // exec.appendChild(a);
 
     }
     

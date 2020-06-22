@@ -89,7 +89,13 @@ function setCalendarDay({
         hide:{
           effect:"size",
           delay:50
+        },                
+        
+        position:{
+          my: "left center",
+          at: "right center"
         }
+
       });
     }
   }
@@ -134,7 +140,7 @@ function setCalendarDay({
       label:label,
       col:col,
       mode:'insert', // insert
-      class_str:'a_mod',
+      class_str:'a-mod',
       id:'"'+td.id+'"',
       youbi:youbi,
     });

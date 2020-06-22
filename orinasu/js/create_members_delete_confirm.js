@@ -41,8 +41,7 @@ function create_members_delete_confirm(event){
 
   // 姓名の取得
 
-  var myouji;
-  var namae;
+  var myouji,namae;
 
   for(var i=0;i<tds.length;i++){
     if(label[i]=='姓'){
@@ -69,16 +68,16 @@ function create_members_delete_confirm(event){
   a.addEventListener('click',function(event){
     
     $.when(
-      ajax_get_col(table_name+'_join'),
 
       ajax_get_col('riyou_keitai'),
       ajax_select_from_table('riyou_keitai'),
 
-                ajax_get_col('youbi'),
+      ajax_get_col('youbi'),
       ajax_select_from_table('youbi'),
 
+      ajax_select_from_table(table_name+'_join'),
 
-    ).done(function(label,riyou_col,riyou_row,youbi_col,youbi_row){
+    ).done(function(riyou_col,riyou_row,youbi_col,youbi_row,row){
 
       var mode='insert';
 
@@ -98,18 +97,24 @@ function create_members_delete_confirm(event){
         cols:youbi_col,
       });
 
+      create_members_input_form({
+        parent_tag_str:parent_tag_str,
+        table_name:table_name,
+        label:label,
+        col:col,
+        riyou:riyou,
+        mode:mode,
+        youbi:youbi,
+      });
 
-    create_members_input_form({
-      parent_tag_str:parent_tag_str,
-      table_name:table_name,
-      label:label,
-      col:col,
-      riyou:riyou,
-      mode:mode,
-      youbi:youbi,
-    });
-
-      select_from_table(parent_tag_str,table_name);
+      create_table({
+        parent_tag_str:parent_tag_str,
+        table_name:table_name,
+        label:label,
+        col:col,
+        row:row,
+      });
+      // select_from_table(parent_tag_str,table_name);
 
     });
 

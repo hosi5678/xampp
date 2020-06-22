@@ -42,7 +42,7 @@ function create_calendar_update_form(event){
 	
 		var year=ymd[0];
 		var month=remove_zero(ymd[1]);
-		var date=ymd[2];
+		var date=remove_zero(ymd[2]);
 	
 		console.log('year:'+year);
 		console.log('month:'+month);
@@ -62,28 +62,38 @@ function create_calendar_update_form(event){
 				document.getElementById(parent_tag_str+i).value=tds_val[i];
 			}
 
-			var exec=childNodeClear(parent_tag_str+'_exec');
-			
-			var a=document.createElement('a');
+			var exec=create_exec({
+				parent_tag_str:parent_tag_str,
+				sub_tag_str:'_exec',
+				table_name:table_name,
+				label:label,
+				col:col,
+				mode:'update', 
+				class_str:'a-mod',
+				id:'"'+ymd_str+'"',
+			});
+	
 
-			a.innerText='メモを修正する';
-			a.classList.add('a-mod');
-			a.addEventListener('click',update_table);
-			a.id='"'+ymd_str+'"';
-			a.parent_tag_str=parent_tag_str;
-			a.table_name=table_name;
-			a.col=col;
-			a.label=label;
+			// var exec=childNodeClear(parent_tag_str+'_exec');
+			
+			// var a=document.createElement('a');
+
+			// a.innerText='メモを修正する';
+			// a.classList.add('a-mod');
+			// a.addEventListener('click',update_table);
+			// a.id='"'+ymd_str+'"';
+			// a.parent_tag_str=parent_tag_str;
+			// a.table_name=table_name;
+			// a.col=col;
+			// a.label=label;
 								
-			exec.appendChild(a);
+			// exec.appendChild(a);
 
 			var a=document.createElement("a");
 
       a.href='#'+parent_tag_str;
 
       a.innerText='戻る';
-
-      var mode='insert';
 
       a.addEventListener('click',
 

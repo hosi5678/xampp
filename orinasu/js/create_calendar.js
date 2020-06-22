@@ -222,6 +222,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 			end_date:where_end_date
 		})).done(function(memo){
 
+			// カレンダー作成の処理
 			for(var j=0;j<getWeekNum(currMonth_lastday);j++){
 				var tr=document.createElement('tr');
 					// 最初の週の処理,先月
@@ -441,19 +442,8 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 									id:'"'+currYear+'-'+toDoubleDigits(currMonth+1)+'-'+toDoubleDigits(currDate)+'"',
 							});
 			
-
-							// a.innerText='メモを編集する';
-							// a.classList.add('a-mod');
-							// a.addEventListener('click',update_table);
-							// a.table_name=table_name;
-							// a.parent_tag_str=parent_tag_str;
-							// a.label=label;
-							// a.col=col;
-							// a.id='"'+currYear+'-'+toDoubleDigits(currMonth+1)+'-'+toDoubleDigits(currDate)+'"';
-							// a.mode='update';
-							// console.log('false:'+a.id);
-
-								break;
+							// 合致したら抜ける
+							break;
 							
 						}else{
 

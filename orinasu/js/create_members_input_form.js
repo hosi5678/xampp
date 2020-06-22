@@ -72,19 +72,33 @@ function create_members_input_form({
               input.label=label;
               input.id=parent_tag_str+i;
 
-              // tooltipの適用
+              // var tippy_label=label[i];
+              // var tippy_id='#'+input.id;
+              // console.log('tippy id:'+tippy_id);
+              // // tooltipの適用
+              // tippy(tippy_id, {
+              //   content:tippy_label+'を入力してください。',
+              // });
+
               input.title=label[i]+'を入力してください。';
 
               $('#'+input.id).tooltip({
-                show: {
-                  effect: "size",
-                  delay: 100
-                },
+                // show:{
+                //   effect: "size",
+                //   delay: 100
+                // },
 
-                hide: {
-                  effect: "size",
-                  delay: 100
+                // hide:{
+                //   effect: "size",
+                //   delay: 100
+                // },
+
+                position:{
+                  //左上が起点
+                  my: "left-25 bottom", 
+                  at: "center"                  // collision:"flipfit"
                 }
+
               });
 
               id=id+1;

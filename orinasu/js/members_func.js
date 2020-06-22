@@ -67,7 +67,7 @@ function members_func(){
   }else{
       document.getElementById(parent_tag_str+"_mark").innerText='利用者の登録・削除／検索▼';
 
-      // childNodeClear(parent_tag_str+'_message');
+      childNodeClear(parent_tag_str+'_title');
       childNodeClear(parent_tag_str+'_status');
       childNodeClear(parent_tag_str+'_params');
       childNodeClear(parent_tag_str+'_exec');

@@ -203,6 +203,7 @@ td {
 
 .shori {
 	margin-left:30px;
+	margin-top: 10px;
 }
 
 .calendar-hizuke {
@@ -215,7 +216,7 @@ td {
 }
 
 .memo-pink {
-	color:pink;
+	color:violet;
 }
 
 /* calendar yajirushi */
