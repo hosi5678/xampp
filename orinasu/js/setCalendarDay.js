@@ -97,15 +97,18 @@ function setCalendarDay({
   if(year==currYear&&month==currMonth&&date==currDate) td.classList.add('td-today');
 
   var p=document.createElement('p');
-  p.classList.add('calendar-memo');
+		p.classList.add('calendar-memo');
+		
+		console.log('---- memo ----');
+		console.log(memo);
+
+		p.innerText='';
 
   if(memo.length>0){
 
     for(var i=0;i<memo.length;i++){
       if(memo[i]['日付']==td.id){
         p.innerText='●';
-      }else{
-        p.innerText=' ';
       }
     }
 
