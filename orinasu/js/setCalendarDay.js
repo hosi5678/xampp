@@ -121,7 +121,7 @@ function setCalendarDay({
       label:label,
       col:col,
       mode:'update', // update table
-      class_str:'a_mod',
+      class_str:'a-mod',
       id:'"'+td.id+'"',
     });
                 

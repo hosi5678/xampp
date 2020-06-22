@@ -19,24 +19,9 @@ function create_members_delete_confirm(event){
   console.log(col);
 
     // 画面の更新
-  var parent_tag=document.getElementById(parent_tag_str+'_params');
-
-  while(parent_tag.firstChild){
-    parent_tag.removeChild(parent_tag.firstChild);
-  }
-
-  var parent_tag=document.getElementById(parent_tag_str+'_results');
-
-  while(parent_tag.firstChild){
-    parent_tag.removeChild(parent_tag.firstChild);
-  }
-
-  var exec=document.getElementById(parent_tag_str+'_exec');
-
-  // 画面の更新
-  while(exec.firstChild){
-    exec.removeChild(exec.firstChild);
-  }
+  childNodeClear(parent_tag_str+'_params');
+  childNodeClear(parent_tag_str+'_results');
+  childNodeClear(parent_tag_str+'_exec');
 
   var parent_tag=document.getElementById(parent_tag_str+'_params');
 
@@ -89,7 +74,11 @@ function create_members_delete_confirm(event){
       ajax_get_col('riyou_keitai'),
       ajax_select_from_table('riyou_keitai'),
 
-    ).done(function(label,riyou_col,riyou_row){
+                ajax_get_col('youbi'),
+      ajax_select_from_table('youbi'),
+
+
+    ).done(function(label,riyou_col,riyou_row,youbi_col,youbi_row){
 
       var mode='insert';
 
@@ -101,13 +90,23 @@ function create_members_delete_confirm(event){
         cols:riyou_col
       });
 
+      var youbi=new Array();
+
+      youbi=getArrayFromRows({
+        array:youbi,
+        rows:youbi_row,
+        cols:youbi_col,
+      });
+
+
     create_members_input_form({
       parent_tag_str:parent_tag_str,
       table_name:table_name,
       label:label,
       col:col,
       riyou:riyou,
-      mode:mode
+      mode:mode,
+      youbi:youbi,
     });
 
       select_from_table(parent_tag_str,table_name);

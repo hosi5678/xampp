@@ -10,14 +10,13 @@ function select_equal(event){
   var label=event.target.label;
   var col=event.target.col;
 
-  var youbi=event.target.youbi;
-
   var key=document.getElementById(parent_tag_str+'_kensaku').value;
 
   console.log('key:'+key);
   console.log('table_name:'+table_name);
   console.log('label:'+label);
   console.log('col:'+col);
+  console.log('youbi:');
 
   for(var i=0;i<label.length;i++){
     if(key==label[i]){
@@ -67,14 +66,14 @@ function select_equal(event){
 
             for(var j=0;j<row.length;j++){
 
-              for(var i=0;i<label.length;i++){
+              for(var i=0;i<youbi.length;i++){
     
-                if(label[i]=='id'||label[i]=='姓'||label[i]=='名'||label[i]=='備考') continue;
+                if(youbi[i]=='日') continue;
                         
                 // 曜日を数値から文字列に変換(上書き)
                 for(var r=0;r<riyou.length;r++){
-                    if(row[j][label[i]]==r){
-                      row[j][label[i]]= riyou[r]; 
+                    if(row[j][youbi[i]]==r){
+                      row[j][youbi[i]]= riyou[r]; 
                     }
                 }
     

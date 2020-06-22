@@ -21,40 +21,23 @@ function delete_table(event){
       ajax_stmt_exec(table_name,query,'assoc'),
     ).done(function(row){
 
-      var parent_tag=document.getElementById(parent_tag_str+'_params');
-
-      while(parent_tag.firstChild){
-        parent_tag.removeChild(parent_tag.firstChild);
-      }
+      var parent_tag=childNodeClear(parent_tag_str+'_params');
   
-      var message_tag=document.getElementById(parent_tag_str+'_message');
-
-      // console.log('delete rows:');
-      // console.log(row);
+      var title=document.getElementById(parent_tag_str+'_title');
 
       var p=document.createElement('p');
+
       p.classList.add('delete-done');
       p.innerText='削除しました。';
 
-      message_tag.appendChild(p);
+      title.appendChild(p);
 
       var a=document.createElement('a');
 
       a.innerText='戻る';
       a.classList.add('a-cancel');
 
-      // a.parent_tag_str=parent_tag_str;
-      // a.table_name=table_name;
-
       a.addEventListener('click',function(event){
-        // parent_tag_str=event.target.parent_tag_str;
-        // table_name=event.target.table_name;
-
-        var message=document.getElementById(parent_tag_str+'_message');
-
-        while(message.firstChild){
-          message.removeChild(message.firstChild);
-        }
 
         if(table_name=='members'){
 
@@ -63,24 +46,37 @@ function delete_table(event){
             ajax_get_col(table_name),
             ajax_get_col('riyou_keitai'),
             ajax_select_from_table('riyou_keitai'),
+            ajax_get_col('youbi'),
+            ajax_select_from_table('youbi'),
+
             ajax_stmt_exec(table_name,query),
 
-          ).done(function(label,col,riyou_col,riyou_row,results){
+          ).done(function(label,col,riyou_col,riyou_row,youbi_col,youbi_row,results){
     
-            var riyou=new Array();
+              var riyou=new Array();
 
               riyou=getArrayFromRows({
                 array:riyou,
                 cols:riyou_col,
-                rows:riyou_row
+                rows:riyou_row,
               });
+
+              var youbi=new Array();
+
+              youbi=getArrayFromRows({
+                array:youbi,
+                cols:youbi_col,
+                rows:youbi_row,
+              });
+
     
             create_members_input_form({
               parent_tag_str:parent_tag_str,
               table_name:table_name,
               label:label,
               col:col,
-              riyou:riyou
+              riyou:riyou,
+              youbi:youbi,
             });
     
             create_table({
@@ -195,7 +191,7 @@ function delete_table(event){
         
       });
 
-      message_tag.appendChild(a);
+      title.appendChild(a);
 
   });
 

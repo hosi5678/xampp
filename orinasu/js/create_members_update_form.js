@@ -48,12 +48,7 @@ function create_members_update_form(event){
       console.log('parent_tag_str:'+parent_tag_str);
       console.log('mode:'+mode);
 
-      var parent_tag=document.getElementById(parent_tag_str+'_params');
-
-      // 画面の更新
-      while(parent_tag.firstChild){
-        parent_tag.removeChild(parent_tag.firstChild);
-      }
+      var parent_tag=childNodeClear(parent_tag_str+'_title');
 
       var p=document.createElement('p');
       p.innerText='メンバー情報の修正';
@@ -90,7 +85,8 @@ function create_members_update_form(event){
         label:label,
         col:col,
         riyou:riyou,
-        mode:mode
+        mode:mode,
+        youbi:youbi,
       });
 
       // update(書き換え)
@@ -99,7 +95,6 @@ function create_members_update_form(event){
       if(mode=='update'){
 
       var form_title=document.getElementById('form-'+parent_tag_str+'-title');
-      form_title.innerText='メンバー情報の修正';
 
       var id;
 
@@ -130,27 +125,16 @@ function create_members_update_form(event){
 
       var exec=document.getElementById(parent_tag_str+'_exec');
 
-      // 画面の更新
-      while(exec.firstChild){
-        exec.removeChild(exec.firstChild);
-      }
-
-      var a=document.createElement("a");
-
-      a.href='#'+parent_tag_str;
-      a.classList.add('a-mod');
-
-      a.innerText='修正する';
-        a.addEventListener('click',update_table,
-      );
-      
-      a.parent_tag_str=parent_tag_str;
-      a.table_name=table_name;
-      a.label=label;
-      a.col=col;
-      a.id=id;
-
-      exec.appendChild(a);
+      create_exec({
+        parent_tag_str:parent_tag_str,
+        sub_tag_str:'_exec',
+        table_name:table_name,
+        label:label,
+        col:col,
+        mode:'update', // update table
+        class_str:'a-mod',
+        id:id,
+      });
 
       var a=document.createElement("a");
 
@@ -169,7 +153,8 @@ function create_members_update_form(event){
             label:label,
             col:col,
             riyou:riyou,
-            mode:mode
+            youbi:youbi,
+            mode:mode,
             })
         }
       );

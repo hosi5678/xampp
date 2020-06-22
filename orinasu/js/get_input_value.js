@@ -98,6 +98,7 @@ function get_input_value({parent_tag_str,table_name,label,params}){
         str=reject_str(str);    
         if(str===1) return false;
         
+        // 予定が入力されていないとき
         if(str==''&&(label[i]!='予定')){
           var p=document.createElement('p');
 

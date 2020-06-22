@@ -18,8 +18,11 @@ function members_func(){
       ajax_get_col(table_name),
       ajax_get_col('riyou_keitai'),
       ajax_select_from_table('riyou_keitai'),
+      ajax_select_from_table(table_name+'_join'),
+      ajax_get_col("youbi"),
+      ajax_select_from_table("youbi"),
 
-    ).done(function(label,col,riyou_col,riyou_row){
+    ).done(function(label,col,riyou_col,riyou_row,row,youbi_col,youbi_row){
 
         var mode='insert';
 
@@ -31,16 +34,31 @@ function members_func(){
           cols:riyou_col
         });
 
+        var youbi=new Array();
+   
+        youbi=getArrayFromRows({
+            array:youbi,
+            cols:youbi_col,
+            rows:youbi_row
+        });
+ 
         create_members_input_form({
           parent_tag_str:parent_tag_str,
           table_name:table_name,
           label:label,
           col:col,
           riyou:riyou,
+          youbi:youbi,
           mode:mode
         });
 
-        select_from_table(parent_tag_str,table_name);
+        create_table({
+          parent_tag_str:parent_tag_str,
+          table_name:table_name,
+          label:label,
+          col:col,
+          row:row
+        });
 
         document.getElementById(parent_tag_str+"_mark").innerText='利用者の登録・削除／検索▲';
         
@@ -49,7 +67,7 @@ function members_func(){
   }else{
       document.getElementById(parent_tag_str+"_mark").innerText='利用者の登録・削除／検索▼';
 
-      childNodeClear(parent_tag_str+'_message');
+      // childNodeClear(parent_tag_str+'_message');
       childNodeClear(parent_tag_str+'_status');
       childNodeClear(parent_tag_str+'_params');
       childNodeClear(parent_tag_str+'_exec');

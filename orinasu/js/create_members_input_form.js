@@ -6,45 +6,43 @@ function create_members_input_form({
     label,
     col,
     riyou,
+    youbi,
     mode,
   }){
 
   console.log('----- in create members input form -----');
-  console.log('parent tag str:'+parent_tag_str);
-  console.log('table name:'+table_name);
-  console.log('label:');
-  console.log(label);
-  console.log('col:');
-  console.log(col);
+  // console.log('parent tag str:'+parent_tag_str);
+  // console.log('table name:'+table_name);
+  // console.log('label:');
+  // console.log(label);
+  // console.log('col:');
+  // console.log(col);
 
-  console.log('riyou:');
-  console.log(riyou);
+  console.log('youbi:');
+  console.log(youbi);
 
   console.log('mode:'+mode);
 
     // 画面の更新
     var parent_tag=childNodeClear(parent_tag_str+'_params');
-
-    // var parent_tag=document.getElementById(parent_tag_str+'_params');
-
-    // while(parent_tag.firstChild){
-    //   parent_tag.removeChild(parent_tag.firstChild);
-    // }
  
         var form=document.createElement('form');
-        form.name='form_'+parent_tag_str+'_insert';
+        form.name='form_'+parent_tag_str+'_'+mode;
+
+        var title=childNodeClear(parent_tag_str+'_title');
 
         var p=document.createElement('p');
-        p.id='form-'+parent_tag_str+'-title';
         p.innerText='メンバーの新規登録';
 
-        form.appendChild(p);
+        title.appendChild(p);
 
         var table=document.createElement('table');
         var thead=document.createElement('thead');
         var tbody=document.createElement('tbody');
 
         var tr=document.createElement('tr');
+
+        var id=0;
 
         for(var i=0;i<label.length;i++){
 
@@ -61,9 +59,9 @@ function create_members_input_form({
 
             input.type='text';
             input.placeholder=label[i];
-            input.id=parent_tag_str+i;
+            input.id=parent_tag_str+id;
 
-            if(label[i]=='姓'){
+            if(label[i]=='姓'||label[i]=='名'){
               input.addEventListener('keyup',select_from_like);
               // input.addEventListener('change',select_from_like);
               input.addEventListener('click',select_from_like);
@@ -75,7 +73,7 @@ function create_members_input_form({
               input.id=parent_tag_str+i;
 
               // tooltipの適用
-              input.title='姓を入力してください。';
+              input.title=label[i]+'を入力してください。';
 
               $('#'+input.id).tooltip({
                 show: {
@@ -89,12 +87,16 @@ function create_members_input_form({
                 }
               });
 
+              id=id+1;
+
             }
 
             td.appendChild(input);
             tr.appendChild(td);
         }
       }
+
+      id=id+1;
 
       tbody.appendChild(tr);
       table.appendChild(thead);
@@ -114,48 +116,49 @@ function create_members_input_form({
 
       var tr=document.createElement('tr');
 
-      for(var i=0;i<label.length;i++){
+      for(var i=0;i<youbi.length;i++){
 
-          if(label[i]=='id') continue;
-          if(label[i]=='姓') continue;
-          if(label[i]=='名') continue;
-          if(label[i]=='備考') continue;
+          // if(label[i]=='id') continue;
+          // if(label[i]=='姓') continue;
+          // if(label[i]=='名') continue;
+          // if(label[i]=='備考') continue;
+
+          // if(youbi[i]=='日') continue;
 
           var th=document.createElement('th');
 
-          th.innerText=label[i];
+          th.innerText=youbi[i];
           
           thead.appendChild(th);
           
           var td=document.createElement('td');
 
-          if(label[i]=='土'){
-              th.classList.add('td-sat');
-              td.classList.add('td-sat');
+          if(youbi[i]=='土'){
+            th.classList.add('td-sat');
           }
 
-          if(label[i]=='日'){
+          if(youbi[i]=='日'){
             th.classList.add('td-hide');
             td.classList.add('td-hide');
           } 
 
           var select=document.createElement('select');
-          select.id=table_name+i;
+          select.id=table_name+id;
 
           for(var k=0;k<riyou.length;k++){
             
-            if((label[i]=='土')&&(riyou[k]=='午後'||riyou[k]=='終日')) continue;
+            if((youbi[i]=='土')&&(riyou[k]=='午後'||riyou[k]=='終日')) continue;
  
             var option=document.createElement('option');
             
             option.innerText=riyou[k];
             option.value=k;
             
-              if(label[i]=='日') {
-                option.value=0;
-                select.appendChild(option);
-                break;
-              }
+            if(youbi[i]=='日') {
+              option.value=0;
+              select.appendChild(option);
+              break;
+            }
 
             select.appendChild(option);
            
@@ -172,6 +175,7 @@ function create_members_input_form({
           td.appendChild(select);
           tr.appendChild(td);
 
+          id=id+1;
       }
     
       tbody.appendChild(tr);
@@ -180,13 +184,6 @@ function create_members_input_form({
       table.appendChild(tbody);
 
       form.appendChild(table);
-
-      var youbi=new Array();
-
-      for(var i=0;i<label.length;i++){
-        if(label[i]=='id'||label[i]=='姓'||label[i]=='名'||label[i]=='日'||label[i]=='備考') continue;
-           youbi.push(label[i]);
-      }
 
       var table=document.createElement('table');
 
@@ -208,6 +205,9 @@ function create_members_input_form({
 
       for(var i=0;i<youbi.length;i++){
         var option=document.createElement('option');
+
+        if(youbi[i]=='日') continue;
+
         option.innerText=youbi[i];
         select.appendChild(option);
       }
@@ -236,49 +236,53 @@ function create_members_input_form({
       p.innerText='備考欄';
 
       form.appendChild(p);
+      
 
-      for(var i=0;i<label.length;i++){
+      var textarea=document.createElement('textarea');
 
-        if(label[i]=='備考'){
+      textarea.name=parent_tag_str+'_bikou';
 
-          var textarea=document.createElement('textarea');
+      textarea.addEventListener('click',select_from_like);
+      textarea.addEventListener('keyup',select_from_like);
 
-          textarea.name='bikou';
-          textarea.rows=5;
-          textarea.cols=80;
+      textarea.col=col[id];
+      textarea.table_name=table_name;
+      textarea.parent_tag_str=parent_tag_str;
+      textarea.label=label;
+      textarea.id=parent_tag_str+id;
+      
+      form.appendChild(textarea);
 
-          textarea.addEventListener('click',select_from_like);
-          textarea.addEventListener('keyup',select_from_like);
 
-          textarea.col=col[i];
-          textarea.table_name=table_name;
-          textarea.parent_tag_str=parent_tag_str;
-          textarea.label=label;
-          textarea.id=parent_tag_str+i;
+      create_exec({
+        parent_tag_str:parent_tag_str,
+        sub_tag_str:'_exec',
+        table_name:table_name,
+        label:label,
+        col:col,
+        mode:'insert', // insert
+        class_str:'a-insert',
+        youbi:youbi,
+        riyou:riyou,
+      });
+  
+        // var a=document.createElement("a");
 
-          form.appendChild(textarea);
-      }
-    }
-
-    var exec=childNodeClear(parent_tag_str+'_exec');
-
-        var a=document.createElement("a");
-
-        a.href='#'+parent_tag_str;
-        a.innerText='メンバーの新規登録';
-        a.style.display='block';
-        a.classList.add('a-insert');
+        // a.href='#'+parent_tag_str;
+        // a.innerText='メンバーの新規登録';
+        // a.style.display='block';
+        // a.classList.add('a-insert');
         
-        a.addEventListener('click',insert_table);
+        // a.addEventListener('click',insert_table);
         
-        a.parent_tag_str=parent_tag_str;
-        a.table_name=table_name;
-        a.label=label;
-        a.col=col;
-        a.riyou=riyou;
-        a.mode='insert';
+        // a.parent_tag_str=parent_tag_str;
+        // a.table_name=table_name;
+        // a.label=label;
+        // a.col=col;
+        // a.riyou=riyou;
+        // a.mode='insert';
      
-        exec.appendChild(a);
+        // exec.appendChild(a);
 
         parent_tag.appendChild(form);
 

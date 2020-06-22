@@ -9,10 +9,9 @@ function create_exec({
   label,
   col,
   id,
-  youbi
+  youbi,
+  riyou
 }){
-
-  var innerText='';
 
   var exec=childNodeClear(parent_tag_str+sub_tag_str);
 
@@ -25,17 +24,32 @@ function create_exec({
 
   a.classList.add(class_str);
 
-  if(table_name=='calendar'){
+  if(table_name=='members'){
 
     if(mode=='update'){
-      innerText='メモを修正する';
-      a.innerText=innerText;
+      a.innerText='メンバーを修正する';
+      a.addEventListener('click',update_table);
+      a.id=id;
+      a.youbi=youbi;
+      a.riyou=riyou;
+
+    }else if(mode=='insert'){
+      a.innerText='メンバーを新規登録する';
+      a.addEventListener('click',insert_table);
+      a.youbi=youbi;
+      a.riyou=riyou;
+
+    }
+
+  }else if(table_name=='calendar'){
+
+    if(mode=='update'){
+      a.innerText='メモを修正する';
       a.addEventListener('click',update_table);
       a.id=id;
 
     }else if(mode=='insert'){
-      innerText='メモを記入する';
-      a.innerText=innerText;
+      a.innerText='メモを記入する';
       a.addEventListener('click',insert_table);
       a.youbi=youbi;
 
@@ -43,8 +57,6 @@ function create_exec({
   }
 
   exec.appendChild(a);
-
-  return exec;
 
     // var exec=childNodeClear(parent_tag_str+'_exec');
     // var a=document.createElement('a');

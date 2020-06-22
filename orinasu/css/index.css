@@ -355,6 +355,9 @@ td {
 textarea {
 	margin-bottom: 10px;
 	font-size:25px;
+	width:500px;
+	height:200px;
+
 }
 
 .exec {

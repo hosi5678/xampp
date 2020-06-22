@@ -19,6 +19,7 @@ function insert_table(event){
 
   if(table_name=='members'){
     riyou=event.target.riyou;
+    youbi=event.target.youbi;
   }else if(table_name=='products'){
     category=event.target.category;
     tax=event.target.tax;
@@ -92,6 +93,7 @@ function insert_table(event){
           col:col,
           riyou:riyou,
           mode:mode,
+          youbi:youbi,
         });
  
       }else if(table_name=='products'){

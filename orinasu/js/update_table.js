@@ -68,8 +68,10 @@ function update_table(event){
             ajax_get_col(table_name),
             ajax_get_col('riyou_keitai'),
             ajax_select_from_table('riyou_keitai'),
-
-          ).done(function(label,col,riyou_col,riyou_row){
+            ajax_get_col("youbi"),
+            ajax_select_from_table("youbi"),
+      
+          ).done(function(label,col,riyou_col,riyou_row,youbi_col,youbi_row){
 
             var riyou=new Array();
 
@@ -78,13 +80,22 @@ function update_table(event){
               cols:riyou_col,
               rows:riyou_row
             });
-    
+
+            var youbi=new Array();
+
+            youbi=getArrayFromRows({
+              array:youbi,
+              cols:youbi_col,
+              rows:youbi_row
+            });
+  
             create_members_input_form({
               parent_tag_str:parent_tag_str,
               table_name:table_name,
               label:label,
               col:col,
-              riyou:riyou
+              riyou:riyou,
+              youbi:youbi,
             });
     
             create_table({
@@ -211,7 +222,7 @@ function update_table(event){
         status.innerText='修正が完了しました。';
   
         $('#'+parent_tag_str+'_status').show(1000,function(){
-          $('#'+parent_tag_str+'_status').hide(2500);
+          $('#'+parent_tag_str+'_status').hide(1500);
         });
   
 
