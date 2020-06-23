@@ -91,6 +91,7 @@ require_once("./php_libs/insert_access_log.php");
 	<script src='./js/create_exec.js'></script>
 	<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
 	<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+	<script src='./js/ajax_select_from_products.js'></script>
  
 </head>
 

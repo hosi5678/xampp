@@ -3,9 +3,12 @@
 // 簡単なテスト用
 function test(event){
 
+  var a=event.target.a;
+
+  console.log('--- in test func---');
 
   console.log('test event type:'+event.type);
-  console.log('test event label:'+event.target.label);
+  console.log('a:'+a);
 
   // var input=document.createElement('input');
 

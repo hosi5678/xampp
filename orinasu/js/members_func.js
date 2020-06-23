@@ -75,6 +75,6 @@ function members_func(){
 
   }
 
-        document.getElementById(parent_tag_str).style.visibility = tmp;
+  document.getElementById(parent_tag_str).style.visibility = tmp;
 
 }
