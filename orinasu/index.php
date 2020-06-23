@@ -84,6 +84,7 @@ require_once("./php_libs/insert_access_log.php");
 	<script src='./js/select_equal.js'></script>
 	<script src='./js/ajax_select_equal_key.js'></script>
 	<script src='./js/uriage_graph_func.js'></script>
+	<script src='./js/create_graph_input_form.js'></script>
 	<script src='./js/anime.min.js'></script>
 	<script src='./js/create_csv.js'></script>
 	<script src='./js/setCalendarDay.js'></script>
@@ -91,7 +92,8 @@ require_once("./php_libs/insert_access_log.php");
 	<script src='./js/create_exec.js'></script>
 	<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
 	<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
-	<script src='./js/ajax_select_from_products.js'></script>
+	<script src='./js/ajax_query_from_table.js'></script>
+	<script src='./js/create_graph.js'></script>
  
 </head>
 

@@ -16,12 +16,17 @@ function uriage_graph_func(){
         // ajax_get_col(table_name),
         // ajax_get_col('riyou_keitai'),
         // ajax_select_from_table('riyou_keitai'),
+
+        // 今の所,ajax 通信は必要ないが作っておく。
   
       ).done(function(){
-  
-          var mode='insert';
-    
+      
           document.getElementById(parent_tag_str+"_mark").innerText='売上グラフの表示▲';
+
+          create_graph_input_form({
+            parent_tag_str:parent_tag_str,
+            table_name:table_name,
+          });
 
           call_hightchart(parent_tag_str);
           
@@ -30,10 +35,8 @@ function uriage_graph_func(){
     }else{
         document.getElementById(parent_tag_str+"_mark").innerText='売上グラフの表示▼';
   
-        // childNodeClear(parent_tag_str+'_message');
         childNodeClear(parent_tag_str+'_params');
         childNodeClear(parent_tag_str+'_container');
-        // childNodeClear(parent_tag_str+'_results');
   
     }
   

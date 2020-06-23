@@ -7,7 +7,7 @@ function ajax_get_col(table_name){
   var defer = new $.Deferred;
 
   $.ajax({
-    type:'POST',
+    type:'post',
     url: '../php_libs/ajax_get_col.php',
       data:{
        'table_name':table_name

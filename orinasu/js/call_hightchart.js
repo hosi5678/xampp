@@ -21,10 +21,19 @@ function call_hightchart(parent_tag_str){
    
     console.log(series);
 
-    $('#'+parent_tag_str+'_container').highcharts({
+    Highcharts.setOptions({
+      global:{
+        useUTC: false
+      }
+    });
+
+    // $('#'+parent_tag_str+'_container').highcharts({
+    chart=new Highcharts.Chart({
+
       chart: {
+        renderTo:parent_tag_str+'_container',
         width:900,
-        height:400
+        height:400,
       },
       title: {
         text: '売上状況',

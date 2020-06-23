@@ -5,6 +5,8 @@ require_once("./escape_string.php");
 
 header("Content-Type:text/html;charset=UTF-8");
 
+// 素通しでqueryを実行する。
+
 	try{
      $db= new PDO(pdo_dsn,db_username,db_password);
      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -14,18 +16,18 @@ header("Content-Type:text/html;charset=UTF-8");
     
     $query=filter_input(INPUT_POST,'query');
 
-		$stmt="select * from products order by id asc limit 0;";
+		// $stmt="select * from ".$table_name." order by id asc limit 0;";
 
-		$stmt = $db->prepare($stmt);
+		// $stmt = $db->prepare($stmt);
 
-		$stmt->execute();
+		// $stmt->execute();
 
-		$column_array=array();
+		// $column_array=array();
 
-		for ($i = 0; $i < $stmt->columnCount(); $i++) {
-			$meta = $stmt->getColumnMeta($i);
-			$column_array[]=$meta['name'];
-    }
+		// for ($i = 0; $i < $stmt->columnCount(); $i++) {
+		// 	$meta = $stmt->getColumnMeta($i);
+		// 	$column_array[]=$meta['name'];
+    // }
 
     $stmt=$db->prepare($query);
 
@@ -35,16 +37,16 @@ header("Content-Type:text/html;charset=UTF-8");
     $json_array=array();
 
     foreach($results as $elem ){
-        $i=0;
-        $tmp_array=array();
+        // $i=0;
+        // $tmp_array=array();
         
-        while($i<count($column_array)){
-          $key=$column_array[$i];
-          $temp_array[$key]=$elem[$key];
-          $i++;
-        }
+        // while($i<count($column_array)){
+        //   $key=$column_array[$i];
+        //   $temp_array[$key]=$elem[$key];
+        //   $i++;
+        // }
         
-        $json_array[]=$temp_array;
+        $json_array[]=$elem;
 
     }
 

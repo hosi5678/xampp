@@ -27,21 +27,6 @@ header("Content-Type:text/html;charset=UTF-8");
 
 		$stmt->execute();
 
-		// $stmt="select * from ".$table_name." limit 0;";
-
-		// $stmt = $db->prepare($stmt);
-
-		// $stmt->execute();
-
-		// $column_array=array();
-
-		// for ($i = 0; $i < $stmt->columnCount(); $i++) {
-		// 		$meta = $stmt->getColumnMeta($i);
-		// 		$column_array[]=$meta['name'];
-		// }
-
-// _join key
-
 		$stmt="select * from ".$table_name.'_join'." limit 0;";
 
 		$stmt = $db->prepare($stmt);
