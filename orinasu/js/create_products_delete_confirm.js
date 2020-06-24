@@ -38,6 +38,9 @@ function create_products_delete_confirm(event){
 
   var parent_tag=document.getElementById(parent_tag_str+'_params');
 
+  childNodeClear(parent_tag_str+'_status');
+
+
   // idの取得
 
   var tds=$(this).closest('tr').children();

@@ -48,6 +48,8 @@ function create_members_update_form(event){
       console.log('parent_tag_str:'+parent_tag_str);
       console.log('mode:'+mode);
 
+      childNodeClear(parent_tag_str+'_status');
+
       var parent_tag=childNodeClear(parent_tag_str+'_title');
 
       var p=document.createElement('p');
@@ -93,8 +95,6 @@ function create_members_update_form(event){
 
       // titleの書き換え
       if(mode=='update'){
-
-      var form_title=document.getElementById('form-'+parent_tag_str+'-title');
 
       var id;
 

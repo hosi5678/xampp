@@ -20,6 +20,7 @@ function create_members_delete_confirm(event){
 
     // 画面の更新
   childNodeClear(parent_tag_str+'_params');
+  childNodeClear(parent_tag_str+'_status');
   childNodeClear(parent_tag_str+'_results');
   childNodeClear(parent_tag_str+'_exec');
 

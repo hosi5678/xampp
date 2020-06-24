@@ -136,7 +136,7 @@ require_once("./php_libs/insert_access_log.php");
 
 				<div id='calendar_params'></div>
 
-				<p id='calendar_status' class='status'></p>
+				<div id='calendar_status' class='status'></div>
 				<div id='calendar_exec' class='exec'></div>
 				<div id="calendar_like"></div>
 				<div id="calendar_results"></div>
@@ -154,7 +154,7 @@ require_once("./php_libs/insert_access_log.php");
 				<p id='products_title'></p>
 				<div id='products_message'></div>
 				<div id="products_params"></div>
-				<p id='products_status' class='status'></p>
+				<div id='products_status' class='status'></div>
 				<div id='products_exec' class='exec'></div>
 				<div id="products_like"></div>
 				<div id="products_results"></div>
@@ -172,7 +172,7 @@ require_once("./php_libs/insert_access_log.php");
 				<p id='members_title'></p>
 				<div id='members_message'></div>
 				<div id="members_params"></div>
-				<p id='members_status' class='status'></p>
+				<div id='members_status' class='status'></div>
 				<div id='members_exec' class='exec'></div>
 				<div id="members_like"></div>
 				<div id="members_results"></div>

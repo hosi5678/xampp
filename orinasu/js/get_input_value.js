@@ -14,7 +14,10 @@ function get_input_value({parent_tag_str,table_name,label,params}){
   console.log(params);
 
   var status=childNodeClear(parent_tag_str+'_status');
-  
+
+  // ここはこうする。(なぜかdisplay:hideになるため)
+  $(status).show();
+
   var str;
 
   for(var i=0;i<label.length;i++){
@@ -37,16 +40,20 @@ function get_input_value({parent_tag_str,table_name,label,params}){
         if(str===1) return false;
 
         // 名と備考は空欄でも良い
-        if(str==''&&(label[i]=='姓')){
+        if((str==''&&(label[i]=='姓'))){
 
           var p=document.createElement('p');
+
           p.classList.add('message');
           p.innerText=label[i]+'を入力してください。';
           status.appendChild(p);
-  
+
+          // $(status).show();
+
           return false;
 
         }else{
+          console.log('--- else true ---');
           params.push('"'+str+'"');
         }
 
@@ -78,6 +85,7 @@ function get_input_value({parent_tag_str,table_name,label,params}){
             p.classList.add('message');
             p.innerText=label[i]+'を入力してください。';
             status.appendChild(p);
+
     
             return false;
 
@@ -98,8 +106,8 @@ function get_input_value({parent_tag_str,table_name,label,params}){
         str=reject_str(str);    
         if(str===1) return false;
         
-        // 予定が入力されていないとき
-        if(str==''&&(label[i]!='予定')){
+        //  メモが入力されていないとき
+        if(str==''&&(label[i]=='メモ')){
           var p=document.createElement('p');
 
           p.classList.add('message');
@@ -112,7 +120,7 @@ function get_input_value({parent_tag_str,table_name,label,params}){
           params.push('"'+str+'"');
         }
 
-      // 日付はhiddenで渡される
+      // (日付はhiddenで渡される)
       }else{
         str=document.getElementById(parent_tag_str+i).value;
         params.push('"'+str+'"');

@@ -2,40 +2,31 @@
 
 function delete_table(event){
 
-
-  // console.log('----- in delete table -----');
-
   var table_name=event.target.table_name;
   var parent_tag_str=event.target.parent_tag_str;
   var id=event.target.id;
 
-  // var tds=$(this).closest('tr').children();
-  // console.log('id:'+id);
-
   var query='delete from '+table_name+' where id='+id+';';
 
-  // console.log('id:'+id);
-  // console.log('query:'+query);
-
   $.when(
-      ajax_stmt_exec(table_name,query,'assoc'),
-    ).done(function(row){
+    ajax_stmt_exec(table_name,query,'assoc'),
+  ).done(function(row){
 
-      var parent_tag=childNodeClear(parent_tag_str+'_params');
+      childNodeClear(parent_tag_str+'_params');
   
-      var title=document.getElementById(parent_tag_str+'_title');
+      var status=document.getElementById(parent_tag_str+'_status');
 
       var p=document.createElement('p');
-
       p.classList.add('delete-done');
+
       p.innerText='削除しました。';
 
-      title.appendChild(p);
+      status.appendChild(p);
 
       var a=document.createElement('a');
+      a.classList.add('a-cancel');
 
       a.innerText='戻る';
-      a.classList.add('a-cancel');
 
       a.addEventListener('click',function(event){
 
@@ -191,7 +182,7 @@ function delete_table(event){
         
       });
 
-      title.appendChild(a);
+      status.appendChild(a);
 
   });
 

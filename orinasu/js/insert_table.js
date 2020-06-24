@@ -29,8 +29,8 @@ function insert_table(event){
   }
 
   console.log('-----in insert table-----');
-  console.log('table name:'+table_name);
   console.log('parent_tag_str:'+parent_tag_str);
+  console.log('table name:'+table_name);
   console.log('col:'); // 10
   console.log(col);
   console.log('label is:');
@@ -61,6 +61,23 @@ function insert_table(event){
 
   console.log('params are:');
   console.log(params);
+
+  // if(params==false){
+  //   if(table_name=='members'){
+  //     console.log('空欄');
+  //     var status=childNodeClear(parent_tag_str+'_status');
+
+  //     console.log(status);
+
+  //     var p=document.createElement('p');
+
+  //     p.classList.add('message');
+  //     p.innerText='名前を入力してください。';
+  //     status.appendChild(p);
+  //     return false;
+  //   }
+  // }
+
 
   var query='insert into '+table_name+'(';
   

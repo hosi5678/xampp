@@ -13,8 +13,11 @@ function create_products_input_form({
 
     console.log('parent_tag_str:'+parent_tag_str);
     console.log('table_name:'+table_name);
-		
-		var parent_tag=childNodeClear(parent_tag_str+'_params');
+    
+    childNodeClear(parent_tag_str+'_status');
+
+    var parent_tag=childNodeClear(parent_tag_str+'_params');
+    
 
       console.log('---tax---');
       console.log(tax);
