@@ -44,16 +44,50 @@ function create_graph({
     if(res.length>0){
       var series=new Array();
 
+      var bag=new Array();
+      var accessary=new Array();
+      var mask=new Array();
+      var porch=new Array();
+
+
       for(var i=0;i<res.length;i++){
+
         var name=arrayNum_to_String({array:category,num:res[i].category});
-        var data=new Array();
-        console.log(name);
-        console.log(Date.parse(res[i]['sales_date']));
-        var time=Date.parse(res[i]['sales_date']);
+
+        var time=Date.parse(res[i].sales_date);
         var uriage=parseInt(res[i].uriage);
-        data.push([time,uriage]);
-        series.push({name:name,data:data});
+
+        switch(name){
+          case 'バッグ':
+            bag.push([time,uriage]);
+          break;
+          
+          case 'アクセサリ':
+            accessary.push([time,uriage]);
+          break;
+
+          case 'マスク':
+            mask.push([time,uriage]);
+          break;
+          
+          case 'ポーチ':
+            porch.push([time,uriage]);
+          break;
+
+        }
+
+        // for(var k=0;k<category.length;k++){
+        //   if(category[k]==name){
+        //     data.push([time,uriage]);
+        //   }
+
       }
+
+      series.push({name:'バッグ',data:bag})
+      series.push({name:'アクセサリ',data:accessary});
+      series.push({name:'マスク',data:mask});
+      series.push({name:'ポーチ',data:porch});
+
 
       console.log('series:');
       console.log(series);
