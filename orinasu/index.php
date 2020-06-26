@@ -94,6 +94,8 @@ require_once("./php_libs/insert_access_log.php");
 	<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
 	<script src='./js/ajax_query_from_table.js'></script>
 	<script src='./js/create_graph.js'></script>
+	<script src='./js/call_stockChart.js'></script>
+	<script src='./js/arrayNum_to_String.js'></script>
  
 </head>
 

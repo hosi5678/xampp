@@ -17,7 +17,7 @@ function create_graph({
   console.log('select value:'+selectValue);
 
   if(selectValue=='term'){
-    query='select sales_date,category,sum(uriage) as uriage from products group by category order by sales_date asc;';
+    query='select sales_date,category,uriage from products order by sales_date asc;';
   }
 
   console.log(query);
@@ -25,8 +25,8 @@ function create_graph({
   $.when(
     ajax_get_col('category'),
     ajax_select_from_table('category'),
-
     ajax_query_from_table(query),
+
   ).done(function(category_cols,category_rows,res){
 
     var category=new Array();
@@ -38,9 +38,27 @@ function create_graph({
     });
 
     console.log(category);
+    console.log('res:');
     console.log(res);
 
-    console.log(Date.parse(res[0]['sales_date'])*1000)
+    if(res.length>0){
+      var series=new Array();
+
+      for(var i=0;i<res.length;i++){
+        var name=arrayNum_to_String({array:category,num:res[i].category});
+        var data=new Array();
+        console.log(name);
+        console.log(Date.parse(res[i]['sales_date']));
+        var time=Date.parse(res[i]['sales_date']);
+        var uriage=parseInt(res[i].uriage);
+        data.push([time,uriage]);
+        series.push({name:name,data:data});
+      }
+
+      console.log('series:');
+      console.log(series);
+      call_stockChart({parent_tag_str:parent_tag_str,series:series});
+    }
   });
 
 }
