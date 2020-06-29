@@ -15,7 +15,6 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 		// console.log(m.format("LLLL"));
 
 		// 現在の日付の取得
-		var curr=new Date();
     var currYear=m.year();
 		var currMonth=m.month();
 		var currDate=m.date();
@@ -32,7 +31,6 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 
 		// 今月の取得
 		var thisMonth=new Date(year,month,1);
-	
 		
 		// 先月の末尾を取得する
 		var prevMonth_lastday=new Date(year,month,0);
@@ -459,22 +457,6 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 								youbi:youbi,
 						});
 
-
-							// a.innerText='メモを記入する';
-							// a.classList.add('a-insert');
-							// a.addEventListener('click',insert_table);
-							// a.parent_tag_str=parent_tag_str;
-							// a.table_name=table_name;
-							// a.label=label;
-							// a.col=col;
-							// a.youbi=youbi;
-							// a.mode='insert';
-
-							console.log('true');
-							console.log('memo:');
-							console.log(memo);
-
-
 						}
 					}
 			}else{
@@ -490,19 +472,8 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 					youbi:youbi,
 			});
 
-				// a.innerText='メモを記入する';
-				// a.classList.add('a-insert');
-				// a.addEventListener('click',insert_table);
-				// a.parent_tag_str=parent_tag_str;
-				// a.table_name=table_name;
-				// a.label=label;
-				// a.col=col;
-				// a.youbi=youbi;
-				// a.mode='insert';
-
 			}
 					 
-			// exec.appendChild(a);
 
 			var parent_tag=childNodeClear(parent_tag_str+'_results');
 

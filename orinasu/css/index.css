@@ -184,6 +184,10 @@ td {
 	background-color:#ddd;
 }
 
+.calendar-orange{
+	border:2px solid orange;
+}
+
 .td-calendar {
 	height:40px;
 }

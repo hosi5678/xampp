@@ -97,6 +97,7 @@ require_once("./php_libs/insert_access_log.php");
 	<script src='./js/call_stockChart.js'></script>
 	<script src='./js/arrayNum_to_String.js'></script>
 	<script src='./js/utc2dateString.js'></script>
+	<script src='./js/dotinstall.js'></script>
  
 </head>
 
@@ -187,6 +188,10 @@ require_once("./php_libs/insert_access_log.php");
 	</div>
 
 </div>
+
+<!-- <script>
+	dotinstall();
+</script> -->
 
 	<noscript>
 		<p>JavaScriptを有効にしてください。</p>

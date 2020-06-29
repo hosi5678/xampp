@@ -28,7 +28,12 @@ function uriage_graph_func(){
             table_name:table_name,
           });
 
-          call_hightchart(parent_tag_str);
+          create_graph({
+            parent_tag_str:parent_tag_str,
+            table_name:table_name,
+          });
+
+          // call_stockChart(parent_tag_str);
           
       });
   
@@ -36,11 +41,10 @@ function uriage_graph_func(){
         document.getElementById(parent_tag_str+"_mark").innerText='売上グラフの表示▼';
   
         childNodeClear(parent_tag_str+'_params');
-        childNodeClear(parent_tag_str+'_container');
-  
+				childNodeClear(parent_tag_str+'_container');
+								
     }
   
-          document.getElementById(parent_tag_str).style.visibility = tmp;
+    document.getElementById(parent_tag_str).style.visibility = tmp;
   
-    
 }
