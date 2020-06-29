@@ -19,7 +19,7 @@ function call_stockChart({parent_tag_str,series}){
      downloadPDF: 'PDF文書でダウンロード',
      downloadPNG: 'PNG画像でダウンロード',
      downloadSVG: 'SVG形式でダウンロード',
-     months: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12'],
+     months: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
      weekdays: ['日', '月', '火', '水', '木', '金', '土'],
 					// 1000を1kと表示しない
 					numericSymbols: null,   
@@ -91,14 +91,14 @@ function call_stockChart({parent_tag_str,series}){
           buttons : [
  
           {
-            type : 'day',    // 日単位 
-            count : 30,      // 30日のデータを表示
-            text : '1日'
+            type : 'month',    // 月単位 
+            count : 6,      // 6月のデータを表示
+            text : '6ヵ月'
           }, 
           {
             type : 'month',    // 月単位 
-            count : 3,      // 3ヶ月のデータを表示
-            text : '3ヶ月'
+            count : 1,      // 3ヶ月のデータを表示
+            text : '1ヵ月'
           },
           {
             type : 'year',    // 年単位
@@ -127,7 +127,7 @@ function call_stockChart({parent_tag_str,series}){
 						
 						navigator: {  // ナビゲータ
 							xAxis: {
-								max : new Date().getTime()
+								// max : new Date().getTime()
 							}
 						},
   });

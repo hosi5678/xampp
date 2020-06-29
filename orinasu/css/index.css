@@ -201,6 +201,10 @@ td {
 	color:red;
 }
 
+option {
+	text-align: center;
+}
+
 .option-hide {
 	display:none;
 }

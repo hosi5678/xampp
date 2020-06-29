@@ -1,6 +1,8 @@
 'use strict';
 
-function getArrayFromRows({array,rows,cols}){
+function getArrayFromRows({rows,cols}){
+
+  const array=new Array();
 
   for(var j=0;j<rows.length;j++){
     for(var i=0;i<cols.length;i++){
