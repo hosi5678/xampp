@@ -9,22 +9,14 @@ function show_yotei({
   youbi
 }){
 
-
-  // document.getElementById(id).classList.add('td-today');
-  // var id=event.target.id;
-  // var table_name=event.target.table_name;
-  // var parent_tag_str=event.target.parent_tag_str;
-  // var youbi=event.target.youbi;
-  // var label=event.target.label;
-
   var key=id;
 
   childNodeClear(parent_tag_str+'_message');
 
   console.log('---show yotei---');
-  console.log('id:'+id);
-  console.log('table_name:'+table_name);
-  console.log('parent_tag_str:'+parent_tag_str);
+  // console.log('id:'+id);
+  // console.log('table_name:'+table_name);
+  // console.log('parent_tag_str:'+parent_tag_str);
 
   var ymd=new Array();
 
@@ -64,10 +56,6 @@ function show_yotei({
 
   ).done(function(label,col,row){
 
-    console.log(label);
-    console.log(col);
-    console.log(row);
-
     // 内容を一旦クリア
     for(var i=0;i<label.length;i++){
       if(label[i]=='メモ'||label[i]=='予定'){
@@ -94,21 +82,6 @@ function show_yotei({
         id:'"'+id+'"',
       });
 
-
-      // var exec=childNodeClear(parent_tag_str+'_exec');
-      // var a=document.createElement('a');
-      // a.innerText='メモを修正する';
-      // a.classList.add('a-mod');
-      // a.addEventListener('click',update_table);
-			// a.parent_tag_str=parent_tag_str;
-			// a.table_name=table_name;
-			// a.label=label;
-			// a.col=col;
-      // a.youbi=youbi;
-      // a.id='"'+id+'"';
-			// a.mode='update';
-
-      // exec.appendChild(a);
 
       var a=document.createElement("a");
 
@@ -143,22 +116,6 @@ function show_yotei({
         class_str:'a-insert',
         youbi:youbi,
     });
-
-
-      // var exec=childNodeClear(parent_tag_str+'_exec');
-      // var a=document.createElement('a');
-      // a.innerText='メモを記入する';
-      // a.classList.add('a-insert');
-      // a.addEventListener('click',insert_table);
-
-			// a.parent_tag_str=parent_tag_str;
-			// a.table_name=table_name;
-			// a.label=label;
-			// a.col=col;
-			// a.youbi=youbi;
-			// a.mode='insert';
-
-      // exec.appendChild(a);
 
     }
     

@@ -126,6 +126,4 @@ function delete_confirm(event){
 
   parent_tag.appendChild(a);
 
-  
-
 }

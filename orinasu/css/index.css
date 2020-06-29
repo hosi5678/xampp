@@ -278,6 +278,8 @@ td {
 .delete-done {
 	font-size: 20px;
 	color:red;
+	background-color:#cfd ;
+	width:250px;
 }
 
 .a-cancel {
@@ -314,11 +316,13 @@ td {
 	display:none;
 }
 
-.status {
+/* .status {
 	color:#faf;
 	background-color:#cfd;
 	width:300px;
-}
+} */
+
+
 
 .csv_download {
 	font-size: 16px;

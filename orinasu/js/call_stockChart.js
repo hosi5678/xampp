@@ -118,7 +118,7 @@ function call_stockChart({parent_tag_str,series}){
 										dateTimeLabelFormats: {
 											day: ['%Y/%m/%d', '%Y/%m/%d', '-%Y/%m/%d'],
 											week: ['%Y/%m/%d', '%Y/%m/%d', '-%Y/%m/%d'],
-											month: ['%B %Y', '%B', '-%B %Y'],
+											month: ['%Y/%m', '%Y/%m', '-%Y/%m'],
 											year: ['%Y', '%Y', '-%Y']
 										}
 								}
@@ -126,8 +126,10 @@ function call_stockChart({parent_tag_str,series}){
 						},
 						
 						navigator: {  // ナビゲータ
-							baseSeries: 0
-					},
+							xAxis: {
+								max : new Date().getTime()
+							}
+						},
   });
   
 }

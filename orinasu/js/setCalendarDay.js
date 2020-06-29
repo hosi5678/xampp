@@ -151,13 +151,13 @@ function setCalendarDay({
 
   td.addEventListener('click',function(){
 
-    console.log('this calendar:');
+    // console.log('this calendar:');
 
     let thisCalendar_trs=$(this).parent().parent().children();
 
     for(let j=0;j<thisCalendar_trs.length;j++){
       for(let i=0;i<thisCalendar_trs[j].children.length;i++){
-        console.log(thisCalendar_trs[j].children[i].id);
+        // console.log(thisCalendar_trs[j].children[i].id);
         let id=thisCalendar_trs[j].children[i].id;
         $('#'+id).removeClass('calendar-orange');
         // console.log(thisCalendar_trs[j].children[i].getComputedStyle());
