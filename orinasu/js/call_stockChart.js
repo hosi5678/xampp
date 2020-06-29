@@ -54,7 +54,8 @@ function call_stockChart({parent_tag_str,series}){
           enabled: false
         },
 
-        xAxis: [{  // X軸
+								xAxis: [{  // X軸
+									type:'date',
          labels: {
             formatter: function(){ return utc2dateString(this.value); }
 									},
@@ -97,7 +98,7 @@ function call_stockChart({parent_tag_str,series}){
           }, 
           {
             type : 'month',    // 月単位 
-            count : 1,      // 3ヶ月のデータを表示
+            count : 1,      // 1月のデータを表示
             text : '1ヵ月'
           },
           {
@@ -106,7 +107,7 @@ function call_stockChart({parent_tag_str,series}){
             text : '1年'
           }, 
           {
-            type : 'all',    // 全データ (2)
+            type : 'all',    // 全データ 
             count : 1,
             text : '全て'
           }]
@@ -114,6 +115,13 @@ function call_stockChart({parent_tag_str,series}){
 
       plotOptions:{  // プロットオプション
        series: {
+
+								marker: {
+									fillColor: '#FFFFFF',
+									lineWidth: 1,
+									lineColor: null // inherit from series
+							},
+
 								dataGrouping: {
 										dateTimeLabelFormats: {
 											day: ['%Y/%m/%d', '%Y/%m/%d', '-%Y/%m/%d'],
@@ -127,6 +135,7 @@ function call_stockChart({parent_tag_str,series}){
 						
 						navigator: {  // ナビゲータ
 							xAxis: {
+								type:'date',
 								// max : new Date().getTime()
 							}
 						},

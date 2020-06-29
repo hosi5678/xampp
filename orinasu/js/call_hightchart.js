@@ -27,7 +27,6 @@ function call_hightchart(parent_tag_str){
       }
     });
 
-    // $('#'+parent_tag_str+'_container').highcharts({
     chart=new Highcharts.Chart({
 
       chart: {

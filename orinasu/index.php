@@ -98,6 +98,8 @@ require_once("./php_libs/insert_access_log.php");
 	<script src='./js/arrayNum_to_String.js'></script>
 	<script src='./js/utc2dateString.js'></script>
 	<script src='./js/dotinstall.js'></script>
+	<script src='./js/call_barChart.js'></script>
+	<script src='./js/call_lineChart.js'></script>
  
 </head>
 

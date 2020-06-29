@@ -39,8 +39,8 @@ function create_graph_input_form({
     select.appendChild(option);
   
   var option=document.createElement('option');
-    option.value='price';
-    option.innerText='価格';
+    option.value='tanka';
+    option.innerText='単価';
     select.appendChild(option);
 
   select.addEventListener('click',
