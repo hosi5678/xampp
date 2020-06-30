@@ -2,13 +2,13 @@
 
 function ajax_select_like(table_name,col,key){
 
-  var defer = new $.Deferred;
+  const defer = new $.Deferred;
 
-  var query='select * from '+table_name+' where '+col+' like '+'"%'+key+'%" order by id asc;';
+  const query='select * from '+table_name+' where '+col+' like '+'"%'+key+'%" order by id asc;';
 
   console.log('-----in ajax select like -----');
 
-  console.log('query:'+query);
+  // console.log('query:'+query);
 
   $.ajax({
     type:'post',

@@ -16,19 +16,6 @@ header("Content-Type:text/html;charset=UTF-8");
     
     $query=filter_input(INPUT_POST,'query');
 
-		// $stmt="select * from ".$table_name." order by id asc limit 0;";
-
-		// $stmt = $db->prepare($stmt);
-
-		// $stmt->execute();
-
-		// $column_array=array();
-
-		// for ($i = 0; $i < $stmt->columnCount(); $i++) {
-		// 	$meta = $stmt->getColumnMeta($i);
-		// 	$column_array[]=$meta['name'];
-    // }
-
     $stmt=$db->prepare($query);
 
 		$stmt->execute();
@@ -36,18 +23,8 @@ header("Content-Type:text/html;charset=UTF-8");
     $results=$stmt->fetchAll();
     $json_array=array();
 
-    foreach($results as $elem ){
-        // $i=0;
-        // $tmp_array=array();
-        
-        // while($i<count($column_array)){
-        //   $key=$column_array[$i];
-        //   $temp_array[$key]=$elem[$key];
-        //   $i++;
-        // }
-        
+    foreach($results as $elem ){        
         $json_array[]=$elem;
-
     }
 
     header('Content-type: application/json');

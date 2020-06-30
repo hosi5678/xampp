@@ -52,15 +52,6 @@ function create_graph_input_form({
     }
   );
 
-//   select.addEventListener('change',
-//   function(event){
-//     create_graph({
-//       parent_tag_str:parent_tag_str,
-//       table_name:table_name,
-//     });
-//   }
-// );
-
   td.appendChild(select);
   tr.appendChild(td);
 

@@ -13,6 +13,42 @@ body {
 	margin-left:20px;
 }
 
+.logo-container {
+	display: grid;
+	grid-template-columns:80px 300px ;
+	grid-template-rows: 50px;
+	color:#0074bf;
+}
+
+.container {
+	display:grid;
+	grid-template-columns: 100px;
+	grid-template-rows: 30px 40px;
+	border: 1px solid black;
+
+}
+
+.head {
+	border-bottom: 1px solid black;
+}
+
+/* .body {
+}
+
+.head + .body{
+
+} */
+
+.container+.container {
+	border-left: none;
+}
+
+.members_seimei {
+	display:grid;
+	grid-template-columns: 100px 100px;
+	grid-template-rows: 100px;
+}
+
 .content {
 	margin-bottom: 0px;
 }
@@ -23,18 +59,16 @@ body {
 	margin-left: 5px;
 	margin-top: 20px;
 	margin-bottom:20px;
-	color:#0074bf;
 
 }
 
 .logo-img {
 	margin-left: 10px;
-	display: table-cell;
 }
 
 .logo-txt {
 	font-size: 25px;
-	display: table-cell;
+	margin-top:10px;
 	vertical-align: middle;
 }
 
@@ -320,13 +354,11 @@ option {
 	display:none;
 }
 
-/* .status {
+.status {
 	color:#faf;
 	background-color:#cfd;
-	width:300px;
-} */
-
-
+	width:200px;
+}
 
 .csv_download {
 	font-size: 16px;

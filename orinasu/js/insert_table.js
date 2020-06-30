@@ -8,12 +8,12 @@ function insert_table(event){
   var label=event.target.label;
   var col=event.target.col;
  
-  var youbi;
-  var riyou;
+  let youbi;
+  let riyou;
 
-  var tax;
-  var category;
-  var round;
+  let tax;
+  let category;
+  let round;
 
   var mode=event.target.mode;
 
@@ -41,7 +41,7 @@ function insert_table(event){
  
   var query_columns=new Array();
 
-  for(var i=0;i<col.length;i++){
+  for(let i=0;i<col.length;i++){
     if(col[i]=='id') continue;
       query_columns.push(col[i]);
   }
@@ -50,7 +50,7 @@ function insert_table(event){
   console.log('query columns length:'+query_columns.length);
 
   // input 部品の値を取得
-  var params=new Array();
+  let params=new Array();
 
   params=get_input_value({
     parent_tag_str:parent_tag_str,
@@ -62,33 +62,16 @@ function insert_table(event){
   console.log('params are:');
   console.log(params);
 
-  // if(params==false){
-  //   if(table_name=='members'){
-  //     console.log('空欄');
-  //     var status=childNodeClear(parent_tag_str+'_status');
-
-  //     console.log(status);
-
-  //     var p=document.createElement('p');
-
-  //     p.classList.add('message');
-  //     p.innerText='名前を入力してください。';
-  //     status.appendChild(p);
-  //     return false;
-  //   }
-  // }
-
-
   var query='insert into '+table_name+'(';
   
-  for(var i=0;i<query_columns.length;i++){
+  for(let i=0;i<query_columns.length;i++){
       query+=query_columns[i];
         if(i!=query_columns.length-1) query+=',';
   }
 
   query+=') values(';
 
-  for(var i=0;i<query_columns.length;i++){
+  for(let i=0;i<query_columns.length;i++){
     query+=params[i];
     if(i!=query_columns.length-1) query+=',';
   }
@@ -128,13 +111,13 @@ function insert_table(event){
 
       }else if(table_name=='calendar'){
 
-        var ymd=document.getElementById(table_name+1).value;
+        let ymd=document.getElementById(table_name+1).value;
         console.log('ymd:'+ymd);
-        var tmp=new Array();
+        let tmp=new Array();
         tmp=ymd.split('-');
 
-        var year=parseInt(tmp[0]);
-        var month=parseInt(remove_zero(tmp[1]))-1;
+        let year=parseInt(tmp[0]);
+        let month=parseInt(remove_zero(tmp[1]))-1;
 
         console.log('year:'+year);
         console.log('month:'+(month+1));
@@ -153,8 +136,13 @@ function insert_table(event){
 
       }
 
-      var status=document.getElementById(parent_tag_str+'_status');
-      status.innerText='記入が完了しました。';
+      let status=document.getElementById(parent_tag_str+'_status');
+
+      let p=document.createElement('p');
+      p.classList.add('status');
+      p.innerText='記入が完了しました。';
+
+      status.appendChild(p);
 
       $('#'+parent_tag_str+'_status').show(1000,function(){
         $('#'+parent_tag_str+'_status').hide(2500);
@@ -165,7 +153,7 @@ function insert_table(event){
         table_name:table_name,
         label:label,
         col:col,
-        row:results
+        row:results,
       });    
 
   });

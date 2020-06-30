@@ -10,34 +10,35 @@ function delete_table(event){
 
   var query='delete from '+table_name+' where id='+id+';';
 
-
   $.when(
     ajax_stmt_exec(table_name,query,'assoc'),
-  ).done(function(row){
+  ).done(function(rows){
 
       childNodeClear(parent_tag_str+'_params');
       childNodeClear(parent_tag_str+'_status');
 
       let status=document.getElementById(parent_tag_str+'_status');
+
+      // 何故か非表示になるのでこれが必要。
       $(status).show();
 
       let p=document.createElement('p');
-      p.classList.add('delete-done');
+      p.classList.add('status');
 
       p.innerText='削除しました。';
 
       status.appendChild(p);
 
-      console.log('---test---');
-      console.log(table_name);
-      console.log(status);
+      // console.log('---test---');
+      // console.log(table_name);
+      // console.log(status);
 
       var a=document.createElement('a');
       a.classList.add('a-cancel');
 
       a.innerText='戻る';
 
-      a.addEventListener('click',function(event){
+      a.addEventListener('click',function(){
 
         childNodeClear(parent_tag_str+'_status');
 
@@ -51,27 +52,18 @@ function delete_table(event){
             ajax_get_col('youbi'),
             ajax_select_from_table('youbi'),
 
-            ajax_stmt_exec(table_name,query),
-
-          ).done(function(label,col,riyou_col,riyou_row,youbi_col,youbi_row,results){
+          ).done(function(label,col,riyou_col,riyou_row,youbi_col,youbi_row){
     
-              var riyou=new Array();
-
-              riyou=getArrayFromRows({
-                array:riyou,
+              const riyou=getArrayFromRows({
                 cols:riyou_col,
                 rows:riyou_row,
               });
 
-              var youbi=new Array();
-
-              youbi=getArrayFromRows({
-                array:youbi,
+              const youbi=getArrayFromRows({
                 cols:youbi_col,
                 rows:youbi_row,
               });
 
-    
             create_members_input_form({
               parent_tag_str:parent_tag_str,
               table_name:table_name,
@@ -86,7 +78,7 @@ function delete_table(event){
               table_name:table_name,
               label:label,
               col:col,
-              row:results
+              row:rows,
             });
     
           });
@@ -105,9 +97,7 @@ function delete_table(event){
             ajax_get_col('round_type'),
             ajax_select_from_table('round_type'),
 
-            ajax_stmt_exec(table_name,query),
-
-          ).done(function(label,col,category_col,category_row,tax_col,tax_row,round_col,round_row,results){
+          ).done(function(label,col,category_col,category_row,tax_col,tax_row,round_col,round_row){
 
             var category=new Array();
 
@@ -148,9 +138,8 @@ function delete_table(event){
               table_name:table_name,
               label:label,
               col:col,
-              row:results
+              row:rows
             });
-
 
           });
         }else if(table_name=='calendar'){
@@ -170,7 +159,7 @@ function delete_table(event){
             youbi=getArrayFromRows({
               array:youbi,
               rows:youbi_rows,
-              cols:youbi_cols
+              cols:youbi_cols,
             });
 
             var curr=new Date();
@@ -184,7 +173,7 @@ function delete_table(event){
               month:currMonth,
               youbi:youbi,
               label:label,
-              col:col
+              col:col,
             });
 
         });

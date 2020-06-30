@@ -100,13 +100,17 @@ require_once("./php_libs/insert_access_log.php");
 	<script src='./js/dotinstall.js'></script>
 	<script src='./js/call_barChart.js'></script>
 	<script src='./js/call_lineChart.js'></script>
+	<script src='./js/create_elements.js'></script>
+	<script src='./js/create_members_tbody.js'></script>
+	<script src='./js/create_members_thead.js'></script>
+	<script src='./js/create_container.js'></script>
  
 </head>
 
 <body>
 
 <div id="wrapper">
-	<div class='logo'>
+	<div class='logo-container'>
 		<img class='logo-img' src='./images/orinasu_logo.png' alt='orinasu database'>
 		<p class='logo-txt'>おりなすデータベース</p>
 	</div>
@@ -160,7 +164,7 @@ require_once("./php_libs/insert_access_log.php");
 				<p id='products_title'></p>
 				<div id='products_message'></div>
 				<div id="products_params"></div>
-				<div id='products_status' class='status'></div>
+				<div id='products_status'></div>
 				<div id='products_exec' class='exec'></div>
 				<div id="products_like"></div>
 				<div id="products_results"></div>
@@ -178,7 +182,7 @@ require_once("./php_libs/insert_access_log.php");
 				<p id='members_title'></p>
 				<div id='members_message'></div>
 				<div id="members_params"></div>
-				<div id='members_status' class='status'></div>
+				<div id='members_status'></div>
 				<div id='members_exec' class='exec'></div>
 				<div id="members_like"></div>
 				<div id="members_results"></div>
