@@ -4,13 +4,30 @@ function select_equal(event){
 
   console.log('----- in select_equal -----');
 
-  var parent_tag_str=event.target.parent_tag_str;
-  var table_name=event.target.table_name;
+  const parent_tag_str=event.target.parent_tag_str;
+  const table_name=event.target.table_name;
 
-  var label=event.target.label;
-  var col=event.target.col;
+  const label=event.target.label;
+  const col=event.target.col;
 
-  var key=document.getElementById(parent_tag_str+'_kensaku').value;
+  let key;
+  let condition;
+  
+  if(parent_tag_str=='members'){
+    key=document.getElementById(parent_tag_str+'_kensaku').value;
+    for(var i=0;i<label.length;i++){
+      if(key==label[i]){
+        key=col[i];
+        break;
+      };
+    }
+    condition='!=0';
+
+  }else if(parent_tag_str=='products'){
+    let val=document.getElementById(parent_tag_str+'6').value;
+    key=col+'='+val;
+    condition='';
+  }
 
   console.log('key:'+key);
   console.log('table_name:'+table_name);
@@ -18,20 +35,13 @@ function select_equal(event){
   console.log('col:'+col);
   console.log('youbi:');
 
-  for(var i=0;i<label.length;i++){
-    if(key==label[i]){
-      key=col[i];
-      break;
-    };
-  }
-
   console.log('key:'+key);
 
   $.when(
     // ajaxは単体で使わない。whenと使う
     ajax_get_col(table_name+'_join'),
     ajax_get_col(table_name),
-    ajax_select_equal_key({table_name:table_name,col:key,key:'!=0'}),
+    ajax_select_equal_key({table_name:table_name,col:key,key:condition}),
 
     ).done(function(label,col,row){
 
@@ -48,30 +58,27 @@ function select_equal(event){
 
         ).done(function(youbi_col,youbi_row,riyou_col,riyou_row){
 
-            var youbi=new Array();
+            let youbi=new Array();
+            let riyou=new Array();
 
             youbi=getArrayFromRows({
-                array:youbi,
                 cols:youbi_col,
                 rows:youbi_row
             });
 
-            var riyou=new Array();
-
             riyou=getArrayFromRows({
-                array:riyou,
                 cols:riyou_col,
                 rows:riyou_row
             });
 
-            for(var j=0;j<row.length;j++){
+            for(let j=0;j<row.length;j++){
 
-              for(var i=0;i<youbi.length;i++){
+              for(let i=0;i<youbi.length;i++){
     
                 if(youbi[i]=='日') continue;
                         
                 // 曜日を数値から文字列に変換(上書き)
-                for(var r=0;r<riyou.length;r++){
+                for(let r=0;r<riyou.length;r++){
                     if(row[j][youbi[i]]==r){
                       row[j][youbi[i]]= riyou[r]; 
                     }
@@ -80,7 +87,7 @@ function select_equal(event){
               }
     
             }
-    
+
             create_table({
               parent_tag_str:parent_tag_str,
               table_name:table_name,
@@ -88,10 +95,22 @@ function select_equal(event){
               col:col,
               row:row,
             });
-
+    
         });
 
+      }else if(table_name=='products'){
+        create_table({
+          parent_tag_str:parent_tag_str,
+          table_name:table_name,
+          label:label,
+          col:col,
+          row:row,
+        });
+  
       }
+
+
+
     }
   );
 
