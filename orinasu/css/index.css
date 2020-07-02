@@ -295,12 +295,36 @@ option {
 	width:280px;
 }
 
-.table-nth-gray tr:nth-child(even) {
+/* .table-nth-gray tr:nth-child(even) {
 	background-color: #eee;
 }
 
 .table-nth-gray tr:hover {
 	background-color:#fdc;
+} */
+
+table.tablesorter-blue td.primary,
+table.tablesorter-blue tr.odd td.primary {
+  background-color: #99b3e6;
+}
+table.tablesorter-blue tr.even td.primary {
+  background-color: #c2d1f0;
+}
+
+table.tablesorter-blue td.secondary,
+table.tablesorter-blue tr.odd td.secondary {
+  background-color: #c2d1f0;
+}
+table.tablesorter-blue tr.even td.secondary {
+  background-color: #d6e0f5;
+}
+
+table.tablesorter-blue td.tertiary,
+table.tablesorter-blue tr.odd td.tertiary {
+  background-color: #d6e0f5;
+}
+table.tablesorter-blue tr.even td.tertiary {
+  background-color: #ebf0fa;
 }
 
 .delete-message {

@@ -143,27 +143,38 @@ function create_products_update_form(event){
 
       var exec=document.getElementById(parent_tag_str+'_exec');
 
-      // 画面の更新
-      while(exec.firstChild){
-        exec.removeChild(exec.firstChild);
-      }
+      // // 画面の更新
+      // while(exec.firstChild){
+      //   exec.removeChild(exec.firstChild);
+      // }
 
-      var a=document.createElement("a");
+      create_exec({
+        parent_tag_str:parent_tag_str,
+        sub_tag_str:'_exec',
+        table_name:table_name,
+        label:label,
+        col:col,
+        mode:'update', // update table
+        class_str:'a-mod',
+        id:id,
+      });
+  
+      // var a=document.createElement("a");
 
-      a.href='#'+parent_tag_str;
-      a.classList.add('a-mod');
+      // a.href='#'+parent_tag_str;
+      // a.classList.add('a-mod');
 
-      a.innerText='修正する';
-      a.addEventListener('click',update_table,
-      );
+      // a.innerText='修正する';
+      // a.addEventListener('click',update_table,
+      // );
       
-      a.parent_tag_str=parent_tag_str;
-      a.table_name=table_name;
-      a.label=label;
-      a.col=col;
-      a.id=id;
+      // a.parent_tag_str=parent_tag_str;
+      // a.table_name=table_name;
+      // a.label=label;
+      // a.col=col;
+      // a.id=id;
 
-      exec.appendChild(a);
+      // exec.appendChild(a);
 
       var a=document.createElement("a");
 

@@ -56,8 +56,8 @@ function create_table({parent_tag_str,table_name,label,col,row}){
   }
 
   var table=document.createElement('table');
-  table.classList.add('table-nth-gray');
-  table.classList.add('tablesorter');
+  // table.classList.add('table-nth-gray');
+  table.classList.add('tablesorter-blue');
   table.id=parent_tag_str+'_table';
 
   var thead=document.createElement('thead');
@@ -172,15 +172,27 @@ function create_table({parent_tag_str,table_name,label,col,row}){
 
   parent_tag.appendChild(table);  
 
-  $('#'+parent_tag_str+'_table').tablesorter({
-    theme: 'blue',            // カラーを青に
-    widgets: ['zebra', 'scroller'],   // ゼブラカラーの適用と、スクロールバーの表示
-    widgetOptions: {
-      scroller_height:100,       // テーブルの最大サイズ
-      scroller_upAfterSort: true,    
-      scroller_jumpToHeader: true,   
-      scroller_barWidth: null,
-    }
-  });
+		if(parent_tag_str=='products'){
+			$('#'+parent_tag_str+'_table').tablesorter({
+					theme: 'blue',            // カラーを青に
+    // header layout template; {icon} needed for some themes
+    headerTemplate : '{content}{icon}',
+
+    // initialize zebra striping and column styling of the table
+    widgets : ["zebra", "columns"],
+
+    widgetOptions : {
+      // change the default column class names
+      // primary is the first column sorted, secondary is the second, etc
+      columns : [ "primary", "secondary", "tertiary" ],
+      // include thead when adding class names
+      columns_thead : true,	
+							scroller_height:100,       // テーブルの最大サイズ
+							scroller_upAfterSort: true,    
+							scroller_jumpToHeader: true,   
+							scroller_barWidth: null,
+					}
+			});
+		}
 
 }

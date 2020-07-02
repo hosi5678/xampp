@@ -10,7 +10,10 @@ function create_exec({
   col,
   id,
   youbi,
-  riyou
+  riyou,
+  category,
+  tax,
+  round,
 }){
 
   var exec=childNodeClear(parent_tag_str+sub_tag_str);
@@ -54,6 +57,30 @@ function create_exec({
       a.youbi=youbi;
 
     }
+  }else if(table_name=='products'){
+    if(mode=='update'){
+      a.innerText='売上データを修正する';
+      a.addEventListener('click',update_table);
+      a.id=id;
+
+    }else if(mode=='insert'){
+      // let tax;
+      // let category;
+      // let round;
+      // category=event.target.category;
+      // tax=event.target.tax;
+      // round=event.target.round;
+  
+
+      a.innerText='売上データを新規登録する';
+      a.addEventListener('click',insert_table);
+      a.youbi=youbi;
+      a.category=category;
+      a.tax=tax;
+      a.round=round;
+
+    }
+
   }
 
   exec.appendChild(a);

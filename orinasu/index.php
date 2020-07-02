@@ -29,6 +29,7 @@ require_once("./php_libs/insert_access_log.php");
 	<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="./favicon.ico">
 	<link rel="stylesheet" type="text/css" href="./css/index.css">
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.19/themes/redmond/jquery-ui.css">
+	<link res='stylesheet' href='./css/tablesorter/theme.blue.css'>
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.0/css/theme.default.min.css"> -->
 
 	<script src='./js/jquery-3.4.1.min.js'></script>
@@ -106,9 +107,10 @@ require_once("./php_libs/insert_access_log.php");
 	<script src='./js/create_members_box.js'></script>
 	<script src='./js/create_members_content.js'></script>
 	<script src='./js/create_container.js'></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.widgets.min.js'></script>
+	<script src='./js/jquery.tablesorter.js'></script>
  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/extras/jquery.metadata.min.js"></script>
+	 <!-- <script src='./js/jquery.tablesorter.combined.js'></script> -->
+		<script src='./js/jquery.tablesorter.widgets.js'></script>
 </head>
 
 <body>
@@ -168,7 +170,7 @@ require_once("./php_libs/insert_access_log.php");
 				<p id='products_title'></p>
 				<div id='products_message'></div>
 				<div id="products_params"></div>
-				<div id='products_status'></div>
+				<div id='products_status' class='status'></div>
 				<div id='products_exec' class='exec'></div>
 				<div id="products_like"></div>
 				<div id="products_results"></div>
@@ -186,7 +188,7 @@ require_once("./php_libs/insert_access_log.php");
 				<p id='members_title'></p>
 				<div id='members_message'></div>
 				<div id="members_params"></div>
-				<div id='members_status'></div>
+				<div id='members_status' class='status'></div>
 				<div id='members_exec' class='exec'></div>
 				<div id="members_like"></div>
 				<div id="members_results"></div>

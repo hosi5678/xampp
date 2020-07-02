@@ -62,6 +62,15 @@ function update_table(event){
         ajax_stmt_exec(table_name,query,'assoc'),
       ).done(function(results){
 
+        var status=document.getElementById(parent_tag_str+'_status');
+        // $(status).show();
+        status.innerText='修正が完了しました。';
+  
+        $('#'+parent_tag_str+'_status').show(2000,function(){
+          $('#'+parent_tag_str+'_status').hide(2500);
+        });
+
+
         if(table_name=='members'){
           $.when(
             ajax_get_col(table_name+'_join'),
@@ -103,7 +112,6 @@ function update_table(event){
               table_name:table_name,
               label:label,
               col:col,
-              riyou:riyou,
               row:results
             });
     
@@ -126,7 +134,7 @@ function update_table(event){
 
           ).done(function(label,col,category_cols,category_rows,tax_cols,tax_rows,round_cols,round_rows){
 
-            var mode='insert';
+            // var mode='insert';
 
             var category=new Array();
             
@@ -160,10 +168,17 @@ function update_table(event){
               category:category,
               tax:tax,
               round:round,
-              mode:mode,
+              // mode:mode,
             })
 
-            select_from_table(parent_tag_str,table_name);
+            // select_from_table(parent_tag_str,table_name);
+            create_table({
+              parent_tag_str:parent_tag_str,
+              table_name:table_name,
+              label:label,
+              col:col,
+              row:results
+            });
 
           });
 
@@ -217,14 +232,6 @@ function update_table(event){
           });
 
         }
-
-        var status=document.getElementById(parent_tag_str+'_status');
-        status.innerText='修正が完了しました。';
-  
-        $('#'+parent_tag_str+'_status').show(1000,function(){
-          $('#'+parent_tag_str+'_status').hide(1500);
-        });
-  
 
       });
 
