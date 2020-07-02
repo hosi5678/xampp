@@ -1,6 +1,6 @@
 'use strict';
 // このやり方はうまくいかない
-function create_members_thead({
+function create_members_box({
   parent_tag_str,
   label,
   table_num,

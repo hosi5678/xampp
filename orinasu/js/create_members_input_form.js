@@ -29,33 +29,6 @@ function create_members_input_form({
 	 p.innerText='メンバーの新規登録';
 
 			title.appendChild(p);
-
-		// このやり方はうまくいかない。
-		//	const table_num=4;
-			// // tableの設置
-			// for(let j=0;j<table_num;j++){
-			// 	create_elements({
-			// 			form:form,
-			// 			parent_tag_str:parent_tag_str,
-			// 			element_str:'table',
-			// 			id:j,
-			// 	});
-	
-			// }
-
-			// // thの設置
-			// create_members_thead({
-			// 	parent_tag_str:parent_tag_str,
-			// 	label:label,
-			// 	table_num:table_num,
-			// });
-
-			// //tdの設置
-			// create_members_tbody({
-			// 		parent_tag_str:parent_tag_str,
-			// 		label:label,
-			// 		table_num:table_num,
-			// });
 			
 			let koumoku=document.createElement('div');
 				koumoku.id=parent_tag_str+'_row1';

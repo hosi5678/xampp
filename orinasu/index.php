@@ -29,6 +29,8 @@ require_once("./php_libs/insert_access_log.php");
 	<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="./favicon.ico">
 	<link rel="stylesheet" type="text/css" href="./css/index.css">
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.19/themes/redmond/jquery-ui.css">
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.0/css/theme.default.min.css"> -->
+
 	<script src='./js/jquery-3.4.1.min.js'></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
@@ -101,10 +103,12 @@ require_once("./php_libs/insert_access_log.php");
 	<script src='./js/call_barChart.js'></script>
 	<script src='./js/call_lineChart.js'></script>
 	<script src='./js/create_elements.js'></script>
-	<script src='./js/create_members_tbody.js'></script>
-	<script src='./js/create_members_thead.js'></script>
+	<script src='./js/create_members_box.js'></script>
+	<script src='./js/create_members_content.js'></script>
 	<script src='./js/create_container.js'></script>
- 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.widgets.min.js'></script>
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/extras/jquery.metadata.min.js"></script>
 </head>
 
 <body>

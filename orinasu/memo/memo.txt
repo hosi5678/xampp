@@ -16,6 +16,7 @@ todos:
 GROUP BY と集計関数は切っても切れない関係である
 ・pdf.jsの導入
 ・jexcelの導入
+・table sorterの導入
 
 todos・tanka検索
 
@@ -73,6 +74,19 @@ insertとupdateに切り分け
     ->
     http://architect-wat.hatenablog.jp/entry/20130320/1363786174
 
+// html
+theadは
+<thead>
+    <tr>
+      <th>ユーザID</th>
+      <th>名前</th>
+      <th>名前(かな)</th>
+      <th>年齢</th>
+      <th>住所</th>
+    </tr>
+  </thead>
+  が正しい(table sorterより)
+
 // css
 opacity:0
 ->完全に透明
@@ -113,3 +127,5 @@ Highcharts is already included in Highcharts Stock, so it is not necessary to lo
 ここで注意するのは 日付 のデータは 「UnixTime * 1000」の形式にしておく必要があります。
 こうしないと Highstock はエラーが出て動きません。
 https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/stock/chart/renderto-jquery/
+
+// alt + tab で画面を切り替える

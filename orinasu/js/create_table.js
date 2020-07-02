@@ -11,12 +11,8 @@ function create_table({parent_tag_str,table_name,label,col,row}){
   console.log('row is:');
   console.log(row);
 
-  var parent_tag=document.getElementById(parent_tag_str+'_results');
-
-  // 画面の更新
-  while(parent_tag.firstChild){
-    parent_tag.removeChild(parent_tag.firstChild);
-  }
+    // 画面の更新
+  const parent_tag=childNodeClear(parent_tag_str+'_results');
 
   var p=document.createElement('p');
   p.innerText='テーブル一覧';
@@ -61,8 +57,12 @@ function create_table({parent_tag_str,table_name,label,col,row}){
 
   var table=document.createElement('table');
   table.classList.add('table-nth-gray');
+  table.classList.add('tablesorter');
+  table.id=parent_tag_str+'_table';
 
   var thead=document.createElement('thead');
+
+  var tr=document.createElement('tr');
 
   for(var i=0;i<label.length;i++){
     var th=document.createElement('th');
@@ -73,7 +73,7 @@ function create_table({parent_tag_str,table_name,label,col,row}){
     if(label[i]=='日') th.classList.add('td-hide');
     if(label[i]=='備考') th.classList.add('td-bikou');
 
-    thead.appendChild(th);
+    tr.appendChild(th);
 
 }
 
@@ -87,9 +87,7 @@ function create_table({parent_tag_str,table_name,label,col,row}){
 
   th.appendChild(img);
 
-  thead.appendChild(th);
-
-  table.appendChild(thead);
+  tr.appendChild(th);
 
 // ゴミ箱記号の追加
   var th=document.createElement('th');
@@ -101,7 +99,9 @@ function create_table({parent_tag_str,table_name,label,col,row}){
 
   th.appendChild(img);
 
-  thead.appendChild(th);
+  tr.appendChild(th);
+
+  thead.appendChild(tr);
 
   table.appendChild(thead);
 
@@ -171,5 +171,16 @@ function create_table({parent_tag_str,table_name,label,col,row}){
   table.appendChild(tbody);
 
   parent_tag.appendChild(table);  
+
+  $('#'+parent_tag_str+'_table').tablesorter({
+    theme: 'blue',            // カラーを青に
+    widgets: ['zebra', 'scroller'],   // ゼブラカラーの適用と、スクロールバーの表示
+    widgetOptions: {
+      scroller_height:100,       // テーブルの最大サイズ
+      scroller_upAfterSort: true,    
+      scroller_jumpToHeader: true,   
+      scroller_barWidth: null,
+    }
+  });
 
 }

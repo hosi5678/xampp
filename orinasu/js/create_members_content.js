@@ -1,6 +1,6 @@
 'use strict';
 // このやり方はうまくいかない
-function create_members_tbody({
+function create_members_content({
   parent_tag_str,
   label,
   table_num,
