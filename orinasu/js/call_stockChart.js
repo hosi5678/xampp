@@ -40,6 +40,7 @@ function call_stockChart({parent_tag_str,series}){
           renderTo:parent_tag_str+'_container',
           width:900,
           height:400,
+          zoomType: 'x',
         },
         title: {
           text: '売上状況',
@@ -61,12 +62,17 @@ function call_stockChart({parent_tag_str,series}){
 									},
 									minRange: 60*1000*60*24 // one day
         }],
-        yAxis: {
-          title: {
-												text: '売上(円)',
-										},
+        yAxis:[ 
+          {
+           title: {text:''}
+          },
+          {
+          title: {text: '売上(円)',},
+          opposite: false
+          }
+        ],
 									
-								},
+								
         plotLines: [{
             value: 0,
             width: 1,
@@ -113,11 +119,19 @@ function call_stockChart({parent_tag_str,series}){
           }]
         },
 
+      legend: {
+          enabled: true,
+          align: 'right',
+          layout: 'vertical',
+          verticalAlign: 'top',
+          y: 50,
+      },
+
       plotOptions:{  // プロットオプション
        series: {
 
 								marker: {
-									fillColor: '#FFFFFF',
+									fillColor: '#0000ff',
 									lineWidth: 1,
 									lineColor: null // inherit from series
 							},
@@ -133,10 +147,16 @@ function call_stockChart({parent_tag_str,series}){
   					}
 						},
 						
-						navigator: {  // ナビゲータ
+            navigator: {  // ナビゲータ
+              enabled: true,
 							xAxis: {
-								type:'date',
-								// max : new Date().getTime()
+								type:'datetime',
+                // max : new Date().getTime()
+                labels: {
+                  // format: '{value:%Y-%m-%e}'
+                  format:'{value:%Y/%m}',
+
+                },
 							}
 						},
   });
