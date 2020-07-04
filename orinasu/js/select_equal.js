@@ -10,6 +10,8 @@ function select_equal(event){
   const label=event.target.label;
   const col=event.target.col;
 
+  const id=event.target.id;
+
   let key;
   let condition;
   
@@ -24,7 +26,8 @@ function select_equal(event){
     condition='!=0';
 
   }else if(parent_tag_str=='products'){
-    let val=document.getElementById(parent_tag_str+'6').value;
+    let val=document.getElementById(id).value;
+    if(typeof val=='string') val='"'+val+'"';
     key=col+'='+val;
     condition='';
   }

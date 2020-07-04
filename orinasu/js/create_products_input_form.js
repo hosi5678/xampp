@@ -53,9 +53,20 @@ function create_products_input_form({
           th.innerText=label[i];
           thead.appendChild(th);
           var td=document.createElement('td');
+
           var input=document.createElement('input');
           input.type='date';
           input.id=parent_tag_str+i;
+
+          input.addEventListener('click',select_equal);
+          input.addEventListener('keyup',select_equal);
+          input.addEventListener('change',select_equal);
+          input.id=parent_tag_str+i;
+          input.col=col[i];
+          input.table_name=table_name;
+          input.parent_tag_str=parent_tag_str;
+          input.label=label;
+
           td.appendChild(input);
           tr.appendChild(td);
         }
