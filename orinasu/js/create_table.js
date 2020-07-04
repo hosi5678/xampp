@@ -57,7 +57,7 @@ function create_table({parent_tag_str,table_name,label,col,row}){
 
   var table=document.createElement('table');
   // table.classList.add('table-nth-gray');
-  table.classList.add('tablesorter-blue');
+  table.classList.add('cell-border');
   table.id=parent_tag_str+'_table';
 
   var thead=document.createElement('thead');
@@ -173,26 +173,36 @@ function create_table({parent_tag_str,table_name,label,col,row}){
   parent_tag.appendChild(table);  
 
 		if(parent_tag_str=='products'){
-			$('#'+parent_tag_str+'_table').tablesorter({
-					theme: 'blue',            // カラーを青に
-    // header layout template; {icon} needed for some themes
-    headerTemplate : '{content}{icon}',
+      $('#'+parent_tag_str+'_table').DataTable({
+        oLanguage: {
+          /* 日本語化設定 */
+          sLengthMenu : "表示　_MENU_　件", // 表示行数欄(例 = 表示 10 件)
+          oPaginate : { // ページネーション欄
+            sNext : "次へ",
+            sPrevious : "前へ"
+          },
+          sInfo : "_TOTAL_ 件中 _START_件から_END_件 を表示しています", // 現在の表示欄(例 = 100 件中 20件から30件 を表示しています)
+          sSearch : "検索 ", // 検索欄(例 = 検索 --)
+          sZeroRecords : "表示するデータがありません", // 表示する行がない場合
+          sInfoEmpty : "0 件中 0件 を表示しています", // 行が表示されていない場合
+          sInfoFiltered : "全 _MAX_ 件から絞り込み" // 検索後に総件数を表示する場合
+        }
+      }); 
+      // $.noConflict();
+			// $('#'+parent_tag_str+'_table').DataTable({
+      //   "paging":true,
+      // });
 
-    // initialize zebra striping and column styling of the table
-    widgets : ["zebra", "columns"],
-
-    widgetOptions : {
-      // change the default column class names
-      // primary is the first column sorted, secondary is the second, etc
-      columns : [ "primary", "secondary", "tertiary" ],
-      // include thead when adding class names
-      columns_thead : true,	
-							scroller_height:100,       // テーブルの最大サイズ
-							scroller_upAfterSort: true,    
-							scroller_jumpToHeader: true,   
-							scroller_barWidth: null,
-					}
-			});
+      // jQuery(function($){ 
+      //   // デフォルトの設定を変更
+      //   // $.extend( $.fn.dataTable.defaults, { 
+      //   //     language: {
+      //   //         url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Japanese.json"
+      //   //     } 
+      //   // }); 
+    
+  
+      // }); 
 		}
 
 }
