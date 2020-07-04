@@ -7,9 +7,6 @@ function create_graph({
 
 	console.log('--- in create graph ---');
 
-	// console.log('parent tag str:'+parent_tag_str);
-	// console.log('table name:'+table_name);
-
 	let query;
 
 	const selectValue=document.getElementById(parent_tag_str+0).value;
@@ -17,14 +14,12 @@ function create_graph({
 	console.log('select value:'+selectValue);
 
 	if(selectValue=='term'){
-		query='select sales_date,category,uriage from products order by sales_date asc;';
+		query='select sales_date,category,sum(uriage) as "uriage" from products group by sales_date order by sales_date asc;';
 	}else if(selectValue=='category'){
 		query='select category, sum(uriage) as "uriage" from products group by category order by category asc;';
 	}else if(selectValue=='tanka'){
-				query=' select category,tanka,sum(uriage) as "uriage" from products group by category order by tanka asc;';
-		}
-
-	// console.log(query);
+		query=' select category,tanka,sum(uriage) as "uriage" from products group by category order by tanka asc;';
+	}
 
 	$.when(
 		ajax_get_col('category'),
@@ -48,13 +43,13 @@ function create_graph({
 
 			for(let i=0;i<category.length;i++){
 					series.push({name:category[i],data:new Array()});
-						}
+				}
 
-						if(res.length>0){							
-							for(let j=0;j<res.length;j++){
+			if(res.length>0){							
+				for(let j=0;j<res.length;j++){
 
-				let time=Date.parse(res[j].sales_date);
-				let uriage=parseInt(res[j].uriage);
+					let time=Date.parse(res[j].sales_date);
+					let uriage=parseInt(res[j].uriage);
 
 					for(let i=0;i<category.length;i++){
 						if(arrayNum_to_String({array:category,num:res[j].category})==series[i].name){
@@ -62,7 +57,7 @@ function create_graph({
 						}
 					}
 				}
-						}
+			}
 						
 		}else if(selectValue=='category'){
 	
@@ -71,22 +66,12 @@ function create_graph({
 						}
 
 						for(let j=0;j<category.length;j++){
-
-							console.log('--'+category[j]);
-
 							for(let i=0;i<res.length;i++){
-								
 								if(category[j]==arrayNum_to_String({array:category,num:res[i].category})){
 									series[j]+=parseInt(res[i].uriage);
 								}
 							}
-
 						}
-
-						console.log('xaxis:');
-						console.log(xaxis);
-						console.log('series');
-						console.log(series);
 
 				}else if(selectValue=='tanka'){
 
