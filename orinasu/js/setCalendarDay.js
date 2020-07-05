@@ -14,12 +14,11 @@ function setCalendarDay({
   memo,
 }){
 
-  console.log('--- in set calendar day ---');
-  console.log('year:'+year);
-  console.log('month:'+month);
-  console.log('date:'+date);
+  // console.log('--- in set calendar day ---');
+  // console.log('year:'+year);
+  // console.log('month:'+month);
+  // console.log('date:'+date);
   // console.log('parent tag str:'+parent_tag_str);
-
 
   let m=moment();
 
@@ -32,8 +31,8 @@ function setCalendarDay({
 
   td.id=year+'-'+toDoubleDigits(month)+'-'+toDoubleDigits(date);
 
-		console.log('td.id:'+td.id);
-		console.log('youbi num:'+youbi_num);
+		// console.log('td.id:'+td.id);
+		// console.log('youbi num:'+youbi_num);
 
   var p=document.createElement('p');
   p.classList.add('calendar-hizuke');
@@ -165,15 +164,8 @@ function setCalendarDay({
       }
     }
 
-    // console.log(thisCalendar.length);
-
-
-    // console.log(thisCalendar[0]);
-    // console.log(thisCalendar[0].children[1]);
-    // console.log(thisCalendar[0].children.length);
 
     $(this).addClass('calendar-orange');
-
 
     show_yotei({
       id:td.id,
