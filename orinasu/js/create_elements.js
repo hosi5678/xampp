@@ -1,6 +1,6 @@
 'use strict';
 
-function create_elements({parent_tag_str,id,value,class_str,element_str,text,placeholder,form}){
+function create_elements({parent_tag_str,id,value,class_str,element_str,text,placeholder}){
 
 		let element;
     let parent_tag=document.getElementById(parent_tag_str);	

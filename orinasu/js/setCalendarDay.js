@@ -18,21 +18,22 @@ function setCalendarDay({
   console.log('year:'+year);
   console.log('month:'+month);
   console.log('date:'+date);
-  console.log('parent tag str:'+parent_tag_str);
+  // console.log('parent tag str:'+parent_tag_str);
 
 
-  var m=moment();
+  let m=moment();
 
-  var currYear=m.year();
-  var currMonth=m.month()+1;
-  var currDate=m.date();
+  let currYear=m.year();
+  let currMonth=m.month()+1;
+  let currDate=m.date();
 
-  var m=moment(new Date(year,month-1,date));
-  var youbi_num=m.day();
+  m=moment(new Date(year,month-1,date));
+		let youbi_num=m.day();
 
   td.id=year+'-'+toDoubleDigits(month)+'-'+toDoubleDigits(date);
 
-  console.log('td.id:'+td.id);
+		console.log('td.id:'+td.id);
+		console.log('youbi num:'+youbi_num);
 
   var p=document.createElement('p');
   p.classList.add('calendar-hizuke');
@@ -44,8 +45,8 @@ function setCalendarDay({
 
   var holidays = JapaneseHolidays.getHolidaysOf(year);
 
-  console.log('holiday:');
-  console.log(holidays);
+  // console.log('holiday:');
+  // console.log(holidays);
 
   var holidays_thisMonth=new Array();
 
@@ -68,11 +69,11 @@ function setCalendarDay({
   td.classList.add('td-calendar');
   td.classList.add(class_str);
   
-  console.log('currMonth:'+currMonth);
-  console.log('holidays this month:');
-  console.log(holidays_thisMonth);
+  // console.log('currMonth:'+currMonth);
+  // console.log('holidays this month:');
+  // console.log(holidays_thisMonth);
  
-  for(var k=0;k<holidays_thisMonth.length;k++){
+  for(let k=0;k<holidays_thisMonth.length;k++){
 
     if(holidays_thisMonth[k].date==td.id){
 
@@ -106,8 +107,8 @@ function setCalendarDay({
   var p=document.createElement('p');
 		p.classList.add('calendar-memo');
 		
-		console.log('---- memo ----');
-		console.log(memo);
+		// console.log('---- memo ----');
+		// console.log(memo);
 
 		p.innerText='';
 

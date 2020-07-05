@@ -13,24 +13,25 @@ function create_calendar_input_form({
     
     console.log('----- in create calendar input form ----- ');
 
-    console.log('parent_tag_str:'+parent_tag_str);
-    console.log('table_name:'+table_name);
+    // console.log('parent_tag_str:'+parent_tag_str);
+    // console.log('table_name:'+table_name);
 
-    console.log('label is:');
-    console.log(label);
+    // console.log('label is:');
+    // console.log(label);
 
-    console.log('col is:');
-    console.log(col);
+    // console.log('col is:');
+    // console.log(col);
 
-    var curr=new Date();
-    var currYear=curr.getFullYear();
-				var currMonth=curr.getMonth();
+		// localize,localize
+		moment.locale('ja');
+
+    const m=moment();
     
     create_calendar({
       parent_tag_str:parent_tag_str,
       table_name:table_name,
-      year:currYear,
-			month:currMonth,
+      year:m.get('year'),
+			month:m.get('month'),
       youbi:youbi,
       label:label,
       col:col

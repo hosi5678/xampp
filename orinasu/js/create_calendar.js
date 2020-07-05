@@ -2,92 +2,106 @@
 
 function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col}){
 
-    console.log('------in create calendar------');
+	console.log('------in create calendar------');
+	
+	console.log('yaer:'+year);
+	console.log('month:'+month);
 
-		// localize
+		// localize,localize
 		moment.locale('ja');
 
 		// 現在時刻オブジェクト
-		var m=moment();
+
+		// // 今月の取得
+		// const thisMonth_first=new Date(year,month,1);
+		
+		// // 先月の末尾を取得する
+		// const prevMonth_last=new Date(year,month,0);
+
+		// // 今月の末尾を取得する
+		// const thisMonth_last=new Date(year,(month+1),0);
+		 
+		// // 来月の初日を取得する
+		// const nextMonth_first=new Date(year,(month+1),1);
+
+
+		// 今月初め
+		const thisMonth_first=moment(new Date(year,month,1)).startOf('month');
+
+		// 先月の最終日
+		const prevMonth_last=moment(new Date(year,month,1)).add(-1,'month').endOf('month');
+
+		// 来月の初日を取得する
+		const nextMonth_first=moment(new Date(year,month,1)).add(1,'month').startOf('month');//.new Date(year,(month+1),1);
+
+	// 今月末
+	const thisMonth_last=moment(new Date(year,month,1)).endOf('month');
+
+		
+		const m=moment();
 
 		// console.log('year:'+m.year());
 
 		// console.log(m.format("LLLL"));
 
 		// 現在の日付の取得
-    var currYear=m.year();
-		var currMonth=m.month();
-		var currDate=m.date();
+  let currYear=m.year();
+		let currMonth=m.month();
+		let currDate=m.date();
 		
-		var today=currYear+'年'+(currMonth+1)+'月'+(currDate)+'日('+youbi[m.day()]+')';
+		let today=m.year()+'年'+(m.month()+1)+'月'+(m.date())+'日('+youbi[m.day()]+')';
 		
-    var title=childNodeClear(parent_tag_str+'_title');
+  let title=childNodeClear(parent_tag_str+'_title');
 
-		var p=document.createElement('p');
+		let p=document.createElement('p');
 
 		p.innerText=today;
 
 		title.appendChild(p);
 
-		// 今月の取得
-		var thisMonth=new Date(year,month,1);
-		
-		// 先月の末尾を取得する
-		var prevMonth_lastday=new Date(year,month,0);
+		const sengetu_hiniti=prevMonth_last.get('date')-prevMonth_last.get('day');
 
-		// 今月の末尾を取得する
-		var currMonth_lastday=new Date(year,(month+1),0);
-		 
-		// 来月の初日を取得する
-		var nextMonth_firstday=new Date(year,(month+1),1);
-
-
-		var prevMonth_lastDate=moment().add(-1,'month').endOf('month').date();
-
-		var sengetu_hiniti=(prevMonth_lastday.getDate()-prevMonth_lastday.getDay());
-
-
-		console.log('先月末(日):'+prevMonth_lastDate);
+		console.log('先月末(日):'+prevMonth_last.get('date'));
 		console.log('今月の日にち:'+moment().daysInMonth());
-		console.log('this month get month:'+thisMonth.getMonth());
+		console.log('this moment month get month:'+m.get('month'));
 
 		// 現カレンダーの先月の開始日
-		var where_start_date;
+		let where_start_date;
 
-		if(thisMonth.getDay()==0){
+		if(thisMonth_first.get('day')==0){
 			where_start_date=m.year()+'-'
-			+toDoubleDigits(thisMonth.getMonth()+1)+'-'
+			+toDoubleDigits(m.get('month')+1)+'-'
 			+toDoubleDigits(1);
 		}else{
-			where_start_date=prevMonth_lastday.getFullYear()+'-'
-			+toDoubleDigits(prevMonth_lastday.getMonth()+1)+'-'
-			+toDoubleDigits(prevMonth_lastday.getDate()-prevMonth_lastday.getDay());
+			where_start_date=prevMonth_last.get('year')+'-'
+			+toDoubleDigits(prevMonth_last.get('month')+1)+'-'
+			+toDoubleDigits(prevMonth_last.get('date')-prevMonth_last.get('day'));
 		}
 		
 		console.log('where start date:'+where_start_date);
 
 		// 現カレンダーの来月の末尾
 
-		var where_end_date;
+		let where_end_date;
 
-		if(currMonth_lastday.getDay()==6){
-			where_end_date=currMonth_lastday.getFullYear()+'-'
-			+toDoubleDigits(currMonth_lastday.getMonth()+1)+'-'
-			+toDoubleDigits(currMonth_lastday.getDate());
+		if(thisMonth_last.get('day')==6){
+			where_end_date=m.get('year')+'-'
+			+toDoubleDigits(m.get('month')+1)+'-'
+			+toDoubleDigits(m.daysInMonth());
 		}else{
-			where_end_date=nextMonth_firstday.getFullYear()+'-'
-			+toDoubleDigits(nextMonth_firstday.getMonth()+1)+'-'
-			+toDoubleDigits(nextMonth_firstday.getDate()+(6-nextMonth_firstday.getDay()));
+			where_end_date=nextMonth_first.get('year')+'-'
+			+toDoubleDigits(nextMonth_first.get('month')+1)+'-'
+			+toDoubleDigits(nextMonth_first.get('date')+(6-nextMonth_first.get('day')));
 		}
 
 		console.log('where end date:'+where_end_date);
 
 		 // 画面の更新
-		var parent_tag=childNodeClear(parent_tag_str+'_hyou');
+		let parent_tag=childNodeClear(parent_tag_str+'_hyou');
  
-    var div_title=document.createElement('div');
+  let div_title=document.createElement('div');
      		 
-		var div=document.createElement('div');
+		let div=document.createElement('div');
 
 		div.classList.add('calendar-left-arrow');
 		div.style.display='inline-block';
@@ -117,7 +131,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 
 		div_title.appendChild(div);
 
-		var a=document.createElement('a');
+		let a=document.createElement('a');
 
 		a.innerText='今月';
 		a.youbi=youbi;
@@ -129,8 +143,8 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 			create_calendar({
 				parent_tag_str:parent_tag_str,
 				table_name:table_name,
-				year:currYear,
-				month:currMonth,
+				year:m.get('year'),
+				month:m.get('month'),
 				youbi:youbi,
 				label:label,
 				col:col
@@ -139,7 +153,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 
 		div_title.appendChild(a);
 
-		var div=document.createElement('div');
+	 div=document.createElement('div');
 		div.style.display='inline-block';
 		div.classList.add('calendar-right-arrow');
 		div.innerText='▶';
@@ -172,9 +186,9 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 
 		parent_tag.appendChild(div_title);
 
-		var div=document.createElement('div');
+		div=document.createElement('div');
 
-		var p=document.createElement('p');
+	 p=document.createElement('p');
 
 		p.id='year';
 		p.value=year;
@@ -183,7 +197,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 	
 		div.appendChild(p);
 
-		var p=document.createElement('p');
+		p=document.createElement('p');
 
 		p.id='month';
 		p.value=month;
@@ -212,7 +226,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 
 		table.appendChild(thead);
 
-		var thisMonthDate=1;
+		let thisMonthDate=1;
 
 		$.when(ajax_select_from_memo({
 			table_name:table_name,
@@ -221,19 +235,19 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 		})).done(function(memo){
 
 			// カレンダー作成の処理
-			for(var j=0;j<getWeekNum(currMonth_lastday);j++){
+			for(let j=0;j<getWeekNum(thisMonth_last);j++){
 				var tr=document.createElement('tr');
 					// 最初の週の処理,先月
 					if(j==0){
-						if(prevMonth_lastday.getDay()!=6){
-							for(var i=sengetu_hiniti;i<=prevMonth_lastday.getDate();i++){
+						if(prevMonth_last.get('day')!=6){
+							for(var i=sengetu_hiniti;i<=prevMonth_last.get('date');i++){
 
 								var td=document.createElement('td');
 
 								td=setCalendarDay({
 									td:td,
-									year:prevMonth_lastday.getFullYear(),
-									month:prevMonth_lastday.getMonth()+1,
+									year:prevMonth_last.get('year'),
+									month:prevMonth_last.get('month')+1,
 									date:i,
 									parent_tag_str:parent_tag_str,
 									table_name:table_name,
@@ -249,14 +263,14 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 						}
 
 						// 最初の週の処理,今月(1-)
-						for(var i=thisMonth.getDay();i<7;i++){
+						for(let i=thisMonth_first.get('day');i<7;i++){
 
 								var td=document.createElement('td');
 
 								td=setCalendarDay({
 									td:td,
-									year:thisMonth.getFullYear(),
-									month:thisMonth.getMonth()+1,
+									year:thisMonth_first.get('year'),
+									month:thisMonth_first.get('month')+1,
 									date:thisMonthDate,
 									parent_tag_str:parent_tag_str,
 									table_name:table_name,
@@ -271,17 +285,17 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 						}
 
 					// 今月(本体)の処理(1-30,31)
-					}else if(j<(getWeekNum(currMonth_lastday))){
+					}else{
 						
 						for(var i=0;i<7;i++){
-							if(thisMonthDate<=currMonth_lastday.getDate()){
+							if(thisMonthDate<=thisMonth_last.get('date')){
 								
 								var td=document.createElement('td');
 
 								td=setCalendarDay({
 									td:td,
-									year:thisMonth.getFullYear(),
-									month:thisMonth.getMonth()+1,
+									year:thisMonth_first.get('year'),
+									month:thisMonth_first.get('month')+1,
 									date:thisMonthDate,
 									parent_tag_str:parent_tag_str,
 									table_name:table_name,
@@ -299,17 +313,17 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 						}
 
 						// 来月の処理
-						if(thisMonthDate>currMonth_lastday.getDate()&&nextMonth_firstday.getDay()!=0){
+						if(thisMonthDate>thisMonth_last.get('date')&&nextMonth_first.get('day')!=0){
 							thisMonthDate=1;
 
-							for(var i=nextMonth_firstday.getDay();i<7;i++){
+							for(var i=nextMonth_first.get('day');i<7;i++){
 
 								var td=document.createElement('td');
 
 								td=setCalendarDay({
 									td:td,
-									year:nextMonth_firstday.getFullYear(),
-									month:nextMonth_firstday.getMonth()+1,
+									year:nextMonth_first.get('year'),
+									month:nextMonth_first.get('month')+1,
 									date:thisMonthDate,
 									parent_tag_str:parent_tag_str,
 									table_name:table_name,
@@ -334,11 +348,9 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 
 			table.appendChild(tbody);
 
-			var parent_tag=document.getElementById(parent_tag_str+'_hyou');
-
 			parent_tag.appendChild(table);
 	
-			var parent_tag=childNodeClear(parent_tag_str+'_params');
+		 parent_tag=childNodeClear(parent_tag_str+'_params');
 
 			var form=document.createElement('form');
 			 
@@ -414,7 +426,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 	
 			parent_tag.appendChild(form);
 	
-			var exec=childNodeClear(parent_tag_str+'_exec');
+			childNodeClear(parent_tag_str+'_exec');
 	
 			var a=document.createElement("a");
 	
@@ -422,12 +434,11 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 			a.style.display='block';
 			a.classList.add('a-insert');
 
+			let today=m.get('year')+'-'+toDoubleDigits(m.get('month')+1)+'-'+toDoubleDigits(m.get('date'));
+
 			if(memo.length>0){
 					for(var r=0;r<memo.length;r++){
-					if(((currYear+'-'
-						 +toDoubleDigits(currMonth+1)+'-'
-						 +toDoubleDigits(currDate))==memo[r]["日付"])&&(memo[r]["メモ"]!="")){
-
+					if((today==memo[r]["日付"])&&(memo[r]["メモ"]!="")){
 
 								create_exec({
 									parent_tag_str:parent_tag_str,
@@ -437,7 +448,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 									col:col,
 									mode:'update', // modify
 									class_str:'a-mod',
-									id:'"'+currYear+'-'+toDoubleDigits(currMonth+1)+'-'+toDoubleDigits(currDate)+'"',
+									id:'"'+today+'"',
 							});
 			
 							// 合致したら抜ける
@@ -453,7 +464,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 								col:col,
 								mode:'insert', // modify
 								class_str:'a-insert',
-								id:'"'+currYear+'-'+toDoubleDigits(currMonth+1)+'-'+toDoubleDigits(currDate)+'"',
+								id:'"'+today+'"',
 								youbi:youbi,
 						});
 
@@ -475,7 +486,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 			}
 					 
 
-			var parent_tag=childNodeClear(parent_tag_str+'_results');
+		 parent_tag=childNodeClear(parent_tag_str+'_results');
 
 			create_table({
 				parent_tag_str:parent_tag_str,
