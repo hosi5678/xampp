@@ -425,9 +425,18 @@ table.tablesorter-blue tr.even td.tertiary {
 textarea {
 	margin-bottom: 10px;
 	font-size:25px;
-	width:500px;
-	height:200px;
-
+	width:600px;
+	height:300px;
+	  background-image:
+        linear-gradient(to right, white 10px, transparent 10px),
+        linear-gradient(to left, white 10px, transparent 10px),
+        repeating-linear-gradient(white, white 30px, #ccc 30px, #ccc 31px, white 31px);
+	/* box-shadow: 0.1em 0.1em 0.1em black;
+ 	background-image: linear-gradient(left, white 10px, transparent 10px), linear-gradient(right, white 10px, transparent 10px), linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+    background-size: 100% 100%, 100% 100%, 100% 31px; */
+    /* 淡いグレーで枠線を囲む */
+    border: 1px solid #ccc;
+		margin-bottom:30px;
 }
 
 .exec {

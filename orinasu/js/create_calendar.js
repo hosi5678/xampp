@@ -38,7 +38,7 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 	const thisMonth_last=moment(new Date(year,month,1)).endOf('month');
 
 		
-		const m=moment();
+	const m=moment();
 
 		// console.log('year:'+m.year());
 
@@ -356,6 +356,10 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 			 
 			form.name=parent_tag_str+'_insert';
 	
+			today=m.get('year')+'-'+toDoubleDigits(m.get('month')+1)+'-'+toDoubleDigits(m.get('date'));
+
+			console.log('today:'+today);
+
 			for(var i=0;i<label.length;i++){
 	
 				if(label[i]=='id') continue;
@@ -377,10 +381,15 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 					form.appendChild(p);
 	
 					var textarea=document.createElement('textarea');
+
+					for(var r=0;r<memo.length;r++){
+						if((today==memo[r]['日付'])&&(memo[r]['予定']!='')){
+							textarea.value=memo[r]['予定'];
+						}
+					}
+
 	
 					textarea.id=parent_tag_str+i;
-					textarea.rows=5;
-					textarea.cols=80;
 					textarea.style.display='block';
 					textarea.name=col[i];
 					form.appendChild(textarea);
@@ -398,13 +407,11 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 					var textarea=document.createElement('textarea');
 	
 					textarea.id=parent_tag_str+i;
-					textarea.rows=5;
-					textarea.cols=80;
 					textarea.style.display='block';
 					textarea.name=col[i];
 
 					for(var r=0;r<memo.length;r++){
-						if(((currYear+'-'+toDoubleDigits(currMonth+1)+'-'+toDoubleDigits(currDate))==memo[r]["日付"])&&(memo[r]["メモ"]!="")){
+						if((today==memo[r]["日付"])&&(memo[r]["メモ"]!="")){
 							textarea.value=memo[r]["メモ"];
 						}
 					}
@@ -433,8 +440,6 @@ function create_calendar({parent_tag_str,table_name,year,month,youbi,label,col})
 			a.href='#'+parent_tag_str;
 			a.style.display='block';
 			a.classList.add('a-insert');
-
-			let today=m.get('year')+'-'+toDoubleDigits(m.get('month')+1)+'-'+toDoubleDigits(m.get('date'));
 
 			if(memo.length>0){
 					for(var r=0;r<memo.length;r++){
