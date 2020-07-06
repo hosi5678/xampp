@@ -96,6 +96,7 @@ function create_table({parent_tag_str,table_name,label,col,row}){
   img.src='../images/trash.png';
   img.alt='trash';
   img.classList.add('img');
+  img.classList.add('trash');
 
   th.appendChild(img);
 
