@@ -9,16 +9,29 @@ function create_graph({
 
 	let query;
 
-	const selectValue=document.getElementById(parent_tag_str+0).value;
+	const yokojiku=document.getElementById(parent_tag_str+0).value;
+	const tatejiku=document.getElementById(parent_tag_str+1).value;
 
-	console.log('select value:'+selectValue);
+	console.log('tatejiku:'+tatejiku);
+	console.log('yokojiku:'+yokojiku);
 
-	if(selectValue=='term'){
-		query='select sales_date,category,sum(uriage) as "uriage" from products group by sales_date order by sales_date asc;';
-	}else if(selectValue=='category'){
-		query='select category, sum(uriage) as "uriage" from products group by category order by category asc;';
-	}else if(selectValue=='tanka'){
-		query=' select category,tanka,sum(uriage) as "uriage" from products group by category order by tanka asc;';
+	if(tatejiku=='uriage'){
+		if(yokojiku=='term'){
+			query='select sales_date,category,sum(uriage) as "uriage" from products group by sales_date order by sales_date asc;';
+		}else if(yokojiku=='category'){
+			query='select category, sum(uriage) as "uriage" from products group by category order by category asc;';
+		}else if(yokojiku=='tanka'){
+			query=' select category,tanka,sum(uriage) as "uriage" from products group by category order by tanka asc;';
+		}
+	}else if(tatejiku=='kosuu'){
+		if(yokojiku=='term'){
+			query='select sales_date,category,sum(kosuu) as "kosuu" from products group by sales_date order by sales_date asc;';
+		}else if(yokojiku=='category'){
+			query='select category, sum(kosuu) as "kosuu" from products group by category order by category asc;';
+		}else if(yokojiku=='tanka'){
+			query=' select category,tanka,sum(kosuu) as "kosuu" from products group by category order by tanka asc;';
+		}
+
 	}
 
 	$.when(
@@ -30,6 +43,7 @@ function create_graph({
 					
 		console.log('--- results---');
 		console.log(res);
+		console.log(tatejiku);
 
 		const category=getArrayFromRows({
 			rows:category_rows,
@@ -39,7 +53,7 @@ function create_graph({
 				const series=new Array();
 				const xaxis=new Array();
 
-		if(selectValue=='term'){
+		if(yokojiku=='term'){
 
 			for(let i=0;i<category.length;i++){
 					series.push({name:category[i],data:new Array()});
@@ -49,17 +63,17 @@ function create_graph({
 				for(let j=0;j<res.length;j++){
 
 					let time=Date.parse(res[j].sales_date);
-					let uriage=parseInt(res[j].uriage);
+					let tate=parseInt(res[j][tatejiku]);
 
 					for(let i=0;i<category.length;i++){
 						if(arrayNum_to_String({array:category,num:res[j].category})==series[i].name){
-								series[i].data.push([time,uriage]);
+								series[i].data.push([time,tate]);
 						}
 					}
 				}
 			}
 						
-		}else if(selectValue=='category'){
+		}else if(yokojiku=='category'){
 	
 						for(let j=0;j<category.length;j++){
 							series.push(0);
@@ -68,12 +82,12 @@ function create_graph({
 						for(let j=0;j<category.length;j++){
 							for(let i=0;i<res.length;i++){
 								if(category[j]==arrayNum_to_String({array:category,num:res[i].category})){
-									series[j]+=parseInt(res[i].uriage);
+									series[j]+=parseInt(res[i][tatejiku]);
 								}
 							}
 						}
 
-				}else if(selectValue=='tanka'){
+				}else if(yokojiku=='tanka'){
 
 						let tmp=new Array();
 
@@ -81,22 +95,43 @@ function create_graph({
 							for(let j=0;j<res.length;j++){
 									xaxis.push(parseInt(res[j].tanka));
 
-									let uriage=parseInt(res[j].uriage);
-				 				tmp.push(uriage);
+									let tate=parseInt(res[j][tatejiku]);
+				 				tmp.push(tate);
 						
 								}
 								
-								series.push({name:'売上',data:tmp})
+								let title;
+								if(tatejiku=='uriage'){
+										title='売上';
+								}else if(tatejiku=='kosuu'){
+										title='個数';
+								}
+
+								series.push({name:title,data:tmp})
 
 						}
 				}
 
-		if(selectValue=='term'){
-			call_stockChart({parent_tag_str:parent_tag_str,series:series});
-		}else if(selectValue=='category'){
-			call_barChart({parent_tag_str:parent_tag_str,series:series,xaxis:category});
-		}else if(selectValue=='tanka'){
-			call_lineChart({parent_tag_str:parent_tag_str,series:series,xaxis:xaxis});
+		let yAxis_title;
+		let tanni;
+		console.log('tatejiku:'+tatejiku);
+
+		if(tatejiku=='uriage'){
+				yAxis_title='売上(円)';
+				tanni='円';
+		}else if(tatejiku=='kosuu'){
+				yAxis_title='個数';
+				tanni='個';
+		}
+
+		console.log('yAxis:'+yAxis_title);		
+
+		if(yokojiku=='term'){
+			call_stockChart({parent_tag_str:parent_tag_str,series:series,yAxis_title:'期間ごとの'+yAxis_title,tanni:tanni});
+		}else if(yokojiku=='category'){
+			call_barChart({parent_tag_str:parent_tag_str,series:series,xaxis:category,yAxis_title:'カテゴリーごとの'+yAxis_title,tanni:tanni});
+		}else if(yokojiku=='tanka'){
+			call_lineChart({parent_tag_str:parent_tag_str,series:series,xaxis:xaxis,yAxis_title:'単価ごとの'+yAxis_title,tanni:tanni});
 		}
 
 	});

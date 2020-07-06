@@ -139,13 +139,13 @@ function insert_table(event){
       let status=document.getElementById(parent_tag_str+'_status');
 
       let p=document.createElement('p');
-      p.classList.add('status');
+      // p.classList.add('status');
       p.innerText='記入が完了しました。';
 
       status.appendChild(p);
 
       $('#'+parent_tag_str+'_status').show(1000,function(){
-        $('#'+parent_tag_str+'_status').hide(2500);
+        $('#'+parent_tag_str+'_status').hide(2000);
       });
 
       create_table({

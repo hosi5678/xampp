@@ -14,34 +14,40 @@ function create_graph_input_form({
   var thead=document.createElement('thead');
   var tbody=document.createElement('tbody');
 
-  var th=document.createElement('th');
+  let th=document.createElement('th');
 
   th.innerText='横軸';
 
   thead.appendChild(th);
 
+  th=document.createElement('th');
+
+  th.innerText='縦軸';
+
+  thead.appendChild(th);
+
   table.appendChild(thead);
 
-  var tr=document.createElement('tr');
-  var td=document.createElement('td');
+  let tr=document.createElement('tr');
+  let td=document.createElement('td');
 
-  var select=document.createElement('select');
-  select.id=parent_tag_str+0;
+  let select=document.createElement('select');
+  select.id=parent_tag_str+'0';
 
-  var option=document.createElement('option');
+  let option=document.createElement('option');
     option.value='term';
     option.innerText='期間';
     select.appendChild(option);
 
-  var option=document.createElement('option');
+  option=document.createElement('option');
     option.value='category';
     option.innerText='カテゴリー';
     select.appendChild(option);
   
-  var option=document.createElement('option');
+  option=document.createElement('option');
     option.value='tanka';
     option.innerText='単価';
-    select.appendChild(option);
+  select.appendChild(option);
 
   select.addEventListener('click',
     function(event){
@@ -51,6 +57,60 @@ function create_graph_input_form({
       });
     }
   );
+
+		  select.addEventListener('change',
+    function(event){
+      create_graph({
+        parent_tag_str:parent_tag_str,
+        table_name:table_name,
+      });
+    }
+  );
+
+
+  td.appendChild(select);
+  tr.appendChild(td);
+
+  select=document.createElement('select');
+		select.id=parent_tag_str+'1';
+
+  td=document.createElement('td');
+
+  option=document.createElement('option');
+		option.value='uriage';
+
+		option.innerText='売上高';
+  select.appendChild(option);
+  select.appendChild(option);
+  td.appendChild(select);
+
+  td=document.createElement('td');
+
+  option=document.createElement('option');
+		option.value='kosuu';
+
+		option.innerText='個数';
+  select.appendChild(option);
+  select.appendChild(option);
+
+  select.addEventListener('click',
+    function(event){
+      create_graph({
+        parent_tag_str:parent_tag_str,
+        table_name:table_name,
+      });
+    }
+  );
+
+		  select.addEventListener('change',
+    function(event){
+      create_graph({
+        parent_tag_str:parent_tag_str,
+        table_name:table_name,
+      });
+    }
+  );
+
 
   td.appendChild(select);
   tr.appendChild(td);

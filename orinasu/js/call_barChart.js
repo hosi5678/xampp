@@ -1,9 +1,11 @@
 'use strict';
-function call_barChart({parent_tag_str,series,xaxis}){
+function call_barChart({parent_tag_str,series,xaxis,yAxis_title,tanni}){
 
 		console.log('--- in barChart---');
 		console.log(series);
 		console.log('xaxis:'+xaxis);
+		console.log('yaxis title:'+yAxis_title);
+
 
 		Highcharts.setOptions({
 			global:{
@@ -28,7 +30,7 @@ function call_barChart({parent_tag_str,series,xaxis}){
 			},
 			yAxis: {
 					title: {
-							text: '総売上(円)'
+							text:yAxis_title,
 					},
 					plotLines: [{
 							value: 0,
@@ -37,7 +39,7 @@ function call_barChart({parent_tag_str,series,xaxis}){
 					}]
 			},
 			tooltip: {
-					valueSuffix: '円',
+					valueSuffix:' '+tanni,
 			},
 			// legend: {
 			// 		layout: 'vertical',

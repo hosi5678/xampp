@@ -19,8 +19,10 @@ insert into category(name) values('バッグ');
 insert into category(name) values('アクセサリ');
 insert into category(name) values('マスク');
 insert into category(name) values('ポーチ');
-insert into category(name) values('お財布');
-insert into category(name) values('服飾');
+insert into category(name) values('財布');
+insert into category(name) values('衣服');
+insert into category(name) values('委託');
+insert into category(name) values('その他');
 
 select * from category;
 

@@ -29,6 +29,11 @@ function delete_table(event){
 
       status.appendChild(p);
 
+      $('#'+parent_tag_str+'_status').show(1000,function(){
+        $('#'+parent_tag_str+'_status').hide(2000);
+      });
+
+
       // console.log('---test---');
       // console.log(table_name);
       // console.log(status);

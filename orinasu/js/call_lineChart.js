@@ -1,10 +1,12 @@
 'use strict';
-function call_lineChart({parent_tag_str,xaxis,series}){
+function call_lineChart({parent_tag_str,xaxis,series,yAxis_title,tanni}){
 
 
   console.log('--- in call line chart--- ');
   console.log(xaxis);
   console.log(series);
+  				console.log('yaxis title:'+yAxis_title);
+
 
   Highcharts.setOptions({
     global:{
@@ -20,7 +22,7 @@ function call_lineChart({parent_tag_str,xaxis,series}){
       height:400,
     },
     title: {
-      text: '単価ごとの売上状況',
+      text:yAxis_title,
       x: -20 //center
     },
     subtitle: {
@@ -41,7 +43,7 @@ function call_lineChart({parent_tag_str,xaxis,series}){
       }]
     },
     tooltip: {
-      valueSuffix: '円'
+      valueSuffix:' '+tanni,
     },
     legend: {
       layout: 'vertical',

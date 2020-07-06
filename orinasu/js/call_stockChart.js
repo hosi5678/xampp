@@ -1,4 +1,4 @@
-function call_stockChart({parent_tag_str,series}){
+function call_stockChart({parent_tag_str,series,yAxis_title,tanni}){
 
       // Highchart全体設定
   Highcharts.setOptions({
@@ -33,6 +33,8 @@ function call_stockChart({parent_tag_str,series}){
 		console.log('parent tag str:'+parent_tag_str);
 		console.log('series');
 		console.log(series);
+    				console.log('yaxis title:'+yAxis_title);
+
 
   chart=new Highcharts.StockChart({
   
@@ -67,7 +69,7 @@ function call_stockChart({parent_tag_str,series}){
            title: {text:''}
           },
           {
-          title: {text: '売上(円)',},
+          title: {text:yAxis_title,},
           opposite: false
           }
         ],
@@ -79,8 +81,10 @@ function call_stockChart({parent_tag_str,series}){
             color: '#808080'
         }],
 
-								tooltip: {
+				tooltip: {
          xDateFormat: '%Y/%m/%d',
+          valueSuffix:' '+tanni,
+
         },
         // legend: {
         //   layout: 'vertical',
