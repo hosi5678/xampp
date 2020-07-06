@@ -21,7 +21,7 @@ function create_graph({
 		}else if(yokojiku=='category'){
 			query='select category, sum(uriage) as "uriage" from products group by category order by category asc;';
 		}else if(yokojiku=='tanka'){
-			query=' select category,tanka,sum(uriage) as "uriage" from products group by category order by tanka asc;';
+			query='select category,tanka,sum(uriage) as "uriage" from products group by tanka order by tanka asc;';
 		}
 	}else if(tatejiku=='kosuu'){
 		if(yokojiku=='term'){
@@ -29,7 +29,7 @@ function create_graph({
 		}else if(yokojiku=='category'){
 			query='select category, sum(kosuu) as "kosuu" from products group by category order by category asc;';
 		}else if(yokojiku=='tanka'){
-			query=' select category,tanka,sum(kosuu) as "kosuu" from products group by category order by tanka asc;';
+			query=' select category,tanka,sum(kosuu) as "kosuu" from products group by tanka order by tanka asc;';
 		}
 
 	}
