@@ -5,7 +5,7 @@ function call_lineChart({parent_tag_str,xaxis,series,yAxis_title,tanni}){
   console.log('--- in call line chart--- ');
   console.log(xaxis);
   console.log(series);
-  				console.log('yaxis title:'+yAxis_title);
+  console.log('yaxis title:'+yAxis_title);
 
 
   Highcharts.setOptions({
@@ -20,6 +20,7 @@ function call_lineChart({parent_tag_str,xaxis,series,yAxis_title,tanni}){
       renderTo:parent_tag_str+'_container',
       width:900,
       height:400,
+      zoomType: 'y',
     },
     title: {
       text:yAxis_title,

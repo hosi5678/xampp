@@ -19,6 +19,7 @@ function call_barChart({parent_tag_str,series,xaxis,yAxis_title,tanni}){
 					renderTo:parent_tag_str+'_container',
 					width:900,
 					height:400,
+					zoomType: 'y',
 			},
 			title: {
 					text: '売上状況',
