@@ -20,10 +20,10 @@ function call_lineChart({parent_tag_str,xaxis,series,yAxis_title,tanni}){
       renderTo:parent_tag_str+'_container',
       width:900,
       height:400,
-      zoomType: 'y',
+      zoomType:'y',
     },
     title: {
-      text:yAxis_title,
+      text:'売上',
       x: -20 //center
     },
     subtitle: {
@@ -35,7 +35,7 @@ function call_lineChart({parent_tag_str,xaxis,series,yAxis_title,tanni}){
     },
     yAxis: {
       title: {
-        text: '売上(円)'
+        text:yAxis_title
       },
       plotLines: [{
         value: 0,

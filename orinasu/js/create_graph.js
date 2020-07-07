@@ -112,14 +112,17 @@ function create_graph({
 						}
 				}
 
+		let title;
 		let yAxis_title;
 		let tanni;
 		console.log('tatejiku:'+tatejiku);
 
 		if(tatejiku=='uriage'){
+				title='売上';
 				yAxis_title='売上(円)';
 				tanni='円';
 		}else if(tatejiku=='kosuu'){
+				title='個数';
 				yAxis_title='個数';
 				tanni='個';
 		}

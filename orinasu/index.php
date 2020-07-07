@@ -39,9 +39,11 @@ require_once("./php_libs/insert_access_log.php");
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
-	<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
-  <script src='./js/hightcharts.js'></script>
+	<script src="https://code.highcharts.com/stock/highstock.js"></script>
+
+  <!-- <script src='./js/hightcharts.js'></script> -->
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 	<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/highstock/6.0.3/highstock.js'></script> -->
@@ -51,6 +53,7 @@ require_once("./php_libs/insert_access_log.php");
 	<!-- <script defer src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" integrity="sha384-ujbKXb9V3HdK7jcWL6kHL1c+2Lj4MR4Gkjl7UtwpSHg/ClpViddK9TI7yU53frPN" crossorigin="anonymous"></script> -->
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highstock/6.0.3/highstock.js"></script> -->
 	<!-- <script src="./js/call_hightchart.js"></script> -->
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 	<script src="./js/getWeekNum.js"></script>
 	<script src="./js/create_calendar.js"></script>
 	<script src="./js/ajax_stmt_exec.js"></script>
@@ -110,13 +113,15 @@ require_once("./php_libs/insert_access_log.php");
 	<script src='./js/create_members_box.js'></script>
 	<script src='./js/create_members_content.js'></script>
 	<script src='./js/create_container.js'></script>
+	<script src='./js/gantt_func.js'></script>
+	<script src='./js/create_gantt_input_form.js'></script>
+	<script src='./js/create_h_calendar.js'></script>
 	<!-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/datatables.min.js"></script> -->
 
 	<!-- <script src='./js/jquery.tablesorter.js'></script>
  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/extras/jquery.metadata.min.js"></script> -->
 	 <!-- <script src='./js/jquery.tablesorter.combined.js'></script> -->
 		<!-- <script src='./js/jquery.tablesorter.widgets.js'></script> -->
-		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 </head>
 
 <body>
@@ -130,6 +135,23 @@ require_once("./php_libs/insert_access_log.php");
 	<div class='line'></div>
 						
 	<div id='contents'>
+
+	<div class='content'>
+			<div class='pack'>
+			<img class='img' src='./images/gantt.png' alt='gantt'>
+				<a id='gantt_mark' href='#wrapper' onclick='gantt_func()' class='a-link txt'>作業の登録▼</a>
+			</div>
+
+			<div id='gantt' class='shori'>
+				<div id='gantt_hyou'></div>
+				<div id='gantt_params'></div>
+				<div id='gantt_exec'></div>
+				<div id='gantt_results'></div>
+			</div>
+
+		</div>
+
+		<div class='line'></div>
 
 		<div class='content'>
 			<div class='pack'>

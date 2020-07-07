@@ -230,7 +230,7 @@ create view products_join as
         create index products_name_index on products(product_name);
         create index products_category_index on products(category);
 
-        drop table if exists calendar;
+drop table if exists calendar;
 
 -- カレンダーテーブル
 

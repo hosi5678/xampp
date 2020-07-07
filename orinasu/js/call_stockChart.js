@@ -96,7 +96,7 @@ function call_stockChart({parent_tag_str,series,yAxis_title,tanni}){
         series:series,
 
         rangeSelector: { // 表示幅選択ボタン
-          selected : 4,
+          selected : 5,
           inputDateFormat: '%Y/%m/%d',
           inputEditDateFormat: '%Y/%m/%d',
           buttons : [
@@ -115,6 +115,11 @@ function call_stockChart({parent_tag_str,series,yAxis_title,tanni}){
             type : 'year',    // 年単位
             count : 1,      // 1年のデータを表示
             text : '1年'
+          }, 
+          {
+            type : 'week',    // 年単位
+            count : 1,      // 1週のデータを表示
+            text : '1週'
           }, 
           {
             type : 'all',    // 全データ 
