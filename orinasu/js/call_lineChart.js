@@ -1,5 +1,5 @@
 'use strict';
-function call_lineChart({parent_tag_str,xaxis,series,yAxis_title,tanni}){
+function call_lineChart({parent_tag_str,xaxis,series,yAxis_title,tanni,title}){
 
 
   console.log('--- in call line chart--- ');
@@ -23,7 +23,7 @@ function call_lineChart({parent_tag_str,xaxis,series,yAxis_title,tanni}){
       zoomType:'y',
     },
     title: {
-      text:'売上',
+      text:title,
       x: -20 //center
     },
     subtitle: {

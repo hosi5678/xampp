@@ -1,5 +1,5 @@
 'use strict';
-function call_barChart({parent_tag_str,series,xaxis,yAxis_title,tanni}){
+function call_barChart({parent_tag_str,series,xaxis,yAxis_title,tanni,title}){
 
 		console.log('--- in barChart---');
 		console.log(series);
@@ -22,7 +22,7 @@ function call_barChart({parent_tag_str,series,xaxis,yAxis_title,tanni}){
 					zoomType: 'y',
 			},
 			title: {
-					text: '売上状況',
+					text:title,
 			},
 			subtitle: {
 			},

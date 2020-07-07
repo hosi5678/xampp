@@ -1,4 +1,4 @@
-function call_stockChart({parent_tag_str,series,yAxis_title,tanni}){
+function call_stockChart({parent_tag_str,series,yAxis_title,tanni,title}){
 
       // Highchart全体設定
   Highcharts.setOptions({
@@ -9,8 +9,8 @@ function call_stockChart({parent_tag_str,series,yAxis_title,tanni}){
 				
     lang:{  // 言語設定
      rangeSelectorZoom: '表示範囲',
-     resetZoom: '表示期間をリセット',
-     resetZoomTitle: '表示期間をリセット',
+     resetZoom: 'ズームをリセット',
+     resetZoomTitle: 'ズームをリセット',
      rangeSelectorFrom: '表示期間',
      rangeSelectorTo: '〜',
      printButtonTitle: 'チャートを印刷',
@@ -45,7 +45,7 @@ function call_stockChart({parent_tag_str,series,yAxis_title,tanni}){
           zoomType: 'x',
         },
         title: {
-          text: '売上状況',
+          text: title,
           // x: -20 //center
         },
         subtitle: {

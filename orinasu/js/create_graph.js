@@ -118,7 +118,7 @@ function create_graph({
 		console.log('tatejiku:'+tatejiku);
 
 		if(tatejiku=='uriage'){
-				title='売上';
+				title='売上額';
 				yAxis_title='売上(円)';
 				tanni='円';
 		}else if(tatejiku=='kosuu'){
@@ -130,11 +130,31 @@ function create_graph({
 		console.log('yAxis:'+yAxis_title);		
 
 		if(yokojiku=='term'){
-			call_stockChart({parent_tag_str:parent_tag_str,series:series,yAxis_title:'期間ごとの'+yAxis_title,tanni:tanni});
+			call_stockChart({
+				parent_tag_str:parent_tag_str,
+				series:series,
+				yAxis_title:'期間ごとの'+yAxis_title,
+				tanni:tanni,
+				title:title,
+			});
 		}else if(yokojiku=='category'){
-			call_barChart({parent_tag_str:parent_tag_str,series:series,xaxis:category,yAxis_title:'カテゴリーごとの'+yAxis_title,tanni:tanni});
+			call_barChart({
+				parent_tag_str:parent_tag_str,
+				series:series,
+				xaxis:category,
+				yAxis_title:'カテゴリーごとの'+yAxis_title,
+				tanni:tanni,
+				title:title,
+			});
 		}else if(yokojiku=='tanka'){
-			call_lineChart({parent_tag_str:parent_tag_str,series:series,xaxis:xaxis,yAxis_title:'単価ごとの'+yAxis_title,tanni:tanni});
+			call_lineChart({
+				parent_tag_str:parent_tag_str,
+				series:series,
+				xaxis:xaxis,
+				yAxis_title:'単価ごとの'+yAxis_title,
+				tanni:tanni,
+				title:title,
+			});
 		}
 
 	});
