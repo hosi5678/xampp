@@ -7,7 +7,9 @@ function create_gantt_input_form({
 		youbi,
 	}){
 
-		const m=moment();
+	// localize,localize
+	moment.locale('ja');
+	const m=moment();
 
 		const year=m.get('year');
 		const month=m.get('month');

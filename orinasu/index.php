@@ -116,6 +116,7 @@ require_once("./php_libs/insert_access_log.php");
 	<script src='./js/gantt_func.js'></script>
 	<script src='./js/create_gantt_input_form.js'></script>
 	<script src='./js/create_h_calendar.js'></script>
+	<script src='./js/getHolidays.js'></script>
 	<!-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/datatables.min.js"></script> -->
 
 	<!-- <script src='./js/jquery.tablesorter.js'></script>

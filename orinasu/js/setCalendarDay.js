@@ -42,25 +42,27 @@ function setCalendarDay({
   // td.innerText=date;
   td.appendChild(p);
 
-  var holidays = JapaneseHolidays.getHolidaysOf(year);
+  const holidays_thisMonth=getHolidays({year:year,month:month});
 
-  // console.log('holiday:');
-  // console.log(holidays);
+  // var holidays = JapaneseHolidays.getHolidaysOf(year);
 
-  var holidays_thisMonth=new Array();
+  // // console.log('holiday:');
+  // // console.log(holidays);
 
-  holidays.forEach(function(holiday) {
-    if(holiday.month==(month)){
-        holidays_thisMonth.push({
-          date:
-          year+'-'
-          +toDoubleDigits(holiday.month)+'-'
-          +toDoubleDigits(holiday.date),
+  // var holidays_thisMonth=new Array();
 
-          name:holiday.name
-        });	
-    }
-  });
+  // holidays.forEach(function(holiday) {
+  //   if(holiday.month==(month)){
+  //       holidays_thisMonth.push({
+  //         date:
+  //         year+'-'
+  //         +toDoubleDigits(holiday.month)+'-'
+  //         +toDoubleDigits(holiday.date),
+
+  //         name:holiday.name
+  //       });	
+  //   }
+  // });
 
   if(youbi_num==0) td.classList.add('td-sun');
   if(youbi_num==6) td.classList.add('td-sat');
@@ -106,9 +108,6 @@ function setCalendarDay({
   var p=document.createElement('p');
 		p.classList.add('calendar-memo');
 		
-		// console.log('---- memo ----');
-		// console.log(memo);
-
 		p.innerText='';
 
   if(memo.length>0){
@@ -151,19 +150,14 @@ function setCalendarDay({
 
   td.addEventListener('click',function(){
 
-    // console.log('this calendar:');
-
     let thisCalendar_trs=$(this).parent().parent().children();
 
     for(let j=0;j<thisCalendar_trs.length;j++){
       for(let i=0;i<thisCalendar_trs[j].children.length;i++){
-        // console.log(thisCalendar_trs[j].children[i].id);
         let id=thisCalendar_trs[j].children[i].id;
         $('#'+id).removeClass('calendar-orange');
-        // console.log(thisCalendar_trs[j].children[i].getComputedStyle());
       }
     }
-
 
     $(this).addClass('calendar-orange');
 
