@@ -36,8 +36,8 @@ require_once("./php_libs/insert_access_log.php");
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.0/css/theme.default.min.css"> -->
 	<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/datatables.min.css"/> -->
 	<script src='./js/jquery-3.4.1.min.js'></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
@@ -99,8 +99,8 @@ require_once("./php_libs/insert_access_log.php");
 	<script src='./js/setCalendarDay.js'></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.5.1/pixi.min.js"></script>
 	<script src='./js/create_exec.js'></script>
-	<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
-	<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+	<script src="https://unpkg.com/popper.js@1"></script>
+	<script src="https://unpkg.com/tippy.js@5"></script>	
 	<script src='./js/ajax_query_from_table.js'></script>
 	<script src='./js/create_graph.js'></script>
 	<script src='./js/call_stockChart.js'></script>
@@ -226,13 +226,15 @@ require_once("./php_libs/insert_access_log.php");
 
 		<div class='line'></div>
 
+		<div id='test'></div>
+
 	</div>
 
 </div>
 
-<!-- <script>
+<script>
 	dotinstall();
-</script> -->
+</script>
 
 	<noscript>
 		<p>JavaScriptを有効にしてください。</p>

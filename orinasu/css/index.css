@@ -297,25 +297,40 @@ option {
 .h-calendar-year {
 	text-align:center;
 	display: inline-block;
-	border:1px solid black;
-	border-collapse: collapse;
+	/* border:1px solid black;
+	border-collapse: collapse; */
 
 }
 
 .h-calendar-month {
 	text-align:center;
 	display:inline-block;
-	border-collapse: collapse;
+	/* border-collapse: collapse;
 	border-top:1px solid black;
-	border-left:0.2px solid black;
+	border-left:0.2px solid black; */
 
+}
+
+/* .h-p-year {
+	border-bottom: 1px solid black;
+	border-left:1px solid black;
+} */
+
+.h-p-month {
+	border-bottom:1px solid black;
+	border-right:1px solid black;
+}
+
+.h-p-day {
+	border-bottom:1px solid black;
+	border-right:1px solid black;
 }
 
 .h-calendar-date {
 	display:inline-block;
-	border-collapse: collapse;
+	/* border-collapse: collapse;
 	border-top:0.5px solid black;
-	border-left:0.2px solid black;
+	border-left:0.2px solid black; */
 	width:40px;
 
 }
@@ -481,4 +496,12 @@ textarea {
 
 .trash {
 	margin-left:35px;
+}
+
+.test-div {
+	width:300px;
+}
+
+.test-div:hover {
+	background-color:lightpink;
 }

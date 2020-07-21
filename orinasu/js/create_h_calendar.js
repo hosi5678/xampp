@@ -128,6 +128,7 @@ function create_h_calendar({
 
   let p=document.createElement('p');
   p.innerText=firstDate.get('year')+'年';
+  p.classList.add('h-p-year');
 
   div_year.appendChild(p);
 
@@ -136,6 +137,8 @@ function create_h_calendar({
 
   p=document.createElement('p');
   p.innerText=(firstDate.get('month')+1)+'月';
+  p.classList.add('h-p-month');
+
   div_month.appendChild(p);
 
   let div_date;//=document.createElement('div');
@@ -172,11 +175,12 @@ function create_h_calendar({
     // console.log(holidays);
     // div_date.innerText=(month+1)+'/'+date;
     div_date.innerText=date;
+    div_date.classList.add('h-p-day');
 
-    div_date.id=year+'-'+toDoubleDigits(month+1)+'-'+toDoubleDigits(date);
+    div_date.id='h-'+year+'-'+toDoubleDigits(month+1)+'-'+toDoubleDigits(date);
 
     for(let k=0;k<holidays.length;k++){
-      if(div_date.id==holidays[k].date){
+      if(div_date.id=='h-'+holidays[k].date){
         
         div_date.classList.add('td-shukujitu');
 
@@ -205,14 +209,6 @@ function create_h_calendar({
     div_year.appendChild(div_month);
     div_body.appendChild(div_year);
 
-    // if(month>11){
-    //   month=month-12;
-    //   year=year+1;
-    // }else if(month<0){
-    //   year=year-1;
-    //   month=11;
-    // }
-
     date=date+1;
 
     i=moment(new Date(year,month,date));
@@ -227,16 +223,19 @@ function create_h_calendar({
       div_year=document.createElement('div');
       div_year.classList.add('h-calendar-year');
       p=document.createElement('p');
+      p.classList.add('h-p-year');
       p.innerText=(i.get('year'))+'年';
       div_year.appendChild(p);
     }
 
-    // 年始で11->01となり、get('month')>monthが成り立たないから年始でも月のブロックを作る
-    if(i.get('month')>month||i.isSame(first)){
+    // 年始と月初めで新しい月のブロックを作る
+    if(i.get('month')>month||i.isSame(first)){     
+
       div_month=document.createElement('div');
       div_month.classList.add('h-calendar-month');
       p=document.createElement('p');
       p.innerText=(i.get('month')+1)+'月';
+      p.classList.add('h-p-month');
       div_month.appendChild(p);
     }
 

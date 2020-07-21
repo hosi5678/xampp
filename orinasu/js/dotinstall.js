@@ -2,14 +2,44 @@
 
 function dotinstall(){
 
-  console.log('---- within dot install---');
+  const parent_tag=document.getElementById('test');
 
-  const obj={x:100,y:100,};
+  parent_tag.innerText='test';
+  parent_tag.classList.add('test-div');
 
-  console.log(obj);
+  tippy(parent_tag,
+    {
+      content:'this is tooltip',
+      placement:'top',
+      animation:'scale',
+      duration:500,
+      arrow:true,
+    });
 
-  const d=[2019,11,14];
-  console.log(d.join('-'));
+    $('#test').draggable({
+      start:function(event,ui){
+        // console.log('start event start');
+        // console.log(event,ui);
+      },
+      drag : function (event , ui) {
+        console.log("drag event start" );
+        // console.log(event , ui);
+        var pos=ui.helper.position();
+        console.log('left:'+pos.left);
+        console.log('top:'+pos.top);
+      } ,
+    });
+
+    $('#test').resizable();
+
+  // console.log('---- within dot install---');
+
+  // const obj={x:100,y:100,};
+
+  // console.log(obj);
+
+  // const d=[2019,11,14];
+  // console.log(d.join('-'));
 
   // const numbers=[1,4,7,8,10];
 
