@@ -19,7 +19,13 @@ function create_h_calendar({
   
   const parent_tag=childNodeClear(parent_tag_str+'_hyou');
 
-  let a=document.createElement('a');
+	let a=document.createElement('a');
+	a.style.display='block';
+	a.innerText='タイムラインの追加';
+
+	parent_tag.appendChild(a);
+
+  a=document.createElement('a');
   a.classList.add('calendar-left-arrow');
   a.innerText='◀';
 

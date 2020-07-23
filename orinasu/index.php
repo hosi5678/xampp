@@ -37,7 +37,7 @@ require_once("./php_libs/insert_access_log.php");
 	<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/datatables.min.css"/> -->
 	<script src='./js/jquery-3.4.1.min.js'></script>
 	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->

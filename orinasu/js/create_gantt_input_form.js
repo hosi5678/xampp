@@ -4,7 +4,7 @@ function create_gantt_input_form({
   table_name,
   label,
   col,
-		youbi,
+	youbi,
 	}){
 
 	// localize,localize
@@ -18,7 +18,14 @@ function create_gantt_input_form({
 	console.log('--- in create gantt chart ---');
 	console.log(label);
 	console.log(col);
-	console.log(youbi);
+	console.log(parent_tag_str);
+
+	// const parent_tag=document.getElementById(parent_tag_str+'_hyou');
+
+	// let a=document.createElement('a');
+	// a.innerText='タイムラインの追加';
+
+	// parent_tag.appendChild(a);
 
 	create_h_calendar({
 		parent_tag_str:parent_tag_str,
