@@ -181,7 +181,11 @@ function create_h_calendar({
     // console.log(holidays);
     // div_date.innerText=(month+1)+'/'+date;
     div_date.innerText=date;
-    div_date.classList.add('h-p-day');
+    div_date.classList.add('h-p-date');
+
+    if(i.isSame(firstDate)){
+      div_date.classList.add('h-p-date-first');
+    }
 
     div_date.id='h-'+year+'-'+toDoubleDigits(month+1)+'-'+toDoubleDigits(date);
 
@@ -229,19 +233,19 @@ function create_h_calendar({
       div_year=document.createElement('div');
       div_year.classList.add('h-calendar-year');
       p=document.createElement('p');
-      p.classList.add('h-p-year');
+      p.classList.add('h-p-year-first');
       p.innerText=(i.get('year'))+'年';
       div_year.appendChild(p);
     }
 
-    // 年始と月初めで新しい月のブロックを作る
+    // 年始(12->1)と月初め(5->6)で新しい月のブロックを作る
     if(i.get('month')>month||i.isSame(first)){     
 
       div_month=document.createElement('div');
       div_month.classList.add('h-calendar-month');
       p=document.createElement('p');
       p.innerText=(i.get('month')+1)+'月';
-      p.classList.add('h-p-month');
+      p.classList.add('h-p-month-first');
       div_month.appendChild(p);
     }
 
