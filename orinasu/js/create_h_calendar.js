@@ -21,7 +21,7 @@ function create_h_calendar({
 
 	let a=document.createElement('a');
 	a.style.display='block';
-	a.innerText='タイムラインの追加';
+	a.innerText='工程の追加';
 
 	parent_tag.appendChild(a);
 
@@ -129,6 +129,8 @@ function create_h_calendar({
 
   const div_body=document.createElement('div');
   
+  div_body.classList.add('h-body');
+
   let div_year=document.createElement('div');
   div_year.classList.add('h-calendar-year');
 
@@ -141,19 +143,31 @@ function create_h_calendar({
   let div_month=document.createElement('div');
   div_month.classList.add('h-calendar-month');
 
+  // p=document.createElement('p');
+  // p.classList.add('h-p-month');
+
+  // div_month.appendChild(p);
+  let div_date;
+
+  div_date=document.createElement('div');
+  div_date.innerText='工程';
+  div_date.classList.add('h-calendar-date');
+  div_date.classList.add('h-p-date');
+  div_date.classList.add('h-koutei');
+
+  div_month.appendChild(div_date);
+  div_year.appendChild(div_month);
+  div_body.appendChild(div_year);
+
+
+  div_month=document.createElement('div');
+  div_month.classList.add('h-calendar-month');
+
   p=document.createElement('p');
   p.innerText=(firstDate.get('month')+1)+'月';
   p.classList.add('h-p-month');
 
   div_month.appendChild(p);
-
-  let div_date;//=document.createElement('div');
-  // div_date.classList.add('h-calendar-date');
-
-  // p=document.createElement('p');
-  // p.innerText=year+'/'+(month+1);
-
-  // div_month.appendChild(p);
 
   for(let i=firstDate;i<=lastDate;){
 
@@ -240,7 +254,6 @@ function create_h_calendar({
 
     // 年始(12->1)と月初め(5->6)で新しい月のブロックを作る
     if(i.get('month')>month||i.isSame(first)){     
-
       div_month=document.createElement('div');
       div_month.classList.add('h-calendar-month');
       p=document.createElement('p');

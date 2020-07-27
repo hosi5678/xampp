@@ -26,6 +26,7 @@ function reject_str(str){
         (str.indexOf("'") != -1)||
         (str.indexOf('<') !=-1)||
         (str.indexOf('>') !=-1)||
+        (str.indexOf('=') !=-1)||
         (str.indexOf('into') != -1) )
     {
       throw new Error('cannot use sql statement.');
